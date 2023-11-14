@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/Bootstrap/Window.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/Bootstrap/Label.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/Bootstrap/Panel.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/Bootstrap/Button.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/Bootstrap/DataGrid.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/Bootstrap/ProgressBar.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/Bootstrap/FormControl.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/Bootstrap/InputGroup.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/Bootstrap/Path.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/Bootstrap/DatePicker.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/Bootstrap/Point.xaml"></ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

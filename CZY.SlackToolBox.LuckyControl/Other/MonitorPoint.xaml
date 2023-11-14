@@ -1,0 +1,11 @@
+﻿<UserControl x:Class="CZY.SlackToolBox.LuckyControl.Other.MonitorPoint"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"  >
+    <StackPanel  x:Name="SPanel"  Orientation="Horizontal"  >
+        <Image x:Name="PointImg"   Width="24" Height="24" HorizontalAlignment="Left" VerticalAlignment="Bottom"></Image>
+        <Label FontSize="16" Foreground="#FFFFFF" x:Name="TipLab"></Label>
+    </StackPanel>
+</UserControl>

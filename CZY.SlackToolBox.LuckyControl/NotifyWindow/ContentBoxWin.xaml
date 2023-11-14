@@ -1,0 +1,71 @@
+﻿<Window x:Class="CZY.SlackToolBox.LuckyControl.NotifyWindow.ContentBoxWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"  AllowsTransparency="True"  
+        x:Name="currentWindow" ShowInTaskbar="False" Topmost="True"
+      ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Window.Resources>
+        <ResourceDictionary>
+            <SolidColorBrush x:Key="infoColorBackground">#31b0d5</SolidColorBrush>
+            <SolidColorBrush x:Key="infoColorBorderBrush">#269abc</SolidColorBrush>
+
+            <SolidColorBrush x:Key="successBackground">#449d44</SolidColorBrush>
+            <SolidColorBrush x:Key="successBorderBrush">#398439</SolidColorBrush>
+
+            <SolidColorBrush x:Key="warningBackground">#ec971f</SolidColorBrush>
+            <SolidColorBrush x:Key="warningBorderBrush">#d58512</SolidColorBrush>
+
+            <SolidColorBrush x:Key="dangerBackground">#c9302c</SolidColorBrush>
+            <SolidColorBrush x:Key="dangerBorderBrush">#ac2925</SolidColorBrush>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Border x:Name="mainBorder"  BorderBrush="Red" BorderThickness="1" CornerRadius="2">
+        <Grid Width="{Binding ElementName=currentWindow, Path=Width}" Height="{Binding ElementName=currentWindow, Path=Height}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+
+            <Border    x:Name="topBorder"  Grid.Row="0">
+                <Grid> 
+                    <Label Name="lblTile" Margin="8,0,0,0" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"  FontSize="20" FontWeight="Black" MouseMove="lblTile_MouseMove">
+                        系统通知
+                    </Label>
+                    <Label     HorizontalAlignment="Right" Margin="0,0,8,0" FontWeight="Bold" Cursor="Hand" MouseLeftButtonDown="closeButton_MouseLeftButtonDown"
+                      VerticalContentAlignment="Center" VerticalAlignment="Center" FontSize="28" Content="×"   >
+                        <Label.RenderTransform>
+                            <RotateTransform x:Name="closetext" Angle="0" CenterX="14" CenterY="14" />
+                        </Label.RenderTransform>
+                        <Label.Triggers>
+                            <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="closetext" Storyboard.TargetProperty="(RotateTransform.Angle)"  To="180" Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="closetext" Storyboard.TargetProperty="(RotateTransform.Angle)"  To="0" Duration="0:0:0.5"  />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Label.Triggers>
+                    </Label>
+                </Grid>
+            </Border>
+            <ContentControl  x:Name="boxContent"  Grid.Row="1"></ContentControl>
+
+            <Border BorderThickness="20,1,20,0" x:Name="bottomBorder"  BorderBrush="Red" Grid.Row="2">
+                <StackPanel  HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Button x:Name="btnOk"  Content="是"   FontSize=" 20"  MinWidth="80"    Click="btnOk_Click"/>
+                    <Button x:Name="btnNo"  Content="否"  FontSize=" 20" Margin="30,0,0,0"   MinWidth="80" Visibility="Visible" Click="btnNo_Click" Width="100"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Border>
+</Window>

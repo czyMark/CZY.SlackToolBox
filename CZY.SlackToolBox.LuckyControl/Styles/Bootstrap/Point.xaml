@@ -1,0 +1,260 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/Bootstrap/BaseStyle.xaml"></ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+    <ControlTemplate
+        x:Key="customMarkerPointTemplate">
+        <Grid
+            x:Name="model"
+            Background="Transparent"
+            RenderTransformOrigin="0.5,0.5">
+            <Grid.RenderTransform>
+                <ScaleTransform />
+            </Grid.RenderTransform>
+            <Ellipse
+                Stroke="{Binding Path=PointColor, ConverterParameter=Gray, Converter={StaticResource brushOverlayConverter}}"
+                StrokeThickness="2" />
+            <Ellipse
+                Stroke="{Binding Path=PointColor, ConverterParameter=Gray, Converter={StaticResource brushOverlayConverter}}"
+                StrokeThickness="2"
+                Margin="4" />
+            <Ellipse
+                Margin="8"
+                Opacity="{Binding Opacity}"
+                Fill="{Binding Path=PointColor, ConverterParameter=Gray, Converter={StaticResource brushOverlayConverter}}" />
+            <Grid.Triggers>
+                <EventTrigger
+                    RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard
+                            TargetName="model">
+                            <DoubleAnimation
+                                Duration="0:0:0.25"
+                                To="1.5"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)">
+                                <DoubleAnimation.EasingFunction>
+                                    <BackEase
+                                        Amplitude="2"
+                                        EasingMode="EaseOut" />
+                                </DoubleAnimation.EasingFunction>
+                            </DoubleAnimation>
+                            <DoubleAnimation
+                                Duration="0:0:0.25"
+                                To="1.5"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)">
+                                <DoubleAnimation.EasingFunction>
+                                    <BackEase
+                                        Amplitude="2"
+                                        EasingMode="EaseOut" />
+                                </DoubleAnimation.EasingFunction>
+                            </DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger
+                    RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard
+                            TargetName="model">
+                            <DoubleAnimation
+                                Duration="0:0:0.5"
+                                To="1"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)">
+                                <DoubleAnimation.EasingFunction>
+                                    <CircleEase
+                                        EasingMode="EaseOut" />
+                                </DoubleAnimation.EasingFunction>
+                            </DoubleAnimation>
+                            <DoubleAnimation
+                                Duration="0:0:0.5"
+                                To="1"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)">
+                                <DoubleAnimation.EasingFunction>
+                                    <CircleEase
+                                        EasingMode="EaseOut" />
+                                </DoubleAnimation.EasingFunction>
+                            </DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Grid.Triggers>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate
+        x:Key="MarkerPlanePointTemplate1">
+        <Grid
+            x:Name="model"
+            Background="Transparent"
+            RenderTransformOrigin="0.5,0.5">
+            <Grid.RenderTransform>
+                <ScaleTransform />
+            </Grid.RenderTransform>
+
+            <Ellipse Width="6" Height="6" Canvas.Left="359" Canvas.Top="359"  RenderTransformOrigin="0.5,0.5" 
+                                 StrokeThickness="1" Stroke="Yellow" >
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform  Angle="45"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+ 
+
+            <Grid.Triggers>
+                <EventTrigger
+                    RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard
+                            TargetName="model">
+                            <DoubleAnimation
+                                Duration="0:0:0.25"
+                                To="1.5"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)">
+                                <DoubleAnimation.EasingFunction>
+                                    <BackEase
+                                        Amplitude="2"
+                                        EasingMode="EaseOut" />
+                                </DoubleAnimation.EasingFunction>
+                            </DoubleAnimation>
+                            <DoubleAnimation
+                                Duration="0:0:0.25"
+                                To="1.5"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)">
+                                <DoubleAnimation.EasingFunction>
+                                    <BackEase
+                                        Amplitude="2"
+                                        EasingMode="EaseOut" />
+                                </DoubleAnimation.EasingFunction>
+                            </DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger
+                    RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard
+                            TargetName="model">
+                            <DoubleAnimation
+                                Duration="0:0:0.5"
+                                To="1"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)">
+                                <DoubleAnimation.EasingFunction>
+                                    <CircleEase
+                                        EasingMode="EaseOut" />
+                                </DoubleAnimation.EasingFunction>
+                            </DoubleAnimation>
+                            <DoubleAnimation
+                                Duration="0:0:0.5"
+                                To="1"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)">
+                                <DoubleAnimation.EasingFunction>
+                                    <CircleEase
+                                        EasingMode="EaseOut" />
+                                </DoubleAnimation.EasingFunction>
+                            </DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Grid.Triggers>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate
+        x:Key="MarkerPlanePointTemplate2">
+        <Grid
+            x:Name="model"
+            Background="Transparent"
+            RenderTransformOrigin="0.5,0.5">
+            <Grid.RenderTransform>
+                <ScaleTransform />
+            </Grid.RenderTransform>
+
+            <Ellipse Width="6" Height="6"  Canvas.Left="359" Canvas.Top="359"  RenderTransformOrigin="0.5,0.5" 
+                                 StrokeThickness="1" Stroke="Yellow" >
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="45"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+
+            </Ellipse>
+
+            
+            <!--<Image Canvas.Left="359" Canvas.Top="359"  RenderTransformOrigin="0.5,0.5"  Source="{StaticResource SystemPlaneImage2}" Width="18" Height="18">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="45"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>-->
+
+            <Grid.Triggers>
+                <EventTrigger
+                    RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard
+                            TargetName="model">
+                            <DoubleAnimation
+                                Duration="0:0:0.25"
+                                To="1.5"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)">
+                                <DoubleAnimation.EasingFunction>
+                                    <BackEase
+                                        Amplitude="2"
+                                        EasingMode="EaseOut" />
+                                </DoubleAnimation.EasingFunction>
+                            </DoubleAnimation>
+                            <DoubleAnimation
+                                Duration="0:0:0.25"
+                                To="1.5"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)">
+                                <DoubleAnimation.EasingFunction>
+                                    <BackEase
+                                        Amplitude="2"
+                                        EasingMode="EaseOut" />
+                                </DoubleAnimation.EasingFunction>
+                            </DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger
+                    RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard
+                            TargetName="model">
+                            <DoubleAnimation
+                                Duration="0:0:0.5"
+                                To="1"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)">
+                                <DoubleAnimation.EasingFunction>
+                                    <CircleEase
+                                        EasingMode="EaseOut" />
+                                </DoubleAnimation.EasingFunction>
+                            </DoubleAnimation>
+                            <DoubleAnimation
+                                Duration="0:0:0.5"
+                                To="1"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)">
+                                <DoubleAnimation.EasingFunction>
+                                    <CircleEase
+                                        EasingMode="EaseOut" />
+                                </DoubleAnimation.EasingFunction>
+                            </DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Grid.Triggers>
+        </Grid>
+    </ControlTemplate>
+</ResourceDictionary>

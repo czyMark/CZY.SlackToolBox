@@ -1,0 +1,94 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:local="clr-namespace:CZY.SlackToolBox.AnimationBank"
+                    xmlns:localCommon="clr-namespace:CZY.SlackToolBox.AnimationBank.Common"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="WavesColor">White</SolidColorBrush> 
+    <SolidColorBrush x:Key="VariableTextFill">#dd1d43</SolidColorBrush>
+    <SolidColorBrush x:Key="VariableTextStroke">#dd1d43</SolidColorBrush>
+
+    <SolidColorBrush x:Key="TabControlMenuBorderBrush">Transparent</SolidColorBrush>
+    <SolidColorBrush x:Key="TabControlMenuForeground">#0b0045</SolidColorBrush>
+    <SolidColorBrush x:Key="TabControlMenuPanel">Transparent</SolidColorBrush>
+    <SolidColorBrush x:Key="TabControlMenuSelectedIndex">#e3008c</SolidColorBrush>
+    <SolidColorBrush x:Key="TabControlMenuSelectedPanel">Transparent</SolidColorBrush>
+    <SolidColorBrush x:Key="TabControlMenuSelectedForeground">#0075a5</SolidColorBrush>
+
+
+    <SolidColorBrush x:Key="ToggleTextBackground">#e3008c</SolidColorBrush>
+    <SolidColorBrush x:Key="ToggleTextForeground">#e3008c</SolidColorBrush>
+
+    <Style TargetType="local:TextShape" x:Key="InlayTextStyle">
+        <Setter Property="FontSize" Value="100" />
+        <Setter Property="Fill" Value="#dccb98" />
+        <Setter Property="Stroke" Value="#dccb98" />
+    </Style>
+    <system:Double x:Key="InlayTextStrokeThickness">4</system:Double>
+    
+    <LinearGradientBrush x:Key="TextRainbow" StartPoint="0,0.5" EndPoint="1,.5">
+        <LinearGradientBrush.RelativeTransform>
+            <RotateTransform Angle="0" CenterX="0.5" CenterY="0.5" />
+        </LinearGradientBrush.RelativeTransform>
+        <GradientStop x:Name="G1" Offset="0" Color="#65b849" />
+        <GradientStop x:Name="G2" Offset=".166" Color="#65b849" />
+        <GradientStop x:Name="G3" Offset=".166" Color="#f7b423" />
+        <GradientStop x:Name="G4" Offset=".3333" Color="#f7b423" />
+        <GradientStop x:Name="G5" Offset="0.3333" Color="#f58122" />
+        <GradientStop x:Name="G6" Offset="0.5" Color="#f58122" />
+        <GradientStop x:Name="G7" Offset="0.5" Color=" #f8f8f8" />
+        <GradientStop x:Name="G8" Offset="0.5" Color=" #f8f8f8" />
+        <GradientStop x:Name="G9" Offset="0.50" Color="#de3a3c" />
+        <GradientStop x:Name="G10" Offset="0.666" Color="#de3a3c" />
+        <GradientStop x:Name="G11" Offset="0.666" Color="#943f96" />
+        <GradientStop x:Name="G12" Offset="0.8633" Color="#943f96" />
+        <GradientStop x:Name="G13" Offset="0.8633" Color="#009fd9" />
+        <GradientStop x:Name="G14" Offset="01" Color="#009fd9" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="TextRepeat" MappingMode="Absolute" SpreadMethod="Repeat" StartPoint="0,0" EndPoint="10,10">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="1" Color="OrangeRed" />
+            <GradientStop Offset="1" Color="White" />
+            <GradientStop Offset="0.5" Color="White" />
+            <GradientStop Offset="0.5" Color="OrangeRed" />
+            <GradientStop Offset="0" Color="OrangeRed" />
+            <GradientStop Offset="0" Color="White" />
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="TextReflect" MappingMode="Absolute" SpreadMethod="Reflect" StartPoint="0,0" EndPoint="10,10">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="1" Color="OrangeRed" />
+            <GradientStop Offset="1" Color="White" />
+            <GradientStop Offset="0.5" Color="White" />
+            <GradientStop Offset="0.5" Color="OrangeRed" />
+            <GradientStop Offset="0" Color="OrangeRed" />
+            <GradientStop Offset="0" Color="White" />
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="TextPad" MappingMode="Absolute" SpreadMethod="Pad" StartPoint="0,0" EndPoint="10,10">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="1" Color="OrangeRed" />
+            <GradientStop Offset="1" Color="White" />
+            <GradientStop Offset="0.5" Color="White" />
+            <GradientStop Offset="0.5" Color="OrangeRed" />
+            <GradientStop Offset="0" Color="OrangeRed" />
+            <GradientStop Offset="0" Color="White" />
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <localCommon:RepeatCollection x:Key="RepeatCollection">
+        <SolidColorBrush>#4a0e68</SolidColorBrush>
+        <SolidColorBrush>#b62223</SolidColorBrush>
+        <SolidColorBrush>#fdd70c</SolidColorBrush>
+        <SolidColorBrush>#f16704</SolidColorBrush>
+        <SolidColorBrush>#69982d</SolidColorBrush>
+        <SolidColorBrush>#0075a5</SolidColorBrush>
+        <SolidColorBrush>#0b0045</SolidColorBrush>
+    </localCommon:RepeatCollection>
+
+
+    
+</ResourceDictionary>

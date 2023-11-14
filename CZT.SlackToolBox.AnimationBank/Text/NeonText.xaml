@@ -1,0 +1,106 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:local="clr-namespace:CZY.SlackToolBox.AnimationBank" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    >
+
+    <ControlTemplate TargetType="ContentControl" x:Key="NeonText">
+        <ItemsControl ItemsSource="{TemplateBinding Content}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <FrameworkElement.Triggers>
+                            <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation AutoReverse="True"
+                                     FillBehavior="HoldEnd"
+                                     RepeatBehavior="Forever"
+                                     Storyboard.TargetName="TextPathRed"
+                                     Storyboard.TargetProperty="StrokeDashOffset"
+                                     From="0"
+                                     To="1000"
+                                     Duration="0:0:30" />
+                                        <DoubleAnimation AutoReverse="True"
+                                     FillBehavior="HoldEnd"
+                                     RepeatBehavior="Forever"
+                                     Storyboard.TargetName="TextPathWhite"
+                                     Storyboard.TargetProperty="StrokeDashOffset"
+                                     From="10"
+                                     To="1000"
+                                     Duration="0:0:30" />
+                                        <DoubleAnimation AutoReverse="True"
+                                     FillBehavior="HoldEnd"
+                                     RepeatBehavior="Forever"
+                                     Storyboard.TargetName="TextPathBlue"
+                                     Storyboard.TargetProperty="StrokeDashOffset"
+                                     From="20"
+                                     To="1000"
+                                     Duration="0:0:30" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </FrameworkElement.Triggers>
+                        <local:TextShape x:Name="TextPathRed"
+                             HorizontalAlignment="Center"
+                             Fill="Transparent"
+                             FontSize="100"
+                             FontWeight="Bold"
+                             Stroke="#c43bb7"
+                             StrokeDashArray="10 50"
+                             StrokeThickness="4"
+                             Text="{Binding}">
+                            <FrameworkElement.Effect>
+                                <DropShadowEffect BlurRadius="32"
+                                      RenderingBias="Quality"
+                                      ShadowDepth="0"
+                                      Color="#c43bb7" />
+                            </FrameworkElement.Effect>
+                        </local:TextShape>
+
+                        <local:TextShape x:Name="TextPathWhite"
+                             HorizontalAlignment="Center"
+                             Fill="Transparent"
+                             FontSize="100"
+                             FontWeight="Bold"
+                             Stroke="White"
+                             StrokeDashArray="10 50"
+                             StrokeDashOffset="10"
+                             StrokeThickness="4"
+                             Text="{Binding}">
+                            <FrameworkElement.Effect>
+                                <DropShadowEffect BlurRadius="32"
+                                      RenderingBias="Quality"
+                                      ShadowDepth="0"
+                                      Color="White" />
+                            </FrameworkElement.Effect>
+                        </local:TextShape>
+
+                        <local:TextShape x:Name="TextPathBlue"
+                             HorizontalAlignment="Center"
+                             Fill="Transparent"
+                             FontSize="100"
+                             FontWeight="Bold"
+                             Stroke="#2de4ea"
+                             StrokeDashArray="10 50"
+                             StrokeDashOffset="20"
+                             StrokeThickness="4"
+                             Text="{Binding}">
+                            <FrameworkElement.Effect>
+                                <DropShadowEffect BlurRadius="32"
+                                      RenderingBias="Quality"
+                                      ShadowDepth="0"
+                                      Color="#1de4ea" />
+                            </FrameworkElement.Effect>
+                        </local:TextShape>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </ControlTemplate>
+
+</ResourceDictionary>

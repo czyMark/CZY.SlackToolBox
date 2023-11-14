@@ -1,0 +1,18 @@
+﻿<Window x:Class="CZY.SlackToolBox.LuckyControl.ColorPickerControls.Dialogs.ColorPickerFullWithAlphaDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="颜色选择器" Height="360" Width="570"   
+        xmlns:Pickers="clr-namespace:CZY.SlackToolBox.LuckyControl.ColorPickerControls.Pickers" ResizeMode="NoResize">
+    <Grid Background="#FFE8E8E8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="274" />
+            <RowDefinition Height="42" />
+        </Grid.RowDefinitions>
+        <Pickers:ColorPickerFullWithAlpha HorizontalAlignment="Left" Margin="8,4,0,0" x:Name="colorPickerFullWithAlpha" VerticalAlignment="Top" />
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="214,0,0,0" VerticalAlignment="Center"  >
+        <Button Content="OK"  Height="32" HorizontalAlignment="Left" Margin="0,0,4,0" x:Name="btOk" VerticalAlignment="Top" Width="75" Click="btOk_Click" />
+            <Button Content="Cancel" Grid.Row="1" Height="32" HorizontalAlignment="Left" Margin="8,0,0,0" x:Name="btCancel" VerticalAlignment="Top" Width="75" Click="btCancel_Click" />
+        </StackPanel>
+
+    </Grid>
+</Window>

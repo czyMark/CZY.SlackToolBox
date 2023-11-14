@@ -1,0 +1,55 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:local="clr-namespace:CZY.SlackToolBox.AnimationBank" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    >
+
+    <ControlTemplate TargetType="ContentControl" x:Key="ShimmersText">
+        <ItemsControl ItemsSource="{TemplateBinding Content}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <FrameworkElement.Triggers>
+                            <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard> 
+                                        <PointAnimation RepeatBehavior="Forever"
+                                        Storyboard.TargetName="Brush"
+                                        Storyboard.TargetProperty="Center"
+                                        From="-3,.5"
+                                        To="4,.5"
+                                        Duration="0:0:2" />
+                                        <PointAnimation RepeatBehavior="Forever"
+                                        Storyboard.TargetName="Brush"
+                                        Storyboard.TargetProperty="GradientOrigin"
+                                        From="-3,.5"
+                                        To="4,.5"
+                                        Duration="0:0:2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </FrameworkElement.Triggers>
+                        <TextBlock 
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"   
+                   RenderTransformOrigin="0.5,0.5"
+                   Text="{Binding}">
+                            <TextBlock.OpacityMask>
+                                <RadialGradientBrush x:Name="Brush" Center="-3,.5" GradientOrigin="-3,.5" RadiusX=".2" RadiusY="2">
+                                    <GradientStop  Offset="1" Color="White" />
+                                    <GradientStop Offset=".5" Color="#6000" />
+                                    <GradientStop  Color="#2000" />
+                                </RadialGradientBrush>
+                            </TextBlock.OpacityMask>
+                        </TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </ControlTemplate>
+
+</ResourceDictionary>

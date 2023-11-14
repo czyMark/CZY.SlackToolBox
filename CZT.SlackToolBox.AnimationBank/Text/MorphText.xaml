@@ -1,0 +1,46 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:local="clr-namespace:CZY.SlackToolBox.AnimationBank.Increaser"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+     
+    <ControlTemplate TargetType="ContentControl" x:Key="MorphText">
+        <ItemsControl ItemsSource="{TemplateBinding Content}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock x:Name="TextBlock"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Opacity="0"
+                               Text="{Binding }">
+                        <TextBlock.Effect>
+                            <BlurEffect x:Name="BlurEffect" Radius="30" />
+                        </TextBlock.Effect> 
+                        <FrameworkElement.Triggers>
+                            <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard   Duration="0:0:6">
+                                        <DoubleAnimationUsingKeyFrames
+                                            BeginTime="0:0:0"
+                                            Storyboard.TargetName="TextBlock"
+                                            Storyboard.TargetProperty="(UIElement.Effect).(BlurEffect.Radius)">
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0" Value="30" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0.8" Value="0" /> 
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames
+                                            BeginTime="0:0:0"
+                                            Storyboard.TargetName="TextBlock"
+                                            Storyboard.TargetProperty="Opacity">
+                                            <LinearDoubleKeyFrame KeyTime="0" Value="0" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0.8" Value="1" /> 
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </FrameworkElement.Triggers>
+                    </TextBlock>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </ControlTemplate>
+
+
+</ResourceDictionary>

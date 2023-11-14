@@ -1,0 +1,49 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:local="clr-namespace:CZY.SlackToolBox.AnimationBank"
+                    xmlns:localIncreaser="clr-namespace:CZY.SlackToolBox.AnimationBank.Increaser"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <localIncreaser:TimeSpanIncreaser x:Key="TimeSpanVariableTextIncreaser" Step="0:0:0.1" />
+
+    <ControlTemplate TargetType="ContentControl" x:Key="VariableText">
+        <ItemsControl ItemsSource="{TemplateBinding Content}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <local:TextShape x:Name="TextElement"
+                                                          HorizontalAlignment="Center"
+                                                          Fill="{StaticResource VariableTextFill}"
+                                                          FontWeight="Thin"
+                                                          RenderTransformOrigin=".5,.5"
+                                                          Stroke="{StaticResource VariableTextStroke}"
+                                                          StrokeThickness="0"
+                                                          Text="{Binding}">
+                        <FrameworkElement.Triggers>
+                            <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                                                BeginTime="{Binding Next, Source={StaticResource TimeSpanVariableTextIncreaser}}"
+                                                                Storyboard.TargetName="TextElement"
+                                                                Storyboard.TargetProperty="StrokeThickness"
+                                                                To="10"
+                                                                Duration="0:0:1.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CircleEase EasingMode="EaseIn" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </FrameworkElement.Triggers>
+                    </local:TextShape>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </ControlTemplate>
+
+</ResourceDictionary>

@@ -1,0 +1,395 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:local="clr-namespace:CZY.SlackToolBox.AnimationBank" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    >
+    <Style x:Key="BaseTextBlockHelper" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="160" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+    <Style x:Key="ShadowTextBlockHelper"
+                   BasedOn="{StaticResource BaseTextBlockHelper}"
+                   TargetType="TextBlock">
+        <Setter Property="RenderTransformOrigin" Value=".5,.5" />
+
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <LinearGradientBrush MappingMode="Absolute" SpreadMethod="Repeat" StartPoint="6,0"
+                                             EndPoint="0,6">
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Offset="1" Color="#7f6065" />
+                        <GradientStop Offset="1" Color="Transparent" />
+                        <GradientStop Offset="0.5" Color="Transparent" />
+                        <GradientStop Offset="0.5" Color="#7f6065" />
+                        <GradientStop Offset="0" Color="#7f6065" />
+                        <GradientStop Offset="0" Color="Transparent" />
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type ContentControl}" x:Key="ShadowTextMouseOver">
+        <Setter Property="FontSize" Value="160" />
+        <Setter Property="Padding" Value="40" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContentControl">
+                    <Border x:Name="border">
+                        <Grid>
+                            <Grid>
+                                <Grid.Resources>
+                                    <Style BasedOn="{StaticResource ShadowTextBlockHelper}"
+                                                   TargetType="TextBlock" />
+                                </Grid.Resources>
+
+                                <TextBlock x:Name="t1" Text="{TemplateBinding Content}">
+                                    <TextBlock.RenderTransform>
+                                        <TranslateTransform />
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                                <TextBlock x:Name="t2" Text="{TemplateBinding Content}">
+                                    <TextBlock.RenderTransform>
+                                        <TranslateTransform />
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                                <TextBlock x:Name="t3" Text="{TemplateBinding Content}">
+                                    <TextBlock.RenderTransform>
+                                        <TranslateTransform />
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                                <TextBlock x:Name="t4" Text="{TemplateBinding Content}">
+                                    <TextBlock.RenderTransform>
+                                        <TranslateTransform />
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                                <TextBlock x:Name="t5" Text="{TemplateBinding Content}">
+                                    <TextBlock.RenderTransform>
+                                        <TranslateTransform />
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                                <TextBlock x:Name="t6" Text="{TemplateBinding Content}">
+                                    <TextBlock.RenderTransform>
+                                        <TranslateTransform />
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                                <TextBlock x:Name="t7" Text="{TemplateBinding Content}">
+                                    <TextBlock.RenderTransform>
+                                        <TranslateTransform />
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                                <TextBlock x:Name="t8" Text="{TemplateBinding Content}">
+                                    <TextBlock.RenderTransform>
+                                        <TranslateTransform />
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                                <TextBlock x:Name="t9" Text="{TemplateBinding Content}">
+                                    <TextBlock.RenderTransform>
+                                        <TranslateTransform />
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                                <TextBlock x:Name="t10" Text="{TemplateBinding Content}">
+                                    <TextBlock.RenderTransform>
+                                        <TranslateTransform />
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                            </Grid>
+                            <local:TextShape x:Name="contentPresenter"
+                                                     HorizontalAlignment="Center"
+                                                     VerticalAlignment="Center"
+                                                     Fill="Black"
+                                                     FontSize="160"
+                                                     FontWeight="Bold"
+                                                     Stroke="Black"
+                                                     StrokeThickness="2"
+                                                     Text="{TemplateBinding Content}" />
+                        </Grid>
+                        <FrameworkElement.Triggers>
+                            <EventTrigger RoutedEvent="ContentElement.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0:0:0.5"  Storyboard.TargetName="t1" 
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="1" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t1"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="1" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t2"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="2" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t2"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="2" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t3"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="3" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t3"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="3" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t4"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="4" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t4"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="4" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t5"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="5" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t5"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="5" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t6"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="6" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t6"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="6" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t7"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="7" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t7"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="7" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t8"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="8" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t8"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="8" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t9"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="9" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t9"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="9" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t10"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="10" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t10"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="10" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                             </EventTrigger>
+                            <EventTrigger RoutedEvent="ContentElement.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t1"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="0" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t1"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="0" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t2"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="0" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t2"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="0" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t3"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="0" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t3"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="0" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t4"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="0" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t4"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="0" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t5"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="0" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t5"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="0" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t6"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="0" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t6"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="0" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t7"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="0" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t7"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="0" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t8"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="0" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t8"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="0" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t9"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="0" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t9"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="0" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t10"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="0" />
+                                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="t10"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="0" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </FrameworkElement.Triggers> 
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type ContentControl}" x:Key="ShadowTextLoaded">
+        <Setter Property="FontSize" Value="160" />
+        <Setter Property="Padding" Value="40" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContentControl">
+                    <Border x:Name="border">
+                        <Grid>
+                            <Grid>
+                                <Grid.Resources>
+                                    <Style BasedOn="{StaticResource ShadowTextBlockHelper}"
+                                                   TargetType="TextBlock" />
+                                </Grid.Resources>
+
+                                <TextBlock x:Name="t1" Text="{TemplateBinding Content}">
+                                    <TextBlock.RenderTransform>
+                                        <TranslateTransform />
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                                <TextBlock x:Name="t2" Text="{TemplateBinding Content}">
+                                    <TextBlock.RenderTransform>
+                                        <TranslateTransform />
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                                <TextBlock x:Name="t3" Text="{TemplateBinding Content}">
+                                    <TextBlock.RenderTransform>
+                                        <TranslateTransform />
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                                <TextBlock x:Name="t4" Text="{TemplateBinding Content}">
+                                    <TextBlock.RenderTransform>
+                                        <TranslateTransform />
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                                <TextBlock x:Name="t5" Text="{TemplateBinding Content}">
+                                    <TextBlock.RenderTransform>
+                                        <TranslateTransform />
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                                <TextBlock x:Name="t6" Text="{TemplateBinding Content}">
+                                    <TextBlock.RenderTransform>
+                                        <TranslateTransform />
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                                <TextBlock x:Name="t7" Text="{TemplateBinding Content}">
+                                    <TextBlock.RenderTransform>
+                                        <TranslateTransform />
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                                <TextBlock x:Name="t8" Text="{TemplateBinding Content}">
+                                    <TextBlock.RenderTransform>
+                                        <TranslateTransform />
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                                <TextBlock x:Name="t9" Text="{TemplateBinding Content}">
+                                    <TextBlock.RenderTransform>
+                                        <TranslateTransform />
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                                <TextBlock x:Name="t10" Text="{TemplateBinding Content}">
+                                    <TextBlock.RenderTransform>
+                                        <TranslateTransform />
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                            </Grid>
+                            <local:TextShape x:Name="contentPresenter"
+                                                     HorizontalAlignment="Center"
+                                                     VerticalAlignment="Center"
+                                                     Fill="Black"
+                                                     FontSize="160"
+                                                     FontWeight="Bold"
+                                                     Stroke="Black"
+                                                     StrokeThickness="2"
+                                                     Text="{TemplateBinding Content}" />
+                        </Grid>
+                        <FrameworkElement.Triggers>
+                            <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0:0:2"  Storyboard.TargetName="t1" 
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="1" />
+                                        <DoubleAnimation Duration="0:0:2" Storyboard.TargetName="t1"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="1" />
+                                        <DoubleAnimation Duration="0:0:2" Storyboard.TargetName="t2"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="2" />
+                                        <DoubleAnimation Duration="0:0:2" Storyboard.TargetName="t2"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="2" />
+                                        <DoubleAnimation Duration="0:0:2" Storyboard.TargetName="t3"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="3" />
+                                        <DoubleAnimation Duration="0:0:2" Storyboard.TargetName="t3"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="3" />
+                                        <DoubleAnimation Duration="0:0:2" Storyboard.TargetName="t4"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="4" />
+                                        <DoubleAnimation Duration="0:0:2" Storyboard.TargetName="t4"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="4" />
+                                        <DoubleAnimation Duration="0:0:2" Storyboard.TargetName="t5"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="5" />
+                                        <DoubleAnimation Duration="0:0:2" Storyboard.TargetName="t5"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="5" />
+                                        <DoubleAnimation Duration="0:0:2" Storyboard.TargetName="t6"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="6" />
+                                        <DoubleAnimation Duration="0:0:2" Storyboard.TargetName="t6"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="6" />
+                                        <DoubleAnimation Duration="0:0:2" Storyboard.TargetName="t7"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="7" />
+                                        <DoubleAnimation Duration="0:0:2" Storyboard.TargetName="t7"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="7" />
+                                        <DoubleAnimation Duration="0:0:2" Storyboard.TargetName="t8"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="8" />
+                                        <DoubleAnimation Duration="0:0:2" Storyboard.TargetName="t8"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="8" />
+                                        <DoubleAnimation Duration="0:0:2" Storyboard.TargetName="t9"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="9" />
+                                        <DoubleAnimation Duration="0:0:2" Storyboard.TargetName="t9"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="9" />
+                                        <DoubleAnimation Duration="0:0:2" Storyboard.TargetName="t10"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                                 To="10" />
+                                        <DoubleAnimation Duration="0:0:2" Storyboard.TargetName="t10"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                 To="10" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </FrameworkElement.Triggers>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

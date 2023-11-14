@@ -1,0 +1,75 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:local="clr-namespace:CZY.SlackToolBox.AnimationBank"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+
+    <ControlTemplate  TargetType="{x:Type  ContentControl}"  x:Key="ToggleText">
+    
+        <ItemsControl ItemsSource="{TemplateBinding Content}" >
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <local:TextShape x:Name="ContentElement"
+                             Fill="{StaticResource ToggleTextBackground}"
+                             FontSize="100"
+                             RenderTransformOrigin="0.5,0.5"
+                             Stretch="Fill"
+                             Stroke="{StaticResource  ToggleTextBackground}"
+                             StrokeThickness="100"
+                             Text="{Binding }">
+                        <FrameworkElement.Triggers>
+                            <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ContentElement"
+                                                   Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                                            <EasingDoubleKeyFrame KeyTime="00:00:3" Value="1">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <QuinticEase EasingMode="EaseInOut" />
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ContentElement"
+                                                   Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                                            <EasingDoubleKeyFrame KeyTime="00:00:3" Value="1">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <QuinticEase EasingMode="EaseInOut" />
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ContentElement"
+                                                   Storyboard.TargetProperty="(Shape.StrokeThickness)">
+                                            <EasingDoubleKeyFrame KeyTime="00:00:3" Value="0">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <QuinticEase EasingMode="EaseInOut" />
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ContentElement"
+                                                   Storyboard.TargetProperty="Opacity">
+                                            <EasingDoubleKeyFrame KeyTime="00:00:2.1" Value="1" />
+                                            <EasingDoubleKeyFrame KeyTime="00:00:3" Value="0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </FrameworkElement.Triggers>
+                        <local:TextShape.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="1.2" ScaleY="1.1" />
+                                    <SkewTransform />
+                                    <RotateTransform />
+                                    <TranslateTransform X="0" Y="0" />
+                                </TransformGroup>
+                            </local:TextShape.RenderTransform>
+                        </local:TextShape>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </ControlTemplate>
+
+</ResourceDictionary>

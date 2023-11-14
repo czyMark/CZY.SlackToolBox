@@ -1,0 +1,107 @@
+﻿<UserControl x:Class="CZY.SlackToolBox.LuckyControl.NotifyWindow.TipLable"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label" x:Key="infoTipLable">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Label}">
+                            <Grid>
+                                <Border CornerRadius="4" BorderBrush="#269abc" BorderThickness="1" VerticalAlignment="Top" Margin="8.5,0,0,0" Background="#31b0d5" HorizontalAlignment="Left" Padding="5">
+                                    <ContentPresenter />
+                                </Border>
+                                <Canvas Width="10" Height="10" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0" Background="Transparent">
+                                    <Path Stroke="#269abc" StrokeThickness="0.5" Fill="#269abc">
+                                        <Path.Data>
+                                            <PathGeometry Figures="M 10,0 L 10,0,0,5 L 0,5,10,10"/>
+                                        </Path.Data>
+                                    </Path>
+                                </Canvas>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="Label" x:Key="successTipLable">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Label}">
+                            <Grid>
+                                <Border CornerRadius="4" BorderBrush="#398439" BorderThickness="1" VerticalAlignment="Top" Margin="8.5,0,0,0" Background="#449d44" HorizontalAlignment="Left" Padding="5">
+                                    <ContentPresenter />
+                                </Border>
+                                <Canvas Width="10" Height="10" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0" Background="Transparent">
+                                    <Path Stroke="#398439" StrokeThickness="0.5" Fill="#398439">
+                                        <Path.Data>
+                                            <PathGeometry Figures="M 10,0 L 10,0,0,5 L 0,5,10,10"/>
+                                        </Path.Data>
+                                    </Path>
+                                </Canvas>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="Label" x:Key="warningTipLable">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Label}">
+                            <Grid>
+                                <Border CornerRadius="4" BorderBrush="#d58512" BorderThickness="1" VerticalAlignment="Top" Margin="8.5,0,0,0" Background="#ec971f" HorizontalAlignment="Left" Padding="5">
+                                    <ContentPresenter />
+                                </Border>
+                                <Canvas Width="10" Height="10" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0" Background="Transparent">
+                                    <Path Stroke="#d58512" StrokeThickness="0.5" Fill="#d58512">
+                                        <Path.Data>
+                                            <PathGeometry Figures="M 10,0 L 10,0,0,5 L 0,5,10,10"/>
+                                        </Path.Data>
+                                    </Path>
+                                </Canvas>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="Label" x:Key="dangerTipLable">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Label}">
+                            <Grid>
+                                <Border CornerRadius="4"   BorderThickness="1" VerticalAlignment="Top" Margin="8.5,0,0,0" BorderBrush="#ac2925" Background="#c9302c" HorizontalAlignment="Left" Padding="5">
+                                    <ContentPresenter />
+                                </Border>
+                                <Canvas Width="10" Height="10" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0" Background="Transparent">
+                                    <Path   StrokeThickness="0.5" Fill="#ac2925"  Stroke="#ac2925">
+                                        <Path.Data>
+                                            <PathGeometry Figures="M 10,0 L 10,0,0,5 L 0,5,10,10"/>
+                                        </Path.Data>
+                                    </Path>
+                                </Canvas>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Label x:Name="contentLabel"  >
+        <Label.Triggers>
+            <EventTrigger RoutedEvent="Label.Loaded">
+                <BeginStoryboard>
+                    <Storyboard >
+                        <DoubleAnimation From="0" To="1" Duration="00:00:0.3" 
+                                Storyboard.TargetName="contentLabel" Storyboard.TargetProperty="Opacity"
+                                >
+                        </DoubleAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Label.Triggers>
+    </Label>
+</UserControl>

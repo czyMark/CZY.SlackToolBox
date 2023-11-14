@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CZY.SlackToolBox.User", "CZY.SlackToolBox.User\CZY.SlackToolBox.User.csproj", "{82285699-E19D-49DB-9D4C-9190DFE42D29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CZY.SlackToolBox.AnimationBank", "CZT.SlackToolBox.AnimationBank\CZY.SlackToolBox.AnimationBank.csproj", "{2CBF0082-EC70-4101-BCAB-489843BE9661}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CZY.SlackToolBox.LuckyControl", "CZY.SlackToolBox.LuckyControl\CZY.SlackToolBox.LuckyControl.csproj", "{552D9761-F586-440C-B9B3-9FA5F2D20310}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CZY.SlackToolBox.FastExtend", "CZY.SlackToolBox.FastExtend\CZY.SlackToolBox.FastExtend.csproj", "{6D9AD78A-67C5-4C15-90BE-E630A7069A83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CZY.SlackToolBox.FrameTemplate", "CZY.SlackToolBox.FrameTemplate\CZY.SlackToolBox.FrameTemplate.csproj", "{5A68425C-6402-4AF5-9C7A-A3048DFF8C7A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Base", "Base", "{5C044CB4-60C5-4FB5-9528-559A469E198C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{82285699-E19D-49DB-9D4C-9190DFE42D29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82285699-E19D-49DB-9D4C-9190DFE42D29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82285699-E19D-49DB-9D4C-9190DFE42D29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82285699-E19D-49DB-9D4C-9190DFE42D29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CBF0082-EC70-4101-BCAB-489843BE9661}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CBF0082-EC70-4101-BCAB-489843BE9661}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CBF0082-EC70-4101-BCAB-489843BE9661}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CBF0082-EC70-4101-BCAB-489843BE9661}.Release|Any CPU.Build.0 = Release|Any CPU
+		{552D9761-F586-440C-B9B3-9FA5F2D20310}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{552D9761-F586-440C-B9B3-9FA5F2D20310}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{552D9761-F586-440C-B9B3-9FA5F2D20310}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{552D9761-F586-440C-B9B3-9FA5F2D20310}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D9AD78A-67C5-4C15-90BE-E630A7069A83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D9AD78A-67C5-4C15-90BE-E630A7069A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D9AD78A-67C5-4C15-90BE-E630A7069A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D9AD78A-67C5-4C15-90BE-E630A7069A83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A68425C-6402-4AF5-9C7A-A3048DFF8C7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A68425C-6402-4AF5-9C7A-A3048DFF8C7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A68425C-6402-4AF5-9C7A-A3048DFF8C7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A68425C-6402-4AF5-9C7A-A3048DFF8C7A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2CBF0082-EC70-4101-BCAB-489843BE9661} = {5C044CB4-60C5-4FB5-9528-559A469E198C}
+		{552D9761-F586-440C-B9B3-9FA5F2D20310} = {5C044CB4-60C5-4FB5-9528-559A469E198C}
+		{6D9AD78A-67C5-4C15-90BE-E630A7069A83} = {5C044CB4-60C5-4FB5-9528-559A469E198C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {02C9BE72-C983-4825-A318-9CAAB42926F9}
+	EndGlobalSection
+EndGlobal

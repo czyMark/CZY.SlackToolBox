@@ -1,0 +1,98 @@
+﻿<Window x:Class="CZY.SlackToolBox.FrameTemplate.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CZY.SlackToolBox.FrameTemplate" 
+        mc:Ignorable="d" WindowStyle="SingleBorderWindow" Width="1920" Height="1080"
+        Title="MainWindow" WindowState="Maximized">
+    <Window.Resources>
+        <PathGeometry x:Key="path" Figures="M-15.500207,-7.7077957 C10.791322,-7.2911776 23.95792,-4.9167829 23.95792,-4.9167829 L-186.66747,22.166988 L-276.6673,-81.832578 C-276.6673,-81.832578 0.66657904,-103.16616 3.9999149,-103.83282 C7.3332508,-104.49949 120,-58.49989 120,-58.49989 C120,-58.49989 -139.33353,67.499985 -152.0002,68.833319 C-164.66688,70.166652 -320.667,72.166986 -320.667,72.166986 L-302.66667,43.5"/>
+
+
+        <Storyboard x:Key="CloseMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="150"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames> 
+        </Storyboard>
+        <Storyboard x:Key="OpenMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="150"/>
+            </DoubleAnimationUsingKeyFrames> 
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Button.Click" SourceName="ButtonClose">
+            <BeginStoryboard x:Name="CloseMenu_BeginStoryboard" Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Button.Click" SourceName="ButtonOpen">
+            <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid  >
+        <Grid x:Name="GridBackground" Background="#55313131" Opacity="0">
+           
+        </Grid>
+        <Button x:Name="ButtonOpen" Content="你好" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0">
+            <!--<materialDesign:PackIcon Kind="Menu" Foreground="#FF313131"/>-->
+        </Button>
+        <!--左侧抽屉菜单，默认在显示窗体以外，点击菜单图标再经过简单的动画呈现出来-->
+        <Grid x:Name="GridMenu" Width="150" HorizontalAlignment="Left" Margin="-150 0 0 0" Background="White" RenderTransformOrigin="0.5,0.5">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <StackPanel>
+                <Image Height="140" Source="https://img.dotnet9.com/logo-foot.png" Stretch="Fill"/>
+                <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" FontSize="18">
+                    <ListViewItem Height="45" Padding="0">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <!--<materialDesign:PackIcon Kind="Recycle" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>-->
+                            <TextBlock Text="工具" Margin="10"  />
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="45" Padding="0">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <!--<materialDesign:PackIcon Kind="HelpCircleOutline" Width="20" Height="20" Foreground="#FFF08033" Margin="5" VerticalAlignment="Center"/>-->
+                            <TextBlock Text="帮助" Margin="10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="45" Padding="0">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <!--<materialDesign:PackIcon Kind="Lightbulb" Width="20" Height="20" Foreground="Green" Margin="5" VerticalAlignment="Center"/>-->
+                            <TextBlock Text="发送反馈" Margin="10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="45" Padding="0">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <!--<materialDesign:PackIcon Kind="Heart" Width="20" Height="20" Foreground="#FFD41515" Margin="5" VerticalAlignment="Center"/>-->
+                            <TextBlock Text="推荐" Margin="10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="45" Padding="0">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <!--<materialDesign:PackIcon Kind="StarCircle" Width="20" Height="20" Foreground="#FFE6A701" Margin="5" VerticalAlignment="Center"/>-->
+                            <TextBlock Text="溢价认购" Margin="10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="45" Padding="0">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <!--<materialDesign:PackIcon Kind="Settings" Width="20" Height="20" Foreground="#FF0069C1" Margin="5" VerticalAlignment="Center"/>-->
+                            <TextBlock Text="设置" Margin="10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
+            <Button x:Name="ButtonClose" Content="好你" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{x:Null}" Foreground="#CCC" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0">
+                <!--<materialDesign:PackIcon Kind="Close"/>-->
+            </Button>
+        </Grid>
+
+    </Grid>
+</Window>

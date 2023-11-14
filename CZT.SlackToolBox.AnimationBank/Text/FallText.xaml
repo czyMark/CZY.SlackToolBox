@@ -1,0 +1,47 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:local="clr-namespace:CZY.SlackToolBox.AnimationBank.Increaser"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <local:TimeSpanIncreaser x:Key="TimeSpanFallTextIncreaser" Step="0:0:0.2" />
+
+    <ControlTemplate TargetType="ContentControl"  x:Key="FallText">
+        <ItemsControl ItemsSource="{TemplateBinding Content}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock x:Name="TextElement"
+                                                   Foreground="{Binding Next, Source={StaticResource RepeatCollection}}"
+                                                   RenderTransformOrigin=".5,.5"
+                                                   Text="{Binding}">
+                        <TextBlock.RenderTransform>
+                            <TranslateTransform Y="-100" />
+                        </TextBlock.RenderTransform>
+                        <FrameworkElement.Triggers>
+                            <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            BeginTime="{Binding Next, Source={StaticResource TimeSpanFallTextIncreaser}}"
+                                            Storyboard.TargetName="TextElement"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                            To="0"
+                                            Duration="0:0:0.7">
+                                            <DoubleAnimation.EasingFunction>
+                                                <BounceEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </FrameworkElement.Triggers>
+                    </TextBlock>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </ControlTemplate>
+
+</ResourceDictionary>

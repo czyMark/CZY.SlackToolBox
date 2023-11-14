@@ -1,0 +1,458 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{552D9761-F586-440C-B9B3-9FA5F2D20310}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CZY.SlackToolBox.LuckyControl</RootNamespace>
+    <AssemblyName>CZY.SlackToolBox.LuckyControl</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CoreConvert\ResourceKeyToImageConvert.cs" />
+    <Compile Include="CoreConvert\ValueRoundConvert.cs" />
+    <Compile Include="NimbleMenu\HideMenuControl.cs" />
+    <Compile Include="MultiData\GridPagingModel.cs" />
+    <Compile Include="NimbleMenu\CircularMenu.xaml.cs">
+      <DependentUpon>CircularMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NimbleMenu\CircularMenuItem.cs" />
+    <Compile Include="NimbleMenu\ElementPosition.cs" />
+    <Compile Include="NimbleMenu\MenuModel.cs" />
+    <Compile Include="NimbleMenu\Switcher.cs" />
+    <Compile Include="NotifyWindow\ContentBoxWin.xaml.cs">
+      <DependentUpon>ContentBoxWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NotifyWindow\FoldPanel.xaml.cs">
+      <DependentUpon>FoldPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NotifyWindow\MessageBoxWin.xaml.cs">
+      <DependentUpon>MessageBoxWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NotifyWindow\NotifyPanel.xaml.cs">
+      <DependentUpon>NotifyPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NotifyWindow\TipContentPanel.xaml.cs">
+      <DependentUpon>TipContentPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NotifyWindow\TipLable.xaml.cs">
+      <DependentUpon>TipLable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Other\AdaptiveRuler.xaml.cs">
+      <DependentUpon>AdaptiveRuler.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Other\DragControl.xaml.cs">
+      <DependentUpon>DragControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Other\MonitorPoint.xaml.cs">
+      <DependentUpon>MonitorPoint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Input\PasswordBox.cs" />
+    <Compile Include="Other\RingPoint.xaml.cs">
+      <DependentUpon>RingPoint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="RelayCommand.cs" />
+    <Compile Include="SampleData\SampleDataSource\SampleDataSource.xaml.cs">
+      <DependentUpon>SampleDataSource.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ColorPicker\Base\AlphaDisplay.xaml.cs">
+      <DependentUpon>AlphaDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ColorPicker\Base\ColorDisplay.xaml.cs">
+      <DependentUpon>ColorDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ColorPicker\Base\ColorModels\CMYK\Black.cs" />
+    <Compile Include="ColorPicker\Base\ColorModels\CMYK\CMYKDisplay.xaml.cs">
+      <DependentUpon>CMYKDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ColorPicker\Base\ColorModels\CMYK\CMYKModel.cs" />
+    <Compile Include="ColorPicker\Base\ColorModels\CMYK\Cyan.cs" />
+    <Compile Include="ColorPicker\Base\ColorModels\CMYK\Magenta.cs" />
+    <Compile Include="ColorPicker\Base\ColorModels\CMYK\Yellow.cs" />
+    <Compile Include="ColorPicker\Base\ColorModels\CMY\CMYDisplay.xaml.cs">
+      <DependentUpon>CMYDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ColorPicker\Base\ColorModels\CMY\CMYModel.cs" />
+    <Compile Include="ColorPicker\Base\ColorModels\CMY\Cyan.cs" />
+    <Compile Include="ColorPicker\Base\ColorModels\CMY\Magenta.cs" />
+    <Compile Include="ColorPicker\Base\ColorModels\ColorComponent.cs" />
+    <Compile Include="ColorPicker\Base\ColorModels\ColorModel.cs" />
+    <Compile Include="ColorPicker\Base\ColorModels\HSB\Brightness.cs" />
+    <Compile Include="ColorPicker\Base\ColorModels\HSB\HsbDisplay.xaml.cs">
+      <DependentUpon>HsbDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ColorPicker\Base\ColorModels\HSB\HSBModel.cs" />
+    <Compile Include="ColorPicker\Base\ColorModels\HSB\Hue.cs" />
+    <Compile Include="ColorPicker\Base\ColorModels\HSB\Saturation.cs" />
+    <Compile Include="ColorPicker\Base\ColorModels\HSB\Yellow.cs" />
+    <Compile Include="ColorPicker\Base\ColorModels\Lab\A.cs" />
+    <Compile Include="ColorPicker\Base\ColorModels\Lab\B.cs" />
+    <Compile Include="ColorPicker\Base\ColorModels\Lab\LabDisplay.xaml.cs">
+      <DependentUpon>LabDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ColorPicker\Base\ColorModels\Lab\LabModel.cs" />
+    <Compile Include="ColorPicker\Base\ColorModels\Lab\Lightness.cs" />
+    <Compile Include="ColorPicker\Base\ColorModels\NormalComponent.cs" />
+    <Compile Include="ColorPicker\Base\ColorModels\RGB\Blue.cs" />
+    <Compile Include="ColorPicker\Base\ColorModels\RGB\Green.cs" />
+    <Compile Include="ColorPicker\Base\ColorModels\RGB\Red.cs" />
+    <Compile Include="ColorPicker\Base\ColorModels\RGB\RgbDisplay.xaml.cs">
+      <DependentUpon>RgbDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ColorPicker\Base\ColorModels\RGB\RGBModel.cs" />
+    <Compile Include="ColorPicker\Base\ColorSelector.xaml.cs">
+      <DependentUpon>ColorSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ColorPicker\Base\EventArgs.cs" />
+    <Compile Include="ColorPicker\Base\ExtensionMethods\ByteExtensionMethods.cs" />
+    <Compile Include="ColorPicker\Base\ExtensionMethods\ColorExtensionMethods.cs" />
+    <Compile Include="ColorPicker\Base\ExtensionMethods\DoubleExtensionMethods.cs" />
+    <Compile Include="ColorPicker\Base\HexDisplay.xaml.cs">
+      <DependentUpon>HexDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ColorPicker\Base\NewCurrent.xaml.cs">
+      <DependentUpon>NewCurrent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ColorPicker\Chips\ColorChip.xaml.cs">
+      <DependentUpon>ColorChip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ColorPicker\Chips\ForegroundBackgroundChip.xaml.cs">
+      <DependentUpon>ForegroundBackgroundChip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ColorPicker\Dialogs\ColorPickerFullDialog.xaml.cs">
+      <DependentUpon>ColorPickerFullDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ColorPicker\Dialogs\ColorPickerFullWithAlphaDialog.xaml.cs">
+      <DependentUpon>ColorPickerFullWithAlphaDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ColorPicker\Dialogs\ColorPickerStandardDialog.xaml.cs">
+      <DependentUpon>ColorPickerStandardDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ColorPicker\Dialogs\ColorPickerStandardWithAlphaDialog.xaml.cs">
+      <DependentUpon>ColorPickerStandardWithAlphaDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ColorPicker\Dialogs\EColorDialog.cs" />
+    <Compile Include="ColorPicker\Dialogs\IColorDialog.cs" />
+    <Compile Include="ColorPicker\Pickers\ColorPickerFull.xaml.cs">
+      <DependentUpon>ColorPickerFull.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ColorPicker\Pickers\ColorPickerFullWithAlpha.xaml.cs">
+      <DependentUpon>ColorPickerFullWithAlpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ColorPicker\Pickers\ColorPickerStandard.xaml.cs">
+      <DependentUpon>ColorPickerStandard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ColorPicker\Pickers\ColorPickerStandardWithAlpha.xaml.cs">
+      <DependentUpon>ColorPickerStandardWithAlpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NotifyWindow\TipPanel.xaml.cs">
+      <DependentUpon>TipPanel.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="SampleData\SampleDataSource\SampleDataSource.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="NotifyWindow\ContentBoxWin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NotifyWindow\FoldPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NotifyWindow\MessageBoxWin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NotifyWindow\NotifyPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NotifyWindow\TipContentPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NotifyWindow\TipLable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Other\RingPoint.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SimpleButton\Main.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MultiData\ListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NimbleMenu\CircularMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NimbleMenu\TabControlMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Other\AdaptiveRuler.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Other\DragControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Other\MonitorPoint.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PathGeometries\Glyphicons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SampleData\SampleDataSource\SampleDataSource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ColorPicker\Base\AlphaDisplay.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ColorPicker\Base\CheckerBoardBrush.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ColorPicker\Base\ColorDisplay.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ColorPicker\Base\ColorModels\CMYK\CMYKDisplay.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ColorPicker\Base\ColorModels\CMY\CMYDisplay.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ColorPicker\Base\ColorModels\HSB\HsbDisplay.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ColorPicker\Base\ColorModels\Lab\LabDisplay.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ColorPicker\Base\ColorModels\RGB\RgbDisplay.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ColorPicker\Base\ColorSelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ColorPicker\Base\HexDisplay.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ColorPicker\Base\NewCurrent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ColorPicker\Base\SliderResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ColorPicker\Chips\ColorChip.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ColorPicker\Chips\ForegroundBackgroundChip.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ColorPicker\Dialogs\ColorPickerFullDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ColorPicker\Dialogs\ColorPickerFullWithAlphaDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ColorPicker\Dialogs\ColorPickerStandardDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ColorPicker\Dialogs\ColorPickerStandardWithAlphaDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ColorPicker\Pickers\ColorPickerFull.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ColorPicker\Pickers\ColorPickerFullWithAlpha.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ColorPicker\Pickers\ColorPickerStandard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ColorPicker\Pickers\ColorPickerStandardWithAlpha.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Bootstrap\BaseStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Bootstrap\Main.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Bootstrap\Button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Bootstrap\Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Bootstrap\DataGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Bootstrap\DatePicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Bootstrap\Fonts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Bootstrap\FormControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Bootstrap\InputGroup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Bootstrap\Label.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Bootstrap\Panel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Bootstrap\Path.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Bootstrap\Point.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Bootstrap\ProgressBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Bootstrap\Sizes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Bootstrap\Window.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NotifyWindow\TipPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CZT.SlackToolBox.AnimationBank\CZY.SlackToolBox.AnimationBank.csproj">
+      <Project>{2cbf0082-ec70-4101-bcab-489843be9661}</Project>
+      <Name>CZY.SlackToolBox.AnimationBank</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CZY.SlackToolBox.Extend\CZY.SlackToolBox.FastExtend.csproj">
+      <Project>{6d9ad78a-67c5-4c15-90be-e630a7069a83}</Project>
+      <Name>CZY.SlackToolBox.FastExtend</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

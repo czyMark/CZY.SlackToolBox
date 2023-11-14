@@ -1,0 +1,42 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:local="clr-namespace:CZY.SlackToolBox.AnimationBank.Increaser"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <local:TimeSpanIncreaser x:Key="BeginTimeWavesIncreaser"
+                                      Start="-0:0:2"
+                                      Step="-0:0:1" />
+    
+    <local:DurationIncreaser x:Key="DurationWavesIncreaser"
+                                      Start="0:0:7"
+                                      Step="0:0:3" />
+    <ControlTemplate x:Key="WaterWaves">
+        <Grid>
+            <FrameworkElement.Triggers>
+                <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard
+                                                BeginTime="{Binding Next, Source={StaticResource BeginTimeWavesIncreaser}}"
+                                                RepeatBehavior="Forever">
+                            <PointAnimation Storyboard.TargetName="Path"
+                                                                Storyboard.TargetProperty="RenderTransformOrigin"
+                                                                From="0.375,0.5"
+                                                                To="0.625,0.5"
+                                                                Duration="{Binding Next, Source={StaticResource DurationWavesIncreaser}}" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </FrameworkElement.Triggers>
+
+            <Path x:Name="Path"
+                                      Data="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+                                      Fill="{StaticResource WavesColor}"
+                                      Stretch="Fill">
+                <Path.LayoutTransform>
+                    <ScaleTransform ScaleX="-1" />
+                </Path.LayoutTransform>
+                <Path.RenderTransform>
+                    <ScaleTransform ScaleX="-1" />
+                </Path.RenderTransform>
+            </Path>
+        </Grid>
+    </ControlTemplate> 
+</ResourceDictionary>

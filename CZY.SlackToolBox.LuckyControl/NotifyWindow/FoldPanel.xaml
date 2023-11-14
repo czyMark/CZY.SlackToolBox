@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="CZY.SlackToolBox.LuckyControl.NotifyWindow.FoldPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CZY.SlackToolBox.LuckyControl.NotifyWindow"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Geometry x:Key="Icon_Left_Desgin">M797.152 172l-303.424 303.424 303.424 303.424q10.848 10.848 10.848 25.728t-10.848 25.728l-94.848 94.848q-10.848 10.848-25.728 10.848t-25.728-10.848l-424-424q-10.848-10.848-10.848-25.728t10.848-25.728l424-424q10.848-10.848 25.728-10.848t25.728 10.848l94.848 94.848q10.848 10.848 10.848 25.728t-10.848 25.728z</Geometry>
+        <Geometry x:Key="Icon_Right_Desgin">M778.857143 501.142857l-424 424q-10.857143 10.857143-25.714286 10.857143t-25.714286-10.857143l-94.857143-94.857143q-10.857143-10.857143-10.857143-25.714286t10.857143-25.714286l303.428571-303.428571-303.428571-303.428571q-10.857143-10.857143-10.857143-25.714286t10.857143-25.714286l94.857143-94.857143q10.857143-10.857143 25.714286-10.857143t25.714286 10.857143l424 424q10.857143 10.857143 10.857143 25.714286t-10.857143 25.714286z</Geometry>
+        <Style x:Key="PathToggleButtonStyle" TargetType="{x:Type ToggleButton}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Grid>
+                            <Border Name="bg" Background="{TemplateBinding Background}" Opacity="0.25" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}"/>
+                            <Path x:Name="icon" Width="10" Height="10" Data="{StaticResource Icon_Left_Desgin}"  Fill="{TemplateBinding Foreground}" SnapsToDevicePixels="True" Stretch="Uniform"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="icon" Property="Data" Value="{StaticResource Icon_Right_Desgin}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style> 
+    </UserControl.Resources>
+    <Grid   x:Name="mainGrid"  >
+        <Border x:Name="mainBorder" Width="0" Height="0" Background="Black" Opacity="0.6">
+            <ContentControl  x:Name="panelContent" >
+                <StackPanel>
+                    <TextBlock>sdfsdfsd</TextBlock>
+                </StackPanel>
+            </ContentControl>
+        </Border>
+        <ToggleButton Width="26" x:Name="btn" HorizontalAlignment="Center" VerticalAlignment="Top" Height="60"   Unchecked="btn_Unchecked"   Checked="btn_Checked"  Foreground="White" Style="{StaticResource PathToggleButtonStyle}" Cursor="Hand">
+            <ToggleButton.RenderTransform>
+                <RotateTransform CenterX="13" CenterY="30" Angle="90" x:Name="btnRotate" ></RotateTransform>
+            </ToggleButton.RenderTransform>
+        </ToggleButton>
+    </Grid>
+</UserControl>
+ 
