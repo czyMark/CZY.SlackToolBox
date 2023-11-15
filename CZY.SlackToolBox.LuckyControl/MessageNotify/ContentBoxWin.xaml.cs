@@ -3,10 +3,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace CZY.SlackToolBox.LuckyControl.NotifyWindow
-{
-
-
+namespace CZY.SlackToolBox.LuckyControl.MessageNotify
+{ 
     /// <summary>
     /// ContentBoxWin.xaml 的交互逻辑
     /// </summary>
@@ -128,8 +126,7 @@ namespace CZY.SlackToolBox.LuckyControl.NotifyWindow
                 msgWin.btnOk.Focus();
             });
             return msgWin;
-        }
-
+        } 
         public static void Show(FrameworkElement content, string title = "查看",
             ContentBoxWinState winState = ContentBoxWinState.Yes,
             string yesText = "确认", string noText = "取消",
@@ -153,5 +150,12 @@ namespace CZY.SlackToolBox.LuckyControl.NotifyWindow
 
         public static double WinWidth { get; set; } = 1000;
         public static double WinHeight { get; set; } = 800;
+
+
+        private void topBorder_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+            e.Handled = true;
+        }
     }
 }

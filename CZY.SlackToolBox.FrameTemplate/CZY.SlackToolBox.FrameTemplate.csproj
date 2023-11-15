@@ -117,10 +117,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Resource Include="YXKJ\Image\二级筛选.png" />
-    <Resource Include="YXKJ\Image\列表.png" />
-    <Resource Include="YXKJ\Image\引用.png" />
-    <Resource Include="YXKJ\Image\首页.png" />
+    <Resource Include="YXKJ\images\二级筛选.png" />
+    <Resource Include="YXKJ\images\列表.png" />
+    <Resource Include="YXKJ\images\引用.png" />
+    <Resource Include="YXKJ\images\首页.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

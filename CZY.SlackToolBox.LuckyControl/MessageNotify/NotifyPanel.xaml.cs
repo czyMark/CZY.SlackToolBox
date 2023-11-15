@@ -2,16 +2,16 @@
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
 
-namespace CZY.SlackToolBox.LuckyControl.NotifyWindow
+namespace CZY.SlackToolBox.LuckyControl.MessageNotify
 {
     /// <summary>
-    /// NotifyPanel.xaml 的交互逻辑
+    /// FormsNotify.xaml 的交互逻辑
     /// </summary>
-    public partial class NotifyPanel : UserControl
+    public partial class FormsNotify : UserControl
     {
         System.Timers.Timer timerClean;
         object CleanLock = new object();
-        public NotifyPanel()
+        public FormsNotify()
         {
             InitializeComponent();
             timerClean = new System.Timers.Timer();

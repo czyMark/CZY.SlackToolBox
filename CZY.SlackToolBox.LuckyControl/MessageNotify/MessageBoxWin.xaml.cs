@@ -2,7 +2,7 @@
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace CZY.SlackToolBox.LuckyControl.NotifyWindow
+namespace CZY.SlackToolBox.LuckyControl.MessageNotify
 {
 
 
@@ -158,5 +158,11 @@ namespace CZY.SlackToolBox.LuckyControl.NotifyWindow
 
         public static double WinWidth { get; set; } = 600;
         public static double WinHeight { get; set; } = 500;
+
+        private void topBorder_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+            e.Handled = true;
+        }
     }
 }

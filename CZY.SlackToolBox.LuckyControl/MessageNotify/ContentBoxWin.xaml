@@ -1,4 +1,4 @@
-﻿<Window x:Class="CZY.SlackToolBox.LuckyControl.NotifyWindow.ContentBoxWin"
+﻿<Window x:Class="CZY.SlackToolBox.LuckyControl.MessageNotify.ContentBoxWin"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -29,28 +29,26 @@
                 <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
 
-            <Border    x:Name="topBorder"  Grid.Row="0">
-                <Grid> 
-                    <Label Name="lblTile" Margin="8,0,0,0" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"  FontSize="20" FontWeight="Black" MouseMove="lblTile_MouseMove">
+            <Border    x:Name="topBorder"  Grid.Row="0" MouseLeftButtonDown="topBorder_MouseLeftButtonDown">
+                <Grid>
+                    <Label Name="lblTile" Cursor="Hand"  Margin="8,0,0,0" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"  FontSize="20" FontWeight="Black" MouseMove="lblTile_MouseMove">
                         系统通知
                     </Label>
-                    <Label     HorizontalAlignment="Right" Margin="0,0,8,0" FontWeight="Bold" Cursor="Hand" MouseLeftButtonDown="closeButton_MouseLeftButtonDown"
+                    <Label   x:Name="closeLab"    HorizontalAlignment="Right" Margin="0,0,8,0" FontWeight="Bold" Cursor="Hand" MouseLeftButtonDown="closeButton_MouseLeftButtonDown"
                       VerticalContentAlignment="Center" VerticalAlignment="Center" FontSize="28" Content="×"   >
-                        <Label.RenderTransform>
-                            <RotateTransform x:Name="closetext" Angle="0" CenterX="14" CenterY="14" />
-                        </Label.RenderTransform>
+
                         <Label.Triggers>
                             <EventTrigger RoutedEvent="Mouse.MouseEnter">
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="closetext" Storyboard.TargetProperty="(RotateTransform.Angle)"  To="180" Duration="0:0:0.3" />
+                                        <DoubleAnimation Storyboard.TargetName="closeLab" Storyboard.TargetProperty="Opacity" From="0.5"  To="1" Duration="0:0:1" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
                             <EventTrigger RoutedEvent="Mouse.MouseLeave">
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="closetext" Storyboard.TargetProperty="(RotateTransform.Angle)"  To="0" Duration="0:0:0.5"  />
+                                        <DoubleAnimation Storyboard.TargetName="closeLab" Storyboard.TargetProperty="Opacity" From="0.5"  To="1" Duration="0:0:1" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>

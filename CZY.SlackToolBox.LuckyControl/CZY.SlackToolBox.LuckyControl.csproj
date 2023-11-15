@@ -68,23 +68,26 @@
     <Compile Include="NimbleMenu\ElementPosition.cs" />
     <Compile Include="NimbleMenu\MenuModel.cs" />
     <Compile Include="NimbleMenu\Switcher.cs" />
-    <Compile Include="NotifyWindow\ContentBoxWin.xaml.cs">
+    <Compile Include="MessageNotify\ContentBoxWin.xaml.cs">
       <DependentUpon>ContentBoxWin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NotifyWindow\FoldPanel.xaml.cs">
+    <Compile Include="ElementPanel\ExpanderPanel.xaml.cs">
+      <DependentUpon>ExpanderPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ElementPanel\FoldPanel.xaml.cs">
       <DependentUpon>FoldPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NotifyWindow\MessageBoxWin.xaml.cs">
+    <Compile Include="MessageNotify\MessageBoxWin.xaml.cs">
       <DependentUpon>MessageBoxWin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NotifyWindow\NotifyPanel.xaml.cs">
+    <Compile Include="MessageNotify\NotifyPanel.xaml.cs">
       <DependentUpon>NotifyPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NotifyWindow\TipContentPanel.xaml.cs">
+    <Compile Include="ElementPanel\TipContentPanel.xaml.cs">
       <DependentUpon>TipContentPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NotifyWindow\TipLable.xaml.cs">
-      <DependentUpon>TipLable.xaml</DependentUpon>
+    <Compile Include="ElementPanel\TipLablePanel.xaml.cs">
+      <DependentUpon>TipLablePanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Other\AdaptiveRuler.xaml.cs">
       <DependentUpon>AdaptiveRuler.xaml</DependentUpon>
@@ -206,7 +209,7 @@
     <Compile Include="ColorPicker\Pickers\ColorPickerStandardWithAlpha.xaml.cs">
       <DependentUpon>ColorPickerStandardWithAlpha.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NotifyWindow\TipPanel.xaml.cs">
+    <Compile Include="ElementPanel\TipPanel.xaml.cs">
       <DependentUpon>TipPanel.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -222,27 +225,31 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="NotifyWindow\ContentBoxWin.xaml">
+    <Page Include="MessageNotify\ContentBoxWin.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="NotifyWindow\FoldPanel.xaml">
+    <Page Include="ElementPanel\ExpanderPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NotifyWindow\MessageBoxWin.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="NotifyWindow\NotifyPanel.xaml">
+    <Page Include="ElementPanel\FoldPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NotifyWindow\TipContentPanel.xaml">
+    <Page Include="MessageNotify\MessageBoxWin.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="NotifyWindow\TipLable.xaml">
+    <Page Include="MessageNotify\NotifyPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ElementPanel\TipContentPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ElementPanel\TipLablePanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -438,7 +445,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="NotifyWindow\TipPanel.xaml">
+    <Page Include="ElementPanel\TipPanel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

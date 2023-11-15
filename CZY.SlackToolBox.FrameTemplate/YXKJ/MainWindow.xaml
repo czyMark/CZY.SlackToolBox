@@ -3,11 +3,101 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:EPanel="clr-namespace:CZY.SlackToolBox.LuckyControl.ElementPanel;assembly=CZY.SlackToolBox.LuckyControl"
         xmlns:local="clr-namespace:CZY.SlackToolBox.FrameTemplate.YXKJ"
         mc:Ignorable="d"
           Width="1920" Height="1080" WindowStyle="None"
         Title="MainWindow" WindowState="Maximized">
-    <Grid>
-            
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.AnimationBank;component/Background/Intermediate.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid ShowGridLines="True">
+        <Grid.Background>
+            <ImageBrush ImageSource="pack://application:,,,/CZY.SlackToolBox.FrameTemplate;component/YXKJ/images/首页.png"></ImageBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="266"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="62"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <!--#region 标题栏 -->
+        <Border Grid.ColumnSpan="2" Background="#FF2F5A86" BorderBrush="#FFE2E2E2" />
+        <StackPanel Orientation="Horizontal">
+            <Image Margin="16,0,0,0" Width="32" Stretch="Fill" Height="32" Source="pack://application:,,,/CZY.SlackToolBox.FrameTemplate;component/YXKJ/images/首页.png">
+                <Image.Effect>
+                    <DropShadowEffect ShadowDepth="2" BlurRadius="3"></DropShadowEffect>
+                </Image.Effect>
+            </Image>
+            <Label FontSize="21" Margin="9" Foreground="White" VerticalAlignment="Center" Content="项目全生命周期管理">
+                <Label.Effect>
+                    <DropShadowEffect ShadowDepth="2" BlurRadius="3"></DropShadowEffect>
+                </Label.Effect>
+            </Label>
+        </StackPanel>
+        <Grid Grid.Column="1">
+            <Label x:Name="navTitleLabel" Foreground="White" FontSize="18" Content="首页" VerticalAlignment="Center" Margin="22,0,0,2">
+                <Label.Effect>
+                    <DropShadowEffect   ShadowDepth="1" BlurRadius="2"></DropShadowEffect>
+                </Label.Effect>
+            </Label>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0">
+
+                <Label x:Name="loginNameLabel" Padding="20,0" Foreground="White" FontSize="16" Content="管理员" VerticalAlignment="Center" Margin="22,0,0,2">
+                    <Label.Effect>
+                        <DropShadowEffect   ShadowDepth="1" BlurRadius="2"></DropShadowEffect>
+                    </Label.Effect>
+                </Label>
+                <Image  Width="32" Stretch="Fill" Height="32" Source="pack://application:,,,/CZY.SlackToolBox.FrameTemplate;component/YXKJ/images/首页.png">
+                    <Image.Effect>
+                        <DropShadowEffect ShadowDepth="2" BlurRadius="3"></DropShadowEffect>
+                    </Image.Effect>
+                </Image>
+            </StackPanel>
+        </Grid>
+        <!--#endregion-->
+
+        <Grid Grid.Row="1"  >
+            <!--Background="#FF343A40"-->
+            <!--<StackPanel HorizontalAlignment="Left" Margin="10,10,0,0">
+                -->
+            <!-- 选中颜色#FF007BFF-->
+            <!--
+                <Border Background="#FF343A50"    CornerRadius="2" Width="245">
+                    <StackPanel Margin="18,13" Orientation="Horizontal" >
+                        <Image
+                        Width="16"
+                        Height="16" 
+                        Source="pack://application:,,,/CZY.SlackToolBox.FrameTemplate;component/YXKJ/images/首页.png"></Image>
+                        <Label Content="首页" Width="178" FontSize="12" Foreground="White" Padding="24,0,0,0"></Label>
+                        -->
+            <!--箭头-->
+            <!--
+                    </StackPanel>
+                </Border>
+            </StackPanel>--> 
+            <EPanel:ExpanderPanel  Margin="10">
+            </EPanel:ExpanderPanel>
+            <EPanel:ExpanderPanel  Margin="10">
+            </EPanel:ExpanderPanel>
+            <EPanel:ExpanderPanel  Margin="10">
+            </EPanel:ExpanderPanel>
+        </Grid>
+        <!--#region 版权说明 -->
+        <Grid ShowGridLines="True" Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+            </Grid.RowDefinitions>
+        </Grid>
+        <!--#endregion-->
+
     </Grid>
 </Window>

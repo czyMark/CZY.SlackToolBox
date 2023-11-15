@@ -1,22 +1,22 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace CZY.SlackToolBox.LuckyControl.NotifyWindow
+namespace CZY.SlackToolBox.LuckyControl.ElementPanel
 {
     /// <summary>
-    /// TipNotify.xaml 的交互逻辑
+    /// TipLablePanel.xaml 的交互逻辑
     /// </summary>
-    public partial class TipLable : UserControl
+    public partial class TipLablePanel : UserControl
     {
 
         public enum TipLableState { Normal, Success, Warn, Danegr }
-        public TipLable()
+        public TipLablePanel()
         {
             InitializeComponent();
         }
 
         public static readonly DependencyProperty TextProperty =
-       DependencyProperty.Register(nameof(Text), typeof(string), typeof(TipLable), new UIPropertyMetadata(OnTextChanged));
+       DependencyProperty.Register(nameof(Text), typeof(string), typeof(TipLablePanel), new UIPropertyMetadata(OnTextChanged));
         public string Text
         {
             get => (string)GetValue(TextProperty);
@@ -25,14 +25,14 @@ namespace CZY.SlackToolBox.LuckyControl.NotifyWindow
 
         private static void OnTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            TipLable control = (TipLable)d;
+            TipLablePanel control = (TipLablePanel)d;
             control.contentLabel.Content = e.NewValue;
         }
 
 
 
         public static readonly DependencyProperty TipStateProperty =
-       DependencyProperty.Register(nameof(TipState), typeof(TipLableState), typeof(TipLable), new UIPropertyMetadata(OnTipStateChanged));
+       DependencyProperty.Register(nameof(TipState), typeof(TipLableState), typeof(TipLablePanel), new UIPropertyMetadata(OnTipStateChanged));
         public TipLableState TipState
         {
             get => (TipLableState)GetValue(TipStateProperty);
@@ -41,7 +41,7 @@ namespace CZY.SlackToolBox.LuckyControl.NotifyWindow
 
         private static void OnTipStateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            TipLable control = (TipLable)d;
+            TipLablePanel control = (TipLablePanel)d;
             TipLableState tipLableState=(TipLableState)e.NewValue  ;
             switch (tipLableState)
             {

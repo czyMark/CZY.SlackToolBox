@@ -3,7 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media.Animation;
 
-namespace CZY.SlackToolBox.LuckyControl.NotifyWindow
+namespace CZY.SlackToolBox.LuckyControl.ElementPanel
 {
     /// <summary>
     /// FoldPanel.xaml 的交互逻辑

@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace CZY.SlackToolBox.LuckyControl.NotifyWindow
+namespace CZY.SlackToolBox.LuckyControl.ElementPanel
 {
     /// <summary>
     /// TipNotify.xaml 的交互逻辑
