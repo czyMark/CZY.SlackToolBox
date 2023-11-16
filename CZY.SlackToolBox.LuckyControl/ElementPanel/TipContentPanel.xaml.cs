@@ -11,13 +11,14 @@ namespace CZY.SlackToolBox.LuckyControl.ElementPanel
     {
 
         public enum TipPanelArrowState { None, Top, Left, Bottom, Right }
-        public enum TipContentPanelState { Normal, Success, Warn, Danegr }
+        public enum TipContentPanelState { Normal, Success, Warn, Danegr, Custom }
         public TipContentPanel()
         {
             InitializeComponent();
             TipArrowState = TipPanelArrowState.None;
-
+            TipState = TipContentPanelState.Normal;
         }
+        #region TipState
         public static readonly DependencyProperty TipStateProperty =
 DependencyProperty.Register(nameof(TipState), typeof(TipContentPanelState), typeof(TipContentPanel), new UIPropertyMetadata(OnTipStateChanged));
         public TipContentPanelState TipState
@@ -48,10 +49,37 @@ DependencyProperty.Register(nameof(TipState), typeof(TipContentPanelState), type
                     control.panelContentBorder.BorderBrush = (Brush)control.FindResource("dangerBorderBrush");
                     control.panelContentBorder.Background = (Brush)control.FindResource("dangerBackground");
                     break;
+                case TipContentPanelState.Custom:
+                    control.panelContentBorder.BorderBrush = control.CustomBackground;
+                    control.panelContentBorder.Background = control.CustomBackground;
+                    break;
                 default:
                     break;
             }
+        } 
+        #endregion
+
+        #region CustomBackground
+        public Brush CustomBackground
+        {
+            get { return (Brush)GetValue(CustomBackgroundProperty); }
+            set { SetValue(CustomBackgroundProperty, value); }
         }
+
+        public static readonly DependencyProperty CustomBackgroundProperty = DependencyProperty.Register(
+         "CustomBackground",
+         typeof(Brush),
+         typeof(TipContentPanel), new PropertyMetadata(CustomBackgroundChanged));
+        private static void CustomBackgroundChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            TipContentPanel control = (TipContentPanel)d;
+            if (control.TipState == TipContentPanelState.Custom)
+            {
+                control.panelContentBorder.BorderBrush = control.CustomBackground;
+                control.panelContentBorder.Background = control.CustomBackground;
+            }
+        } 
+        #endregion
 
         #region TipArrowState
         public TipPanelArrowState TipArrowState

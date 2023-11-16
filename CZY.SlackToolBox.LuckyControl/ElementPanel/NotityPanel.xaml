@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="CZY.SlackToolBox.LuckyControl.ElementPanel.NotityPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CZY.SlackToolBox.LuckyControl.ElementPanel"
+             mc:Ignorable="d"  x:Name="mainControl"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <SolidColorBrush x:Key="infoColorBackground">#31b0d5</SolidColorBrush>
+            <SolidColorBrush x:Key="infoColorBorderBrush">#269abc</SolidColorBrush>
+
+            <SolidColorBrush x:Key="successBackground">#449d44</SolidColorBrush>
+            <SolidColorBrush x:Key="successBorderBrush">#398439</SolidColorBrush>
+
+            <SolidColorBrush x:Key="warningBackground">#ec971f</SolidColorBrush>
+            <SolidColorBrush x:Key="warningBorderBrush">#d58512</SolidColorBrush>
+
+            <SolidColorBrush x:Key="dangerBackground">#c9302c</SolidColorBrush>
+            <SolidColorBrush x:Key="dangerBorderBrush">#ac2925</SolidColorBrush>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Border x:Name="mainBorder"  BorderBrush="Red" BorderThickness="1" CornerRadius="2">
+        <Grid Width="{Binding ElementName=mainControl, Path=ActualWidth}" Height="{Binding ElementName=mainControl, Path=ActualHeight}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="1*"/> 
+            </Grid.RowDefinitions>
+            <Border    x:Name="topBorder"  Grid.Row="0" >
+                <Grid>
+                    <Label Name="titleLable" Cursor="Hand"  Margin="8,0,0,0" HorizontalAlignment="Stretch"
+                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left"
+                             FontWeight="Black" >
+                        系统通知
+                    </Label>
+                    <Label x:Name="closeLab"  MouseLeftButtonDown="Label_MouseLeftButtonDown"   HorizontalAlignment="Right" Margin="0,0,8,0" FontWeight="Bold" Cursor="Hand"  
+                      VerticalContentAlignment="Center" VerticalAlignment="Center" FontSize="28" Content="×"   >
+                        <Label.Triggers>
+                            <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="closeLab" Storyboard.TargetProperty="Opacity" From="0.5"  To="1" Duration="0:0:1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="closeLab" Storyboard.TargetProperty="Opacity" From="0.5"  To="1" Duration="0:0:1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Label.Triggers>
+                    </Label>
+                </Grid>
+            </Border>
+            <ContentControl  x:Name="panelContent"  Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" ></ContentControl>
+        </Grid>
+    </Border>
+</UserControl>

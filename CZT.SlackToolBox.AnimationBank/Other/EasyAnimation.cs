@@ -8,6 +8,7 @@ namespace CZY.SlackToolBox.AnimationBank.Other
 {
     public static class EasyAnimation
     {
+        public enum AnimationDirection { Left, Up }
         /// <summary>
         /// 显示
         /// </summary>
@@ -20,11 +21,11 @@ namespace CZY.SlackToolBox.AnimationBank.Other
             doubleAnimation.From = 0;
             doubleAnimation.To = 1;
 
-            //隐藏
+            //显示
             ObjectAnimationUsingKeyFrames animationUsingKeyFrames = new ObjectAnimationUsingKeyFrames();
             DiscreteObjectKeyFrame discreteObjectKey = new DiscreteObjectKeyFrame();
-            discreteObjectKey.KeyTime = new System.TimeSpan(0, 0, 0, 0, 310);
-            discreteObjectKey.Value = Visibility.Collapsed;
+            discreteObjectKey.KeyTime = new System.TimeSpan(0, 0, 0, 0, 0);
+            discreteObjectKey.Value = Visibility.Visible;
             animationUsingKeyFrames.KeyFrames.Add(discreteObjectKey);
 
             //动画绑定
@@ -48,7 +49,7 @@ namespace CZY.SlackToolBox.AnimationBank.Other
             ObjectAnimationUsingKeyFrames animationUsingKeyFrames = new ObjectAnimationUsingKeyFrames();
             DiscreteObjectKeyFrame discreteObjectKey = new DiscreteObjectKeyFrame();
             discreteObjectKey.KeyTime = new System.TimeSpan(0, 0, 0, 0, 310);
-            discreteObjectKey.Value = Visibility.Visible;
+            discreteObjectKey.Value = Visibility.Collapsed;
             animationUsingKeyFrames.KeyFrames.Add(discreteObjectKey);
 
             //动画绑定
@@ -98,45 +99,34 @@ namespace CZY.SlackToolBox.AnimationBank.Other
         /// 飞入
         /// </summary>
         /// <param name="element"></param>
-        public static void FlyInto(this FrameworkElement element)
-        {
-            DoubleAnimationUsingKeyFrames doubleAnimationUsingKeyFrames = new DoubleAnimationUsingKeyFrames();
-            {
-                EasingDoubleKeyFrame easingDoubleKeyFrame = new EasingDoubleKeyFrame();
-                easingDoubleKeyFrame.KeyTime = new TimeSpan(0, 0, 0, 0);
-                easingDoubleKeyFrame.Value = 0;
-                doubleAnimationUsingKeyFrames.KeyFrames.Add(easingDoubleKeyFrame);
-            }
-            {
-                EasingDoubleKeyFrame easingDoubleKeyFrame = new EasingDoubleKeyFrame();
-                easingDoubleKeyFrame.KeyTime = new TimeSpan(0, 0, 0, 500);
-                easingDoubleKeyFrame.Value = element.Width;
-                doubleAnimationUsingKeyFrames.KeyFrames.Add(easingDoubleKeyFrame);
-            }
+        public static void FlyInto(this FrameworkElement element, AnimationDirection Direction)
+        { 
+            DoubleAnimation doubleAnimation = new DoubleAnimation();
+            doubleAnimation.Duration = new TimeSpan(0, 0, 0, 500);
+            if (Direction == AnimationDirection.Left)
+                doubleAnimation.To = element.Width;
+            else
+                doubleAnimation.To = element.Height;
+            if (Direction == AnimationDirection.Left)
+                element.BeginAnimation(FrameworkElement.WidthProperty, doubleAnimation);
+            else
+                element.BeginAnimation(FrameworkElement.HeightProperty, doubleAnimation);
 
-            element.BeginAnimation(FrameworkElement.MarginProperty, doubleAnimationUsingKeyFrames);
         }
         /// <summary>
         /// 飞出
         /// </summary>
         /// <param name="element"></param>
-        public static void FlyOff(this FrameworkElement element)
+        public static void FlyOff(this FrameworkElement element, AnimationDirection Direction)
         {
-            DoubleAnimationUsingKeyFrames doubleAnimationUsingKeyFrames = new DoubleAnimationUsingKeyFrames();
-            {
-                EasingDoubleKeyFrame easingDoubleKeyFrame = new EasingDoubleKeyFrame();
-                easingDoubleKeyFrame.KeyTime = new TimeSpan(0, 0, 0, 0);
-                easingDoubleKeyFrame.Value = element.Width;
-                doubleAnimationUsingKeyFrames.KeyFrames.Add(easingDoubleKeyFrame);
-            }
-            {
-                EasingDoubleKeyFrame easingDoubleKeyFrame = new EasingDoubleKeyFrame();
-                easingDoubleKeyFrame.KeyTime = new TimeSpan(0, 0, 0, 500);
-                easingDoubleKeyFrame.Value = 0 - element.Width;
-                doubleAnimationUsingKeyFrames.KeyFrames.Add(easingDoubleKeyFrame);
-            }
+            DoubleAnimation doubleAnimation = new DoubleAnimation();
+            doubleAnimation.Duration = new TimeSpan(0, 0, 0, 500);
+            doubleAnimation.To = 0;
 
-            element.BeginAnimation(FrameworkElement.MarginProperty, doubleAnimationUsingKeyFrames);
+            if (Direction == AnimationDirection.Left)
+                element.BeginAnimation(FrameworkElement.WidthProperty, doubleAnimation);
+            else
+                element.BeginAnimation(FrameworkElement.HeightProperty, doubleAnimation);
         }
 
         /// <summary>
@@ -149,7 +139,7 @@ namespace CZY.SlackToolBox.AnimationBank.Other
             {
                 DoubleAnimationUsingPath doubleAnimationUsingPath = new DoubleAnimationUsingPath();
                 doubleAnimationUsingPath.Duration = new TimeSpan(0, 0, 0, 2);
-                doubleAnimationUsingPath.PathGeometry = path; 
+                doubleAnimationUsingPath.PathGeometry = path;
                 element.RenderTransform.BeginAnimation(TranslateTransform.XProperty, doubleAnimationUsingPath);
             }
             {

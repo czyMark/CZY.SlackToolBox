@@ -59,6 +59,10 @@
   <ItemGroup>
     <Compile Include="CoreConvert\ResourceKeyToImageConvert.cs" />
     <Compile Include="CoreConvert\ValueRoundConvert.cs" />
+    <Compile Include="ElementPanel\NotityPanel.xaml.cs">
+      <DependentUpon>NotityPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Input\TextBoxPrompt.cs" />
     <Compile Include="NimbleMenu\HideMenuControl.cs" />
     <Compile Include="MultiData\GridPagingModel.cs" />
     <Compile Include="NimbleMenu\CircularMenu.xaml.cs">
@@ -71,8 +75,8 @@
     <Compile Include="MessageNotify\ContentBoxWin.xaml.cs">
       <DependentUpon>ContentBoxWin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ElementPanel\ExpanderPanel.xaml.cs">
-      <DependentUpon>ExpanderPanel.xaml</DependentUpon>
+    <Compile Include="NimbleMenu\ExpanderMenu.xaml.cs">
+      <DependentUpon>ExpanderMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="ElementPanel\FoldPanel.xaml.cs">
       <DependentUpon>FoldPanel.xaml</DependentUpon>
@@ -80,8 +84,8 @@
     <Compile Include="MessageNotify\MessageBoxWin.xaml.cs">
       <DependentUpon>MessageBoxWin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MessageNotify\NotifyPanel.xaml.cs">
-      <DependentUpon>NotifyPanel.xaml</DependentUpon>
+    <Compile Include="MessageNotify\FormsNotify.xaml.cs">
+      <DependentUpon>FormsNotify.xaml</DependentUpon>
     </Compile>
     <Compile Include="ElementPanel\TipContentPanel.xaml.cs">
       <DependentUpon>TipContentPanel.xaml</DependentUpon>
@@ -225,11 +229,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="ElementPanel\NotityPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MessageNotify\ContentBoxWin.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ElementPanel\ExpanderPanel.xaml">
+    <Page Include="NimbleMenu\ExpanderMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -241,7 +249,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MessageNotify\NotifyPanel.xaml">
+    <Page Include="MessageNotify\FormsNotify.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -448,6 +456,10 @@
     <Page Include="ElementPanel\TipPanel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\YXKJ\DataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

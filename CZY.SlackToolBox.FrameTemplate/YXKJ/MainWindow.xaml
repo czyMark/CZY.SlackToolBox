@@ -3,9 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:EPanel="clr-namespace:CZY.SlackToolBox.LuckyControl.ElementPanel;assembly=CZY.SlackToolBox.LuckyControl"
-        xmlns:local="clr-namespace:CZY.SlackToolBox.FrameTemplate.YXKJ"
-        mc:Ignorable="d"
+        xmlns:LuckyMenu="clr-namespace:CZY.SlackToolBox.LuckyControl.NimbleMenu;assembly=CZY.SlackToolBox.LuckyControl" 
+        xmlns:LuckyPanel="clr-namespace:CZY.SlackToolBox.LuckyControl.ElementPanel;assembly=CZY.SlackToolBox.LuckyControl" 
+        xmlns:LuckyNotify="clr-namespace:CZY.SlackToolBox.LuckyControl.MessageNotify;assembly=CZY.SlackToolBox.LuckyControl" 
+        mc:Ignorable="d" AllowsTransparency="True"
           Width="1920" Height="1080" WindowStyle="None"
         Title="MainWindow" WindowState="Maximized">
     <Window.Resources>
@@ -15,10 +16,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid ShowGridLines="True">
-        <Grid.Background>
-            <ImageBrush ImageSource="pack://application:,,,/CZY.SlackToolBox.FrameTemplate;component/YXKJ/images/首页.png"></ImageBrush>
-        </Grid.Background>
+    <Grid  >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="266"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -49,13 +47,15 @@
                 </Label.Effect>
             </Label>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0">
-
-                <Label x:Name="loginNameLabel" Padding="20,0" Foreground="White" FontSize="16" Content="管理员" VerticalAlignment="Center" Margin="22,0,0,2">
+                <Label x:Name="LoginNameLabel" Padding="20,0" Foreground="White" FontSize="16" Content="管理员" VerticalAlignment="Center" Margin="22,0,0,2">
                     <Label.Effect>
                         <DropShadowEffect   ShadowDepth="1" BlurRadius="2"></DropShadowEffect>
                     </Label.Effect>
                 </Label>
-                <Image  Width="32" Stretch="Fill" Height="32" Source="pack://application:,,,/CZY.SlackToolBox.FrameTemplate;component/YXKJ/images/首页.png">
+                <Image 
+                    MouseLeftButtonDown="PersonalCenter_ButtonDown"
+                    MouseRightButtonDown="PersonalCenter_ButtonDown"
+                       Width="32" Stretch="Fill" Height="32" Source="pack://application:,,,/CZY.SlackToolBox.FrameTemplate;component/YXKJ/images/首页.png">
                     <Image.Effect>
                         <DropShadowEffect ShadowDepth="2" BlurRadius="3"></DropShadowEffect>
                     </Image.Effect>
@@ -64,40 +64,58 @@
         </Grid>
         <!--#endregion-->
 
-        <Grid Grid.Row="1"  >
-            <!--Background="#FF343A40"-->
-            <!--<StackPanel HorizontalAlignment="Left" Margin="10,10,0,0">
-                -->
-            <!-- 选中颜色#FF007BFF-->
-            <!--
-                <Border Background="#FF343A50"    CornerRadius="2" Width="245">
-                    <StackPanel Margin="18,13" Orientation="Horizontal" >
-                        <Image
-                        Width="16"
-                        Height="16" 
-                        Source="pack://application:,,,/CZY.SlackToolBox.FrameTemplate;component/YXKJ/images/首页.png"></Image>
-                        <Label Content="首页" Width="178" FontSize="12" Foreground="White" Padding="24,0,0,0"></Label>
-                        -->
-            <!--箭头-->
-            <!--
-                    </StackPanel>
-                </Border>
-            </StackPanel>--> 
-            <EPanel:ExpanderPanel  Margin="10">
-            </EPanel:ExpanderPanel>
-            <EPanel:ExpanderPanel  Margin="10">
-            </EPanel:ExpanderPanel>
-            <EPanel:ExpanderPanel  Margin="10">
-            </EPanel:ExpanderPanel>
-        </Grid>
-        <!--#region 版权说明 -->
-        <Grid ShowGridLines="True" Grid.Row="1" Grid.Column="1">
+        <!--#region 菜单 -->
+        <ScrollViewer Margin="0,0,-13,0"  Grid.Row="1" Background="#FF343A40" HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible" >
+            <StackPanel Margin="0,10,0,0" >
+                <ItemsControl  ItemsSource="{Binding MenuList}"  >
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <LuckyMenu:ExpanderMenu MenuItem="{Binding}" Width="250" SelectedIndexChanged="ExpanderMenu_SelectedIndexChanged"></LuckyMenu:ExpanderMenu>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!--#endregion-->
+
+        <!--#region 内容页及版权说明 -->
+        <Grid  Grid.Row="1" Background="White"  Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
                 <RowDefinition Height="40"></RowDefinition>
             </Grid.RowDefinitions>
+            <ContentControl x:Name="MainContentControl"  />
+          
+            <Grid  Grid.Row="1" Background="White"  VerticalAlignment="Center">
+                <Label Margin="14,0,0,0" FontSize="14" Foreground="Gray"  HorizontalAlignment="Left">版权所有©2023</Label>
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,25,0">
+                    <Label  FontSize="14" Foreground="Gray" >版本:</Label>
+                    <Label  FontSize="14" Foreground="#FF3E88F5"  x:Name="VersionNumberLabel" Content="{Binding VersionNumber}"></Label>
+                </StackPanel>
+            </Grid>
         </Grid>
         <!--#endregion-->
+
+        <LuckyPanel:TipContentPanel x:Name="PersonContentPanel"  Visibility="Collapsed"
+             TipArrowState="Top"  CustomBackground="#FF343A40" TipState="Custom"  
+            TipContent="{Binding PersonFunction}"
+                                    Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,50">
+            
+        </LuckyPanel:TipContentPanel>
+
+        <LuckyNotify:FormsNotify x:Name="WindowTip" Grid.RowSpan="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0">
+          
+        </LuckyNotify:FormsNotify>
+
+
+        <LuckyNotify:FormsNotify x:Name="WindowNotify" Grid.RowSpan="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,30,30">
+        </LuckyNotify:FormsNotify>
 
     </Grid>
 </Window>

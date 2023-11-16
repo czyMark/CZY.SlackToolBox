@@ -1,0 +1,471 @@
+﻿<LocalCore:FrameControl 
+                      x:Class="CZY.SlackToolBox.FrameTemplate.YXKJ.View.YXKJList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CZY.SlackToolBox.FrameTemplate.YXKJ"
+     xmlns:LocalCore="clr-namespace:CZY.SlackToolBox.FrameTemplate.YXKJ.Core"
+    xmlns:input="clr-namespace:CZY.SlackToolBox.LuckyControl.Input;assembly=CZY.SlackToolBox.LuckyControl"
+    xmlns:loading="clr-namespace:CZY.SlackToolBox.AnimationBank.Loading;assembly=CZY.SlackToolBox.AnimationBank"
+      mc:Ignorable="d"    >
+    <LocalCore:FrameControl.Resources>
+        <ResourceDictionary> 
+            <Style x:Key="GreenBtn" TargetType="Button">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="BorderThickness" Value="0"></Setter>
+                <Setter Property="FontSize" Value="14"></Setter>
+                <Setter Property="Height" Value="38"></Setter>
+                <Setter Property="Background" Value="#71bd83"></Setter>
+                <Setter Property="Padding" Value="10,0"></Setter>
+            </Style>
+            <Style x:Key="BlueBtn" TargetType="Button">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="BorderThickness" Value="0"></Setter>
+                <Setter Property="FontSize" Value="14"></Setter>
+                <Setter Property="Height" Value="38"></Setter>
+                <Setter Property="Background" Value="#FF5BC0DE"></Setter>
+                <Setter Property="Padding" Value="10,0"></Setter>
+            </Style>
+            <Style x:Key="RedBtn" TargetType="Button">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="BorderThickness" Value="0"></Setter>
+                <Setter Property="FontSize" Value="14"></Setter>
+                <Setter Property="Height" Value="38"></Setter>
+                <Setter Property="Background" Value="#d9534f"></Setter>
+                <Setter Property="Padding" Value="10,0"></Setter>
+            </Style>
+            <Style x:Key="PrimaryBtn" TargetType="Button">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="BorderThickness" Value="0.5"></Setter>
+                <Setter Property="BorderBrush" Value="#f8f9fa"></Setter>
+                <Setter Property="FontSize" Value="14"></Setter>
+                <Setter Property="Height" Value="38"></Setter>
+                <Setter Property="Background" Value="#409eff"></Setter>
+                <Setter Property="Padding" Value="10,0"></Setter>
+            </Style>
+
+
+            <Geometry x:Key="DownArrowGeometry">M 0 0 L 2.5 5 L 5 0 Z</Geometry>
+            <Style x:Key="ComboBoxReadonlyToggleButton" TargetType="{x:Type ToggleButton}">
+                <Setter Property="OverridesDefaultStyle" Value="true"/>
+                <Setter Property="IsTabStop" Value="false"/>
+                <Setter Property="Focusable" Value="false"/>
+                <Setter Property="ClickMode" Value="Press"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ToggleButton}">
+                            <Grid>
+                                <Border x:Name="border" CornerRadius="1" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                                    <Border.Effect>
+                                        <DropShadowEffect x:Name="dse" BlurRadius="8" ShadowDepth="0" Color="Transparent" Opacity="0"/>
+                                    </Border.Effect>
+                                    <Rectangle Height="1" VerticalAlignment="Top" Stroke="#000000" Opacity="0.1">
+                                        <Rectangle.Effect>
+                                            <BlurEffect Radius="1"/>
+                                        </Rectangle.Effect>
+                                    </Rectangle>
+                                </Border>
+                                <Border CornerRadius="1" Margin="{TemplateBinding BorderThickness}" BorderBrush="Transparent" BorderThickness="1" Background="Transparent" HorizontalAlignment="Right" Width="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}">
+                                    <Path x:Name="Arrow" Data="{StaticResource DownArrowGeometry}" Fill="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0"/>
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="dse" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.15">
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <BackEase EasingMode="EaseInOut" />
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="dse" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.15">
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <BackEase EasingMode="EaseInOut" />
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                    <Setter TargetName="border" Property="BorderBrush" Value="#66afe9"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="ComboBoxEditableTextBox" TargetType="{x:Type TextBox}">
+                <Setter Property="OverridesDefaultStyle" Value="true"/>
+                <Setter Property="AllowDrop" Value="true"/>
+                <Setter Property="MinWidth" Value="0"/>
+                <Setter Property="MinHeight" Value="0"/>
+                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+                <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TextBox}">
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="0" Padding="0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
+                <Setter Property="OverridesDefaultStyle" Value="true"/>
+                <Setter Property="IsTabStop" Value="false"/>
+                <Setter Property="Focusable" Value="false"/>
+                <Setter Property="ClickMode" Value="Press"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ToggleButton}">
+                            <Border x:Name="Chrome" CornerRadius="1" BorderBrush="Transparent" BorderThickness="1" Background="Transparent" SnapsToDevicePixels="true" Width="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}">
+                                <Path x:Name="Arrow" Data="{StaticResource DownArrowGeometry}" Fill="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <ControlTemplate x:Key="ComboBoxEditableTemplate" TargetType="{x:Type ComboBox}">
+                <Grid x:Name="Placement" SnapsToDevicePixels="true">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Popup Grid.ColumnSpan="2" x:Name="PART_Popup" AllowsTransparency="true" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
+                        <Border x:Name="Shdw" Background="Transparent" MaxHeight="{TemplateBinding MaxDropDownHeight}" MinWidth="{Binding ActualWidth, ElementName=Placement}">
+                            <Border x:Name="DropDownBorder" BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+                                <ScrollViewer x:Name="DropDownScrollViewer">
+                                    <Grid RenderOptions.ClearTypeHint="Enabled">
+                                        <Canvas HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
+                                            <Rectangle x:Name="OpaqueRect" Fill="{Binding Background, ElementName=DropDownBorder}" Height="{Binding ActualHeight, ElementName=DropDownBorder}" Width="{Binding ActualWidth, ElementName=DropDownBorder}"/>
+                                        </Canvas>
+                                        <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                    </Grid>
+                                </ScrollViewer>
+                            </Border>
+                        </Border>
+                    </Popup>
+                    <Border Grid.ColumnSpan="2" x:Name="border" CornerRadius="1" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                        <Border.Effect>
+                            <DropShadowEffect x:Name="dse" BlurRadius="8" ShadowDepth="0" Color="#9966afe9" Opacity="0"/>
+                        </Border.Effect>
+                        <Rectangle Height="1" VerticalAlignment="Top" Stroke="#000000" Opacity="0.1">
+                            <Rectangle.Effect>
+                                <BlurEffect Radius="1"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                    </Border>
+                    <TextBox x:Name="PART_EditableTextBox" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsReadOnly="{Binding IsReadOnly, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxEditableTextBox}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}"/>
+                    <ToggleButton Grid.Column="1" Margin="{TemplateBinding BorderThickness}" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxToggleButton}"/>
+                </Grid>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                        <Trigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="dse" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.15">
+                                        <DoubleAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseInOut" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.EnterActions>
+                        <Trigger.ExitActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="dse" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.15">
+                                        <DoubleAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseInOut" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.ExitActions>
+                        <Setter TargetName="border" Property="BorderBrush" Value="#66afe9"/>
+                    </Trigger>
+                    <Trigger Property="HasItems" Value="false">
+                        <Setter Property="Height" TargetName="DropDownBorder" Value="95"/>
+                    </Trigger>
+                    <MultiTrigger>
+                        <MultiTrigger.Conditions>
+                            <Condition Property="IsGrouping" Value="true"/>
+                            <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false"/>
+                        </MultiTrigger.Conditions>
+                        <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                    </MultiTrigger>
+                    <Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="true">
+                        <Setter Property="Margin" TargetName="Shdw" Value="0,0,5,5"/>
+                        <Setter Property="Background" TargetName="Shdw" Value="#71000000"/>
+                    </Trigger>
+                    <Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="false">
+                        <Setter Property="Canvas.Top" TargetName="OpaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}"/>
+                        <Setter Property="Canvas.Left" TargetName="OpaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}"/>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+            <Style  TargetType="{x:Type ComboBox}">
+                <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+                <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+                <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+                <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+                <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ComboBox}">
+                            <Grid x:Name="MainGrid" SnapsToDevicePixels="true" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" Width="0"/>
+                                </Grid.ColumnDefinitions>
+                                <Popup Grid.ColumnSpan="2"  x:Name="PART_Popup" AllowsTransparency="true" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
+                                    <Border x:Name="Shdw" Background="Transparent" MaxHeight="{TemplateBinding MaxDropDownHeight}" MinWidth="{Binding ActualWidth, ElementName=MainGrid}">
+                                        <Border x:Name="DropDownBorder" BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+                                            <ScrollViewer x:Name="DropDownScrollViewer">
+                                                <Grid RenderOptions.ClearTypeHint="Enabled">
+                                                    <Canvas HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
+                                                        <Rectangle x:Name="OpaqueRect" Fill="{Binding Background, ElementName=DropDownBorder}" Height="{Binding ActualHeight, ElementName=DropDownBorder}" Width="{Binding ActualWidth, ElementName=DropDownBorder}"/>
+                                                    </Canvas>
+                                                    <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                                </Grid>
+                                            </ScrollViewer>
+                                        </Border>
+                                    </Border>
+                                </Popup>
+                                <ToggleButton Grid.ColumnSpan="2" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxReadonlyToggleButton}"/>
+                                <Border IsHitTestVisible="false" CornerRadius="1" Margin="{TemplateBinding BorderThickness}" BorderBrush="Transparent" Background="Transparent">
+                                    <ContentPresenter Margin="{TemplateBinding Padding}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Content="{TemplateBinding SelectionBoxItem}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="true">
+                                    <Setter Property="Margin" TargetName="Shdw" Value="0,0,5,5"/>
+                                    <Setter Property="Background" TargetName="Shdw" Value="#71000000"/>
+                                </Trigger>
+                                <Trigger Property="HasItems" Value="false">
+                                    <Setter Property="Height" TargetName="DropDownBorder" Value="95"/>
+                                </Trigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsGrouping" Value="true"/>
+                                        <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false"/>
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                                </MultiTrigger>
+                                <Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="false">
+                                    <Setter Property="Canvas.Top" TargetName="OpaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}"/>
+                                    <Setter Property="Canvas.Left" TargetName="OpaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsEditable" Value="true">
+                        <Setter Property="Template" Value="{StaticResource ComboBoxEditableTemplate}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            
+            
+        </ResourceDictionary>
+    </LocalCore:FrameControl.Resources>
+    <Border BorderThickness="1,0,0,1"   >
+        <Grid    >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="56"></RowDefinition>
+            </Grid.RowDefinitions>
+            <!--<Grid.Background>
+                <ImageBrush ImageSource="/YXKJ/images/列表.png"></ImageBrush>
+            </Grid.Background>-->
+
+            <!--界面搜索-->
+            <Grid Grid.Row="0" Background="Transparent">
+                <StackPanel Margin="4,0"  HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+                    <TextBox    Width="160"   VerticalContentAlignment="Center"
+                            Padding="5,0,0,0" Height="38"  Margin="8,0" input:TextBoxPrompt.Prompt="关键字" input:TextBoxPrompt.IsPromptEnabled="True"
+                         BorderThickness="0.5" 
+                         ></TextBox>
+                    <Button Margin="4,0" Content="查询"  Style="{StaticResource GreenBtn}" Command="{Binding RefreshDataCommand}" ></Button>
+                    <Button Margin="4,0" Content="高级查询" Style="{StaticResource GreenBtn}" >
+                        <Button.Triggers>
+                            <EventTrigger RoutedEvent="Button.Click">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames  Duration="00:00:0.0" Storyboard.TargetName="SearchMask"  Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="00:00:0.0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <DoubleAnimation  To="1" Duration="00:00:0.3"   Storyboard.TargetName="SearchPanel" Storyboard.TargetProperty="Opacity"  >
+                                        </DoubleAnimation>
+                                        <ColorAnimation  Duration="00:00:0.3" To="#99808080"
+                                                          Storyboard.TargetName="SearchMask" Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                                         ></ColorAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Button.Triggers>
+
+                    </Button>
+                    <Button Margin="4,0" Content="添加" Style="{StaticResource BlueBtn}"     Command="{Binding AddDataCommand}"></Button>
+                </StackPanel>
+            </Grid>
+
+            <!--结果表格-->
+            <Border   Grid.Row="1"   BorderThickness="0,2,0,0" BorderBrush="#FF5BA8FF">
+                <DataGrid AutoGenerateColumns="False" CanUserAddRows="False"  FontSize="20" IsReadOnly="True" SelectionMode="Single"
+                      DataContext="{Binding GridPagingService}" FrozenColumnCount="3"
+                      ItemsSource="{Binding Items}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Id}" Visibility="Collapsed" Header="用户id" ElementStyle="{StaticResource DataGridTextCenter}"/>
+                        <DataGridTextColumn Width="1*" Binding="{Binding Question}" Header="问题" ElementStyle="{StaticResource DataGridTextCenter}"/>
+                        <DataGridTextColumn Width="1*" Binding="{Binding Answer}" Header="答案" ElementStyle="{StaticResource DataGridTextCenter}"/>
+                        <DataGridTextColumn Width="1*" Binding="{Binding Remark}" Header="备注" ElementStyle="{StaticResource DataGridTextCenter}"/>
+                        <DataGridTemplateColumn Header="操作"  Width="580" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <Button Content="编辑" Margin="4,0" Name="DataEdit"
+                                            Command="{Binding DataContext.DataEditCommand, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Page}}"
+                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}, Path=SelectedItem}"
+                                            />
+                                        <Button Content="删除" Margin="4,0" Name="DataDel"   Foreground="#FFE01919"
+                                            Command="{Binding DataContext.DataDelCommand, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Page}}"
+                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}, Path=SelectedItem}"
+                                            />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Border>
+            
+            
+            <!--遮罩层-->
+            <!--Background="#99808080"-->
+            <Border x:Name="SearchMask"  Visibility="Collapsed" Background="#99808080"   Grid.Row="1" Grid.RowSpan="3" BorderThickness="0,2,0,0" BorderBrush="#FF5BA8FF">
+                <StackPanel x:Name="SearchPanel"      Background="White" VerticalAlignment="Top"  >
+                    <WrapPanel  >
+                        <TextBox   Margin="20"  Width="160"   VerticalContentAlignment="Top"
+                            Padding="5,0,0,0" Height="38"    FontSize="14"
+                            input:TextBoxPrompt.Prompt="关键字" input:TextBoxPrompt.IsPromptEnabled="True"
+                            BorderThickness="0.5" 
+                         ></TextBox>
+                        <TextBox   Margin="20"  Width="160"   VerticalContentAlignment="Top"
+                            Padding="5,0,0,0" Height="38"    FontSize="14"
+                            input:TextBoxPrompt.Prompt="关键字" input:TextBoxPrompt.IsPromptEnabled="True"
+                            BorderThickness="0.5" 
+                         ></TextBox>
+                        <TextBox   Margin="20"  Width="160"   VerticalContentAlignment="Top"
+                            Padding="5,0,0,0" Height="38"    FontSize="14"
+                            input:TextBoxPrompt.Prompt="关键字" input:TextBoxPrompt.IsPromptEnabled="True"
+                            BorderThickness="0.5" 
+                         ></TextBox>
+                        <TextBox   Margin="20"  Width="160"   VerticalContentAlignment="Top"
+                            Padding="5,0,0,0" Height="38"    FontSize="14"
+                            input:TextBoxPrompt.Prompt="关键字" input:TextBoxPrompt.IsPromptEnabled="True"
+                            BorderThickness="0.5" 
+                         ></TextBox>
+                        <TextBox   Margin="20"  Width="160"   VerticalContentAlignment="Top"
+                            Padding="5,0,0,0" Height="38"    FontSize="14"
+                            input:TextBoxPrompt.Prompt="关键字" input:TextBoxPrompt.IsPromptEnabled="True"
+                            BorderThickness="0.5" 
+                         ></TextBox>
+                    </WrapPanel>
+                    <Button Margin="6" Content="立即查询"
+                        HorizontalAlignment="Right" Command="{Binding RefreshDataCommand}"
+                        BorderThickness="0" Width="70" Foreground="White"  FontSize="14" Height="38" Background="#71bd83"  >
+                        <Button.Triggers>
+                            <EventTrigger RoutedEvent="Button.Click">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation  To="0" Duration="00:00:0.3"    Storyboard.TargetName="SearchPanel" Storyboard.TargetProperty="Opacity"  >
+                                        </DoubleAnimation>
+
+                                        <ColorAnimation  Duration="00:00:0.3" To="Transparent"
+                                                          Storyboard.TargetName="SearchMask" Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                                         ></ColorAnimation>
+                                        <ObjectAnimationUsingKeyFrames  Duration="00:00:0.3" Storyboard.TargetName="SearchMask"  Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="00:00:0.3">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Button.Triggers>
+
+                    </Button>
+
+                </StackPanel>
+            </Border>
+
+            <!--分页及统计说明-->
+            <Grid Grid.Row="2" Background="Transparent" >
+                <WrapPanel  HorizontalAlignment="Right"
+                   Margin="6"
+                   DataContext="{Binding GridPagingService}">
+                    <Button Content="首页" Style="{StaticResource PrimaryBtn}"
+                    Command="{Binding FirstPage}" Margin="3"  />
+                    <Button Content="上一页"
+                     Style="{StaticResource PrimaryBtn}"
+                    Command="{Binding PrevPage}"  Margin="3"  />
+
+                    <StackPanel Orientation="Horizontal" Margin="3">
+                        <Label Content="第"  Foreground="Black"    VerticalAlignment="Center"   />
+                        <TextBlock Text="{Binding Current}"   Foreground="Black"    VerticalAlignment="Center"   />
+                        <Label Content="页"  Foreground="Black"    VerticalAlignment="Center"  />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="3">
+                        <Label Content="共"  Foreground="Black"     VerticalAlignment="Center"  />
+                        <TextBlock Text="{Binding Total}"  Foreground="Black"    VerticalAlignment="Center"  />
+                        <Label Content="页"  Foreground="Black"    VerticalAlignment="Center"   />
+                    </StackPanel>
+
+                    <Button Content="下一页"
+                     Style="{StaticResource PrimaryBtn}"
+                    Command="{Binding NextPage}"
+                    Margin="3" />
+                    <Button Content="尾页"
+                     Style="{StaticResource PrimaryBtn}"
+                    Command="{Binding LastPage}"
+                    Margin="3" />
+
+                    <StackPanel Margin="3" Orientation="Horizontal">
+                        <Label Content="前往"  Foreground="Black"      VerticalAlignment="Center"   />
+                        <ComboBox ItemsSource="{Binding SelectList}"   Background="#f8f9fa"   VerticalContentAlignment="Center"    SelectedIndex="{Binding SelectedIndex}" />
+                        <Label Content="页"  Foreground="Black"    VerticalAlignment="Center"   />
+                    </StackPanel>
+
+                    <StackPanel Margin="3" Orientation="Horizontal">
+                        <Label Content="每页"  Foreground="Black"     VerticalAlignment="Center"    />
+                        <ComboBox ItemsSource="{Binding SplitCount}"  Background="#f8f9fa"  VerticalContentAlignment="Center"    SelectedItem="{Binding CurrentSplit}" />
+                        <Label Content="条"   Foreground="Black"    VerticalAlignment="Center"    />
+                    </StackPanel>
+                </WrapPanel>
+            </Grid>
+
+            <!--<loading:LoadingCircle Grid.RowSpan="3" 
+                                   Visibility="Visible" 
+                                   Background="#19808080"></loading:LoadingCircle>-->
+        </Grid>
+    </Border>
+</LocalCore:FrameControl>

@@ -13,6 +13,9 @@ namespace CZY.SlackToolBox.LuckyControl.ElementPanel
         public TipLablePanel()
         {
             InitializeComponent();
+
+            TipState=TipLableState.Normal;
+            contentLabel.Style = (Style)FindResource("infoTipLable");
         }
 
         public static readonly DependencyProperty TextProperty =
@@ -56,9 +59,7 @@ namespace CZY.SlackToolBox.LuckyControl.ElementPanel
                     break;
                 case TipLableState.Danegr:
                     control.contentLabel.Style = (Style)control.FindResource("dangerTipLable");
-                    break;
-                default:
-                    break;
+                    break; 
             }
         }
     }

@@ -66,6 +66,12 @@ namespace CZY.SlackToolBox.LuckyControl.MessageNotify
             doubleAnimationUsingKeyFrames.Duration = new TimeSpan(0, 0, 0, 3, 800);
             tipPanel.BeginAnimation(UserControl.OpacityProperty, doubleAnimationUsingKeyFrames);
         }
-         
+
+
+        public void AddNotityPanel(UserControl panel)
+        {
+            mainNotify.Children.Add(panel);
+        }
+
     }
 }
