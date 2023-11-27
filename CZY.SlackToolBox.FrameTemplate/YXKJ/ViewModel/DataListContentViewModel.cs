@@ -1,4 +1,7 @@
-﻿using CZY.SlackToolBox.LuckyControl;
+﻿using CZY.SlackToolBox.FrameTemplate.YXKJ.Core;
+using CZY.SlackToolBox.FrameTemplate.YXKJ.View;
+using CZY.SlackToolBox.LuckyControl;
+using CZY.SlackToolBox.LuckyControl.MessageNotify;
 using CZY.SlackToolBox.LuckyControl.MultiData;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,7 +10,7 @@ using System.Windows;
 
 namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
 {
-    public class YXKJListViewModel : INotifyPropertyChanged
+    public class DataListContentViewModel : INotifyPropertyChanged
     {
         /// <summary>
         /// wpf 接口继承
@@ -95,7 +98,7 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
         void ExecuteRefreshDataCommand(object obj)
         {
             RefreshData();
-        } 
+        }
         /// <summary>
         /// 添加数据
         /// </summary>
@@ -125,16 +128,22 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
             //BaseTopics loadData = (BaseTopics)obj;
             //if (loadData == null)
             //{
-            //    SysTipWindow.Show("系统提示", "无法找到要修改的数据，请刷新数据...");
+            //    MainWindowManager.SetMessageTip(  "无法找到要修改的数据，请刷新数据...", LuckyControl.ElementPanel.TipPanel.TipPanelState.Warn);
             //    return;
-            //}
-            //EditWindow window = new EditWindow(loadData);
-            //bool? state = window.ShowDialog();
-            //if (state == true)
-            //{
-            //    SysTipWindow.Show("系统提示", "数据保存成功");
-            //    RefreshData();
-            //}
+            //}  
+        
+            DataEditContent dataEditContent = new DataEditContent(new DataEditContentViewModel(obj));
+            //滑动修改框修改
+
+
+            //弹窗修改
+            ContentBoxWin win = ContentBoxWin.GetContentBoxWin(dataEditContent, "信息修改",ContentBoxWin.ContentBoxWinState.YesNo);
+            bool? state = win.ShowDialog();
+            if (state == true)
+            {
+                MainWindowManager.SetMessageTip("信息修改成功");
+                RefreshData();
+            }
         }
 
 
@@ -180,12 +189,12 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
 
         #endregion
 
-        public YXKJListViewModel()
+        public DataListContentViewModel()
         {
             RefreshDataCommand = new RelayCommand(ExecuteRefreshDataCommand);
             AddDataCommand = new RelayCommand(ExecuteAddDataCommand);
             DataEditCommand = new RelayCommand(ExecuteDataEditCommand);
-            DataDelCommand = new RelayCommand(ExecuteDataDelCommand); 
+            DataDelCommand = new RelayCommand(ExecuteDataDelCommand);
             RefreshData();
         }
 
@@ -198,35 +207,46 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
             LoadingText = "数据加载中....";
             LoadingVisibility = Visibility.Visible;
             var list = new List<object>();
-            //await Task.Run(() =>
-            //{
-            //    //从数据库中获取所有用户数据
+            await Task.Run(() =>
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    list.Add(new {
+                        Id=i,
+                        Question=i.ToString(),
+                        Answer=i.ToString(),
+                        Remark = "测试数据",
+                    });
+                }
+                //    //从数据库中获取所有用户数据
+                //    MySQLDatabase mySQL = MySQLDatabase.GetInstance();
+                //    StringBuilder strSql = new StringBuilder();
+                //    strSql.Append("select id,question,answer,remark from base_Topics");
+                //    strSql.Append(" where question like @question  ");
+                //    MySqlParameter[] parameters = {
+                //        new MySqlParameter("@question", "%"+QuestionText+"%")
+                //};
+                //    DataSet data = mySQL.ExecuteDataSet(strSql.ToString(), parameters);
 
-            //    MySQLDatabase mySQL = MySQLDatabase.GetInstance();
-            //    StringBuilder strSql = new StringBuilder();
-            //    strSql.Append("select id,question,answer,remark from base_Topics");
-            //    strSql.Append(" where question like @question  ");
-            //    MySqlParameter[] parameters = {
-            //        new MySqlParameter("@question", "%"+QuestionText+"%")
-            //};
-            //    DataSet data = mySQL.ExecuteDataSet(strSql.ToString(), parameters);
-
-            //    if (data.Tables[0].Rows.Count > 0)
-            //    {
-            //        foreach (DataRow item in data.Tables[0].Rows)
-            //        {
-            //            list.Add(new BaseTopics(
-            //                item.ItemArray[0].ToString(),
-            //                item.ItemArray[1].ToString(),
-            //                item.ItemArray[2].ToString(),
-            //                item.ItemArray[3].ToString()
-            //                ));
-            //        }
-            //    }
-            //});
-            //if (list.Count > 0)
-            //    GridPagingService.FreashData(list);
-            //else { SysTipWindow.Show("系统提示", "没有该数据"); }
+                //    if (data.Tables[0].Rows.Count > 0)
+                //    {
+                //        foreach (DataRow item in data.Tables[0].Rows)
+                //        {
+                //            list.Add(new BaseTopics(
+                //                item.ItemArray[0].ToString(),
+                //                item.ItemArray[1].ToString(),
+                //                item.ItemArray[2].ToString(),
+                //                item.ItemArray[3].ToString()
+                //                ));
+                //        }
+                //}
+            });
+            if (list.Count > 0)
+                GridPagingService.FreashData(list);
+            else { 
+            
+                //SysTipWindow.Show("系统提示", "没有该数据");
+            }
             LoadingVisibility = Visibility.Collapsed;
         }
         #endregion

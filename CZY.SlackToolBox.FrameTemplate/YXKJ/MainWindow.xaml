@@ -6,7 +6,8 @@
         xmlns:LuckyMenu="clr-namespace:CZY.SlackToolBox.LuckyControl.NimbleMenu;assembly=CZY.SlackToolBox.LuckyControl" 
         xmlns:LuckyPanel="clr-namespace:CZY.SlackToolBox.LuckyControl.ElementPanel;assembly=CZY.SlackToolBox.LuckyControl" 
         xmlns:LuckyNotify="clr-namespace:CZY.SlackToolBox.LuckyControl.MessageNotify;assembly=CZY.SlackToolBox.LuckyControl" 
-        mc:Ignorable="d" AllowsTransparency="True"
+        xmlns:input="clr-namespace:CZY.SlackToolBox.LuckyControl.Input;assembly=CZY.SlackToolBox.LuckyControl" 
+        mc:Ignorable="d" AllowsTransparency="True"  MouseLeftButtonDown="Window_MouseLeftButtonDown"
           Width="1920" Height="1080" WindowStyle="None"
         Title="MainWindow" WindowState="Maximized">
     <Window.Resources>
@@ -28,7 +29,7 @@
 
         <!--#region 标题栏 -->
         <Border Grid.ColumnSpan="2" Background="#FF2F5A86" BorderBrush="#FFE2E2E2" />
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal" MouseDown="StackPanel_MouseDown"  Cursor="Hand">
             <Image Margin="16,0,0,0" Width="32" Stretch="Fill" Height="32" Source="pack://application:,,,/CZY.SlackToolBox.FrameTemplate;component/YXKJ/images/首页.png">
                 <Image.Effect>
                     <DropShadowEffect ShadowDepth="2" BlurRadius="3"></DropShadowEffect>
@@ -51,14 +52,17 @@
                     <Label.Effect>
                         <DropShadowEffect   ShadowDepth="1" BlurRadius="2"></DropShadowEffect>
                     </Label.Effect>
-                </Label>
-                <Image 
+                </Label> 
+                <Image  
                     MouseLeftButtonDown="PersonalCenter_ButtonDown"
-                    MouseRightButtonDown="PersonalCenter_ButtonDown"
+                    MouseRightButtonDown="PersonalCenter_ButtonDown"  Cursor="Hand"
                        Width="32" Stretch="Fill" Height="32" Source="pack://application:,,,/CZY.SlackToolBox.FrameTemplate;component/YXKJ/images/首页.png">
                     <Image.Effect>
                         <DropShadowEffect ShadowDepth="2" BlurRadius="3"></DropShadowEffect>
                     </Image.Effect>
+                    <Image.Clip>
+                        <EllipseGeometry Center="16,16" RadiusX="16" RadiusY="16"></EllipseGeometry>
+                    </Image.Clip>
                 </Image>
             </StackPanel>
         </Grid>
@@ -85,20 +89,8 @@
         <!--#endregion-->
 
         <!--#region 内容页及版权说明 -->
-        <Grid  Grid.Row="1" Background="White"  Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition Height="40"></RowDefinition>
-            </Grid.RowDefinitions>
-            <ContentControl x:Name="MainContentControl"  />
-          
-            <Grid  Grid.Row="1" Background="White"  VerticalAlignment="Center">
-                <Label Margin="14,0,0,0" FontSize="14" Foreground="Gray"  HorizontalAlignment="Left">版权所有©2023</Label>
-                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,25,0">
-                    <Label  FontSize="14" Foreground="Gray" >版本:</Label>
-                    <Label  FontSize="14" Foreground="#FF3E88F5"  x:Name="VersionNumberLabel" Content="{Binding VersionNumber}"></Label>
-                </StackPanel>
-            </Grid>
+        <Grid  Grid.Row="1" Background="White"  Grid.Column="1"> 
+            <ContentControl x:Name="MainContentControl"  />  
         </Grid>
         <!--#endregion-->
 
@@ -106,11 +98,11 @@
              TipArrowState="Top"  CustomBackground="#FF343A40" TipState="Custom"  
             TipContent="{Binding PersonFunction}"
                                     Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,50">
-            
+
         </LuckyPanel:TipContentPanel>
 
         <LuckyNotify:FormsNotify x:Name="WindowTip" Grid.RowSpan="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0">
-          
+
         </LuckyNotify:FormsNotify>
 
 

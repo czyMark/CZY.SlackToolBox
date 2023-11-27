@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="CZY.SlackToolBox.FrameTemplate.YXKJ.View.DataEditContent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CZY.SlackToolBox.FrameTemplate.YXKJ.View"
+             mc:Ignorable="d"  Background="#FCFCFC"
+             xmlns:input="clr-namespace:CZY.SlackToolBox.LuckyControl.Input;assembly=CZY.SlackToolBox.LuckyControl"
+              >
+    <WrapPanel>
+        <!--<Grid.Background>
+            <ImageBrush ImageSource="/YXKJ/images/引用.png"></ImageBrush>
+        </Grid.Background>-->
+        <input:TextInfoBox Margin="8" TextDescription="姓名"  TextValue="{Binding VersionNumber,Mode=TwoWay}" TextPrompt="请输入"  IsImportance="True">
+
+        </input:TextInfoBox>
+        <input:TextInfoBox Margin="8" TextDescription="姓名" TextPrompt="请输入" IsImportance="True">
+
+        </input:TextInfoBox>
+        <input:TextInfoBox Margin="8" TextDescription="姓名" TextPrompt="请输入" IsImportance="True">
+
+        </input:TextInfoBox>
+        <input:TextInfoBox Margin="8" TextDescription="姓名" TextPrompt="请输入" IsImportance="True">
+
+        </input:TextInfoBox>
+        <input:TextInfoBox Margin="8" TextDescription="姓名" TextPrompt="请输入" IsImportance="True">
+
+        </input:TextInfoBox>
+        <input:TextInfoBox Margin="8" TextDescription="姓名" TextPrompt="请输入" IsImportance="True">
+
+        </input:TextInfoBox>
+        <input:TextInfoBox Margin="8" TextDescription="姓名" TextPrompt="请输入" IsImportance="True">
+
+        </input:TextInfoBox>
+        <input:TextInfoBox Margin="8" TextDescription="姓名" TextPrompt="请输入" IsImportance="True">
+
+        </input:TextInfoBox>
+        <input:TextInfoBox Margin="8" TextDescription="姓名" TextPrompt="请输入" IsImportance="True">
+
+        </input:TextInfoBox>
+        <input:TextInfoBox Margin="8" TextDescription="姓名" TextPrompt="请输入" IsImportance="True">
+
+        </input:TextInfoBox>
+
+    </WrapPanel>
+</UserControl>

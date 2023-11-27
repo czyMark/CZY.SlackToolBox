@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Media;
 
-namespace CZY.SlackToolBox.FastExtend.Other
+namespace CZY.SlackToolBox.FastExtend
 {
     public static class ViewTreeTool
     {

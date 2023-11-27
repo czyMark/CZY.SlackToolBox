@@ -148,8 +148,8 @@ namespace CZY.SlackToolBox.LuckyControl.MessageNotify
         }
 
 
-        public static double WinWidth { get; set; } = 1000;
-        public static double WinHeight { get; set; } = 800;
+        public static double WinWidth { get; set; } = 720;
+        public static double WinHeight { get; set; } = 600;
 
 
         private void topBorder_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

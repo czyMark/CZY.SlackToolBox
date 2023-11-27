@@ -38,6 +38,17 @@ namespace CZY.SlackToolBox.LuckyControl.Input
             obj.SetValue(IsPromptEnabledProperty, value);
         }
 
+        public static void CancelPrompt(TextBox textBox)
+        { 
+            textBox.Background = (Brush)textBox.Tag;
+            textBox.Foreground = Brushes.Black;
+        }
+        public static void RefreshPrompt(TextBox textBox, string prompt)
+        {
+            TextBoxPrompt.SetPrompt(textBox, prompt);
+            UpdatePrompt(textBox, prompt);
+        }
+
         private static void IsPromptEnabledChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var textBox = d as TextBox;
@@ -82,13 +93,20 @@ namespace CZY.SlackToolBox.LuckyControl.Input
             UpdatePrompt(textBox);
         }
 
-        private static void UpdatePrompt(TextBox textBox)
+        private static void UpdatePrompt(TextBox textBox, string prompt = "")
         {
             if (string.IsNullOrEmpty(textBox.Text))
             {
                 textBox.Tag = textBox.Background;
                 textBox.Background = Brushes.Transparent;
-                textBox.Text = GetPrompt(textBox);
+                if (string.IsNullOrEmpty(prompt))
+                {
+                    textBox.Text = GetPrompt(textBox);
+                }
+                else
+                {
+                    textBox.Text = prompt;
+                }
                 textBox.Foreground = Brushes.Gray;
             }
         }
@@ -101,6 +119,6 @@ namespace CZY.SlackToolBox.LuckyControl.Input
                 textBox.Background = (Brush)textBox.Tag;
                 textBox.Foreground = Brushes.Black;
             }
-        } 
+        }
     }
 }

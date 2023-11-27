@@ -101,7 +101,7 @@ namespace CZY.SlackToolBox.LuckyControl.ElementPanel
         }
 
         public static readonly DependencyProperty TipContentProperty = DependencyProperty.Register(
-         "NotityContent",
+         "TipContent",
          typeof(FrameworkElement),
          typeof(FoldPanel), new PropertyMetadata(TipContentChanged));
         private static void TipContentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

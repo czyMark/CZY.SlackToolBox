@@ -63,6 +63,9 @@
       <DependentUpon>NotityPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Input\TextBoxPrompt.cs" />
+    <Compile Include="Input\TextInfoBox.xaml.cs">
+      <DependentUpon>TextInfoBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NimbleMenu\HideMenuControl.cs" />
     <Compile Include="MultiData\GridPagingModel.cs" />
     <Compile Include="NimbleMenu\CircularMenu.xaml.cs">
@@ -230,6 +233,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="ElementPanel\NotityPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Input\TextInfoBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -456,6 +463,14 @@
     <Page Include="ElementPanel\TipPanel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\YXKJ\Button.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\YXKJ\ComBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\YXKJ\DataGrid.xaml">
       <SubType>Designer</SubType>

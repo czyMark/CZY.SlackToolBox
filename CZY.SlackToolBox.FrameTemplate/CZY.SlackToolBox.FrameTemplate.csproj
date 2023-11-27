@@ -56,15 +56,24 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="YXKJ\Core\FramePage.cs" />
+    <Compile Include="YXKJ\Core\MainWindowManager.cs" />
     <Compile Include="YXKJ\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="YXKJ\ViewModel\YXKJListViewModel.cs" />
+    <Compile Include="YXKJ\ViewModel\DataEditContentViewModel.cs" />
+    <Compile Include="YXKJ\ViewModel\HomeContentViewModel.cs" />
+    <Compile Include="YXKJ\ViewModel\DataListContentViewModel.cs" />
+    <Compile Include="YXKJ\View\DataEditContent.xaml.cs">
+      <DependentUpon>DataEditContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="YXKJ\View\HomeContent.xaml.cs">
+      <DependentUpon>HomeContent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="YXKJ\View\PersonalCenter.xaml.cs">
       <DependentUpon>PersonalCenter.xaml</DependentUpon>
     </Compile>
-    <Compile Include="YXKJ\View\YXKJList.xaml.cs">
-      <DependentUpon>YXKJList.xaml</DependentUpon>
+    <Compile Include="YXKJ\View\DataListContent.xaml.cs">
+      <DependentUpon>DataListContent.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -82,11 +91,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="YXKJ\View\DataEditContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="YXKJ\View\HomeContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="YXKJ\View\PersonalCenter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="YXKJ\View\YXKJList.xaml">
+    <Page Include="YXKJ\View\DataListContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

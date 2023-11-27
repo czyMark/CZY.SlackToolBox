@@ -438,17 +438,27 @@
                                     <Setter Property="Template">
                                         <Setter.Value>
                                             <ControlTemplate TargetType="RadioButton">
-                                                <Border x:Name="tempBorder"   CornerRadius="4"
+                                                <Grid>
+                                                    <Border x:Name="tempBorder"   CornerRadius="4"   
                                                         Background="Transparent" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
-                                                    <ContentPresenter x:Name="contentPresenter" Content="{Binding Text}"
+                                                    </Border>
+                                                    <Border    CornerRadius="4"   
+                                                        Background="Transparent" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                                                        <ContentPresenter x:Name="contentPresenter" Content="{Binding Text}"
                                                                       RecognizesAccessKey="True" VerticalAlignment="Center" HorizontalAlignment="Center" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                                                </Border>
+                                                    </Border>
+                                                </Grid>
+                                              
                                                 <ControlTemplate.Triggers>
                                                     <Trigger Property="IsChecked" Value="True">
                                                         <Setter TargetName="tempBorder" Property="Background" Value="{Binding SelectedColor}"/>
+                                                        <Setter TargetName="tempBorder" Property="BorderThickness" Value="8,0,0,0"/>
+                                                        <Setter TargetName="tempBorder" Property="BorderBrush" Value="Yellow"/>
                                                     </Trigger>
                                                     <Trigger Property="IsChecked" Value="False">
                                                         <Setter TargetName="tempBorder" Property="Background" Value="Transparent"/>
+                                                        <Setter TargetName="tempBorder" Property="BorderThickness" Value="0,0,0,0"/>
+                                                        <Setter TargetName="tempBorder" Property="BorderBrush" Value="Transparent"/>
                                                     </Trigger>
                                                     <MultiTrigger>
                                                         <MultiTrigger.Conditions>

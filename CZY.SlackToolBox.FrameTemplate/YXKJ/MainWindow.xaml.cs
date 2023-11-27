@@ -1,6 +1,7 @@
 ﻿using CZY.SlackToolBox.AnimationBank.Other;
 using CZY.SlackToolBox.FastExtend;
 using CZY.SlackToolBox.FrameTemplate.YXKJ.View;
+using CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel;
 using CZY.SlackToolBox.LuckyControl.ElementPanel;
 using System;
 using System.Collections.Generic;
@@ -20,11 +21,12 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ
     {
         public List<ExpanderBar> MenuList { get; set; }
         public UserControl PersonFunction { get; set; }
-        public string VersionNumber { get; set; } = "V1.0";
-
         public MainWindow()
         {
             InitializeComponent();
+            //默认显示主页面
+            StackPanel_MouseDown(null, null);
+            //加载菜单
             MenuList = new List<ExpanderBar>();
             int j = 0;
             for (int i = 0; i < 5; i++)
@@ -109,9 +111,8 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ
         private void ExpanderMenu_SelectedIndexChanged(string ID, string NavPath, string NameSpaceName, string ContentName)
         {
             Assembly assembly = Assembly.Load("CZY.SlackToolBox.FrameTemplate");
-            Type type = assembly.GetType("CZY.SlackToolBox.FrameTemplate.YXKJ.View.YXKJList");
+            Type type = assembly.GetType("CZY.SlackToolBox.FrameTemplate.YXKJ.View.DataListContent");
             MainContentControl.Content = Activator.CreateInstance(type);
-
             navTitleLabel.Content = NavPath;
         }
 
@@ -119,6 +120,10 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ
         {
             if (PersonContentPanel.Visibility == Visibility.Collapsed || PersonContentPanel.Visibility == Visibility.Hidden)
                 PersonContentPanel.ShowMe();
+            else
+                PersonContentPanel.HideMe();
+
+            e.Handled = true;
         }
 
         private void PersonalCenter_selectedFuntion(PersonalCenter.PersonalFunction personalFunction)
@@ -139,6 +144,19 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ
                     this.Close();
                     break;
             }
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (PersonContentPanel.Visibility == Visibility.Visible)
+                PersonContentPanel.HideMe();
+        }
+
+        private void StackPanel_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Assembly assembly = Assembly.Load("CZY.SlackToolBox.FrameTemplate");
+            Type type = assembly.GetType("CZY.SlackToolBox.FrameTemplate.YXKJ.View.HomeContent");
+            MainContentControl.Content = Activator.CreateInstance(type);
         }
     }
 }

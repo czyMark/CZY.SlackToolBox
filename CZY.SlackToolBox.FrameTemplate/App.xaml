@@ -8,9 +8,10 @@
             <ResourceDictionary.MergedDictionaries>
                 <!--<ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.AnimationBank;component/Skin/DefaultFont.xaml" />-->
                 <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.AnimationBank;component/Skin/Default.xaml" />
-
                 <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.AnimationBank;component/Text/FallText.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/YXKJ/DataGrid.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/YXKJ/Button.xaml"/>
+
+
             </ResourceDictionary.MergedDictionaries>
             <Style   TargetType="local:FrameControl">
                 <Setter Property="Width" Value="1671"></Setter>
