@@ -5,13 +5,15 @@ using System.Windows.Controls;
 namespace CZY.SlackToolBox.FrameTemplate.YXKJ.View
 {
     /// <summary>
-    /// DataEditContent.xaml 的交互逻辑
+    /// ReferContent.xaml 的交互逻辑
     /// </summary>
-    public partial class DataEditContent : UserControl
+    public partial class ReferContent : UserControl
     {
-        public DataEditContent()
+        public object SelectItem;
+        public ReferContent()
         {
             InitializeComponent();   
         }
+
     }
 }

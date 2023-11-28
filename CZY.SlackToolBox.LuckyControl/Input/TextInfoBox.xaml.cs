@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CZY.SlackToolBox.LuckyControl.Input
 {
@@ -23,7 +12,9 @@ namespace CZY.SlackToolBox.LuckyControl.Input
         public TextInfoBox()
         {
             InitializeComponent();
+            TextValueWidth = 240;
             this.IsImportance = false;
+            InputControl.DataContext = this;
         }
         #region TextDescription
         public string TextDescription
@@ -46,7 +37,7 @@ namespace CZY.SlackToolBox.LuckyControl.Input
         }
         #endregion
 
-            #region TextValue
+        #region TextValue
         public string TextValue
         {
             get { return (string)GetValue(TextValueProperty); }
@@ -61,14 +52,30 @@ namespace CZY.SlackToolBox.LuckyControl.Input
         {
             if (e.NewValue != null)
             {
-                TextInfoBox up = d as TextInfoBox;
-                up.InputValue.Text = (string)e.NewValue;
+                TextInfoBox up = d as TextInfoBox; 
                 TextBoxPrompt.CancelPrompt(up.InputValue);
-
             }
         }
         #endregion
-            #region TextPrompt
+
+        #region TextValueWidth
+        public double TextValueWidth
+        {
+            get { return (double)GetValue(TextValueWidthProperty); }
+            set { SetValue(TextValueWidthProperty, value); }
+        }
+
+        public static readonly DependencyProperty TextValueWidthProperty = DependencyProperty.Register(
+         "TextValueWidth",
+         typeof(double),
+         typeof(TextInfoBox), new PropertyMetadata(TextValueWidthPropertyChanged));
+        private static void TextValueWidthPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
+
+        #endregion
+        #region TextPrompt
         public string TextPrompt
         {
             get { return (string)GetValue(TextPromptProperty); }
@@ -82,9 +89,10 @@ namespace CZY.SlackToolBox.LuckyControl.Input
         private static void TextPromptPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (e.NewValue != null)
-            { 
+            {
                 TextInfoBox up = d as TextInfoBox;
-                TextBoxPrompt.RefreshPrompt(up.InputValue,(string)e.NewValue);
+                up.TextValue = (string)e.NewValue;
+                TextBoxPrompt.RefreshPrompt(up.InputValue, (string)e.NewValue);
             }
         }
         #endregion

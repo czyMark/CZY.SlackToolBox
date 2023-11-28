@@ -26,7 +26,6 @@
             <RowDefinition Height="62"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-
         <!--#region 标题栏 -->
         <Border Grid.ColumnSpan="2" Background="#FF2F5A86" BorderBrush="#FFE2E2E2" />
         <StackPanel Orientation="Horizontal" MouseDown="StackPanel_MouseDown"  Cursor="Hand">
@@ -92,8 +91,7 @@
         <Grid  Grid.Row="1" Background="White"  Grid.Column="1"> 
             <ContentControl x:Name="MainContentControl"  />  
         </Grid>
-        <!--#endregion-->
-
+        <!--#endregion--> 
         <LuckyPanel:TipContentPanel x:Name="PersonContentPanel"  Visibility="Collapsed"
              TipArrowState="Top"  CustomBackground="#FF343A40" TipState="Custom"  
             TipContent="{Binding PersonFunction}"

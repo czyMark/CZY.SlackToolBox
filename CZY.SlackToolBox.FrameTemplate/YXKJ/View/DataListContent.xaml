@@ -12,8 +12,6 @@
     <LocalCore:FrameControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/YXKJ/DataGrid.xaml"></ResourceDictionary>
-                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/YXKJ/ComBox.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
 
             <Style x:Key="SearchTextBox"   TargetType="TextBox">

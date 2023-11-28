@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="CZY.SlackToolBox.FrameTemplate.YXKJ.View.ReferContent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CZY.SlackToolBox.FrameTemplate.YXKJ.View"
+             mc:Ignorable="d"   
+             xmlns:input="clr-namespace:CZY.SlackToolBox.LuckyControl.Input;assembly=CZY.SlackToolBox.LuckyControl"
+              >
+    <Grid>
+        <!--<Grid.Background>
+            <ImageBrush ImageSource="/YXKJ/images/引用.png"></ImageBrush>
+        </Grid.Background>-->
+        <!--#region 搜索框 -->
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" >
+            <input:TextInfoBox
+                TextValueWidth="420"
+                Margin="8" TextDescription="姓名"  TextValue="{Binding Path=DataV.Question,Mode=TwoWay}" TextPrompt="请输入"  IsImportance="True">
+            </input:TextInfoBox>
+            <Button>搜索</Button>
+        </StackPanel>
+        <!--#endregion-->
+        <!--#region 数据列表 -->
+        
+        <!--#endregion-->
+    </Grid>
+</UserControl>

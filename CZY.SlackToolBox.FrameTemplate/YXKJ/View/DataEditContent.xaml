@@ -11,36 +11,23 @@
         <!--<Grid.Background>
             <ImageBrush ImageSource="/YXKJ/images/引用.png"></ImageBrush>
         </Grid.Background>-->
-        <input:TextInfoBox Margin="8" TextDescription="姓名"  TextValue="{Binding VersionNumber,Mode=TwoWay}" TextPrompt="请输入"  IsImportance="True">
+        <input:TextInfoBox Margin="8" TextDescription="姓名"  TextValue="{Binding Path=DataV.Question,Mode=TwoWay}" TextPrompt="请输入"  IsImportance="True">
 
         </input:TextInfoBox>
-        <input:TextInfoBox Margin="8" TextDescription="姓名" TextPrompt="请输入" IsImportance="True">
+        <input:TextInfoComBox Margin="8" TextDescription="性别" 
+                              TextDataSource="{Binding Path=BaseData.Sex}"
+                              TextDataSourceDisplayMember="Text"
+                              TextDataSourceValueMember="Id"
+                              TextValue="{Binding Path=DataV.Question,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                              >
 
-        </input:TextInfoBox>
-        <input:TextInfoBox Margin="8" TextDescription="姓名" TextPrompt="请输入" IsImportance="True">
+        </input:TextInfoComBox>
+        <input:TextInfoReferBox Margin="8" TextDescription="单位" 
+                                TextValueWidth="500"
+                                TextValue="{Binding Path=DataV.Question,Mode=TwoWay}"
+                                Command="{Binding XXReferCommand}"
+                                >
 
-        </input:TextInfoBox>
-        <input:TextInfoBox Margin="8" TextDescription="姓名" TextPrompt="请输入" IsImportance="True">
-
-        </input:TextInfoBox>
-        <input:TextInfoBox Margin="8" TextDescription="姓名" TextPrompt="请输入" IsImportance="True">
-
-        </input:TextInfoBox>
-        <input:TextInfoBox Margin="8" TextDescription="姓名" TextPrompt="请输入" IsImportance="True">
-
-        </input:TextInfoBox>
-        <input:TextInfoBox Margin="8" TextDescription="姓名" TextPrompt="请输入" IsImportance="True">
-
-        </input:TextInfoBox>
-        <input:TextInfoBox Margin="8" TextDescription="姓名" TextPrompt="请输入" IsImportance="True">
-
-        </input:TextInfoBox>
-        <input:TextInfoBox Margin="8" TextDescription="姓名" TextPrompt="请输入" IsImportance="True">
-
-        </input:TextInfoBox>
-        <input:TextInfoBox Margin="8" TextDescription="姓名" TextPrompt="请输入" IsImportance="True">
-
-        </input:TextInfoBox>
-
+        </input:TextInfoReferBox> 
     </WrapPanel>
 </UserControl>

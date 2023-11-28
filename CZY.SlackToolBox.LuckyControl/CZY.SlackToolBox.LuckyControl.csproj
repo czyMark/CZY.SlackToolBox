@@ -63,6 +63,12 @@
       <DependentUpon>NotityPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Input\TextBoxPrompt.cs" />
+    <Compile Include="Input\TextInfoReferBox.xaml.cs">
+      <DependentUpon>TextInfoReferBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Input\TextInfoComBox.xaml.cs">
+      <DependentUpon>TextInfoComBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Input\TextInfoBox.xaml.cs">
       <DependentUpon>TextInfoBox.xaml</DependentUpon>
     </Compile>
@@ -235,6 +241,14 @@
     <Page Include="ElementPanel\NotityPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Input\TextInfoReferBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Input\TextInfoComBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Input\TextInfoBox.xaml">
       <SubType>Designer</SubType>

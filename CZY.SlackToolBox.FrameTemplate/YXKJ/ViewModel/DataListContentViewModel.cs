@@ -1,8 +1,10 @@
-﻿using CZY.SlackToolBox.FrameTemplate.YXKJ.Core;
+﻿using CZY.SlackToolBox.FastExtend;
+using CZY.SlackToolBox.FrameTemplate.YXKJ.Core;
 using CZY.SlackToolBox.FrameTemplate.YXKJ.View;
 using CZY.SlackToolBox.LuckyControl;
 using CZY.SlackToolBox.LuckyControl.MessageNotify;
 using CZY.SlackToolBox.LuckyControl.MultiData;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
@@ -107,13 +109,26 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
         //添加数据
         void ExecuteAddDataCommand(object obj)
         {
-            //EditWindow window = new EditWindow(new BaseTopics());
-            //bool? state = window.ShowDialog();
-            //if (state == true)
-            //{
-            //    SysTipWindow.Show("系统提示", "数据保存成功");
-            //    RefreshData();
-            //}
+            DataEditContent dx = new DataEditContent();
+            //要新建的实体
+            DataEditContentViewModel dataEdit = new DataEditContentViewModel(obj);
+        
+            dx.DataContext = dataEdit;
+
+            DataEditContent dataEditContent = dx;
+
+            //弹窗修改
+            ContentBoxWin win = ContentBoxWin.GetContentBoxWin(dataEditContent, "添加信息", ContentBoxWin.ContentBoxWinState.YesNo);
+            bool? state = win.ShowDialog();
+            if (state == true)
+            {
+                //dataEdit.DataV 为编辑后的信息
+
+                //调用修改数据的请求  
+
+                MainWindowManager.SetMessageTip("信息添加完成");
+                RefreshData();
+            }
         }
 
 
@@ -131,16 +146,34 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
             //    MainWindowManager.SetMessageTip(  "无法找到要修改的数据，请刷新数据...", LuckyControl.ElementPanel.TipPanel.TipPanelState.Warn);
             //    return;
             //}  
-        
-            DataEditContent dataEditContent = new DataEditContent(new DataEditContentViewModel(obj));
+            DataEditContent dx=new DataEditContent();
+            DataEditContentViewModel dataEdit=new DataEditContentViewModel(obj); 
+            dataEdit.BaseData = new
+            {
+                Sex = new List<Sex>() {
+                new Sex() { Id=0, Text="女" },
+                new Sex() { Id=1, Text="男" },
+                new Sex() { Id=2, Text="未知" },
+            }
+            };
+            dx.DataContext = dataEdit;
+            DataEditContent dataEditContent = dx;
+
+            //
             //滑动修改框修改
 
-
+            //设置弹窗宽高
+            ContentBoxWin.WinWidth = 720;
+            ContentBoxWin.WinHeight = 600;
             //弹窗修改
-            ContentBoxWin win = ContentBoxWin.GetContentBoxWin(dataEditContent, "信息修改",ContentBoxWin.ContentBoxWinState.YesNo);
+            ContentBoxWin win = ContentBoxWin.GetContentBoxWin(dataEditContent, "修改信息", ContentBoxWin.ContentBoxWinState.YesNo);
             bool? state = win.ShowDialog();
             if (state == true)
             {
+                //dataEdit.DataV 为编辑后的信息
+
+                //调用修改数据的请求  
+
                 MainWindowManager.SetMessageTip("信息修改成功");
                 RefreshData();
             }
@@ -211,7 +244,8 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
             {
                 for (int i = 0; i < 10; i++)
                 {
-                    list.Add(new {
+                    list.Add(new TempData
+                    {
                         Id=i,
                         Question=i.ToString(),
                         Answer=i.ToString(),
@@ -250,5 +284,19 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
             LoadingVisibility = Visibility.Collapsed;
         }
         #endregion
+    }
+    [Serializable]
+    public class Sex
+    {
+        public int Id { get; set; }
+        public string Text { get; set; } 
+    }
+    [Serializable]
+    public class TempData
+    {
+        public int Id { get; set; }
+        public string Answer { get; set; }
+        public string Question { get; set; }
+        public string Remark { get; set; } 
     }
 }

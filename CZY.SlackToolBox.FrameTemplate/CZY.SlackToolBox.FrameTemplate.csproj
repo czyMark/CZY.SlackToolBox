@@ -63,6 +63,9 @@
     <Compile Include="YXKJ\ViewModel\DataEditContentViewModel.cs" />
     <Compile Include="YXKJ\ViewModel\HomeContentViewModel.cs" />
     <Compile Include="YXKJ\ViewModel\DataListContentViewModel.cs" />
+    <Compile Include="YXKJ\View\ReferContent.xaml.cs">
+      <DependentUpon>ReferContent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="YXKJ\View\DataEditContent.xaml.cs">
       <DependentUpon>DataEditContent.xaml</DependentUpon>
     </Compile>
@@ -90,6 +93,10 @@
     <Page Include="YXKJ\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="YXKJ\View\ReferContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="YXKJ\View\DataEditContent.xaml">
       <SubType>Designer</SubType>
