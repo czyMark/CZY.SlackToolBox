@@ -90,6 +90,7 @@
             <Border   Grid.Row="1"   BorderThickness="0,2,0,0" BorderBrush="#FF5BA8FF">
                 <DataGrid AutoGenerateColumns="False" CanUserAddRows="False"  FontSize="14" IsReadOnly="True" SelectionMode="Single"
                       DataContext="{Binding GridPagingService}" FrozenColumnCount="1"
+                         
                       ItemsSource="{Binding Items}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id}" Visibility="Collapsed" Header="用户id" ElementStyle="{StaticResource DataGridTextCenter}"/>

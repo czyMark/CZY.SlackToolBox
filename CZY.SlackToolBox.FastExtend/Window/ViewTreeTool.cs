@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace CZY.SlackToolBox.FastExtend
@@ -93,6 +94,32 @@ namespace CZY.SlackToolBox.FastExtend
                 childList.AddRange(GetChildObjects<T>(child, ""));
             }
             return childList;
+        }
+
+
+        /// <summary>
+        ///获取checkBox并设置选中
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="isChecked"></param>
+        public static void SetVisualChildCheckBox(DependencyObject parent, bool isChecked)
+        {
+            int numVisuals = VisualTreeHelper.GetChildrenCount(parent);
+            for (int i = 0; i < numVisuals; i++)
+            {
+                DependencyObject v = (DependencyObject)VisualTreeHelper.GetChild(parent, i);
+                CheckBox child = v as CheckBox;
+
+                if (child == null)
+                {
+                    SetVisualChildCheckBox(v, isChecked);
+                }
+                else
+                {
+                    child.IsChecked = isChecked;
+                    return;
+                }
+            }
         }
     }
 }

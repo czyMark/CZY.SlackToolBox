@@ -26,8 +26,11 @@
                                 TextValueWidth="500"
                                 TextValue="{Binding Path=DataV.Question,Mode=TwoWay}"
                                 Command="{Binding XXReferCommand}"
-                                >
-
-        </input:TextInfoReferBox> 
+                               />
+        <input:TextInfoReferBox Margin="8" TextDescription="部门" 
+                                TextValueWidth="500"
+                                TextValue="{Binding Path=DataV.Question,Mode=TwoWay}"
+                                Command="{Binding MultiReferCommand}"
+                               />
     </WrapPanel>
 </UserControl>

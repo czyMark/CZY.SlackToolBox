@@ -17,6 +17,7 @@ namespace CZY.SlackToolBox.LuckyControl.MultiData
             PrevPage = new RelayCommand(CMD_PrevPage);
             NextPage = new RelayCommand(CMD_NextPage);
             LastPage = new RelayCommand(CMD_LastPage);
+            CheckCommand = new RelayCommand(CheckCommandFun);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -52,6 +53,49 @@ namespace CZY.SlackToolBox.LuckyControl.MultiData
             }
         }
 
+        //选中的数据
+        public object SelectedItem { get; set; }
+        
+        /// <summary>
+        /// 多选复选框checked
+        /// </summary>
+        public RelayCommand CheckCommand { get; private set; }
+
+        //多选复选框checked
+        void CheckCommandFun(object obj)
+        { 
+            //如果带有复选框 就是多选。 默认是null
+            List<object> list = SelectedItem as List<object>;
+            if (list == null)
+            {
+                list = new List<object>();
+                list.Add(obj);
+                SelectedItem = list;
+                return;
+            }
+            //如果列表里面有就移除
+            bool add = true;
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i].Equals(obj))
+                {
+                    add = false;
+                    list.RemoveAt(i);
+                    i--;
+                }
+            }
+            //选中就添加
+            if (add)
+            {
+                list.Add(obj);
+            }
+            SelectedItem = list;
+        }
+
+
+        /// <summary>
+        /// 选中页选择
+        /// </summary>
         public List<string> SelectList { get; set; }
 
         public int Total { get; set; }
@@ -123,6 +167,7 @@ namespace CZY.SlackToolBox.LuckyControl.MultiData
             RaisProperyChanged("Total");
         }
         public List<int> SplitCount { get; set; } = new List<int>() { 5, 10, 20, 50, 100, 200, 500, 1000 };
+
         private int _CurrentSplit = 100;
 
         public int CurrentSplit

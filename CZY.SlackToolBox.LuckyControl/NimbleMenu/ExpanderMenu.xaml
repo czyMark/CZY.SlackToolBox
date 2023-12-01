@@ -216,6 +216,9 @@
                                     <Image 
                                         Source="{Binding Icon}" Stretch="Fill"
                                         Grid.Column="1" HorizontalAlignment="Left"  Width="16" Height="16"></Image>
+                                    
+                                    
+                                    
                                     <ContentPresenter Grid.Column="2"
                                               HorizontalAlignment="Left"
                                               Margin="4,0,0,0" Content="{Binding Text}"

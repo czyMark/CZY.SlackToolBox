@@ -8,8 +8,7 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.View
     /// ReferContent.xaml 的交互逻辑
     /// </summary>
     public partial class ReferContent : UserControl
-    {
-        public object SelectItem;
+    { 
         public ReferContent()
         {
             InitializeComponent();   

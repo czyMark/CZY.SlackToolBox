@@ -62,6 +62,7 @@
     <Compile Include="ElementPanel\NotityPanel.xaml.cs">
       <DependentUpon>NotityPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="IconResource\Icon.cs" />
     <Compile Include="Input\TextBoxPrompt.cs" />
     <Compile Include="Input\TextInfoReferBox.xaml.cs">
       <DependentUpon>TextInfoReferBox.xaml</DependentUpon>
@@ -242,6 +243,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Resource Include="IconResource\Icon\Setting.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="IconResource\Icon\Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
     <Page Include="Input\TextInfoReferBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -314,7 +323,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="PathGeometries\Glyphicons.xaml">
+    <Page Include="IconResource\Glyphicons.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

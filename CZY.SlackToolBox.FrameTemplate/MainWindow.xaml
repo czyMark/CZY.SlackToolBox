@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CZY.SlackToolBox.FrameTemplate" 
+        xmlns:lcon="clr-namespace:CZY.SlackToolBox.LuckyControl.IconResource;assembly=CZY.SlackToolBox.LuckyControl"
         mc:Ignorable="d" WindowStyle="SingleBorderWindow" Width="1920" Height="1080"
         Title="MainWindow" WindowState="Maximized">
     <Window.Resources>
@@ -34,9 +35,10 @@
     <Grid  >
         <Grid x:Name="GridBackground" Background="#55313131" Opacity="0">
            
+                    
         </Grid>
-        <Button x:Name="ButtonOpen" Content="你好" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0">
-            <!--<materialDesign:PackIcon Kind="Menu" Foreground="#FF313131"/>-->
+        <Button x:Name="ButtonOpen"  HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0">
+            <lcon:Icon IconName="Setting" Foreground="Black" Width="32" Height="32"></lcon:Icon>
         </Button>
         <!--左侧抽屉菜单，默认在显示窗体以外，点击菜单图标再经过简单的动画呈现出来-->
         <Grid x:Name="GridMenu" Width="150" HorizontalAlignment="Left" Margin="-150 0 0 0" Background="White" RenderTransformOrigin="0.5,0.5">
@@ -53,7 +55,7 @@
                 <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" FontSize="18">
                     <ListViewItem Height="45" Padding="0">
                         <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <!--<materialDesign:PackIcon Kind="Recycle" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>-->
+                            <lcon:Icon IconName="Setting"  Foreground="Black" Height="50" Width="50"></lcon:Icon>
                             <TextBlock Text="工具" Margin="10"  />
                         </StackPanel>
                     </ListViewItem>

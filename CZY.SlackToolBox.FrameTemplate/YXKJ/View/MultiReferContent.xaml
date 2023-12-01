@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="CZY.SlackToolBox.FrameTemplate.YXKJ.View.MultiReferContent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CZY.SlackToolBox.FrameTemplate.YXKJ.View"
+             mc:Ignorable="d"   
+             xmlns:input="clr-namespace:CZY.SlackToolBox.LuckyControl.Input;assembly=CZY.SlackToolBox.LuckyControl"
+    xmlns:loading="clr-namespace:CZY.SlackToolBox.AnimationBank.Loading;assembly=CZY.SlackToolBox.AnimationBank"
+              >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="CheckBoxDataTemplate">
+                <Grid x:Name="Grid"  HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <CheckBox VerticalAlignment="Center"  Uid="{Binding Id}"
+                              Command= "{Binding Path=DataContext.CheckCommand,RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                              CommandParameter= "{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}, Path=SelectedItem}" 
+                              HorizontalAlignment="Center" 
+                              ></CheckBox>
+                </Grid>
+                <DataTemplate.Triggers>
+                    <Trigger Property="Selector.IsSelected" Value="True">
+                        <Setter  TargetName="Grid" Property="Background" Value="White"></Setter>
+                    </Trigger>
+                </DataTemplate.Triggers>
+            </DataTemplate>
+ 
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--#region 搜索框 -->
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Background="White">
+            <input:TextInfoBox
+                TextValueWidth="420"
+                Margin="8" TextDescription="检索条件"  TextValue="{Binding Path=SearchText,Mode=TwoWay}" TextPrompt="请输入"  IsImportance="False">
+            </input:TextInfoBox>
+            <Button Margin="4,0" Content="查询"   Command="{Binding RefreshDataCommand}" >
+            </Button>
+        </StackPanel>
+        <!--#endregion-->
+
+        <!--#region 数据列表 -->
+        <!--VirtualizingStackPanel.IsVirtualizing 解决滑动滚动条时将复选框取消选中的情况-->
+        <Border   Grid.Row="1"   BorderThickness="0,2,0,0" BorderBrush="#FF5BA8FF" >
+            <DataGrid AutoGenerateColumns="False" CanUserAddRows="False"  FontSize="14" IsReadOnly="True" 
+                      VirtualizingStackPanel.IsVirtualizing="False"  
+                      x:Name="ReferDataGrid"  SelectionMode="Single"  
+                      DataContext="{Binding GridPagingService}"   Margin="0,0,-10,0" 
+                      ItemsSource="{Binding Items}">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="选择" >
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" >
+                                    <CheckBox Click="CheckBox_Click" 
+                                              VerticalAlignment="Center" ></CheckBox>
+                                    <TextBlock Text="选择"   Margin="4,0" VerticalAlignment="Center"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Setter Property="ContentTemplate" Value="{StaticResource  CheckBoxDataTemplate}"/>
+                                <EventSetter Event="Loaded" Handler="CellLoaded" />
+                            </Style>
+                        </DataGridTemplateColumn.CellStyle>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Binding="{Binding Id}" Visibility="Collapsed" Header="用户id" ElementStyle="{StaticResource DataGridTextCenter}"/>
+                    <DataGridTextColumn Width="1*" Binding="{Binding Question}" Header="问题" ElementStyle="{StaticResource DataGridTextCenter}"/>
+                    <DataGridTextColumn Width="1*" Binding="{Binding Answer}" Header="答案" ElementStyle="{StaticResource DataGridTextCenter}"/>
+               
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+        <loading:LoadingLeft2Right Grid.Row="0"  VerticalAlignment="Top" Margin="0,-40,0,0"
+                                   Visibility="{Binding LoadingVisibility}" 
+                                   Background="Transparent"/>
+        <!--#endregion-->
+    </Grid>
+</UserControl>

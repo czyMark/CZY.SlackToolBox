@@ -16,7 +16,7 @@ namespace  CZY.SlackToolBox.FastExtend
         /// </summary>
         /// <param name="imgPath">绝对路径</param>
         /// <returns></returns>
-        public static BitmapImage GetLocalImage(string imgPath)
+        public static BitmapImage GetLocalImage(this string imgPath)
         {
             // Read byte[] from png file
             BinaryReader binReader = new BinaryReader(File.Open(imgPath, FileMode.Open));
@@ -34,23 +34,6 @@ namespace  CZY.SlackToolBox.FastExtend
             return bitmap;
         }
 
-        /// <summary>
-        /// 将BitmapImage 转换为 Bitmap
-        /// </summary>
-        /// <param name="bitmAPImage"></param>
-        /// <returns></returns>
-        public static Bitmap ToBitmap(this BitmapImage bitmAPImage)
-        {
-            // BitmAPImage bitmAPImage = new BitmAPImage(new Uri("../Images/test.png", UriKind.relative));
-            using (MemoryStream outStream = new MemoryStream())
-            {
-                BitmapEncoder enc = new BmpBitmapEncoder();
-                enc.Frames.Add(BitmapFrame.Create(bitmAPImage));
-                enc.Save(outStream);
-                System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap(outStream);
-                return new Bitmap(bitmap);
-            }
-        }
 
 
         [DllImport("gdi32.dll", SetLastError = true)]
@@ -75,6 +58,27 @@ namespace  CZY.SlackToolBox.FastExtend
                 return null;
             }
         }
+
+
+
+
+        /// <summary>
+        /// 将BitmapImage 转换为 Bitmap
+        /// </summary>
+        /// <param name="bitmAPImage"></param>
+        /// <returns></returns>
+        public static Bitmap ToBitmap(this BitmapImage bitmAPImage)
+        {
+            // BitmAPImage bitmAPImage = new BitmAPImage(new Uri("../Images/test.png", UriKind.relative));
+            using (MemoryStream outStream = new MemoryStream())
+            {
+                BitmapEncoder enc = new BmpBitmapEncoder();
+                enc.Frames.Add(BitmapFrame.Create(bitmAPImage));
+                enc.Save(outStream);
+                System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap(outStream);
+                return new Bitmap(bitmap);
+            }
+        }
         /// <summary>
         /// 将imageSource 转换为 Bitmap
         /// </summary>
@@ -90,6 +94,7 @@ namespace  CZY.SlackToolBox.FastExtend
             bmp.UnlockBits(data);
             return bmp;
         }
+
         /// <summary>
         /// 将Bitmap 转换为 BitmapImage
         /// </summary>

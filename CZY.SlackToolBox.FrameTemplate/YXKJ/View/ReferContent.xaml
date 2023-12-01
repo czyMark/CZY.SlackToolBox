@@ -6,22 +6,41 @@
              xmlns:local="clr-namespace:CZY.SlackToolBox.FrameTemplate.YXKJ.View"
              mc:Ignorable="d"   
              xmlns:input="clr-namespace:CZY.SlackToolBox.LuckyControl.Input;assembly=CZY.SlackToolBox.LuckyControl"
+    xmlns:loading="clr-namespace:CZY.SlackToolBox.AnimationBank.Loading;assembly=CZY.SlackToolBox.AnimationBank"
               >
-    <Grid>
-        <!--<Grid.Background>
-            <ImageBrush ImageSource="/YXKJ/images/引用.png"></ImageBrush>
-        </Grid.Background>-->
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
         <!--#region 搜索框 -->
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" >
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Background="White">
             <input:TextInfoBox
                 TextValueWidth="420"
-                Margin="8" TextDescription="姓名"  TextValue="{Binding Path=DataV.Question,Mode=TwoWay}" TextPrompt="请输入"  IsImportance="True">
+                Margin="8" TextDescription="检索条件"  TextValue="{Binding Path=SearchText,Mode=TwoWay}" TextPrompt="请输入"  IsImportance="False">
             </input:TextInfoBox>
-            <Button>搜索</Button>
+            <Button Margin="4,0" Content="查询"   Command="{Binding RefreshDataCommand}" >
+            </Button>
         </StackPanel>
         <!--#endregion-->
+
         <!--#region 数据列表 -->
-        
+
+        <Border   Grid.Row="1"   BorderThickness="0,2,0,0" BorderBrush="#FF5BA8FF" >
+            <DataGrid AutoGenerateColumns="False" CanUserAddRows="False"  FontSize="14" IsReadOnly="True" SelectionMode="Single"
+                      DataContext="{Binding GridPagingService}" FrozenColumnCount="1" Margin="0,0,-10,0"
+                      SelectedItem="{Binding SelectedItem,Mode=TwoWay}"
+                      ItemsSource="{Binding Items}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Id}" Visibility="Collapsed" Header="用户id" ElementStyle="{StaticResource DataGridTextCenter}"/>
+                    <DataGridTextColumn Width="1*" Binding="{Binding Question}" Header="问题" ElementStyle="{StaticResource DataGridTextCenter}"/>
+                    <DataGridTextColumn Width="1*" Binding="{Binding Answer}" Header="答案" ElementStyle="{StaticResource DataGridTextCenter}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+        <loading:LoadingLeft2Right Grid.Row="0"  VerticalAlignment="Top" Margin="0,-40,0,0"
+                                   Visibility="{Binding LoadingVisibility}" 
+                                   Background="Transparent"/>
         <!--#endregion-->
     </Grid>
 </UserControl>

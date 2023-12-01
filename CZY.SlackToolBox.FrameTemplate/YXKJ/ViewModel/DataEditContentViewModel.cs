@@ -41,8 +41,8 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
             }
         }
         /// <summary>
-         /// 用来渲染界面的基础数据 例如：性别 xx类型
-         /// </summary>
+        /// 用来渲染界面的基础数据 例如：性别 xx类型
+        /// </summary>
         private object baseData;
         public object BaseData
         {
@@ -69,11 +69,24 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
         public RelayCommand XXReferCommand { get; private set; }
 
         //打开XX引用窗口
-        void XXReferCommandCommand(object obj)
+        void XXReferCommandFun(object obj)
         {
             //打开引用窗口
             ReferContent dx = new ReferContent();
-
+            var list = new List<object>();
+            for (int i = 0; i < 10; i++)
+            {
+                list.Add(new TempData
+                {
+                    Id = i,
+                    Question = i.ToString(),
+                    Answer = i.ToString(),
+                    Remark = "测试数据",
+                });
+            }
+            ReferContentViewModel referContent = new ReferContentViewModel(list);
+            referContent.SelectedItem = list[1];
+            dx.DataContext = referContent;
             //设置弹窗宽高
             ContentBoxWin.WinWidth = 600;
             ContentBoxWin.WinHeight = 500;
@@ -85,10 +98,59 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
                 //依据选中项修改DataV中的xx属性
                 //dx.SelectItem
             }
+        }
+
+
+        /// <summary>
+        /// 打开XX引用窗口
+        /// </summary>
+        public RelayCommand MultiReferCommand { get; private set; }
+
+        //打开XX引用窗口
+        void MultiReferCommandFun(object obj)
+        {
+            //打开引用窗口
+            MultiReferContent dx = new MultiReferContent();
+            var list = new List<object>();
+            var slist = new List<object>();
+            for (int i = 0; i < 10; i++)
+            {
+
+                TempData t = new TempData
+                {
+                    Id = i,
+                    Question = i.ToString(),
+                    Answer = i.ToString(),
+                    Remark = "测试数据",
+                };
+                list.Add(t);
+                if (i % 3 == 0)
+                    slist.Add(t);
+
+
+            }
+            ReferContentViewModel referContent = new ReferContentViewModel(list);
+            referContent.GridPagingService.CurrentSplit = int.MaxValue;
+            referContent.SelectedItem = slist;
+
+            dx.DataContext = referContent;
+            //设置弹窗宽高
+            ContentBoxWin.WinWidth = 600;
+            ContentBoxWin.WinHeight = 500;
+            //弹窗修改
+            ContentBoxWin win = ContentBoxWin.GetContentBoxWin(dx, "引用", ContentBoxWin.ContentBoxWinState.Yes);
+
+            bool? state = win.ShowDialog();
+            if (state == true)
+            {
+                //依据选中项修改DataV中的xx属性
+                //dx.SelectItem
+            }
+        }
 
 
 
-        } 
+
         #endregion
         /// <summary>
         /// 初始化
@@ -99,7 +161,8 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
             ////避免修改时直接修改界面导致操作上的bug，使用深拷贝复制对象。在操作
             DataV = editData.DeepCopyByBinary();
 
-            XXReferCommand = new RelayCommand(XXReferCommandCommand);
+            XXReferCommand = new RelayCommand(XXReferCommandFun);
+            MultiReferCommand = new RelayCommand(MultiReferCommandFun);
 
         }
     }

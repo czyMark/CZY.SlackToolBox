@@ -122,7 +122,6 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ
                 PersonContentPanel.ShowMe();
             else
                 PersonContentPanel.HideMe();
-
             e.Handled = true;
         }
 
