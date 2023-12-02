@@ -18,55 +18,18 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
     public partial class MainWindow : Window
-    {
-        public List<ExpanderBar> MenuList { get; set; }
-        public UserControl PersonFunction { get; set; }
+    {  
         public MainWindow()
         {
             InitializeComponent();
             //默认显示主页面
-            StackPanel_MouseDown(null, null);
-            //加载菜单
-            MenuList = new List<ExpanderBar>();
-            int j = 0;
-            for (int i = 0; i < 5; i++)
-            {
-                var expanderBar = new ExpanderBar()
-                {
-                    ID = "1",
-                    Arrow = Visibility.Visible,
-                    Text = "测试页面" + i,
-                    Icon = new BitmapImage(new Uri("pack://application:,,,/YXKJ/images/二级筛选.png")),
-                    Height = 40,
-                    SelectedColor = new SolidColorBrush(Colors.Transparent),
-                    NavPath = "" + j++,
-                    ExpanderSub = new List<ExpanderSub>()
-                 {
-                  new ExpanderSub(){
-                  ID = "2",
-                   Text ="首页0"+(i),
-                    Height =40,
-                    SelectedColor=new SolidColorBrush(("#FF007BFF").HexToColor()),
-                    NavPath =""+j++
-                  },
-                    new ExpanderSub(){
-                  ID = "2",
-                   Text ="首页0"+(i+1),
-                    Height =40,
-                    SelectedColor=new SolidColorBrush(("#FF007BFF").HexToColor()),
-                    NavPath =""+j++
-                  }
-                 }
-                };
-                MenuList.Add(expanderBar);
-            }
-
+            StackPanel_MouseDown(null, null);  
 
             PersonalCenter personalCenter = new PersonalCenter();
             personalCenter.selectedFuntion += PersonalCenter_selectedFuntion;
-            PersonFunction = personalCenter;
+            PersonContentPanel.TipContent = personalCenter;
 
-            this.DataContext = this;
+            this.DataContext = new MainWindowViewModel();
 
         }
         /// <summary>
@@ -140,7 +103,11 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ
                     break;
                 case PersonalCenter.PersonalFunction.ExitLogin:
                     //退出用户登录
-                    this.Close();
+                    break;
+
+                case PersonalCenter.PersonalFunction.ExitSys:
+                    //系统退出
+                    Application.Current.Shutdown();
                     break;
             }
         }
@@ -156,6 +123,7 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ
             Assembly assembly = Assembly.Load("CZY.SlackToolBox.FrameTemplate");
             Type type = assembly.GetType("CZY.SlackToolBox.FrameTemplate.YXKJ.View.HomeContent");
             MainContentControl.Content = Activator.CreateInstance(type);
+            navTitleLabel.Content = "首页";
         }
     }
 }

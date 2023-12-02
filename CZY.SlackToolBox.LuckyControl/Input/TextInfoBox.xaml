@@ -13,8 +13,8 @@
                      HorizontalAlignment="Center" Padding="10,12" Height="42" UndoLimit="1"  
                  x:Name="InputValue"        
                   Text="{Binding TextValue,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                         local:TextBoxPrompt.Prompt="{Binding TextPrompt}"
-                         local:TextBoxPrompt.IsPromptEnabled="True"
+                         local:InputAttach.Prompt="{Binding TextPrompt}"
+                         local:InputAttach.IsTextBox="True"
                          >
         </TextBox>
     </StackPanel>

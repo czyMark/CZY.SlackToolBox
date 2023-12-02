@@ -6,7 +6,10 @@
         xmlns:LuckyMenu="clr-namespace:CZY.SlackToolBox.LuckyControl.NimbleMenu;assembly=CZY.SlackToolBox.LuckyControl" 
         xmlns:LuckyPanel="clr-namespace:CZY.SlackToolBox.LuckyControl.ElementPanel;assembly=CZY.SlackToolBox.LuckyControl" 
         xmlns:LuckyNotify="clr-namespace:CZY.SlackToolBox.LuckyControl.MessageNotify;assembly=CZY.SlackToolBox.LuckyControl" 
-        xmlns:input="clr-namespace:CZY.SlackToolBox.LuckyControl.Input;assembly=CZY.SlackToolBox.LuckyControl" 
+        xmlns:i="clr-namespace:CZY.SlackToolBox.LuckyControl;assembly=CZY.SlackToolBox.LuckyControl" 
+        xmlns:icon="clr-namespace:CZY.SlackToolBox.LuckyControl.IconResource;assembly=CZY.SlackToolBox.LuckyControl" 
+        
+        xmlns:cache="clr-namespace:CZY.SlackToolBox.FrameTemplate.YXKJ.Core"
         mc:Ignorable="d" AllowsTransparency="True"  MouseLeftButtonDown="Window_MouseLeftButtonDown"
           Width="1920" Height="1080" WindowStyle="None"
         Title="MainWindow" WindowState="Maximized">
@@ -29,25 +32,25 @@
         <!--#region 标题栏 -->
         <Border Grid.ColumnSpan="2" Background="#FF2F5A86" BorderBrush="#FFE2E2E2" />
         <StackPanel Orientation="Horizontal" MouseDown="StackPanel_MouseDown"  Cursor="Hand">
-            <Image Margin="16,0,0,0" Width="32" Stretch="Fill" Height="32" Source="pack://application:,,,/CZY.SlackToolBox.FrameTemplate;component/YXKJ/images/首页.png">
-                <Image.Effect>
+            <icon:IconFont  Margin="16,0,0,0" Foreground="#FF1A6ABF" IconName="Product" >
+                <icon:IconFont.Effect>
                     <DropShadowEffect ShadowDepth="2" BlurRadius="3"></DropShadowEffect>
-                </Image.Effect>
-            </Image>
-            <Label FontSize="21" Margin="9" Foreground="White" VerticalAlignment="Center" Content="项目全生命周期管理">
+                </icon:IconFont.Effect>
+            </icon:IconFont> 
+            <Label FontSize="21" Margin="9" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" Content="项目全生命周期管理">
                 <Label.Effect>
                     <DropShadowEffect ShadowDepth="2" BlurRadius="3"></DropShadowEffect>
                 </Label.Effect>
             </Label>
         </StackPanel>
         <Grid Grid.Column="1">
-            <Label x:Name="navTitleLabel" Foreground="White" FontSize="18" Content="首页" VerticalAlignment="Center" Margin="22,0,0,2">
+            <Label x:Name="navTitleLabel" Foreground="White" FontSize="18" Content="首页" VerticalAlignment="Center" Margin="10,0,0,2">
                 <Label.Effect>
                     <DropShadowEffect   ShadowDepth="1" BlurRadius="2"></DropShadowEffect>
                 </Label.Effect>
             </Label>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0">
-                <Label x:Name="LoginNameLabel" Padding="20,0" Foreground="White" FontSize="16" Content="管理员" VerticalAlignment="Center" Margin="22,0,0,2">
+                <Label x:Name="LoginNameLabel" Padding="20,0" Foreground="White" FontSize="16" Content="{x:Static cache:UserCache.AccountName}"   VerticalAlignment="Center" Margin="22,0,0,2">
                     <Label.Effect>
                         <DropShadowEffect   ShadowDepth="1" BlurRadius="2"></DropShadowEffect>
                     </Label.Effect>
@@ -55,7 +58,7 @@
                 <Image  
                     MouseLeftButtonDown="PersonalCenter_ButtonDown"
                     MouseRightButtonDown="PersonalCenter_ButtonDown"  Cursor="Hand"
-                       Width="32" Stretch="Fill" Height="32" Source="pack://application:,,,/CZY.SlackToolBox.FrameTemplate;component/YXKJ/images/首页.png">
+                       Width="32" Stretch="Fill" Height="32" Source="pack://application:,,,/CZY.SlackToolBox.FrameTemplate;component/YXKJ/images/Photo.png">
                     <Image.Effect>
                         <DropShadowEffect ShadowDepth="2" BlurRadius="3"></DropShadowEffect>
                     </Image.Effect>
@@ -63,6 +66,11 @@
                         <EllipseGeometry Center="16,16" RadiusX="16" RadiusY="16"></EllipseGeometry>
                     </Image.Clip>
                 </Image>
+
+
+                <icon:IconFont IconName="Exit" Cursor="Hand" i:CommandUtil.Command="{x:Static cache:UserCache.Shutdown}" Margin="10" Foreground="White" >
+     
+                </icon:IconFont>
             </StackPanel>
         </Grid>
         <!--#endregion-->
@@ -92,10 +100,8 @@
             <ContentControl x:Name="MainContentControl"  />  
         </Grid>
         <!--#endregion--> 
-        <LuckyPanel:TipContentPanel x:Name="PersonContentPanel"  Visibility="Collapsed"
-             TipArrowState="Top"  CustomBackground="#FF343A40" TipState="Custom"  
-            TipContent="{Binding PersonFunction}"
-                                    Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,50">
+        <LuckyPanel:TipContentPanel x:Name="PersonContentPanel"  Visibility="Collapsed"  TipArrowState="Top"  CustomBackground="#FF343A40" TipState="Custom"  
+                                    Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,46,44,0">
 
         </LuckyPanel:TipContentPanel>
 

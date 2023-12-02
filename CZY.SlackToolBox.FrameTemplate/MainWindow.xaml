@@ -37,8 +37,8 @@
            
                     
         </Grid>
-        <Button x:Name="ButtonOpen"  HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0">
-            <lcon:Icon IconName="Setting" Foreground="Black" Width="32" Height="32"></lcon:Icon>
+        <Button x:Name="ButtonOpen"  HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0">
+            <lcon:IconFont IconName="Menu" Foreground="#13227a" Width="32" Height="32"></lcon:IconFont>
         </Button>
         <!--左侧抽屉菜单，默认在显示窗体以外，点击菜单图标再经过简单的动画呈现出来-->
         <Grid x:Name="GridMenu" Width="150" HorizontalAlignment="Left" Margin="-150 0 0 0" Background="White" RenderTransformOrigin="0.5,0.5">
@@ -55,7 +55,7 @@
                 <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" FontSize="18">
                     <ListViewItem Height="45" Padding="0">
                         <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <lcon:Icon IconName="Setting"  Foreground="Black" Height="50" Width="50"></lcon:Icon>
+                            <lcon:IconFont IconName="Setting"  Foreground="Black" Height="32" Width="32"></lcon:IconFont>
                             <TextBlock Text="工具" Margin="10"  />
                         </StackPanel>
                     </ListViewItem>
@@ -91,8 +91,8 @@
                     </ListViewItem>
                 </ListView>
             </StackPanel>
-            <Button x:Name="ButtonClose" Content="好你" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{x:Null}" Foreground="#CCC" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0">
-                <!--<materialDesign:PackIcon Kind="Close"/>-->
+            <Button x:Name="ButtonClose"  HorizontalAlignment="Right" VerticalAlignment="Top" Background="{x:Null}" Foreground="#CCC" BorderBrush="{x:Null}"  Padding="0">
+                <lcon:IconFont IconName="Menu" Foreground="#13227a" Width="32" Height="32"></lcon:IconFont>
             </Button>
         </Grid>
 

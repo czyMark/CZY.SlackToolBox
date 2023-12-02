@@ -5,25 +5,40 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace CZY.SlackToolBox.LuckyControl.Input
 {
     /// <summary>
-    /// 密码框
+    /// TextPasswordBox.xaml 的交互逻辑
     /// </summary>
-    public static class PWDBox
+    public partial class TextPasswordBox : UserControl
     {
+        public TextPasswordBox()
+        {
+            InitializeComponent(); 
+        }
+
+        #region 通知绑定数据源更新密码
+
         public static readonly DependencyProperty PasswordProperty =
-            DependencyProperty.RegisterAttached("Password",
-            typeof(string), typeof(PWDBox),
-            new FrameworkPropertyMetadata(string.Empty, OnPasswordPropertyChanged));
+           DependencyProperty.RegisterAttached("Password",
+           typeof(string), typeof(TextPasswordBox),
+           new FrameworkPropertyMetadata(string.Empty, OnPasswordPropertyChanged));
+
         public static readonly DependencyProperty AttachProperty =
             DependencyProperty.RegisterAttached("Attach",
-            typeof(bool), typeof(PWDBox), new PropertyMetadata(false, Attach));
+            typeof(bool), typeof(TextPasswordBox), new PropertyMetadata(false, Attach));
+
         private static readonly DependencyProperty IsUpdatingProperty =
            DependencyProperty.RegisterAttached("IsUpdating", typeof(bool),
-           typeof(PWDBox));
-
+           typeof(TextPasswordBox));
 
         public static void SetAttach(DependencyObject dp, bool value)
         {
@@ -82,5 +97,7 @@ namespace CZY.SlackToolBox.LuckyControl.Input
             SetPassword(passwordBox, passwordBox.Password);
             SetIsUpdating(passwordBox, false);
         }
+        #endregion
+
     }
 }

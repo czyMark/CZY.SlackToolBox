@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Input;
 
 namespace CZY.SlackToolBox.LuckyControl
@@ -80,5 +81,46 @@ namespace CZY.SlackToolBox.LuckyControl
             }
         }
 
+    }
+
+    /// <summary>
+    /// 给不支持Command的控件提供基础的绑定
+    /// </summary>
+    public static class CommandUtil
+    {
+        public static readonly DependencyProperty CommandProperty =
+            DependencyProperty.RegisterAttached("Command", typeof(ICommand), typeof(CommandUtil), new PropertyMetadata(null, CommandChanged));
+
+        public static void SetCommand(UIElement element, ICommand value)
+        {
+            element.SetValue(CommandProperty, value);
+        }
+
+        public static ICommand GetCommand(UIElement element)
+        {
+            return (ICommand)element.GetValue(CommandProperty);
+        }
+
+
+
+        public static readonly DependencyProperty CommandParaProperty =
+            DependencyProperty.RegisterAttached("CommandPara", typeof(object), typeof(CommandUtil), new PropertyMetadata(null));
+
+        public static void SetCommandPara(UIElement element, object value)
+        {
+            element.SetValue(CommandParaProperty, value);
+        }
+
+        public static object GetCommandPara(UIElement element)
+        {
+            return (object)element.GetValue(CommandParaProperty);
+        }
+
+        private static void CommandChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            UIElement element = (UIElement)d;
+            ICommand command = (ICommand)e.NewValue;
+            element.MouseLeftButtonDown += (s, args) => command.Execute(GetCommandPara(element));
+        }
     }
 }

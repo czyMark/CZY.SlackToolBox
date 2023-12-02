@@ -53,7 +53,7 @@ namespace CZY.SlackToolBox.LuckyControl.Input
             if (e.NewValue != null)
             {
                 TextInfoBox up = d as TextInfoBox; 
-                TextBoxPrompt.CancelPrompt(up.InputValue);
+                InputAttach.CancelTextBoxPrompt(up.InputValue);
             }
         }
         #endregion
@@ -92,7 +92,7 @@ namespace CZY.SlackToolBox.LuckyControl.Input
             {
                 TextInfoBox up = d as TextInfoBox;
                 up.TextValue = (string)e.NewValue;
-                TextBoxPrompt.RefreshPrompt(up.InputValue, (string)e.NewValue);
+                InputAttach.RefreshTextBoxPrompt(up.InputValue, (string)e.NewValue);
             }
         }
         #endregion

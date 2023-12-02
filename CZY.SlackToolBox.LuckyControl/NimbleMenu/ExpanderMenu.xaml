@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CZY.SlackToolBox.LuckyControl.ElementPanel"
+             xmlns:icon="clr-namespace:CZY.SlackToolBox.LuckyControl.IconResource"
              mc:Ignorable="d"  x:Name="expanderPanel"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -213,12 +214,18 @@
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="19" />
                                     </Grid.ColumnDefinitions>
+
+                                    <icon:IconFont 
+                                           Grid.Column="1"
+                                        IconName="{Binding IconName}" IconPath="{Binding IconPath}" 
+                                        Width="16" Height="16" Foreground="White"
+                                               ></icon:IconFont>
                                     <Image 
                                         Source="{Binding Icon}" Stretch="Fill"
                                         Grid.Column="1" HorizontalAlignment="Left"  Width="16" Height="16"></Image>
-                                    
-                                    
-                                    
+
+
+
                                     <ContentPresenter Grid.Column="2"
                                               HorizontalAlignment="Left"
                                               Margin="4,0,0,0" Content="{Binding Text}"
@@ -451,7 +458,7 @@
                                                                       RecognizesAccessKey="True" VerticalAlignment="Center" HorizontalAlignment="Center" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                                                     </Border>
                                                 </Grid>
-                                              
+
                                                 <ControlTemplate.Triggers>
                                                     <Trigger Property="IsChecked" Value="True">
                                                         <Setter TargetName="tempBorder" Property="Background" Value="{Binding SelectedColor}"/>
@@ -471,7 +478,7 @@
                                                         <MultiTrigger.Setters>
                                                             <Setter Property="Background"     TargetName="tempBorder"  Value="#FF343A50" />
                                                         </MultiTrigger.Setters>
-                                                    </MultiTrigger> 
+                                                    </MultiTrigger>
                                                 </ControlTemplate.Triggers>
                                             </ControlTemplate>
                                         </Setter.Value>

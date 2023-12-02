@@ -62,8 +62,8 @@
     <Compile Include="ElementPanel\NotityPanel.xaml.cs">
       <DependentUpon>NotityPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="IconResource\Icon.cs" />
-    <Compile Include="Input\TextBoxPrompt.cs" />
+    <Compile Include="IconResource\IconFont.cs" />
+    <Compile Include="Input\InputAttach.cs" />
     <Compile Include="Input\TextInfoReferBox.xaml.cs">
       <DependentUpon>TextInfoReferBox.xaml</DependentUpon>
     </Compile>
@@ -72,6 +72,9 @@
     </Compile>
     <Compile Include="Input\TextInfoBox.xaml.cs">
       <DependentUpon>TextInfoBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Input\TextPasswordBox.xaml.cs">
+      <DependentUpon>TextPasswordBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="NimbleMenu\HideMenuControl.cs" />
     <Compile Include="MultiData\GridPagingModel.cs" />
@@ -112,7 +115,6 @@
     <Compile Include="Other\MonitorPoint.xaml.cs">
       <DependentUpon>MonitorPoint.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Input\PasswordBox.cs" />
     <Compile Include="Other\RingPoint.xaml.cs">
       <DependentUpon>RingPoint.xaml</DependentUpon>
     </Compile>
@@ -251,6 +253,34 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Resource>
+    <Resource Include="IconResource\Icon\Product.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+    <Resource Include="IconResource\Icon\PasswordEyeHiden.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="IconResource\Icon\PasswordEye.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="IconResource\Icon\Lock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="IconResource\Icon\User.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="IconResource\Icon\Password.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="IconResource\Icon\Exit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
     <Page Include="Input\TextInfoReferBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -260,6 +290,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Input\TextInfoBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Input\TextPasswordBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -505,7 +539,7 @@
       <Project>{2cbf0082-ec70-4101-bcab-489843be9661}</Project>
       <Name>CZY.SlackToolBox.AnimationBank</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CZY.SlackToolBox.Extend\CZY.SlackToolBox.FastExtend.csproj">
+    <ProjectReference Include="..\CZY.SlackToolBox.FastExtend\CZY.SlackToolBox.FastExtend.csproj">
       <Project>{6d9ad78a-67c5-4c15-90be-e630a7069a83}</Project>
       <Name>CZY.SlackToolBox.FastExtend</Name>
     </ProjectReference>

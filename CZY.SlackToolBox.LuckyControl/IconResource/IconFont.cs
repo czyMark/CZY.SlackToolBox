@@ -7,7 +7,7 @@ using System.Windows.Resources;
 
 namespace CZY.SlackToolBox.LuckyControl.IconResource
 {
-    public class Icon : Label
+    public class IconFont : Label
     {
         Dictionary<string, Viewbox> CacheIcon = new Dictionary<string, Viewbox>();
 
@@ -21,10 +21,10 @@ namespace CZY.SlackToolBox.LuckyControl.IconResource
         public static readonly DependencyProperty IconNameProperty = DependencyProperty.Register(
          "IconName",
          typeof(string),
-         typeof(Icon), new PropertyMetadata(IconNameChanged));
+         typeof(IconFont), new PropertyMetadata(IconNameChanged));
         private static void IconNameChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            (d as Icon).ReferenControls();
+            (d as IconFont).ReferenControls();
         }
 
 
@@ -37,10 +37,10 @@ namespace CZY.SlackToolBox.LuckyControl.IconResource
         public static readonly DependencyProperty IconPathProperty = DependencyProperty.Register(
          "IconPath",
          typeof(string),
-         typeof(Icon), new PropertyMetadata(IconPathChanged));
+         typeof(IconFont), new PropertyMetadata(IconPathChanged));
         private static void IconPathChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            //(d as Icon).ReferenControls();
+            //(d as IconFont).ReferenControls();
         }
 
         public override void OnApplyTemplate()
@@ -48,7 +48,7 @@ namespace CZY.SlackToolBox.LuckyControl.IconResource
             base.OnApplyTemplate();
             ReferenControls();
         }
-        public Icon()
+        public IconFont()
         {
             this.VerticalContentAlignment = VerticalAlignment.Center;
             this.HorizontalContentAlignment = HorizontalAlignment.Center;

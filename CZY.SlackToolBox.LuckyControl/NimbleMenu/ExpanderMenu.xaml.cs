@@ -19,6 +19,8 @@ namespace CZY.SlackToolBox.LuckyControl.NimbleMenu
             public string ID { get; set; }
             public string Text { get; set; }
             public double Height { get; set; }
+            public string IconPath { get; set; }
+            public string IconName { get; set; }
             public BitmapImage Icon { get; set; }
             public Visibility Arrow { get; set; }
             public string NavPath { get; set; }

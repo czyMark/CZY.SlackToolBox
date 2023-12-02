@@ -57,7 +57,13 @@
     </ApplicationDefinition>
     <Compile Include="YXKJ\Core\FramePage.cs" />
     <Compile Include="YXKJ\Core\MainWindowManager.cs" />
-    <Compile Include="YXKJ\MainWindow.xaml.cs">
+    <Compile Include="YXKJ\Core\UserCache.cs" />
+    <Compile Include="YXKJ\ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="YXKJ\ViewModel\LoginWindowViewModel.cs" />
+    <Compile Include="YXKJ\View\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="YXKJ\View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="YXKJ\ViewModel\DataEditContentViewModel.cs" />
@@ -94,7 +100,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="YXKJ\MainWindow.xaml">
+    <Page Include="YXKJ\View\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="YXKJ\View\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -163,7 +173,9 @@
       <Name>CZY.SlackToolBox.LuckyControl</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="YXKJ\images\Photo.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="YXKJ\images\二级筛选.png" />
     <Resource Include="YXKJ\images\列表.png" />
