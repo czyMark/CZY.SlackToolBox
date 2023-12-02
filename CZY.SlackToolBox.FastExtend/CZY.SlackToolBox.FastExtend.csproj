@@ -58,7 +58,6 @@
     <Compile Include="Restful\DeleteTool.cs" />
     <Compile Include="Restful\GetTool.cs" />
     <Compile Include="Restful\PostTool.cs" />
-    <Compile Include="Other\CMDCommandTool.cs" />
     <Compile Include="StringFile\AppConfigureTool.cs" />
     <Compile Include="TypeTool\ChartTool.cs" />
     <Compile Include="TypeTool\DeepCopyTool.cs" />
@@ -68,7 +67,7 @@
     <Compile Include="Security\SymmetricEncryption.cs" />
     <Compile Include="System\NetworkTool.cs" />
     <Compile Include="System\ProcessTool.cs" />
-    <Compile Include="Other\PageAdaptiveTool.cs" />
+    <Compile Include="Window\ContentAdaptive.cs" />
     <Compile Include="System\SetSystemTool.cs" />
     <Compile Include="TypeTool\ByteTool.cs" />
     <Compile Include="TypeTool\ColorTool.cs" />
@@ -103,6 +102,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Other\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

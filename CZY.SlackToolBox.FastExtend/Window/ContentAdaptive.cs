@@ -2,7 +2,7 @@
 
 namespace  CZY.SlackToolBox.FastExtend
 {
-	public class PageAdaptiveTool
+	public class ContentAdaptive
 	{
 		/// <summary>
 		/// 获取控件自适应缩放比

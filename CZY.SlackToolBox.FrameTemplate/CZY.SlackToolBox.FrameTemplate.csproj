@@ -88,7 +88,7 @@
     <Compile Include="YXKJ\View\DataListContent.xaml.cs">
       <DependentUpon>DataListContent.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow.xaml">
+    <Page Include="SettingWindow\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -96,7 +96,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="SettingWindow\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -181,6 +181,13 @@
     <Resource Include="YXKJ\images\列表.png" />
     <Resource Include="YXKJ\images\引用.png" />
     <Resource Include="YXKJ\images\首页.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="README.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Communication\" />
+    <Folder Include="DataReport\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
