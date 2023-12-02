@@ -39,7 +39,7 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BarCode\BarcodeScannerTool.cs" />
+    <Compile Include="Communication\Serial\SerialPortTool.cs" />
     <Compile Include="BarCode\Code128Tool.cs" />
     <Compile Include="BarCode\ValideCodeTool.cs" />
     <Compile Include="Calculate\ParenthesesExpression.cs" />
@@ -53,11 +53,11 @@
     <Compile Include="StringFile\JsonTool.cs" />
     <Compile Include="StringFile\XmlTool.cs" />
     <Compile Include="Window\ViewTreeTool.cs" />
-    <Compile Include="Restful\WebApiTool.cs" />
-    <Compile Include="Restful\PutTool.cs" />
-    <Compile Include="Restful\DeleteTool.cs" />
-    <Compile Include="Restful\GetTool.cs" />
-    <Compile Include="Restful\PostTool.cs" />
+    <Compile Include="Communication\Http.Restful\WebApiTool.cs" />
+    <Compile Include="Communication\Http.Restful\PutTool.cs" />
+    <Compile Include="Communication\Http.Restful\DeleteTool.cs" />
+    <Compile Include="Communication\Http.Restful\GetTool.cs" />
+    <Compile Include="Communication\Http.Restful\PostTool.cs" />
     <Compile Include="StringFile\AppConfigureTool.cs" />
     <Compile Include="TypeTool\ChartTool.cs" />
     <Compile Include="TypeTool\DeepCopyTool.cs" />
@@ -104,6 +104,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Communication\Modbus\" />
+    <Folder Include="Communication\Socket\" />
     <Folder Include="Other\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
