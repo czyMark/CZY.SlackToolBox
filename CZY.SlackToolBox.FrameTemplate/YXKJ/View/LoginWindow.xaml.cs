@@ -1,21 +1,11 @@
 ﻿using CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel;
 using CZY.SlackToolBox.LuckyControl.IconResource;
-using CZY.SlackToolBox.LuckyControl.Input;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
-namespace CZY.SlackToolBox.FrameTemplate.YXKJ
+namespace CZY.SlackToolBox.FrameTemplate.YXKJ.View
 {
     /// <summary>
     /// LoginWindow.xaml 的交互逻辑

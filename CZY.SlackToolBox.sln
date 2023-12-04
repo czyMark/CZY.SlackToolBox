@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CZY.SlackToolBox.FrameTempl
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Base", "Base", "{5C044CB4-60C5-4FB5-9528-559A469E198C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{65CD1BC8-BF29-42CD-BAC5-9F8603AD7906}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaptureApply", "CZY.SlackToolBox.Integration\CaptureApply\CaptureApply.csproj", "{4B394901-49EA-498C-B696-A53562DFAE70}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +45,10 @@ Global
 		{5A68425C-6402-4AF5-9C7A-A3048DFF8C7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A68425C-6402-4AF5-9C7A-A3048DFF8C7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A68425C-6402-4AF5-9C7A-A3048DFF8C7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B394901-49EA-498C-B696-A53562DFAE70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B394901-49EA-498C-B696-A53562DFAE70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B394901-49EA-498C-B696-A53562DFAE70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B394901-49EA-498C-B696-A53562DFAE70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,6 +57,7 @@ Global
 		{2CBF0082-EC70-4101-BCAB-489843BE9661} = {5C044CB4-60C5-4FB5-9528-559A469E198C}
 		{552D9761-F586-440C-B9B3-9FA5F2D20310} = {5C044CB4-60C5-4FB5-9528-559A469E198C}
 		{6D9AD78A-67C5-4C15-90BE-E630A7069A83} = {5C044CB4-60C5-4FB5-9528-559A469E198C}
+		{4B394901-49EA-498C-B696-A53562DFAE70} = {65CD1BC8-BF29-42CD-BAC5-9F8603AD7906}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {02C9BE72-C983-4825-A318-9CAAB42926F9}

@@ -168,6 +168,10 @@
       <Project>{6d9ad78a-67c5-4c15-90be-e630a7069a83}</Project>
       <Name>CZY.SlackToolBox.FastExtend</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CZY.SlackToolBox.Integration\CaptureApply\CaptureApply.csproj">
+      <Project>{4b394901-49ea-498c-b696-a53562dfae70}</Project>
+      <Name>CaptureApply</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CZY.SlackToolBox.LuckyControl\CZY.SlackToolBox.LuckyControl.csproj">
       <Project>{552d9761-f586-440c-b9b3-9fa5f2d20310}</Project>
       <Name>CZY.SlackToolBox.LuckyControl</Name>

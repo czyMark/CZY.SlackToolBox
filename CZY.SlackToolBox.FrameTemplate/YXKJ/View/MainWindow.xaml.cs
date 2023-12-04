@@ -1,18 +1,13 @@
 ﻿using CZY.SlackToolBox.AnimationBank.Other;
-using CZY.SlackToolBox.FastExtend;
-using CZY.SlackToolBox.FrameTemplate.YXKJ.View;
 using CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel;
 using CZY.SlackToolBox.LuckyControl.ElementPanel;
 using System;
-using System.Collections.Generic;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using static CZY.SlackToolBox.LuckyControl.NimbleMenu.ExpanderMenu;
 
-namespace CZY.SlackToolBox.FrameTemplate.YXKJ
+namespace CZY.SlackToolBox.FrameTemplate.YXKJ.View
 {
     /// <summary>
     /// MainWindow.xaml 的交互逻辑

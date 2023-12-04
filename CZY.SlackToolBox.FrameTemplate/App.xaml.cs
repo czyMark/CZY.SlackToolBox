@@ -30,7 +30,7 @@ namespace CZY.SlackToolBox.FrameTemplate
 
                 System.Windows.FrameworkCompatibilityPreferences.KeepTextBoxDisplaySynchronizedWithTextProperty = false;
                 AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
-                Application.Current.DispatcherUnhandledException += Current_DispatcherUnhandledException; ;
+                Application.Current.DispatcherUnhandledException += Current_DispatcherUnhandledException; 
                 
 
             }
@@ -72,6 +72,10 @@ namespace CZY.SlackToolBox.FrameTemplate
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             this.ShutdownMode = System.Windows.ShutdownMode.OnExplicitShutdown;
+
+            CaptureApply.MainWindow win = new CaptureApply.MainWindow();
+            win.Show();
+
             //启动缓存窗体。完成系统配置或外联设备参数初始化
             UserCache.Init();
 
