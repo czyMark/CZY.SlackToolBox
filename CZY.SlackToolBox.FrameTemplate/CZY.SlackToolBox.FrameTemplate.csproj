@@ -37,6 +37,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +57,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="TrayWindow.cs" />
     <Compile Include="YXKJ\Core\FramePage.cs" />
     <Compile Include="YXKJ\Core\MainWindowManager.cs" />
     <Compile Include="YXKJ\Core\UserCache.cs" />

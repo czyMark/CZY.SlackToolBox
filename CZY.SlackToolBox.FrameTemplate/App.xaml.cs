@@ -1,13 +1,7 @@
 ﻿using CZY.SlackToolBox.FastExtend;
-using CZY.SlackToolBox.FrameTemplate.YXKJ;
 using CZY.SlackToolBox.FrameTemplate.YXKJ.Core;
+using CZY.SlackToolBox.FrameTemplate.YXKJ.View;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace CZY.SlackToolBox.FrameTemplate
@@ -72,19 +66,20 @@ namespace CZY.SlackToolBox.FrameTemplate
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             this.ShutdownMode = System.Windows.ShutdownMode.OnExplicitShutdown;
+            //TrayWindow Tray = new TrayWindow();
 
-            CaptureApply.MainWindow win = new CaptureApply.MainWindow();
-            win.Show();
-
-            //启动缓存窗体。完成系统配置或外联设备参数初始化
+            ////启动缓存窗体。完成系统配置或外联设备参数初始化
             UserCache.Init();
 
-            //在缓存窗体中检查是否要更新程序
+            ////在缓存窗体中检查是否要更新程序
 
 
-            //登录窗体
+            ////登录窗体
             LoginWindow loginWindow = new LoginWindow();
             loginWindow.Show();
+
+
+            //Tray.ShowNotofy("程序退出", "正常退出");
 
         }
     }

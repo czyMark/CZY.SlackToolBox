@@ -1,5 +1,5 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using CZY.SlackToolBox.FrameTemplate.YXKJ.View;
+using System.Windows;
 
 namespace CZY.SlackToolBox.FrameTemplate.YXKJ.Core
 {

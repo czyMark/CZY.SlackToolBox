@@ -1,4 +1,5 @@
-﻿using CZY.SlackToolBox.LuckyControl;
+﻿using CZY.SlackToolBox.FrameTemplate.YXKJ.View;
+using CZY.SlackToolBox.LuckyControl;
 using System.Windows;
 
 namespace CZY.SlackToolBox.FrameTemplate.YXKJ.Core
