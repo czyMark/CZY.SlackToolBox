@@ -13,13 +13,28 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
             </ResourceDictionary.MergedDictionaries>
-
+            <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5"  Stretch="None" AlignmentX="Left">
+                <VisualBrush.Visual>
+                    <StackPanel Orientation="Horizontal" >
+                        <Ellipse Width="10" Height="10" Fill="Transparent"  ></Ellipse>
+                        <TextBlock FontStyle="Normal"  Text="关键字"/>
+                    </StackPanel>
+                </VisualBrush.Visual>
+            </VisualBrush>
             <Style x:Key="SearchTextBox"   TargetType="TextBox">
                 <Setter Property="Width" Value="160"></Setter>
                 <Setter Property="Height" Value="38"></Setter>
                 <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
-                <Setter Property="Padding" Value="5,0,0,0"></Setter>
+                <Setter Property="Padding" Value="10,0,0,0"></Setter>
                 <Setter Property="BorderThickness" Value="0.5"></Setter>
+                <Style.Triggers>
+                    <Trigger Property="Text" Value="{x:Null}">
+                        <Setter Property="Background" Value="{StaticResource HintText}"/>
+                    </Trigger>
+                    <Trigger Property="Text" Value="">
+                        <Setter Property="Background" Value="{StaticResource HintText}"/>
+                    </Trigger>
+                </Style.Triggers>
             </Style>
             <Storyboard  x:Key="ExpanderSearchPanel">
                 <ObjectAnimationUsingKeyFrames  Duration="00:00:0.0" Storyboard.TargetName="SearchMask"  Storyboard.TargetProperty="Visibility">
@@ -67,9 +82,7 @@
             <!--界面搜索-->
             <Grid Grid.Row="0" Background="Transparent">
                 <StackPanel Margin="4,0"  HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
-                    <TextBox      input:InputAttach.Prompt="关键字" input:InputAttach.IsTextBox="True"
-                        Style="{StaticResource SearchTextBox}"
-                         ></TextBox>
+                    <TextBox        Style="{StaticResource SearchTextBox}"     ></TextBox>
                     <Button Margin="4,0" Content="查询"  Style="{StaticResource GreenBtn}" Command="{Binding RefreshDataCommand}" >
                         <Button.Triggers>
                             <EventTrigger RoutedEvent="Button.Click">
@@ -81,7 +94,7 @@
                     <Button Margin="4,0" Content="高级查询" Click="Button_Click" Style="{StaticResource GreenBtn}" >
                     </Button>
 
- 
+
                     <Button Margin="4,0" Content="添加" Style="{StaticResource BlueBtn}"     Command="{Binding AddDataCommand}"></Button>
                 </StackPanel>
             </Grid>
@@ -173,13 +186,13 @@
                 </Border.Triggers>
                 <StackPanel x:Name="SearchPanel" MouseDown="SearchPanel_MouseDown"    Background="White" VerticalAlignment="Top"  >
                     <WrapPanel   >
-                        <TextBox Style="{StaticResource SearchTextBox}"  Margin="8" input:InputAttach.Prompt="关键字" input:InputAttach.IsTextBox="True"/>
-                        <TextBox Style="{StaticResource SearchTextBox}"  Margin="8" input:InputAttach.Prompt="关键字" input:InputAttach.IsTextBox="True"/>
-                        <TextBox Style="{StaticResource SearchTextBox}"  Margin="8" input:InputAttach.Prompt="关键字" input:InputAttach.IsTextBox="True"/>
-                        <TextBox Style="{StaticResource SearchTextBox}"  Margin="8" input:InputAttach.Prompt="关键字" input:InputAttach.IsTextBox="True"/>
-                        <TextBox Style="{StaticResource SearchTextBox}"  Margin="8" input:InputAttach.Prompt="关键字" input:InputAttach.IsTextBox="True"/>
-                        <TextBox Style="{StaticResource SearchTextBox}"  Margin="8" input:InputAttach.Prompt="关键字" input:InputAttach.IsTextBox="True"/>
-                        <TextBox Style="{StaticResource SearchTextBox}"  Margin="8" input:InputAttach.Prompt="关键字" input:InputAttach.IsTextBox="True"/>
+                        <TextBox Style="{StaticResource SearchTextBox}"  Margin="8" />
+                        <TextBox Style="{StaticResource SearchTextBox}"  Margin="8" />
+                        <TextBox Style="{StaticResource SearchTextBox}"  Margin="8" />
+                        <TextBox Style="{StaticResource SearchTextBox}"  Margin="8" />
+                        <TextBox Style="{StaticResource SearchTextBox}"  Margin="8" />
+                        <TextBox Style="{StaticResource SearchTextBox}"  Margin="8" />
+                        <TextBox Style="{StaticResource SearchTextBox}"  Margin="8" />
                     </WrapPanel>
                     <Button Margin="10" Content="立即查询"
                         HorizontalAlignment="Right" Command="{Binding RefreshDataCommand}"

@@ -62,7 +62,7 @@ namespace CZY.SlackToolBox.LuckyControl.Input
         {
             Regex re = new Regex(GetRegexString(sender as TextBox));
             e.Handled = re.IsMatch(e.Text);
-        } 
+        }
         #endregion
 
 
@@ -136,7 +136,7 @@ namespace CZY.SlackToolBox.LuckyControl.Input
             if (textBox == null)
             {
                 return;
-            } 
+            }
             RemoveTextBoxPrompt(textBox);
         }
 
@@ -177,7 +177,87 @@ namespace CZY.SlackToolBox.LuckyControl.Input
                 textBox.Background = (Brush)textBox.Tag;
                 textBox.Foreground = Brushes.Black;
             }
-        } 
+        }
+        #endregion
+
+
+
+        #region 密码框通知绑定数据源更新密码
+
+        public static readonly DependencyProperty PasswordProperty =
+           DependencyProperty.RegisterAttached("Password",
+           typeof(string), typeof(InputAttach),
+           new FrameworkPropertyMetadata(string.Empty, OnPasswordPropertyChanged));
+         
+        public static readonly DependencyProperty AttachProperty =
+            DependencyProperty.RegisterAttached("Attach",
+            typeof(bool), typeof(InputAttach), new PropertyMetadata(false, Attach));
+
+        private static readonly DependencyProperty IsUpdatingProperty =
+           DependencyProperty.RegisterAttached("IsUpdating", typeof(bool),
+           typeof(InputAttach));
+
+        [AttachedPropertyBrowsableForType(typeof(PasswordBox))]
+        public static void SetAttach(DependencyObject dp, bool value)
+        {
+            dp.SetValue(AttachProperty, value);
+        }
+        [AttachedPropertyBrowsableForType(typeof(PasswordBox))]
+        public static bool GetAttach(DependencyObject dp)
+        {
+            return (bool)dp.GetValue(AttachProperty);
+        }
+        [AttachedPropertyBrowsableForType(typeof(PasswordBox))]
+        public static string GetPassword(DependencyObject dp)
+        {
+            return (string)dp.GetValue(PasswordProperty);
+        }
+        [AttachedPropertyBrowsableForType(typeof(PasswordBox))]
+        public static void SetPassword(DependencyObject dp, string value)
+        {
+            dp.SetValue(PasswordProperty, value);
+        }
+        private static bool GetIsUpdating(DependencyObject dp)
+        {
+            return (bool)dp.GetValue(IsUpdatingProperty);
+        }
+        private static void SetIsUpdating(DependencyObject dp, bool value)
+        {
+            dp.SetValue(IsUpdatingProperty, value);
+        }
+        private static void OnPasswordPropertyChanged(DependencyObject sender,
+            DependencyPropertyChangedEventArgs e)
+        {
+            PasswordBox passwordBox = sender as PasswordBox;
+            passwordBox.PasswordChanged -= PasswordChanged;
+            if (!(bool)GetIsUpdating(passwordBox))
+            {
+                passwordBox.Password = (string)e.NewValue;
+            }
+            passwordBox.PasswordChanged += PasswordChanged;
+        }
+        private static void Attach(DependencyObject sender,
+            DependencyPropertyChangedEventArgs e)
+        {
+            PasswordBox passwordBox = sender as PasswordBox;
+            if (passwordBox == null)
+                return;
+            if ((bool)e.OldValue)
+            {
+                passwordBox.PasswordChanged -= PasswordChanged;
+            }
+            if ((bool)e.NewValue)
+            {
+                passwordBox.PasswordChanged += PasswordChanged;
+            }
+        }
+        private static void PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            PasswordBox passwordBox = sender as PasswordBox;
+            SetIsUpdating(passwordBox, true);
+            SetPassword(passwordBox, passwordBox.Password);
+            SetIsUpdating(passwordBox, false);
+        }
         #endregion
     }
 }

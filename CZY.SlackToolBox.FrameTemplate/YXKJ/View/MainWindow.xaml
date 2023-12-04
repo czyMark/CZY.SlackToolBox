@@ -8,9 +8,9 @@
         xmlns:LuckyNotify="clr-namespace:CZY.SlackToolBox.LuckyControl.MessageNotify;assembly=CZY.SlackToolBox.LuckyControl" 
         xmlns:i="clr-namespace:CZY.SlackToolBox.LuckyControl;assembly=CZY.SlackToolBox.LuckyControl" 
         xmlns:icon="clr-namespace:CZY.SlackToolBox.LuckyControl.IconResource;assembly=CZY.SlackToolBox.LuckyControl" 
-        
         xmlns:cache="clr-namespace:CZY.SlackToolBox.FrameTemplate.YXKJ.Core"
-        mc:Ignorable="d" AllowsTransparency="True"  MouseLeftButtonDown="Window_MouseLeftButtonDown"
+       mc:Ignorable="d"   x:Name="window" Icon="pack://application:,,,/CZY.SlackToolBox.FrameTemplate;component/product.ico" 
+        AllowsTransparency="True"  MouseLeftButtonDown="Window_MouseLeftButtonDown"
           Width="1920" Height="1080" WindowStyle="None"
         Title="MainWindow" WindowState="Maximized">
     <Window.Resources>

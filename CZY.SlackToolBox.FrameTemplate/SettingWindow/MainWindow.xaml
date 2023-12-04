@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:CZY.SlackToolBox.FrameTemplate" 
         xmlns:lcon="clr-namespace:CZY.SlackToolBox.LuckyControl.IconResource;assembly=CZY.SlackToolBox.LuckyControl"
         mc:Ignorable="d" WindowStyle="SingleBorderWindow" Width="1920" Height="1080"
+       mc:Ignorable="d"   x:Name="window" Icon="pack://application:,,,/CZY.SlackToolBox.FrameTemplate;component/product.ico"
         Title="MainWindow" WindowState="Maximized">
     <Window.Resources>
         <PathGeometry x:Key="path" Figures="M-15.500207,-7.7077957 C10.791322,-7.2911776 23.95792,-4.9167829 23.95792,-4.9167829 L-186.66747,22.166988 L-276.6673,-81.832578 C-276.6673,-81.832578 0.66657904,-103.16616 3.9999149,-103.83282 C7.3332508,-104.49949 120,-58.49989 120,-58.49989 C120,-58.49989 -139.33353,67.499985 -152.0002,68.833319 C-164.66688,70.166652 -320.667,72.166986 -320.667,72.166986 L-302.66667,43.5"/>
@@ -15,13 +16,13 @@
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="150"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
-            </DoubleAnimationUsingKeyFrames> 
+            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="150"/>
-            </DoubleAnimationUsingKeyFrames> 
+            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
     <Window.Triggers>
@@ -34,8 +35,8 @@
     </Window.Triggers>
     <Grid  >
         <Grid x:Name="GridBackground" Background="#55313131" Opacity="0">
-           
-                    
+
+
         </Grid>
         <Button x:Name="ButtonOpen"  HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0">
             <lcon:IconFont IconName="Menu" Foreground="#13227a" Width="32" Height="32"></lcon:IconFont>

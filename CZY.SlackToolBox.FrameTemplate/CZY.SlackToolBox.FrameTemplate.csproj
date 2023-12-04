@@ -189,5 +189,8 @@
     <Folder Include="Communication\" />
     <Folder Include="DataReport\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="product.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

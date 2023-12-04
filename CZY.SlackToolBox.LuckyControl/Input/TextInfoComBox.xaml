@@ -21,8 +21,8 @@
                  x:Name="InputValue"      
                   BorderBrush="Gray" Background="Transparent"
                   ItemsSource="{Binding TextDataSource}"
-                  SelectedValue="{Binding TextValue,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                > 
+                  SelectedValue="{Binding TextValue,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" >
+          
         </ComboBox>
     </StackPanel>
 </UserControl>

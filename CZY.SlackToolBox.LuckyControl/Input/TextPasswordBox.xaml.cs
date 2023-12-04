@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CZY.SlackToolBox.LuckyControl.IconResource;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,82 +23,167 @@ namespace CZY.SlackToolBox.LuckyControl.Input
     {
         public TextPasswordBox()
         {
-            InitializeComponent(); 
+            InitializeComponent();
+            InputControl.DataContext = this;
+            IsImportance = true;
+            TextValueWidth = 240;
+            eyeBtn.AddHandler(Button.MouseDownEvent, new RoutedEventHandler(eyeBtn_Down), true);
+            eyeBtn.AddHandler(Button.MouseUpEvent, new RoutedEventHandler(eyeBtn_Up), true);
         }
 
-        #region 通知绑定数据源更新密码
+        #region PasswordText
+        public string PasswordText
+        {
+            get { return (string)GetValue(PasswordTextProperty); }
+            set { SetValue(PasswordTextProperty, value); }
+        }
 
-        public static readonly DependencyProperty PasswordProperty =
-           DependencyProperty.RegisterAttached("Password",
-           typeof(string), typeof(TextPasswordBox),
-           new FrameworkPropertyMetadata(string.Empty, OnPasswordPropertyChanged));
+        public static readonly DependencyProperty PasswordTextProperty = DependencyProperty.Register(
+         "PasswordText",
+         typeof(string),
+         typeof(TextPasswordBox), new PropertyMetadata(PasswordTextPropertyChanged));
+        private static void PasswordTextPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
 
-        public static readonly DependencyProperty AttachProperty =
-            DependencyProperty.RegisterAttached("Attach",
-            typeof(bool), typeof(TextPasswordBox), new PropertyMetadata(false, Attach));
-
-        private static readonly DependencyProperty IsUpdatingProperty =
-           DependencyProperty.RegisterAttached("IsUpdating", typeof(bool),
-           typeof(TextPasswordBox));
-
-        public static void SetAttach(DependencyObject dp, bool value)
-        {
-            dp.SetValue(AttachProperty, value);
-        }
-        public static bool GetAttach(DependencyObject dp)
-        {
-            return (bool)dp.GetValue(AttachProperty);
-        }
-        public static string GetPassword(DependencyObject dp)
-        {
-            return (string)dp.GetValue(PasswordProperty);
-        }
-        public static void SetPassword(DependencyObject dp, string value)
-        {
-            dp.SetValue(PasswordProperty, value);
-        }
-        private static bool GetIsUpdating(DependencyObject dp)
-        {
-            return (bool)dp.GetValue(IsUpdatingProperty);
-        }
-        private static void SetIsUpdating(DependencyObject dp, bool value)
-        {
-            dp.SetValue(IsUpdatingProperty, value);
-        }
-        private static void OnPasswordPropertyChanged(DependencyObject sender,
-            DependencyPropertyChangedEventArgs e)
-        {
-            PasswordBox passwordBox = sender as PasswordBox;
-            passwordBox.PasswordChanged -= PasswordChanged;
-            if (!(bool)GetIsUpdating(passwordBox))
-            {
-                passwordBox.Password = (string)e.NewValue;
-            }
-            passwordBox.PasswordChanged += PasswordChanged;
-        }
-        private static void Attach(DependencyObject sender,
-            DependencyPropertyChangedEventArgs e)
-        {
-            PasswordBox passwordBox = sender as PasswordBox;
-            if (passwordBox == null)
-                return;
-            if ((bool)e.OldValue)
-            {
-                passwordBox.PasswordChanged -= PasswordChanged;
-            }
-            if ((bool)e.NewValue)
-            {
-                passwordBox.PasswordChanged += PasswordChanged;
-            }
-        }
-        private static void PasswordChanged(object sender, RoutedEventArgs e)
-        {
-            PasswordBox passwordBox = sender as PasswordBox;
-            SetIsUpdating(passwordBox, true);
-            SetPassword(passwordBox, passwordBox.Password);
-            SetIsUpdating(passwordBox, false);
         }
         #endregion
 
+        #region TextDescription
+        public string TextDescription
+        {
+            get { return (string)GetValue(TextDescriptionProperty); }
+            set { SetValue(TextDescriptionProperty, value); }
+        }
+
+        public static readonly DependencyProperty TextDescriptionProperty = DependencyProperty.Register(
+         "TextDescription",
+         typeof(string),
+         typeof(TextPasswordBox), new PropertyMetadata(TextDescriptionPropertyChanged));
+        private static void TextDescriptionPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (e.NewValue != null)
+            {
+                TextPasswordBox up = d as TextPasswordBox;
+                up.DescriptionText.Text = (string)e.NewValue;
+            }
+        }
+        #endregion
+          
+
+        #region TextValueWidth
+        public double TextValueWidth
+        {
+            get { return (double)GetValue(TextValueWidthProperty); }
+            set { SetValue(TextValueWidthProperty, value); }
+        }
+
+        public static readonly DependencyProperty TextValueWidthProperty = DependencyProperty.Register(
+         "TextValueWidth",
+         typeof(double),
+         typeof(TextPasswordBox), new PropertyMetadata(TextValueWidthPropertyChanged));
+        private static void TextValueWidthPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
+
+        #endregion
+         
+
+        #region TextPrompt
+        public string TextPrompt
+        {
+            get { return (string)GetValue(TextPromptProperty); }
+            set { SetValue(TextPromptProperty, value); }
+        }
+
+        public static readonly DependencyProperty TextPromptProperty = DependencyProperty.Register(
+         "TextPrompt",
+         typeof(string),
+         typeof(TextPasswordBox), new PropertyMetadata(TextPromptPropertyChanged));
+        private static void TextPromptPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+             
+        }
+        #endregion
+
+        #region IsImportance
+        public bool IsImportance
+        {
+            get { return (bool)GetValue(IsImportanceProperty); }
+            set { SetValue(IsImportanceProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsImportanceProperty = DependencyProperty.Register(
+         "IsImportance",
+         typeof(bool),
+         typeof(TextPasswordBox), new PropertyMetadata(IsImportancePropertyChanged));
+        private static void IsImportancePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (e.NewValue != null)
+            {
+                bool temp = (bool)e.NewValue;
+                TextPasswordBox up = d as TextPasswordBox;
+                if (temp)
+                {
+                    up.DescriptionText.Foreground = Brushes.Red;
+                }
+                else
+                {
+                    up.DescriptionText.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#6F7174"));
+                }
+            }
+        }
+        #endregion
+
+        private void eyeBtn_Down(object sender, RoutedEventArgs e)
+        {
+            //显示文本
+            Button btn = sender as Button;
+            promptBox.Text = pwdBox.Password;
+            if (string.IsNullOrEmpty(promptBox.Text))
+            {
+                return;
+            }
+
+            promptBox.Visibility = Visibility.Visible;
+            pwdBox.Visibility = Visibility.Collapsed;
+            IconFont icon = new IconFont();
+            icon.IconName = "PasswordEye";
+            btn.Content = icon;
+            btn.Tag = 1;
+        }
+        private void eyeBtn_Up(object sender, RoutedEventArgs e)
+        {
+            //隐藏文本
+            Button btn = sender as Button;
+            promptBox.Text = string.Empty; 
+            promptBox.Visibility = Visibility.Collapsed;
+            pwdBox.Visibility = Visibility.Visible;
+            IconFont icon = new IconFont();
+            icon.IconName = "PasswordEyeHiden";
+            btn.Content = icon;
+            btn.Tag = 0;
+
+        } 
+        private void pwdBox_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            promptBox.Text = String.Empty;
+            promptBox.Visibility = Visibility.Collapsed;
+        }
+         
+        private void pwdBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (string.IsNullOrEmpty(pwdBox.Password))
+            {
+                promptBox.Text = String.Empty;
+                promptBox.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                promptBox.Text = String.Empty;
+                promptBox.Visibility = Visibility.Collapsed;
+            }
+        }
     }
 }

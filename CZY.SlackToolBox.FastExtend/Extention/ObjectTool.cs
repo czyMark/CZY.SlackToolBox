@@ -21,7 +21,7 @@ namespace  CZY.SlackToolBox.FastExtend
         /// <param name="source"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static string ToPaeameter(this object source)
+        public static string ToHttpParameter(this object source)
         {
             var buff = new StringBuilder(string.Empty);
             if (source == null)

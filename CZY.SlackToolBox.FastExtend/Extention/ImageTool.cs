@@ -11,28 +11,6 @@ namespace  CZY.SlackToolBox.FastExtend
 {
     public static class ImageTool
     {
-        /// <summary>
-        /// 根据绝对路径获取图片 并解除程序对图片的占用
-        /// </summary>
-        /// <param name="imgPath">绝对路径</param>
-        /// <returns></returns>
-        public static BitmapImage GetLocalImage(this string imgPath)
-        {
-            // Read byte[] from png file
-            BinaryReader binReader = new BinaryReader(File.Open(imgPath, FileMode.Open));
-            FileInfo fileInfo = new FileInfo(imgPath);
-            byte[] bytes = binReader.ReadBytes((int)fileInfo.Length);
-            binReader.Close();
-
-            // Init bitmap 
-            BitmapImage bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.CacheOption = BitmapCacheOption.OnLoad;
-            bitmap.StreamSource = new MemoryStream(bytes);
-            bitmap.EndInit();
-            bitmap.Freeze();
-            return bitmap;
-        }
 
 
 

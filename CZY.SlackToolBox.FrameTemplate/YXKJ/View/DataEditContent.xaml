@@ -17,8 +17,7 @@
         <input:TextInfoComBox Margin="8" TextDescription="性别" 
                               TextDataSource="{Binding Path=BaseData.Sex}"
                               TextDataSourceDisplayMember="Text"
-                              TextDataSourceValueMember="Id"
-                              TextValue="{Binding Path=DataV.Question,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                              TextDataSourceValueMember="Id" 
                               >
 
         </input:TextInfoComBox>

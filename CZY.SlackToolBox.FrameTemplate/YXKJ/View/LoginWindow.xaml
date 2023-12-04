@@ -8,8 +8,8 @@
         xmlns:icon="clr-namespace:CZY.SlackToolBox.LuckyControl.IconResource;assembly=CZY.SlackToolBox.LuckyControl"
     xmlns:input="clr-namespace:CZY.SlackToolBox.LuckyControl.Input;assembly=CZY.SlackToolBox.LuckyControl"
         xmlns:cache="clr-namespace:CZY.SlackToolBox.FrameTemplate.YXKJ.Core"
-       mc:Ignorable="d" AllowsTransparency="True"    x:Name="window"
-          Width="1920" Height="1080" WindowStyle="None" TabIndex="0"
+       mc:Ignorable="d"   x:Name="window" Icon="pack://application:,,,/CZY.SlackToolBox.FrameTemplate;component/product.ico"
+          Width="1920" Height="1080" WindowStyle="None" AllowsTransparency="True"  
         Title="MainWindow" WindowState="Maximized">
     <Window.Resources>
         <ResourceDictionary>
@@ -69,9 +69,26 @@
                     <icon:IconFont Width="24" Height="24" IconName="User" HorizontalAlignment="Left" Margin="10"></icon:IconFont>
                     <TextBox x:Name="userID"   input:InputAttach.RegexString="[^A-Fa-z0-9]"
 						 TextWrapping="Wrap" FontSize="16" Margin="46,2,2,2" VerticalContentAlignment="Center"   Text="{Binding Account,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                             
-                             input:InputAttach.Prompt="用户名" input:InputAttach.IsTextBox="True"
-                      Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" TabIndex="1" UndoLimit="1">
+                               BorderThickness="0" TabIndex="0" UndoLimit="1" BorderBrush="Transparent">
+                        <TextBox.Resources>
+                            <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5"  Stretch="None" AlignmentX="Left">
+                                <VisualBrush.Visual>
+                                    <TextBlock FontStyle="Normal" FontSize="16" Text="用户名"/>
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </TextBox.Resources>
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <Trigger Property="Text" Value="{x:Null}">
+                                        <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                    </Trigger>
+                                    <Trigger Property="Text" Value="">
+                                        <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
                     </TextBox>
 
                 </Grid>
@@ -81,14 +98,34 @@
                         <icon:IconFont  IconName="Password" HorizontalAlignment="Left" Margin="10"></icon:IconFont>
                         <Grid Width="295">
                             <PasswordBox  x:Name="pwdBox" FontSize="16"  VerticalContentAlignment="Center" VerticalAlignment="Center"    Padding="0,5,0,0"
-                      PasswordChar="*"    LostFocus="pwdBox_LostFocus"   input:TextPasswordBox.Attach="True" input:TextPasswordBox.Password="{Binding Password,Mode=TwoWay}"
-                     Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0"  />
-                            <TextBox x:Name="promptBox" Height="{Binding ElementName=eyeBtn,Path=ActualHeight}" GotFocus="promptBox_GotFocus"
-                     input:InputAttach.Prompt="密码" input:InputAttach.IsTextBox="True" BorderThickness="0"  TabIndex="2"
-                     VerticalContentAlignment="Center"   Background="Transparent" FontSize="16"   >
+                      PasswordChar="*"     input:InputAttach.Attach="True" input:InputAttach.Password="{Binding Password,Mode=TwoWay}"
+                     Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0"  KeyUp="pwdBox_KeyUp" KeyDown="pwdBox_KeyDown" />
+                            <TextBox   x:Name="promptBox"   FontSize="16" VerticalContentAlignment="Center" 
+                                        Height="{Binding ElementName=eyeBtn,Path=ActualHeight}"  IsHitTestVisible="False"
+                               BorderThickness="0" TabIndex="0" UndoLimit="1" BorderBrush="Transparent">
+                                <TextBox.Resources>
+                                    <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5"  Stretch="None" AlignmentX="Left">
+                                        <VisualBrush.Visual>
+                                            <TextBlock FontStyle="Normal" FontSize="16" Text="密码"/>
+                                        </VisualBrush.Visual>
+                                    </VisualBrush>
+                                </TextBox.Resources>
+                                <TextBox.Style>
+                                    <Style TargetType="TextBox">
+                                        <Style.Triggers>
+                                            <Trigger Property="Text" Value="{x:Null}">
+                                                <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                            </Trigger>
+                                            <Trigger Property="Text" Value="">
+                                                <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBox.Style>
                             </TextBox>
                         </Grid>
-                        <Button HorizontalAlignment="Right" Margin="3"  x:Name="eyeBtn" Tag="0" Grid.Column="1"  Background="Transparent" Cursor="Hand"    >
+                        <Button HorizontalAlignment="Right" Margin="3"  x:Name="eyeBtn"  
+                                Tag="0" Grid.Column="1"  Background="Transparent" Cursor="Hand"    >
                             <icon:IconFont  IconName="PasswordEyeHiden"  ></icon:IconFont>
                         </Button>
                     </StackPanel>
@@ -104,8 +141,7 @@
 
                     </Button>
                 </StackPanel>
-            </StackPanel>
-
+            </StackPanel> 
         </Grid>
         <!--#endregion-->
     </Grid>

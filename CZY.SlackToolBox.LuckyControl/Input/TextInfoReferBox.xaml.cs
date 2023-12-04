@@ -54,6 +54,25 @@ namespace CZY.SlackToolBox.LuckyControl.Input
         #endregion
 
 
+        #region TextPrompt
+        public string TextPrompt
+        {
+            get { return (string)GetValue(TextPromptProperty); }
+            set { SetValue(TextPromptProperty, value); }
+        }
+
+        public static readonly DependencyProperty TextPromptProperty = DependencyProperty.Register(
+         "TextPrompt",
+         typeof(string),
+         typeof(TextInfoReferBox), new PropertyMetadata(TextPromptPropertyChanged));
+        private static void TextPromptPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (e.NewValue != null)
+            {
+                TextInfoReferBox up = d as TextInfoReferBox; 
+            }
+        }
+        #endregion
 
         #region TextValueWidth
         public double TextValueWidth

@@ -26,55 +26,68 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ
         {
             InitializeComponent();
             this.DataContext = new LoginWindowViewModel();
+            eyeBtn.AddHandler(Button.MouseDownEvent, new RoutedEventHandler(eyeBtn_Down), true);
+            eyeBtn.AddHandler(Button.MouseUpEvent, new RoutedEventHandler(eyeBtn_Up), true);
         }
 
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void eyeBtn_Down(object sender, RoutedEventArgs e)
         {
+            //显示文本
             Button btn = sender as Button;
-
             promptBox.Text = pwdBox.Password;
             if (string.IsNullOrEmpty(promptBox.Text))
+            { 
+                return;
+            }
+
+            promptBox.Visibility = Visibility.Visible;
+            pwdBox.Visibility = Visibility.Collapsed;
+            IconFont icon = new IconFont();
+            icon.IconName = "PasswordEye";
+            btn.Content = icon;
+            btn.Tag = 1;
+        }
+        private void eyeBtn_Up(object sender, RoutedEventArgs e)
+        {
+            //隐藏文本
+            Button btn = sender as Button;
+            if (string.IsNullOrEmpty(pwdBox.Password))
             {
                 return;
             }
-            if (btn.Tag.ToString() == "0")//当前密码是不显示的状态
+            promptBox.Text = string.Empty;
+            promptBox.Visibility = Visibility.Collapsed;
+            pwdBox.Visibility = Visibility.Visible;
+            IconFont icon = new IconFont();
+            icon.IconName = "PasswordEyeHiden";
+            btn.Content = icon;
+            btn.Tag = 0;
+
+        }
+
+
+
+
+        private void pwdBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            promptBox.Text = String.Empty;
+            promptBox.Visibility = Visibility.Collapsed;
+        }
+
+
+        private void pwdBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (string.IsNullOrEmpty(pwdBox.Password))
             {
+                promptBox.Text = String.Empty;
                 promptBox.Visibility = Visibility.Visible;
-                pwdBox.Visibility = Visibility.Collapsed;
-                IconFont icon= new IconFont();
-                icon.IconName = "PasswordEye";
-                btn.Content = icon;
-                btn.Tag = 1;
             }
             else
             {
+                promptBox.Text = String.Empty;
                 promptBox.Visibility = Visibility.Collapsed;
-                pwdBox.Visibility= Visibility.Visible;
-                IconFont icon = new IconFont();
-                icon.IconName = "PasswordEyeHiden";
-                btn.Content = icon;
-                btn.Tag = 0;
             }
         }
 
-        private void promptBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            //隐藏提示文本
-            promptBox.Visibility = Visibility.Collapsed;
-            pwdBox.Visibility = Visibility.Visible;
-            pwdBox.Focus();
-        }
-
-        private void pwdBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            //显示提示文本
-            if (string.IsNullOrEmpty(pwdBox.Password))
-            {
-                promptBox.Text =String.Empty;
-                InputAttach.RefreshTextBoxPrompt(promptBox,"密码");
-                promptBox.Visibility = Visibility.Visible;
-            }
-        }
     }
 }

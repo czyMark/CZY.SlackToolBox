@@ -1,6 +1,6 @@
 ﻿<UserControl x:Class="CZY.SlackToolBox.LuckyControl.Input.TextInfoBox"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
              xmlns:local="clr-namespace:CZY.SlackToolBox.LuckyControl.Input">
     
     <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" x:Name="InputControl" >
@@ -9,13 +9,33 @@
                        HorizontalAlignment="Center" Margin="1,0" VerticalAlignment="Center"
                         ></TextBlock>
         </Border>
-        <TextBox BorderThickness="0,0.5,0.5,0.5"  BorderBrush="Gray" Background="#FCFCFC" Width="{Binding TextValueWidth}"
+        <TextBox BorderThickness="0,0.5,0.5,0.5"  BorderBrush="Gray"  Width="{Binding TextValueWidth}"
                      HorizontalAlignment="Center" Padding="10,12" Height="42" UndoLimit="1"  
                  x:Name="InputValue"        
-                  Text="{Binding TextValue,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                         local:InputAttach.Prompt="{Binding TextPrompt}"
-                         local:InputAttach.IsTextBox="True"
-                         >
+                  Text="{Binding TextValue,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"      >
+            <TextBox.Resources>
+                <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5"  Stretch="None" AlignmentX="Left">
+                    <VisualBrush.Visual>
+                        <StackPanel Orientation="Horizontal" >
+                            <Ellipse Width="10" Height="10" Fill="Transparent"  ></Ellipse>
+                            <TextBlock FontStyle="Normal" FontSize="16" Text="{Binding TextPrompt}"/>
+                        </StackPanel>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </TextBox.Resources>
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                        </Trigger>
+                        <Trigger Property="Text" Value="">
+                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+            
         </TextBox>
     </StackPanel>
 </UserControl>

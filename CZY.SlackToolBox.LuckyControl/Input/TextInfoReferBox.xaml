@@ -19,8 +19,30 @@
         <Grid        >
             <TextBox BorderThickness="0,0.5,0.5,0.5"  IsReadOnly="True" 
                      HorizontalAlignment="Center" Padding="10,12" Height="42"  
-                 x:Name="InputValue"  Width="{Binding TextValueWidth}"   Background="Transparent"
+                 x:Name="InputValue"  Width="{Binding TextValueWidth}"    
                   BorderBrush="Gray"   >
+                <TextBox.Resources>
+                    <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5"  Stretch="None" AlignmentX="Left">
+                        <VisualBrush.Visual>
+                            <StackPanel Orientation="Horizontal" >
+                                <Ellipse Width="10" Height="10" Fill="Transparent"  ></Ellipse>
+                                <TextBlock FontStyle="Normal" FontSize="16" Text="{Binding TextPrompt}"/>
+                            </StackPanel>
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                </TextBox.Resources>
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource HintText}"/>
+                            </Trigger>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Background" Value="{StaticResource HintText}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
             </TextBox>
             <Button  Background="Transparent" Click="Button_Click" Margin="1" Cursor="Hand" HorizontalAlignment="Right">
                 <Viewbox Width="18" Height="18"   HorizontalAlignment="Right" >

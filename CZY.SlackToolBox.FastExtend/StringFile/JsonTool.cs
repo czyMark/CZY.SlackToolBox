@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace  CZY.SlackToolBox.FastExtend
 {
@@ -98,5 +99,16 @@ namespace  CZY.SlackToolBox.FastExtend
         }
         #endregion
 
+        /// <summary>
+        /// 删除Json字符串中键中的@符号
+        /// </summary>
+        /// <param name="jsonStr">json字符串</param>
+        /// <returns></returns>
+        public static string RemoveAt(this string jsonStr)
+        {
+            Regex reg = new Regex("\"@([^ \"]*)\"\\s*:\\s*\"(([^ \"]+\\s*)*)\"");
+            string strPatten = "\"$1\":\"$2\"";
+            return reg.Replace(jsonStr, strPatten);
+        }
     }
 }
