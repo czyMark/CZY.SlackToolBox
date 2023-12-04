@@ -1,4 +1,5 @@
 ﻿using CZY.SlackToolBox.FastExtend;
+using CZY.SlackToolBox.FrameTemplate.Functional;
 using CZY.SlackToolBox.FrameTemplate.YXKJ.Core;
 using CZY.SlackToolBox.FrameTemplate.YXKJ.View;
 using System;
@@ -68,10 +69,10 @@ namespace CZY.SlackToolBox.FrameTemplate
             this.ShutdownMode = System.Windows.ShutdownMode.OnExplicitShutdown;
             //TrayWindow Tray = new TrayWindow();
 
-            ////启动缓存窗体。完成系统配置或外联设备参数初始化
-            UserCache.Init();
 
-            ////在缓存窗体中检查是否要更新程序
+            ////启动缓存窗体。完成系统配置或外联设备参数初始化
+            InitSysWindow win = new InitSysWindow();
+            win.ShowDialog();
 
 
             ////登录窗体

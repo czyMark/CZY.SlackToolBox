@@ -57,7 +57,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="TrayWindow.cs" />
+    <Compile Include="Functional\InitSysWindow.xaml.cs">
+      <DependentUpon>InitSysWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Functional\TrayWindow.cs" />
     <Compile Include="YXKJ\Core\FramePage.cs" />
     <Compile Include="YXKJ\Core\MainWindowManager.cs" />
     <Compile Include="YXKJ\Core\UserCache.cs" />
@@ -91,6 +94,10 @@
     <Compile Include="YXKJ\View\DataListContent.xaml.cs">
       <DependentUpon>DataListContent.xaml</DependentUpon>
     </Compile>
+    <Page Include="Functional\InitSysWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SettingWindow\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

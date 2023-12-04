@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Windows;
 using System.Windows.Forms;
 using ContextMenu = System.Windows.Forms.ContextMenu;
 using MenuItem = System.Windows.Forms.MenuItem;
 
-namespace CZY.SlackToolBox.FrameTemplate
+namespace CZY.SlackToolBox.FrameTemplate.Functional
 {
     public partial class TrayWindow 
     {
