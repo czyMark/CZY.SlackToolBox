@@ -61,6 +61,10 @@
       <DependentUpon>InitSysWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Functional\TrayWindow.cs" />
+    <Compile Include="SettingWindow\ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="SettingWindow\View\SettingContent.xaml.cs">
+      <DependentUpon>SettingContent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="YXKJ\Core\FramePage.cs" />
     <Compile Include="YXKJ\Core\MainWindowManager.cs" />
     <Compile Include="YXKJ\Core\UserCache.cs" />
@@ -98,7 +102,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SettingWindow\MainWindow.xaml">
+    <Page Include="SettingWindow\View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -106,10 +110,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SettingWindow\MainWindow.xaml.cs">
+    <Compile Include="SettingWindow\View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SettingWindow\View\SettingContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="YXKJ\View\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

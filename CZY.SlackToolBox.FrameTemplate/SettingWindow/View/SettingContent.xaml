@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="CZY.SlackToolBox.FrameTemplate.SettingWindow.View.SettingContent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CZY.SlackToolBox.FrameTemplate.SettingWindow.View"
+             mc:Ignorable="d" Height="1010"   Width="1920">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/YXKJ/TabControl.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/YXKJ/TabItem.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <TabControl    TabStripPlacement="Top" Margin="5">
+        <TabItem Header="数据库">
+            <Grid Background="Purple">
+            </Grid>
+        </TabItem>
+        <TabItem Header="系统配置">
+            <Grid Background="Beige" >
+                <Button Click="Button_Click" Width="120"> 截图</Button>
+            </Grid>
+        </TabItem>
+        <TabItem Header="照相机">
+            <Grid Background="Beige" />
+        </TabItem>
+        <TabItem Header="通信">
+            <Grid Background="Beige" />
+        </TabItem>
+        <TabItem Header="皮肤">
+            <Grid Background="Beige" />
+        </TabItem>
+    </TabControl>
+</UserControl>

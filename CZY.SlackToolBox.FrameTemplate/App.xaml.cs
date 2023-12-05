@@ -13,7 +13,7 @@ namespace CZY.SlackToolBox.FrameTemplate
     public partial class App : Application
     {
         public App()
-        { 
+        {
             //防止二次启动程序
             if (ProcessTool.VerifyRunning())
             {
@@ -25,8 +25,8 @@ namespace CZY.SlackToolBox.FrameTemplate
 
                 System.Windows.FrameworkCompatibilityPreferences.KeepTextBoxDisplaySynchronizedWithTextProperty = false;
                 AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
-                Application.Current.DispatcherUnhandledException += Current_DispatcherUnhandledException; 
-                
+                Application.Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
+
 
             }
             catch (Exception ex)
@@ -39,7 +39,7 @@ namespace CZY.SlackToolBox.FrameTemplate
         private void Current_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
             //记录严重错误  并抛出
-           
+
             e.Handled = true;//不在往下通知。     
         }
 
@@ -63,7 +63,7 @@ namespace CZY.SlackToolBox.FrameTemplate
             }
             //记录严重错误  
         }
-         
+
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             this.ShutdownMode = System.Windows.ShutdownMode.OnExplicitShutdown;
@@ -71,16 +71,21 @@ namespace CZY.SlackToolBox.FrameTemplate
 
 
             ////启动缓存窗体。完成系统配置或外联设备参数初始化
-            InitSysWindow win = new InitSysWindow();
-            win.ShowDialog();
+            //InitSysWindow win = new InitSysWindow();
+            //win.ShowDialog();
 
 
             ////登录窗体
-            LoginWindow loginWindow = new LoginWindow();
-            loginWindow.Show();
+            //LoginWindow loginWindow = new LoginWindow();
+            //loginWindow.Show();
 
 
             //Tray.ShowNotofy("程序退出", "正常退出");
+
+            UserCache.Init();
+
+            CZY.SlackToolBox.FrameTemplate.SettingWindow.View.MainWindow win = new SettingWindow.View.MainWindow();
+            win.Show();
 
         }
     }

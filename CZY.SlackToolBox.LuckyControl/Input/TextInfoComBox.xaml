@@ -16,9 +16,9 @@
                        HorizontalAlignment="Center" Margin="1,0" VerticalAlignment="Center"
                         ></TextBlock>
         </Border>
-        <ComboBox BorderThickness="0,0.5,0.5,0.5"  Width="{Binding TextValueWidth}"
+        <ComboBox BorderThickness="0,1,1,1"  Width="{Binding TextValueWidth}"
                      HorizontalAlignment="Center" Padding="10,12" Height="42"  
-                 x:Name="InputValue"      
+                 x:Name="InputValue"      IsEditable="False"
                   BorderBrush="Gray" Background="Transparent"
                   ItemsSource="{Binding TextDataSource}"
                   SelectedValue="{Binding TextValue,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" >

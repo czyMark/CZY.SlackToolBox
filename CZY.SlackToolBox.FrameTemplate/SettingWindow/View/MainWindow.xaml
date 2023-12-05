@@ -1,0 +1,143 @@
+﻿<Window x:Class="CZY.SlackToolBox.FrameTemplate.SettingWindow.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CZY.SlackToolBox.FrameTemplate" 
+        xmlns:lcon="clr-namespace:CZY.SlackToolBox.LuckyControl.IconResource;assembly=CZY.SlackToolBox.LuckyControl"
+        xmlns:cache="clr-namespace:CZY.SlackToolBox.FrameTemplate.YXKJ.Core"
+        mc:Ignorable="d"  Width="1920" Height="1080"
+        x:Name="window" Icon="pack://application:,,,/CZY.SlackToolBox.FrameTemplate;component/product.ico"
+        Title="工具箱"  WindowState="Maximized" WindowStyle="None" ResizeMode="NoResize"  >
+    <Window.Resources>
+        <PathGeometry x:Key="path" Figures="M-15.500207,-7.7077957 C10.791322,-7.2911776 23.95792,-4.9167829 23.95792,-4.9167829 L-186.66747,22.166988 L-276.6673,-81.832578 C-276.6673,-81.832578 0.66657904,-103.16616 3.9999149,-103.83282 C7.3332508,-104.49949 120,-58.49989 120,-58.49989 C120,-58.49989 -139.33353,67.499985 -152.0002,68.833319 C-164.66688,70.166652 -320.667,72.166986 -320.667,72.166986 L-302.66667,43.5"/>
+
+
+        <Storyboard x:Key="CloseMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="20"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames  Storyboard.TargetName="MaskGrid"  Storyboard.TargetProperty="Visibility"  >
+                <ObjectAnimationUsingKeyFrames.KeyFrames>
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.1" >
+                        <DiscreteObjectKeyFrame.Value>
+                            <Visibility>Collapsed</Visibility>
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                </ObjectAnimationUsingKeyFrames.KeyFrames>
+            </ObjectAnimationUsingKeyFrames>
+
+        </Storyboard>
+        <Storyboard x:Key="OpenMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="130"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="150"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="MaskGrid"  Storyboard.TargetProperty="Visibility"  >
+                <ObjectAnimationUsingKeyFrames.KeyFrames>
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.1" >
+                        <DiscreteObjectKeyFrame.Value>
+                            <Visibility>Visible</Visibility>
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                </ObjectAnimationUsingKeyFrames.KeyFrames>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Button.Click" SourceName="ButtonClose">
+            <BeginStoryboard x:Name="CloseMenu_BeginStoryboard" Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Button.Click" SourceName="ButtonOpen">
+            <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid Background="Transparent"  >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="36"></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid VerticalAlignment="Top"  Background="AliceBlue">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="52"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="52"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="ButtonOpen"  HorizontalContentAlignment="Center"
+                    Cursor="Hand"  HorizontalAlignment="Center"   VerticalAlignment="Top"
+                    Background="{x:Null}" BorderBrush="{x:Null}"  >
+                <lcon:IconFont IconName="Menu" Foreground="Black" Width="32" Height="32"></lcon:IconFont>
+            </Button>
+            <TextBlock  Grid.Column="1" HorizontalAlignment="Center"
+                        VerticalAlignment="Center" FontSize="26"
+                        FontWeight="Bold"
+                        Text="XXX系统工具"></TextBlock>
+            <Button  Grid.Column="2"  HorizontalAlignment="Center" 
+                          Cursor="Hand"    
+                   VerticalAlignment="Center"
+                     Background="{x:Null}" BorderBrush="{x:Null}" 
+                      Command="{x:Static cache:UserCache.Shutdown}"    >
+                <lcon:IconFont IconName="Close" Foreground="Black"   Width="38" Height="38" ></lcon:IconFont>
+            </Button>
+        </Grid>
+        <ContentControl x:Name="MainContentControl"  Grid.Row="1" />
+
+        <Grid x:Name="MaskGrid" Grid.RowSpan="3" Background="AliceBlue" Opacity="0.6" Visibility="Collapsed"></Grid>
+        <!--左侧抽屉菜单，默认在显示窗体以外，点击菜单图标再经过简单的动画呈现出来-->
+        <Grid x:Name="GridMenu" Grid.RowSpan="3" Width="150" Background="White" HorizontalAlignment="Left" Margin="-150 0 0 0"  RenderTransformOrigin="0.5,0.5">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <StackPanel>
+                <Border Height="140" Margin="0,50,0,0">
+                    <lcon:IconFont IconName="product"  Foreground="Red" Height="80" Width="80" >
+                        <lcon:IconFont.Clip>
+                            <EllipseGeometry Center="40,40" RadiusX="40" RadiusY="40"></EllipseGeometry>
+                        </lcon:IconFont.Clip>
+                    </lcon:IconFont>
+                </Border>
+                <TextBlock Text="管理员用户" HorizontalAlignment="Center" FontSize="16" ></TextBlock>
+                <ListView Foreground="#FF313131" ItemsSource="{Binding FunList}" Cursor="Hand"
+                          SelectedIndex="0" FontSize="18" BorderThickness="0" Margin="0,50,0,0"
+                          SelectionChanged="ListView_SelectionChanged" >
+                    <ListView.Triggers>
+                        <EventTrigger RoutedEvent="Selector.SelectionChanged" >
+                            <BeginStoryboard Storyboard="{StaticResource CloseMenu}">
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ListView.Triggers>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Width="120"   Height="45" Orientation="Horizontal"  >
+                                <lcon:IconFont IconName="{Binding IconName}"  Foreground="Black" Height="32" Width="32"></lcon:IconFont>
+                                <TextBlock Text="{Binding TextName}" Margin="10"  />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+            <Button x:Name="ButtonClose"  HorizontalAlignment="Right"  VerticalAlignment="Top" 
+                    Background="{x:Null}"     BorderBrush="{x:Null}"  Padding="0">
+                <lcon:IconFont IconName="Menu" Foreground="#13227a" Width="32" Height="32"></lcon:IconFont>
+            </Button>
+        </Grid>
+        <Border BorderThickness="1,0,0,1"  Grid.Row="2" >
+            <!--#region 版权所有 -->
+            <Grid  Grid.Row="1" Background="White"  VerticalAlignment="Center">
+                <Label Margin="14,0,0,0" FontSize="14" Foreground="Gray"  HorizontalAlignment="Left">版权所有©2023</Label>
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,25,0">
+                    <Label  FontSize="14" Foreground="Gray" >版本:</Label>
+                    <Label  FontSize="14" Foreground="#FF3E88F5"  Content="{Binding VersionNumber}"></Label>
+                </StackPanel>
+            </Grid>
+            <!--#endregion-->
+        </Border>
+    </Grid>
+</Window>

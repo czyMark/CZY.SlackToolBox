@@ -36,8 +36,10 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.Core
 
         public static void Init()
         {
-            Shutdown = new RelayCommand(ExecuteShutdownCommand);
-            ExitLogin = new RelayCommand(ExecuteExitLogin);
+            if (Shutdown == null)
+                Shutdown = new RelayCommand(ExecuteShutdownCommand);
+            if (ExitLogin == null)
+                ExitLogin = new RelayCommand(ExecuteExitLogin);
         }
     }
 }

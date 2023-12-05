@@ -62,6 +62,7 @@
     <Compile Include="ElementPanel\NotityPanel.xaml.cs">
       <DependentUpon>NotityPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ElementPanel\DropShadowPanel.cs" />
     <Compile Include="IconResource\IconFont.cs" />
     <Compile Include="Input\InputAttach.cs" />
     <Compile Include="Input\TextInfoReferBox.xaml.cs">
@@ -245,6 +246,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Resource Include="IconResource\Icon\Plan.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Page Include="Styles\YXKJ\TabControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\YXKJ\TabItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Resource Include="IconResource\Icon\Setting.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -278,6 +291,18 @@
       <SubType>Designer</SubType>
     </Resource>
     <Resource Include="IconResource\Icon\Exit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="IconResource\Icon\Help.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="IconResource\Icon\Network.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="IconResource\Icon\Close.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Resource>
@@ -526,6 +551,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\YXKJ\ComBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\YXKJ\ComBoxItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ComBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

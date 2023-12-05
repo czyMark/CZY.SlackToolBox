@@ -7,6 +7,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
+using DataV = CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel;
+
 namespace CZY.SlackToolBox.FrameTemplate.YXKJ.View
 {
     /// <summary>
@@ -24,7 +26,7 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.View
             personalCenter.selectedFuntion += PersonalCenter_selectedFuntion;
             PersonContentPanel.TipContent = personalCenter;
 
-            this.DataContext = new MainWindowViewModel();
+            this.DataContext = new DataV.MainWindowViewModel();
 
         }
         /// <summary>
@@ -75,7 +77,7 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.View
         }
 
         private void PersonalCenter_ButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
+        { 
             if (PersonContentPanel.Visibility == Visibility.Collapsed || PersonContentPanel.Visibility == Visibility.Hidden)
                 PersonContentPanel.ShowMe();
             else
