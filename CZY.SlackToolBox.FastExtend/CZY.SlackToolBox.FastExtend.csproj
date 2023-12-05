@@ -45,6 +45,16 @@
     <Compile Include="Calculate\ParenthesesExpression.cs" />
     <Compile Include="Calculate\FactorialTool.cs" />
     <Compile Include="Calculate\StringComputationl.cs" />
+    <Compile Include="Communication\SocketTCP\AsyncSocketEventArgs.cs" />
+    <Compile Include="Communication\SocketTCP\AsyncSocketServer.cs" />
+    <Compile Include="Communication\SocketTCP\Enums\NetSockClosingStatus.cs" />
+    <Compile Include="Communication\SocketTCP\Enums\NetSockSendCompletedResult.cs" />
+    <Compile Include="Communication\SocketTCP\Enums\SocketState.cs" />
+    <Compile Include="Communication\SocketTCP\NetBase.cs" />
+    <Compile Include="Communication\SocketTCP\NetClient.cs" />
+    <Compile Include="Communication\SocketTCP\NetState.cs" />
+    <Compile Include="Communication\SocketTCP\SendState.cs" />
+    <Compile Include="Communication\SocketTCP\SocketUserState.cs" />
     <Compile Include="Extention\EntityTool.cs" />
     <Compile Include="Extention\EnumTool.cs" />
     <Compile Include="Extention\ExpandoObjectTool.cs" />
@@ -58,11 +68,11 @@
     <Compile Include="StringFile\JsonTool.cs" />
     <Compile Include="StringFile\XmlTool.cs" />
     <Compile Include="Window\ViewTreeTool.cs" />
-    <Compile Include="Communication\Http.Restful\WebApiTool.cs" />
-    <Compile Include="Communication\Http.Restful\PutTool.cs" />
-    <Compile Include="Communication\Http.Restful\DeleteTool.cs" />
-    <Compile Include="Communication\Http.Restful\GetTool.cs" />
-    <Compile Include="Communication\Http.Restful\PostTool.cs" />
+    <Compile Include="Communication\HttpRestful\WebApiTool.cs" />
+    <Compile Include="Communication\HttpRestful\PutTool.cs" />
+    <Compile Include="Communication\HttpRestful\DeleteTool.cs" />
+    <Compile Include="Communication\HttpRestful\GetTool.cs" />
+    <Compile Include="Communication\HttpRestful\PostTool.cs" />
     <Compile Include="StringFile\AppConfigureTool.cs" />
     <Compile Include="Extention\ChartTool.cs" />
     <Compile Include="Extention\DeepCopyTool.cs" />
@@ -110,7 +120,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Communication\Modbus\" />
-    <Folder Include="Communication\Socket\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

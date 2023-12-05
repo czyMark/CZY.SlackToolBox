@@ -82,6 +82,20 @@
                 <lcon:IconFont IconName="Close" Foreground="Black"   Width="38" Height="38" ></lcon:IconFont>
             </Button>
         </Grid>
+
+
+        <Border BorderThickness="1,0,0,1"  Grid.Row="2" >
+            <!--#region 版权所有 -->
+            <Grid  Grid.Row="1" Background="White"  VerticalAlignment="Center">
+                <Label Margin="14,0,0,0" FontSize="14" Foreground="Gray"  HorizontalAlignment="Left">版权所有©2023</Label>
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,25,0">
+                    <Label  FontSize="14" Foreground="Gray" >版本:</Label>
+                    <Label  FontSize="14" Foreground="#FF3E88F5"  Content="{Binding VersionNumber}"></Label>
+                </StackPanel>
+            </Grid>
+            <!--#endregion-->
+        </Border>
+        
         <ContentControl x:Name="MainContentControl"  Grid.Row="1" />
 
         <Grid x:Name="MaskGrid" Grid.RowSpan="3" Background="AliceBlue" Opacity="0.6" Visibility="Collapsed"></Grid>
@@ -128,16 +142,5 @@
                 <lcon:IconFont IconName="Menu" Foreground="#13227a" Width="32" Height="32"></lcon:IconFont>
             </Button>
         </Grid>
-        <Border BorderThickness="1,0,0,1"  Grid.Row="2" >
-            <!--#region 版权所有 -->
-            <Grid  Grid.Row="1" Background="White"  VerticalAlignment="Center">
-                <Label Margin="14,0,0,0" FontSize="14" Foreground="Gray"  HorizontalAlignment="Left">版权所有©2023</Label>
-                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,25,0">
-                    <Label  FontSize="14" Foreground="Gray" >版本:</Label>
-                    <Label  FontSize="14" Foreground="#FF3E88F5"  Content="{Binding VersionNumber}"></Label>
-                </StackPanel>
-            </Grid>
-            <!--#endregion-->
-        </Border>
     </Grid>
 </Window>

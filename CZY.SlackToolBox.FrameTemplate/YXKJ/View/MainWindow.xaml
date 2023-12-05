@@ -13,13 +13,6 @@
         AllowsTransparency="True"  MouseLeftButtonDown="Window_MouseLeftButtonDown"
           Width="1920" Height="1080" WindowStyle="None"
         Title="MainWindow" WindowState="Maximized">
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.AnimationBank;component/Background/Intermediate.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>
     <Grid  >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="266"></ColumnDefinition>

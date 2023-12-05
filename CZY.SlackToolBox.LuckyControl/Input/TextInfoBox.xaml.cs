@@ -13,6 +13,7 @@ namespace CZY.SlackToolBox.LuckyControl.Input
         {
             InitializeComponent();
             TextValueWidth = 240;
+            TextValueHeight = 42;
             this.IsImportance = false;
             InputControl.DataContext = this;
         }
@@ -69,6 +70,25 @@ namespace CZY.SlackToolBox.LuckyControl.Input
          typeof(double),
          typeof(TextInfoBox), new PropertyMetadata(TextValueWidthPropertyChanged));
         private static void TextValueWidthPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        
+        #region TextValueHeight
+        public double TextValueHeight
+        {
+            get { return (double)GetValue(TextValueHeightProperty); }
+            set { SetValue(TextValueHeightProperty, value); }
+        }
+
+        public static readonly DependencyProperty TextValueHeightProperty = DependencyProperty.Register(
+         "TextValueHeight",
+         typeof(double),
+         typeof(TextInfoBox), new PropertyMetadata(TextValueHeightPropertyChanged));
+        private static void TextValueHeightPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
 
         }

@@ -75,6 +75,7 @@ namespace CZY.SlackToolBox.FrameTemplate
             //win.ShowDialog();
 
 
+            //UserCache.Init();
             ////登录窗体
             //LoginWindow loginWindow = new LoginWindow();
             //loginWindow.Show();
@@ -82,7 +83,6 @@ namespace CZY.SlackToolBox.FrameTemplate
 
             //Tray.ShowNotofy("程序退出", "正常退出");
 
-            UserCache.Init();
 
             CZY.SlackToolBox.FrameTemplate.SettingWindow.View.MainWindow win = new SettingWindow.View.MainWindow();
             win.Show();

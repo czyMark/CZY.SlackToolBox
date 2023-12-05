@@ -4,13 +4,13 @@
              xmlns:local="clr-namespace:CZY.SlackToolBox.LuckyControl.Input">
     
     <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" x:Name="InputControl" >
-        <Border BorderThickness="0.5" BorderBrush="Gray" Width="100">
-            <TextBlock x:Name="DescriptionText"   Foreground="#6F7174" Background="#FCFCFC" 
+        <Border BorderThickness="0.5" BorderBrush="Gray" Width="100" SnapsToDevicePixels="True">
+            <TextBlock x:Name="DescriptionText"   Foreground="#6F7174" 
                        HorizontalAlignment="Center" Margin="1,0" VerticalAlignment="Center"
                         ></TextBlock>
         </Border>
         <TextBox BorderThickness="0,0.5,0.5,0.5"  BorderBrush="Gray"  Width="{Binding TextValueWidth}"
-                     HorizontalAlignment="Center" Padding="10,12" Height="42" UndoLimit="1"  
+                     HorizontalAlignment="Center" Padding="10,12" Height="{Binding TextValueHeight}" UndoLimit="1"  
                  x:Name="InputValue"        
                   Text="{Binding TextValue,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"      >
             <TextBox.Resources>

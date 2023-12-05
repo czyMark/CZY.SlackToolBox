@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CZY.SlackToolBox.FrameTemplate.SettingWindow.View"
+             xmlns:input="clr-namespace:CZY.SlackToolBox.LuckyControl.Input;assembly=CZY.SlackToolBox.LuckyControl"
              mc:Ignorable="d" Height="1010"   Width="1920">
     <UserControl.Resources>
         <ResourceDictionary>
@@ -20,14 +21,137 @@
         </TabItem>
         <TabItem Header="系统配置">
             <Grid Background="Beige" >
-                <Button Click="Button_Click" Width="120"> 截图</Button>
+                <Button Click="Button_Click" Width="120">截图</Button>
             </Grid>
         </TabItem>
         <TabItem Header="照相机">
             <Grid Background="Beige" />
         </TabItem>
         <TabItem Header="通信">
-            <Grid Background="Beige" />
+            <Grid Background="White" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackPanel   Background="WhiteSmoke">
+                    <TextBlock Text="Socket测试客户端1" Margin="10"></TextBlock>
+                    <WrapPanel Orientation="Horizontal">
+                        <input:TextInfoBox TextDescription="ip地址" TextPrompt="127.0.0.1" Margin="3">
+
+                        </input:TextInfoBox>
+                        <input:TextInfoBox TextDescription="端口号" TextPrompt="9968" Margin="3">
+
+                        </input:TextInfoBox>
+                        <Button Margin="3">连接</Button>
+                        <Button Margin="3">取消连接</Button>
+                    </WrapPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="3">
+                        <input:TextInfoBox TextDescription="发送内容"   HorizontalAlignment="Left"
+                                       TextValueWidth="690" Width="800" 
+                                       TextValueHeight="100" >
+                        </input:TextInfoBox>
+                        <Button Height="100" Width="90">发送</Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="3">
+                        <input:TextInfoBox TextDescription="接收到的内容"   HorizontalAlignment="Left"
+                                       TextValueWidth="790" Width="900" 
+                                       TextValueHeight="100"  >
+                        </input:TextInfoBox>
+                    </StackPanel>
+                </StackPanel>
+
+
+                <StackPanel Grid.Row="1"  Background="WhiteSmoke">
+                    <TextBlock Text="Socket测试客户端2" Margin="10"></TextBlock>
+                    <WrapPanel Orientation="Horizontal">
+                        <input:TextInfoBox TextDescription="ip地址" TextPrompt="127.0.0.1" Margin="3">
+
+                        </input:TextInfoBox>
+                        <input:TextInfoBox TextDescription="端口号" TextPrompt="9968" Margin="3">
+
+                        </input:TextInfoBox>
+                        <Button Margin="3">连接</Button>
+                        <Button Margin="3">取消连接</Button>
+                    </WrapPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="3">
+                        <input:TextInfoBox TextDescription="发送内容"   HorizontalAlignment="Left"
+                                       TextValueWidth="690" Width="800" 
+                                       TextValueHeight="100" >
+                        </input:TextInfoBox>
+                        <Button Height="100" Width="90">发送</Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="3">
+                        <input:TextInfoBox TextDescription="接收到的内容"   HorizontalAlignment="Left"
+                                       TextValueWidth="790" Width="900" 
+                                       TextValueHeight="100"  >
+                        </input:TextInfoBox>
+                    </StackPanel>
+                </StackPanel>
+
+
+                <StackPanel Grid.Row="2"   Background="WhiteSmoke">
+                    <TextBlock Text="Socket测试客户端3" Margin="10"></TextBlock>
+                    <WrapPanel Orientation="Horizontal">
+                        <input:TextInfoBox TextDescription="ip地址" TextPrompt="127.0.0.1" Margin="3">
+
+                        </input:TextInfoBox>
+                        <input:TextInfoBox TextDescription="端口号" TextPrompt="9968" Margin="3">
+
+                        </input:TextInfoBox>
+                        <Button Margin="3">连接</Button>
+                        <Button Margin="3">取消连接</Button>
+                    </WrapPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="3">
+                        <input:TextInfoBox TextDescription="发送内容"   HorizontalAlignment="Left"
+                                       TextValueWidth="690" Width="800" 
+                                       TextValueHeight="100" >
+                        </input:TextInfoBox>
+                        <Button Height="100" Width="90">发送</Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="3">
+                        <input:TextInfoBox TextDescription="接收到的内容"   HorizontalAlignment="Left"
+                                       TextValueWidth="790" Width="900" 
+                                       TextValueHeight="100"  >
+                        </input:TextInfoBox>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Row="0" Grid.RowSpan="3" Grid.Column="1"
+                            HorizontalAlignment="Left" Background="WhiteSmoke">
+                    <TextBlock Text="Socket测试服务端" Margin="10"></TextBlock>
+                    <WrapPanel Orientation="Horizontal">
+                        <input:TextInfoBox TextDescription="ip地址" TextPrompt="127.0.0.1" Margin="3">
+                        </input:TextInfoBox>
+                        <input:TextInfoBox TextDescription="端口号" TextPrompt="9968" Margin="3">
+                        </input:TextInfoBox>
+                        <Button Margin="3">启动监听</Button>
+                    </WrapPanel>
+                    <StackPanel Orientation="Horizontal" Margin="3">
+                        <input:TextInfoBox TextDescription="发送内容"   HorizontalAlignment="Left"
+                                       TextValueWidth="690" Width="800" 
+                                       TextValueHeight="100" >
+                        </input:TextInfoBox>
+                        <WrapPanel Width="120">
+                            <Button   Width="90" Margin="0,6">全部发送</Button>
+                            <Button   Width="90"  Margin="0,6">发送给2</Button>
+                        </WrapPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="3">
+                        <input:TextInfoBox TextDescription="接收到的内容"   HorizontalAlignment="Left"
+                                       TextValueWidth="790" Width="900" 
+                                       TextValueHeight="760"  >
+                        </input:TextInfoBox>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
         </TabItem>
         <TabItem Header="皮肤">
             <Grid Background="Beige" />
