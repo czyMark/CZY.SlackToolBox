@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.IO.Ports;
 using System.Text;
 
-namespace CZY.SlackToolBox.FastExtend.Communication.Serial
+namespace CZY.SlackToolBox.FastExtend.Communication
 {
     /// <summary>
-    /// 条码抢扫描
+    /// 串通信 返回字符串。
+    /// 多个串口 创建多个
     /// </summary>
-    public class SerialPortTool
+    public class SerialPort
     {
-        SerialPort sp = new SerialPort();
+        System.IO.Ports.SerialPort sp = new System.IO.Ports.SerialPort();
         string barcode = string.Empty;
         bool ScanState = false;
         /// <summary>
@@ -21,7 +22,7 @@ namespace CZY.SlackToolBox.FastExtend.Communication.Serial
         /// <param name="stopBits">停止位</param>
         /// <param name="parity">奇偶校验位</param>
         /// <param name="dataBits">数据位</param>
-        public SerialPortTool(string portName, string portRate, StopBits stopBits = StopBits.One, Parity parity = Parity.None, int dataBits = 8, int receivedBytesThreshold = 10)
+        public SerialPort(string portName, string portRate, StopBits stopBits = StopBits.One, Parity parity = Parity.None, int dataBits = 8, int receivedBytesThreshold = 10)
         {
             sp.PortName = portName;
             sp.BaudRate =

@@ -39,12 +39,14 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Communication\Serial\SerialPortTool.cs" />
+    <Compile Include="Communication\FTP\Ftp.cs" />
+    <Compile Include="Communication\Serial\SerialPort.cs" />
     <Compile Include="BarCode\Code128Tool.cs" />
     <Compile Include="BarCode\ValideCodeTool.cs" />
     <Compile Include="Calculate\ParenthesesExpression.cs" />
     <Compile Include="Calculate\FactorialTool.cs" />
     <Compile Include="Calculate\StringComputationl.cs" />
+    <Compile Include="Communication\SMTP\SendEmail.cs" />
     <Compile Include="Communication\SocketTCP\AsyncSocketEventArgs.cs" />
     <Compile Include="Communication\SocketTCP\AsyncSocketServer.cs" />
     <Compile Include="Communication\SocketTCP\Enums\NetSockClosingStatus.cs" />
@@ -59,24 +61,25 @@
     <Compile Include="Extention\EnumTool.cs" />
     <Compile Include="Extention\ExpandoObjectTool.cs" />
     <Compile Include="Extention\StreamTool.cs" />
-    <Compile Include="Other\DelegateHelper.cs" />
+    <Compile Include="Other\DelegateAsync.cs" />
+    <Compile Include="StringFile\Xml.cs" />
     <Compile Include="Window\EnabledShortcutKeyWindows.cs" />
     <Compile Include="Window\WindowManager.cs" />
     <Compile Include="RandomTool\RandomData.cs" />
     <Compile Include="RandomTool\RandomTool.cs" />
     <Compile Include="Security\DissymmetryEncryption.cs" />
-    <Compile Include="StringFile\JsonTool.cs" />
-    <Compile Include="StringFile\XmlTool.cs" />
+    <Compile Include="StringFile\Json.cs" />
+    <Compile Include="Extention\XmlTool.cs" />
     <Compile Include="Window\ViewTreeTool.cs" />
-    <Compile Include="Communication\HttpRestful\WebApiTool.cs" />
-    <Compile Include="Communication\HttpRestful\PutTool.cs" />
-    <Compile Include="Communication\HttpRestful\DeleteTool.cs" />
-    <Compile Include="Communication\HttpRestful\GetTool.cs" />
-    <Compile Include="Communication\HttpRestful\PostTool.cs" />
-    <Compile Include="StringFile\AppConfigureTool.cs" />
+    <Compile Include="Communication\Http\HttpApiTool.cs" />
+    <Compile Include="Communication\Http\HttpPut.cs" />
+    <Compile Include="Communication\Http\HttpDelete.cs" />
+    <Compile Include="Communication\Http\HttpGet.cs" />
+    <Compile Include="Communication\Http\HttpPost.cs" />
+    <Compile Include="StringFile\AppConfigure.cs" />
     <Compile Include="Extention\ChartTool.cs" />
     <Compile Include="Extention\DeepCopyTool.cs" />
-    <Compile Include="StringFile\FileProcessTool.cs" />
+    <Compile Include="StringFile\FileExtend.cs" />
     <Compile Include="Security\DigestEncryption.cs" />
     <Compile Include="Security\InfoHandle.cs" />
     <Compile Include="Security\SymmetricEncryption.cs" />
@@ -113,6 +116,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -120,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Communication\Modbus\" />
+    <Folder Include="Communication\Pop3\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

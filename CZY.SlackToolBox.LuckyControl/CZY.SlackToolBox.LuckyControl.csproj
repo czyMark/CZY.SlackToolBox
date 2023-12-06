@@ -78,7 +78,7 @@
       <DependentUpon>TextPasswordBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="NimbleMenu\HideMenuControl.cs" />
-    <Compile Include="MultiData\GridPagingModel.cs" />
+    <Compile Include="MultiData\PagingModel.cs" />
     <Compile Include="NimbleMenu\CircularMenu.xaml.cs">
       <DependentUpon>CircularMenu.xaml</DependentUpon>
     </Compile>

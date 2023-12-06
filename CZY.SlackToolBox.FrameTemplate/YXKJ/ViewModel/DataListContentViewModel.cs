@@ -7,6 +7,7 @@ using CZY.SlackToolBox.LuckyControl.MultiData;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -233,7 +234,7 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
 
         #region 表格操作
 
-        public GridPagingModel GridPagingService { get; set; } = new GridPagingModel();
+        public PagingModel GridPagingService { get; set; } = new PagingModel();
 
         public async void RefreshData()
         {
@@ -242,6 +243,7 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
             var list = new List<object>();
             await Task.Run(() =>
             {
+                Thread.Sleep(5000);
                 for (int i = 0; i < 10; i++)
                 {
                     list.Add(new TempData
@@ -276,7 +278,7 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
                 //}
             });
             if (list.Count > 0)
-                GridPagingService.FreashData(list);
+                GridPagingService.FreshData(list);
             else { 
             
                 //SysTipWindow.Show("系统提示", "没有该数据");

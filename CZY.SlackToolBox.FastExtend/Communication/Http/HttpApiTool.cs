@@ -1,6 +1,10 @@
-﻿namespace  CZY.SlackToolBox.FastExtend
+﻿
+namespace CZY.SlackToolBox.FastExtend
 {
-    public static class RestfulApiTool
+    /// <summary>
+    /// 当前的Http请求为Restful风格
+    /// </summary>
+    public static class HttpApiTool
     { 
         /// <summary>
         /// 设置所有的web请求证书

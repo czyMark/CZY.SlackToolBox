@@ -6,7 +6,7 @@ namespace  CZY.SlackToolBox.FastExtend
 	/// <summary>
 	/// 程序运行设置Configure
 	/// </summary>
-	public static class AppConfigureTool
+	public static class AppConfigure
 	{
 		///<summary> 
 		///依据连接串名字connectionName返回数据连接字符串  

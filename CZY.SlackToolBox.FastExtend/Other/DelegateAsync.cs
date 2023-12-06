@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 namespace CZY.SlackToolBox.FastExtend
 {
     /// <summary>
-    /// 委托帮助类
+    /// 异步运行
     /// </summary>
-    public static class DelegateHelper
+    public static class DelegateAsync
     {
         /// <summary>
         /// 异步执行方法

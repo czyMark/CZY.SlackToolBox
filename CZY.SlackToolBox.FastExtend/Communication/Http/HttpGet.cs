@@ -7,9 +7,9 @@ using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
-namespace  CZY.SlackToolBox.FastExtend
+namespace CZY.SlackToolBox.FastExtend.Communication
 {
-    public static class GetTool
+    public static class HttpGet
     {
         //
         public static string Accept = "text/html, application/xhtml+xml, */*";

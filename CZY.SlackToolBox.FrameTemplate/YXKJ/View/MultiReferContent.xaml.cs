@@ -18,7 +18,7 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.View
         }
         private void CellLoaded(object sender, EventArgs e)
         {
-            var t = (LuckyControl.MultiData.GridPagingModel)ReferDataGrid.DataContext;
+            var t = (LuckyControl.MultiData.PagingModel)ReferDataGrid.DataContext;
             if (t == null)
                 return;
             List<object>  obj=t.SelectedItem as List<object>;
@@ -31,7 +31,7 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.View
 
         public object GetSelected()
         {
-            var t = (LuckyControl.MultiData.GridPagingModel)ReferDataGrid.DataContext;
+            var t = (LuckyControl.MultiData.PagingModel)ReferDataGrid.DataContext;
             return t.SelectedItem;
 
         }
@@ -57,7 +57,7 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.View
                 ViewTreeTool.SetVisualChildCheckBox(dr, (bool)ck.IsChecked);
                 obj.Add(this.ReferDataGrid.Items[i]);
             }
-            var t = (LuckyControl.MultiData.GridPagingModel)ReferDataGrid.DataContext;
+            var t = (LuckyControl.MultiData.PagingModel)ReferDataGrid.DataContext;
             if (t == null)
                 return;
             if ((bool)ck.IsChecked)

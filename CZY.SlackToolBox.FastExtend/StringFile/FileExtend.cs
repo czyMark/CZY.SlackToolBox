@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -18,28 +21,59 @@ namespace  CZY.SlackToolBox.FastExtend
 	/// <summary>
 	/// 文件处理操作帮助类
 	/// </summary>
-	public static class FileProcessTool
+	public static class FileExtend
 	{
+        #region 文件字符串验证
 
-		#region 识别path是否是网络路径
-		/// <summary>
-		/// 识别path是否是网络路径
-		/// </summary>
-		/// <param name="path"></param>
-		/// <returns></returns>
-		public static bool UrlDiscern(this string path)
-		{
-			if (Regex.IsMatch(path, @"(http|ftp|https)://"))
-			{
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
+        #region 验证文件扩展名
+        /// <summary>
+        /// 依据文件扩展名验证文字是否是图片
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        public static bool VerifyImage(this string file)
+        {
+            string str = System.IO.Path.GetExtension(file);
+            if (str.ToUpper() == ".JPG" || str.ToUpper() == ".JPEG" || str.ToUpper() == ".PNG" || str.ToUpper() == ".GIF")
+                return true;
+            return false;
+        }
+
+        /// <summary>
+        /// 验证文件是否是指定扩展名
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        public static bool VerifyImage(this string file, string extension)
+        {
+            string str = System.IO.Path.GetExtension(file);
+            if (str.ToUpper() == ".JPG" || str.ToUpper() == ".JPEG" || str.ToUpper() == ".PNG" || str.ToUpper() == ".GIF")
+                return true;
+            return false;
+        }
         #endregion
-		 
+
+        #region 识别path是否是网络路径
+        /// <summary>
+        /// 识别path是否是网络路径
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static bool UrlDiscern(this string path)
+        {
+            if (Regex.IsMatch(path, @"(http|ftp|https)://"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        #endregion
+
+        #endregion
+
         #region 读取图片
         /// <summary>
         /// 根据绝对路径获取图片 并解除程序对图片的占用
@@ -62,6 +96,115 @@ namespace  CZY.SlackToolBox.FastExtend
             bitmap.EndInit();
             bitmap.Freeze();
             return bitmap;
+        }
+        #endregion
+
+
+        #region 图片压缩
+         
+        /// <summary>
+        /// 将当前文件压缩并存储
+        /// </summary>
+        /// <param name="file"></param>
+
+        public static void PicThumbnail(this string file)
+        {
+            using (FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read))
+            {
+                System.Drawing.Image image = System.Drawing.Image.FromStream(fs);
+                int width = image.Width;//宽
+                int height = image.Height;//高
+                if (width > 1920)
+                    width = 1920;
+                if (height > 1080)
+                    height = 1080;
+                PicThumbnail(file, file, height, width, 55);
+            }
+        }
+
+        /// <summary>
+        /// 无损压缩图片
+        /// </summary>
+        /// <param name="sFile">原图片</param>
+        /// <param name="dFile">压缩后保存位置</param>
+        /// <param name="dHeight">高度</param>
+        /// <param name="dWidth">宽度</param>
+        /// <param name="flag">压缩质量 1-100</param>
+        /// <returns></returns>
+        public static bool PicThumbnail(this string sFile, string dFile, int dHeight, int dWidth, int flag)
+        {
+            System.Drawing.Image iSource = System.Drawing.Image.FromFile(sFile);
+            ImageFormat tFormat = iSource.RawFormat;
+            int sW = 0, sH = 0;
+            //按比例缩放
+            System.Drawing.Size tem_size = new System.Drawing.Size(iSource.Width, iSource.Height);
+            if (tem_size.Width > dHeight || tem_size.Width > dWidth) //将**改成c#中的或者操作符号
+            {
+                if ((tem_size.Width * dHeight) > (tem_size.Height * dWidth))
+                {
+                    sW = dWidth;
+                    sH = (dWidth * tem_size.Height) / tem_size.Width;
+                }
+                else
+                {
+                    sH = dHeight;
+                    sW = (tem_size.Width * dHeight) / tem_size.Height;
+                }
+            }
+            else
+            {
+                sW = tem_size.Width;
+                sH = tem_size.Height;
+            }
+
+            Bitmap ob = new Bitmap(dWidth, dHeight);
+            Graphics g = Graphics.FromImage(ob);
+            g.Clear(System.Drawing.Color.WhiteSmoke);
+            g.CompositingQuality = CompositingQuality.HighQuality;
+            g.SmoothingMode = SmoothingMode.HighQuality;
+            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            g.DrawImage(iSource, new System.Drawing.Rectangle((dWidth - sW) / 2, (dHeight - sH) / 2, sW, sH), 0, 0, iSource.Width, iSource.Height, GraphicsUnit.Pixel);
+            g.Dispose();
+            //以下代码为保存图片时，设置压缩质量
+            EncoderParameters ep = new EncoderParameters();
+            long[] qy = new long[1];
+            qy[0] = flag;//设置压缩的比例1-100
+            EncoderParameter eParam = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, qy);
+            ep.Param[0] = eParam;
+            try
+            {
+                ImageCodecInfo[] arrayICI = ImageCodecInfo.GetImageEncoders();
+
+                ImageCodecInfo jpegICIinfo = null;
+
+                for (int x = 0; x < arrayICI.Length; x++)
+                {
+                    if (arrayICI[x].FormatDescription.Equals("JPEG"))
+                    {
+                        jpegICIinfo = arrayICI[x];
+                        break;
+                    }
+                }
+                if (jpegICIinfo != null)
+                {
+                    ob.Save(dFile, jpegICIinfo, ep);//dFile是压缩后的新路径
+                }
+                else
+                {
+                    ob.Save(dFile, tFormat);
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                iSource.Dispose();
+                ob.Dispose();
+
+            }
         }
         #endregion
 
@@ -407,6 +550,60 @@ namespace  CZY.SlackToolBox.FastExtend
             string content = $"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}:{msg}";
 
             WriteTxt(content, path+ filename);
+        }
+
+        #endregion
+
+
+        #region 拷贝
+
+        /// <summary>
+        /// 拷贝目录
+        /// </summary>
+        /// <param name="srcPath"></param>
+        /// <param name="destPath"></param>
+        public static void CopyDirectory(this string srcPath, string destPath)
+        {
+            try
+            {
+                DirectoryInfo dir = new DirectoryInfo(srcPath);
+                FileSystemInfo[] fileinfo = dir.GetFileSystemInfos();  //获取目录下（不包含子目录）的文件和子目录
+                foreach (FileSystemInfo i in fileinfo)
+                {
+                    string destName = destPath +"\\" + i.Name;
+                    if (i is DirectoryInfo)     //判断是否文件夹
+                    {
+                        if (!Directory.Exists(destName))
+                        {
+                            Directory.CreateDirectory(destName);   //目标目录下不存在此文件夹即创建子文件夹
+                        }
+                        CopyDirectory(i.FullName, destName);    //递归调用复制子文件夹
+                    }
+                    else
+                    {
+                        File.Copy(i.FullName, destName);      //不是文件夹即复制文件，true表示可以覆盖同名文件
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw ;
+            }
+        }
+        /// <summary>
+        /// 拷贝文件到指定目录下
+        /// </summary>
+        /// <param name="srcdir"></param>
+        /// <param name="dstdir"></param>
+        /// <param name="overwrite"></param>
+        public static void CopyFileToDestDirectory(this string srcdir, string dstdir, bool overwrite)
+        {
+            string todir = Path.GetDirectoryName(dstdir);
+
+            if (!Directory.Exists(todir))
+                Directory.CreateDirectory(todir);
+
+            File.Copy(srcdir, Path.Combine(todir, Path.GetFileName(srcdir)), overwrite);
         }
 
         #endregion

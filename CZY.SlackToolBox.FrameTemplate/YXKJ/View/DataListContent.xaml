@@ -103,7 +103,6 @@
             <Border   Grid.Row="1"   BorderThickness="0,2,0,0" BorderBrush="#FF5BA8FF">
                 <DataGrid AutoGenerateColumns="False" CanUserAddRows="False"  FontSize="14" IsReadOnly="True" SelectionMode="Single"
                       DataContext="{Binding GridPagingService}" FrozenColumnCount="1"
-                         
                       ItemsSource="{Binding Items}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id}" Visibility="Collapsed" Header="用户id" ElementStyle="{StaticResource DataGridTextCenter}"/>
@@ -135,11 +134,8 @@
                 <WrapPanel  HorizontalAlignment="Right"
                    Margin="6"
                    DataContext="{Binding GridPagingService}">
-                    <Button Content="首页" Style="{StaticResource PrimaryBtn}"
-                    Command="{Binding FirstPage}" Margin="3"  />
-                    <Button Content="上一页"
-                     Style="{StaticResource PrimaryBtn}"
-                    Command="{Binding PrevPage}"  Margin="3"  />
+                    <Button Content="首页" Style="{StaticResource PrimaryBtn}"   Command="{Binding FirstPage}" Margin="3"  />
+                    <Button Content="上一页"    Style="{StaticResource PrimaryBtn}"  Command="{Binding PrevPage}"  Margin="3"  />
 
                     <StackPanel Orientation="Horizontal" Margin="3">
                         <Label Content="第"  Foreground="Black"    VerticalAlignment="Center"   />
@@ -153,8 +149,7 @@
                         <Label Content="页"  Foreground="Black"    VerticalAlignment="Center"   />
                     </StackPanel>
 
-                    <Button Content="下一页"
-                     Style="{StaticResource PrimaryBtn}"
+                    <Button Content="下一页"    Style="{StaticResource PrimaryBtn}"
                     Command="{Binding NextPage}"
                     Margin="3" />
                     <Button Content="尾页"
@@ -206,6 +201,7 @@
                     </Button>
                 </StackPanel>
             </Border>
+            <Grid Grid.RowSpan="3" Background="WhiteSmoke" Opacity="0.6" Visibility="{Binding LoadingVisibility}"></Grid>
 
             <loading:LoadingCircle Grid.RowSpan="3" 
                                    Visibility="{Binding LoadingVisibility}" 

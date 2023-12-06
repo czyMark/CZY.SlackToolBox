@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Runtime.InteropServices;
 
 namespace  CZY.SlackToolBox.FastExtend
@@ -52,5 +53,35 @@ namespace  CZY.SlackToolBox.FastExtend
 			var sysTime = dateTime.ToSystemTime();
 			return SetLocalTime(ref sysTime) == 0;
 		}
-	}
+
+		/// <summary>
+		/// 用于在注册列表中使用浏览器说明
+		/// </summary>
+		/// <param name="ProgramName"></param>
+		/// <param name="InternetBowerEdition"></param>
+		/// <returns></returns>
+        public bool SetInternetBowerRegedit(string ProgramName, string InternetBowerEdition)
+        {
+            RegistryKey key = Registry.LocalMachine;
+            try
+            {
+                RegistryKey Software = key.OpenSubKey("SOFTWARE\\Microsoft\\Internet Explorer\\Main\\FeatureControl\\FEATURE_BROWSER_EMULATION", true);
+                Software.SetValue(ProgramName, InternetBowerEdition, RegistryValueKind.DWord);
+            }
+            catch (Exception e)
+            {
+                RegistryKey Software =
+                    key.OpenSubKey(
+                        "SOFTWARE\\Microsoft\\Internet Explorer\\Main\\FeatureControl\\FEATURE_BROWSER_EMULATION");
+                var RegStr = Software.GetValue(ProgramName);
+                if (RegStr == null)
+                {
+                    return false;
+                }
+            }
+            key.Close();
+            return true;
+        }
+
+    }
 }

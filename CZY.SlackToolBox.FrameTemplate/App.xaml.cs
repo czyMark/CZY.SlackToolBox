@@ -67,6 +67,13 @@ namespace CZY.SlackToolBox.FrameTemplate
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             this.ShutdownMode = System.Windows.ShutdownMode.OnExplicitShutdown;
+
+
+            //UserCache.Init();
+            //CZY.SlackToolBox.FrameTemplate.SettingWindow.View.MainWindow win = new SettingWindow.View.MainWindow();
+            //win.Show();
+
+
             //TrayWindow Tray = new TrayWindow();
 
 
@@ -75,8 +82,7 @@ namespace CZY.SlackToolBox.FrameTemplate
             //win.ShowDialog();
 
 
-            //UserCache.Init();
-            ////登录窗体
+            //登录窗体
             //LoginWindow loginWindow = new LoginWindow();
             //loginWindow.Show();
 
@@ -84,8 +90,6 @@ namespace CZY.SlackToolBox.FrameTemplate
             //Tray.ShowNotofy("程序退出", "正常退出");
 
 
-            CZY.SlackToolBox.FrameTemplate.SettingWindow.View.MainWindow win = new SettingWindow.View.MainWindow();
-            win.Show();
 
         }
     }

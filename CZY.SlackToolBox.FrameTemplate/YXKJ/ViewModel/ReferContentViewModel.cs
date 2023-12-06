@@ -136,7 +136,7 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
 
         #region 表格操作
 
-        public GridPagingModel GridPagingService { get; set; } = new GridPagingModel();
+        public PagingModel GridPagingService { get; set; } = new PagingModel();
         public async void RefreshData()
         {
             LoadingText = "数据加载中....";
@@ -147,7 +147,7 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
                 //数据的特殊处理
             });
             if (ReferData.Count > 0)
-                GridPagingService.FreashData(ReferData);
+                GridPagingService.FreshData(ReferData);
 
             LoadingVisibility = Visibility.Collapsed;
         }

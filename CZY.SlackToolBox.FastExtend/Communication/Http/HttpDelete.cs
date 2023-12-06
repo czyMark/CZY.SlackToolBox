@@ -4,11 +4,10 @@ using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
-namespace  CZY.SlackToolBox.FastExtend
+namespace CZY.SlackToolBox.FastExtend.Communication
 {
-	public static class PutTool
+	public static class HttpDelete
 	{
-
         //Accept
         public static string Accept = "text/html, application/xhtml+xml, */*";
         //发送内容类型
@@ -19,10 +18,11 @@ namespace  CZY.SlackToolBox.FastExtend
         public static string CertFileName;
         private static bool Certificate;
 
-        public static void SetPutCertFileName(this string filename)
+        public static void SetDeleteCertFileName(this string filename)
         {
             CertFileName = filename;
         }
+
         /// <summary>
         /// 是否启动证书验证
         /// 证书需要对操作系统进行配置才能验证通过
@@ -47,7 +47,7 @@ namespace  CZY.SlackToolBox.FastExtend
         ///  8. 右键 -》 所有任务-》导入 选择你的证书导入
         /// </summary>
         /// <param name="status">true:后续的请求启动证书验证，false后续的请求关闭证书验证</param>
-        public static void SetPutCertificate(this bool status)
+        public static void SetDeleteCertificate(this bool status)
         {
             if (status == true && string.IsNullOrEmpty(CertFileName))
             {
@@ -98,6 +98,13 @@ namespace  CZY.SlackToolBox.FastExtend
                 request.ContentLength = buffer.Length;
                 request.GetRequestStream().Write(buffer, 0, buffer.Length);
 
+                //是否启动证书认证
+                if (Certificate == true)
+                {
+                    request.ClientCertificates.Add(X509Certificate.CreateFromCertFile(CertFileName));
+                    request.KeepAlive = true;
+                }
+
                 HttpWebResponse response;
                 try
                 {
@@ -118,6 +125,7 @@ namespace  CZY.SlackToolBox.FastExtend
                 return $"通信异常:{ex.Message}";
             }
         }
+
 
     }
 }

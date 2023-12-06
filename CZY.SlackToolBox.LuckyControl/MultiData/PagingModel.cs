@@ -5,19 +5,19 @@ using System.Linq;
 namespace CZY.SlackToolBox.LuckyControl.MultiData
 {
     /// <summary>
-    /// 分页控件
+    /// 分页控件模型
     /// </summary>
-    public class GridPagingModel : INotifyPropertyChanged
+    public class PagingModel : INotifyPropertyChanged
     {
         private int _SelectedIndex;
 
-        public GridPagingModel()
+        public PagingModel()
         {
-            FirstPage = new RelayCommand(CMD_FirstPage);
-            PrevPage = new RelayCommand(CMD_PrevPage);
-            NextPage = new RelayCommand(CMD_NextPage);
-            LastPage = new RelayCommand(CMD_LastPage);
-            CheckCommand = new RelayCommand(CheckCommandFun);
+            FirstPage = new RelayCommand(FirstPageFun);
+            PrevPage = new RelayCommand(PrevPageFun);
+            NextPage = new RelayCommand(NextPageFun);
+            LastPage = new RelayCommand(LastPageFun);
+            CheckCommand = new RelayCommand(CheckFun);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -49,9 +49,10 @@ namespace CZY.SlackToolBox.LuckyControl.MultiData
                 if (_SelectedIndex < 0)
                     return;
                 Current = _SelectedIndex + 1;
-                RefreashPage(Current);
+                RefreshPage(Current);
             }
         }
+
 
         //选中的数据
         public object SelectedItem { get; set; }
@@ -62,7 +63,7 @@ namespace CZY.SlackToolBox.LuckyControl.MultiData
         public RelayCommand CheckCommand { get; private set; }
 
         //多选复选框checked
-        void CheckCommandFun(object obj)
+        void CheckFun(object obj)
         { 
             //如果带有复选框 就是多选。 默认是null
             List<object> list = SelectedItem as List<object>;
@@ -100,7 +101,7 @@ namespace CZY.SlackToolBox.LuckyControl.MultiData
 
         public int Total { get; set; }
 
-        public void FreashData(List<object> list)
+        public void FreshData(List<object> list)
         {
             dataList = list;
             pagedList = new SortedDictionary<int, List<object>>();
@@ -110,63 +111,63 @@ namespace CZY.SlackToolBox.LuckyControl.MultiData
             }
             Current = 1;
             Total = pagedList.Count;
-            RefreashPage(Current);
+            RefreshPage(Current);
             SelectList = pagedList.ToList().ConvertAll(o => $"第{o.Key + 1}页");
             RaisProperyChanged("SelectList");
         }
 
-        private void CMD_FirstPage(object obj)
+        private void FirstPageFun(object obj)
         {
             if (pagedList == null || !pagedList.Any())
                 return;
             if (Current <= 1)
                 return;
             Current = 1;
-            RefreashPage(Current);
+            RefreshPage(Current);
         }
 
-        private void CMD_LastPage(object obj)
+        private void LastPageFun(object obj)
         {
             if (pagedList == null || !pagedList.Any())
                 return;
             if (Current >= Total)
                 return;
             Current = Total;
-            RefreashPage(Current);
+            RefreshPage(Current);
         }
 
-        private void CMD_NextPage(object obj)
+        private void NextPageFun(object obj)
         {
             if (pagedList == null || !pagedList.Any())
                 return;
             if (Current >= Total)
                 return;
             Current++;
-            RefreashPage(Current);
+            RefreshPage(Current);
         }
 
-        private void CMD_PrevPage(object obj)
+        private void PrevPageFun(object obj)
         {
             if (pagedList == null || !pagedList.Any())
                 return;
             if (Current <= 1)
                 return;
             Current--;
-            RefreashPage(Current);
+            RefreshPage(Current);
         }
 
         void RaisProperyChanged(string name)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
-        void RefreashPage(int index)
+        void RefreshPage(int index)
         {
             Items = pagedList[index - 1];
             RaisProperyChanged("Items");
             RaisProperyChanged("Current");
             RaisProperyChanged("Total");
         }
-        public List<int> SplitCount { get; set; } = new List<int>() { 5, 10, 20, 50, 100, 200, 500, 1000 };
+        public List<int> AvailablePageSize { get; set; } = new List<int>() { 5, 10, 20, 50, 100, 200, 500, 1000 };
 
         private int _CurrentSplit = 100;
 
@@ -179,7 +180,7 @@ namespace CZY.SlackToolBox.LuckyControl.MultiData
                     return;
                 _CurrentSplit = value;
                 if (dataList != null)
-                    FreashData(dataList);
+                    FreshData(dataList);
             }
         }
 

@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Net;
-using System.Net.Http;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace  CZY.SlackToolBox.FastExtend
+namespace CZY.SlackToolBox.FastExtend.Communication
 {
-    public static class PostTool
-    {
+	public static class HttpPut
+	{
+
         //Accept
         public static string Accept = "text/html, application/xhtml+xml, */*";
         //发送内容类型
@@ -22,7 +19,7 @@ namespace  CZY.SlackToolBox.FastExtend
         public static string CertFileName;
         private static bool Certificate;
 
-        public static void SetPostCertFileName(this string filename)
+        public static void SetPutCertFileName(this string filename)
         {
             CertFileName = filename;
         }
@@ -50,7 +47,7 @@ namespace  CZY.SlackToolBox.FastExtend
         ///  8. 右键 -》 所有任务-》导入 选择你的证书导入
         /// </summary>
         /// <param name="status">true:后续的请求启动证书验证，false后续的请求关闭证书验证</param>
-        public static void SetPostCertificate(this bool status)
+        public static void SetPutCertificate(this bool status)
         {
             if (status == true && string.IsNullOrEmpty(CertFileName))
             {
@@ -87,28 +84,19 @@ namespace  CZY.SlackToolBox.FastExtend
         /// ContentType="application/x-www-form-urlencoded" 参数格式:  username=admin&password=123 如果参数是json格式或者参数写错不会报错的
         /// </param>
         /// <returns></returns>
-        public static string WebRequestPost(this string url, string body)
+        public static string WebRequestDelete(this string url, string body)
         {
             try
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-                request.Method = "POST"; //Post请求方式
+                request.Method = "DELETE"; //Delete请求方式
                 request.Accept = Accept;
                 // 内容类型
                 request.ContentType = ContentType;
 
-                //组织参数
                 byte[] buffer = Encoding.GetBytes(body);
                 request.ContentLength = buffer.Length;
                 request.GetRequestStream().Write(buffer, 0, buffer.Length);
-
-                //是否启动证书认证
-                if (Certificate == true)
-                {
-                    request.ClientCertificates.Add(X509Certificate.CreateFromCertFile(CertFileName));
-                    request.KeepAlive = true;
-                }
-
 
                 HttpWebResponse response;
                 try
@@ -131,68 +119,5 @@ namespace  CZY.SlackToolBox.FastExtend
             }
         }
 
-
-
-        /// <summary>
-        ///字符串以Post方式请求网页
-        /// </summary>
-        public static async Task<string>  HttpClientPost(this string url, Dictionary<string, string> para)
-        {
-            try
-            {
-                var handler = new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.None };
-                using (var httpclient = new HttpClient(handler))
-                {
-                    httpclient.BaseAddress = new Uri(url);
-                    var content = new FormUrlEncodedContent(para);
-                    var response = await httpclient.PostAsync(url, content);
-                    string responseString = await response.Content.ReadAsStringAsync();
-                    return responseString;
-                }
-            }
-            catch (Exception ex)
-            {
-                return $"通信异常:{ex.Message}";
-            }
-        }
-
-        /// <summary>
-        ///字符串以Post方式请求网页
-        /// </summary>
-        /// <param name="url">地址</param>
-        /// <param name="body">传递的参数</param>
-        /// <param name="headers">
-        /// 默认key是Content-Type
-        /// 默认value是application/x-www-form-urlencoded
-        /// </param>
-        /// <returns></returns>
-        public static string WebClientPost(this string url, string body, Dictionary<string, string> headers = null)
-        {
-            try
-            {
-                byte[] postData = Encoding.GetBytes(body);//编码，尤其是汉字，事先要看下抓取网页的编码方式
-                WebClient webClient = new WebClient();
-                if (headers == null)
-                {
-                    webClient.Headers.Add("Content-Type", "application/x-www-form-urlencoded");
-                }
-                else
-                {
-                    foreach (var item in headers)
-                    {
-
-                        webClient.Headers.Add(item.Key, item.Value);
-                    }
-                }
-                byte[] responseData = webClient.UploadData(url, "POST", postData);//得到返回字符流 
-                string srcString = Encoding.GetString(responseData);//解码
-                return srcString;
-            }
-            catch (System.Exception ex)
-            {
-                return $"通信异常:{ex.Message}";
-            }
-        }
     }
-
 }
