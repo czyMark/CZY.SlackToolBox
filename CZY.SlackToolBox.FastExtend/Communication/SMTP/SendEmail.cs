@@ -10,7 +10,7 @@ namespace RoteBridge.Core
     public static class SendEmail
     {
         /// <summary>
-        /// 
+        /// 发送邮件，注意需要 用户在邮件服务器上开启Smtp
         /// </summary>
         /// <param name="host">邮件服务器</param>
         /// <param name="userName">用户名</param>
@@ -20,7 +20,7 @@ namespace RoteBridge.Core
         /// <param name="subject"></param>
         /// <param name="body"></param>
         /// <returns></returns>
-        public static bool SendMailUse(this string host, string userName, string password, 
+        public static bool SendMail(this string host, string userName, string password, 
             List<string> touserName, List<string> tocopyname, string subject, string body)
         { 
             SmtpClient client = new SmtpClient();
@@ -60,6 +60,9 @@ namespace RoteBridge.Core
                return false;
             }
         }
+    
+        
+    
     }
 
 

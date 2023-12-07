@@ -57,10 +57,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AirportCS\Core\UserCache.cs" />
+    <Compile Include="AirportCS\ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="AirportCS\View\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AirportCS\View\PersonalCenter.xaml.cs">
+      <DependentUpon>PersonalCenter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Functional\InitSysWindow.xaml.cs">
       <DependentUpon>InitSysWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Functional\TrayWindow.cs" />
+    <Compile Include="SettingWindow\Core\UserCache.cs" />
     <Compile Include="SettingWindow\ViewModel\MainWindowViewModel.cs" />
     <Compile Include="SettingWindow\View\SettingContent.xaml.cs">
       <DependentUpon>SettingContent.xaml</DependentUpon>
@@ -98,6 +107,14 @@
     <Compile Include="YXKJ\View\DataListContent.xaml.cs">
       <DependentUpon>DataListContent.xaml</DependentUpon>
     </Compile>
+    <Page Include="AirportCS\View\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AirportCS\View\PersonalCenter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Functional\InitSysWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -210,9 +227,13 @@
   <ItemGroup>
     <Folder Include="Communication\" />
     <Folder Include="DataReport\" />
+    <Folder Include="SettingWindow\images\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="product.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AirportCS\images\Photo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

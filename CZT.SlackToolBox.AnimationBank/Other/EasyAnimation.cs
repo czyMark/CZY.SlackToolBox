@@ -57,6 +57,7 @@ namespace CZY.SlackToolBox.AnimationBank.Other
             element.BeginAnimation(FrameworkElement.VisibilityProperty, animationUsingKeyFrames);
 
         }
+
         /// <summary>
         /// 透明闪烁
         /// </summary>
@@ -73,6 +74,7 @@ namespace CZY.SlackToolBox.AnimationBank.Other
             };
             element.BeginAnimation(FrameworkElement.OpacityProperty, flickerAnimation);
         }
+
         /// <summary>
         /// 发光闪烁
         /// </summary>
@@ -113,6 +115,7 @@ namespace CZY.SlackToolBox.AnimationBank.Other
                 element.BeginAnimation(FrameworkElement.HeightProperty, doubleAnimation);
 
         }
+      
         /// <summary>
         /// 飞出
         /// </summary>

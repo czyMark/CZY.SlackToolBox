@@ -1,0 +1,105 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:sys="clr-namespace:System;assembly=System"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--#region 字体颜色 -->
+    <SolidColorBrush x:Key="H1FontColor">#353A42</SolidColorBrush>
+    <SolidColorBrush x:Key="H2FontColor">#989DAA</SolidColorBrush>
+    <SolidColorBrush x:Key="H3FontColor">#AEB2BF</SolidColorBrush>
+    <SolidColorBrush x:Key="H4FontColor">#535862</SolidColorBrush>
+    <SolidColorBrush x:Key="HEFontColor">#CED1D7</SolidColorBrush>
+    <SolidColorBrush x:Key="HSFontColor">#FFFFFF</SolidColorBrush>
+    <!--#endregion-->
+    
+    <Style x:Key="HTip" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="12"></Setter>
+        <Setter Property="Padding" Value="0,10"></Setter>
+    </Style>
+
+    <Style  TargetType="TextBlock">
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="Padding" Value="0,11"></Setter> 
+    </Style>
+
+    <Style x:Key="HSmallTitle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="16"></Setter>
+        <Setter Property="Padding" Value="0,12,0,0"></Setter> 
+    </Style>
+
+
+    <Style x:Key="HTitle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="20"></Setter>
+        <Setter Property="Padding" Value="0,14,0,0"></Setter> 
+    </Style>
+
+    <Style x:Key="HBigTitle" TargetType="TextBlock" >
+        <Setter Property="FontSize" Value="24"></Setter>
+        <Setter Property="Padding" Value="0,16"></Setter> 
+    </Style>
+
+    <Style x:Key="HHugeTitle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="32"></Setter>
+        <Setter Property="Padding" Value="0,20"></Setter> 
+    </Style>
+
+
+
+    <Style x:Key="SwitchBtn" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Border x:Name="PART_Border"
+                            Width="40"
+                            Height="20"
+                            Background="{DynamicResource BaseSolidColorBrush}"
+                            CornerRadius="10">
+
+                        <Ellipse x:Name="PART_Ellipse" Width="16" Height="16"
+                                 Margin="2,0"
+                                 VerticalAlignment="Center" HorizontalAlignment="Left"
+                                 Fill="{DynamicResource WindowForegroundColorBrush}">
+                            <Ellipse.RenderTransform>
+                                <TranslateTransform/>
+                            </Ellipse.RenderTransform>
+                        </Ellipse>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CheckStates">
+                                <VisualState x:Name="Checked">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_Ellipse"
+                                                         Storyboard.TargetProperty="(Ellipse.RenderTransform).(TranslateTransform.X)" 
+                                                         To="20" 
+                                                         Duration="00:00:.3"
+                                                         EasingFunction="{StaticResource CubicEaseInOut}"/>
+
+
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unchecked">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_Ellipse"
+                                                         Storyboard.TargetProperty="(Ellipse.RenderTransform).(TranslateTransform.X)" 
+                                                         To="0" 
+                                                         Duration="00:00:.3"
+                                                         EasingFunction="{StaticResource CubicEaseInOut}"/>
+
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Indeterminate" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Border>
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Background" TargetName="PART_Border" 
+                                    Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

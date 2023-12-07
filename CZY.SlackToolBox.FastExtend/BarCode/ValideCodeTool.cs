@@ -16,7 +16,7 @@ namespace CZY.SlackToolBox.FastExtend
         {
             Bitmap Img = null;
             Graphics g = null;
-            Random random = new Random();
+            System.Random random = new System.Random();
             //验证码颜色集合  
             Color[] c = { Color.Black, Color.Red, Color.DarkBlue, Color.Green, Color.Orange, Color.Brown, Color.DarkCyan, Color.Purple };
             //验证码字体集合  
@@ -67,7 +67,7 @@ namespace CZY.SlackToolBox.FastExtend
         {
             Bitmap Img = null;
             Graphics g = null;
-            Random random = new Random();
+            System.Random random = new System.Random();
             //验证码颜色集合  
             Color[] c = { Color.Black, Color.Red, Color.DarkBlue, Color.Green, Color.Orange, Color.Brown, Color.DarkCyan, Color.Purple };
             //验证码字体集合  

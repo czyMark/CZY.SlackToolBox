@@ -101,24 +101,25 @@ namespace  CZY.SlackToolBox.FastExtend
 
 
         #region 图片压缩
-         
-        /// <summary>
-        /// 将当前文件压缩并存储
-        /// </summary>
-        /// <param name="file"></param>
 
-        public static void PicThumbnail(this string file)
+
+        /// <summary>
+        /// 无损压缩图片
+        /// </summary>
+        /// <param name="sFile">原图片</param>
+        /// <param name="dFile">压缩后保存位置</param>
+        /// <param name="dHeight">高度</param>
+        /// <param name="dWidth">宽度</param>
+        /// <param name="flag">压缩质量 1-100</param>
+        /// <returns></returns>
+        public static bool PicThumbnail(string sFile, string dFile, int dHeight, int dWidth, int flag)
         {
-            using (FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read))
+            using (var s = new FileStream(sFile, FileMode.Open))
             {
-                System.Drawing.Image image = System.Drawing.Image.FromStream(fs);
-                int width = image.Width;//宽
-                int height = image.Height;//高
-                if (width > 1920)
-                    width = 1920;
-                if (height > 1080)
-                    height = 1080;
-                PicThumbnail(file, file, height, width, 55);
+                using (var d = new FileStream(dFile, FileMode.Create))
+                {
+                    return PicThumbnail(s, d, dHeight, dWidth, flag);
+                }
             }
         }
 
@@ -130,13 +131,35 @@ namespace  CZY.SlackToolBox.FastExtend
         /// <param name="dHeight">高度</param>
         /// <param name="dWidth">宽度</param>
         /// <param name="flag">压缩质量 1-100</param>
-        /// <returns></returns>
-        public static bool PicThumbnail(this string sFile, string dFile, int dHeight, int dWidth, int flag)
+        /// <returns>返回的流需要自己释放，否则存在内存泄露</returns>
+        public static MemoryStream PicThumbnail(string sFile, int dHeight, int dWidth, int flag)
         {
-            System.Drawing.Image iSource = System.Drawing.Image.FromFile(sFile);
+            using (var s = new FileStream(sFile, FileMode.Open))
+            {
+                var d = new MemoryStream();
+                PicThumbnail(s, d, dHeight, dWidth, flag);
+                return d;
+            }
+        }
+
+
+        /// <summary>
+        /// 无损压缩图片
+        /// </summary>
+        /// <param name="sFile">原图片</param>
+        /// <param name="dFile">压缩后保存位置</param>
+        /// <param name="dHeight">高度</param>
+        /// <param name="dWidth">宽度</param>
+        /// <param name="flag">压缩质量 1-100</param>
+        /// <returns></returns>
+        public static bool PicThumbnail(Stream sFile, Stream dFile, int dHeight, int dWidth, int flag)
+        {
+            System.Drawing.Image iSource = System.Drawing.Image.FromStream(sFile);
             ImageFormat tFormat = iSource.RawFormat;
+
+
+            //计算按照缩放比例后的图像宽高
             int sW = 0, sH = 0;
-            //按比例缩放
             System.Drawing.Size tem_size = new System.Drawing.Size(iSource.Width, iSource.Height);
             if (tem_size.Width > dHeight || tem_size.Width > dWidth) //将**改成c#中的或者操作符号
             {
@@ -159,12 +182,15 @@ namespace  CZY.SlackToolBox.FastExtend
 
             Bitmap ob = new Bitmap(dWidth, dHeight);
             Graphics g = Graphics.FromImage(ob);
-            g.Clear(System.Drawing.Color.WhiteSmoke);
+            g.Clear(System.Drawing.Color.White);
             g.CompositingQuality = CompositingQuality.HighQuality;
             g.SmoothingMode = SmoothingMode.HighQuality;
             g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-            g.DrawImage(iSource, new System.Drawing.Rectangle((dWidth - sW) / 2, (dHeight - sH) / 2, sW, sH), 0, 0, iSource.Width, iSource.Height, GraphicsUnit.Pixel);
+            g.DrawImage(iSource, new System.Drawing.Rectangle(
+                (dWidth - sW) / 2, (dHeight - sH) / 2, sW, sH), 0, 0,
+                iSource.Width, iSource.Height, GraphicsUnit.Pixel);
             g.Dispose();
+
             //以下代码为保存图片时，设置压缩质量
             EncoderParameters ep = new EncoderParameters();
             long[] qy = new long[1];

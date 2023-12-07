@@ -1,0 +1,177 @@
+﻿<Window  x:Class="CZY.SlackToolBox.FrameTemplate.AirportCS.View.MainWindow" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:LuckyMenu="clr-namespace:CZY.SlackToolBox.LuckyControl.NimbleMenu;assembly=CZY.SlackToolBox.LuckyControl" 
+        xmlns:LuckyPanel="clr-namespace:CZY.SlackToolBox.LuckyControl.ElementPanel;assembly=CZY.SlackToolBox.LuckyControl" 
+        xmlns:LuckyNotify="clr-namespace:CZY.SlackToolBox.LuckyControl.MessageNotify;assembly=CZY.SlackToolBox.LuckyControl" 
+        xmlns:i="clr-namespace:CZY.SlackToolBox.LuckyControl;assembly=CZY.SlackToolBox.LuckyControl" 
+        xmlns:icon="clr-namespace:CZY.SlackToolBox.LuckyControl.IconResource;assembly=CZY.SlackToolBox.LuckyControl" 
+         xmlns:cache="clr-namespace:CZY.SlackToolBox.FrameTemplate.AirportCS.Core"
+         mc:Ignorable="d"   x:Name="window" Icon="pack://application:,,,/CZY.SlackToolBox.FrameTemplate;component/product.ico" 
+        AllowsTransparency="True"  MouseLeftButtonDown="Window_MouseLeftButtonDown"
+          Width="1920" Height="1080" WindowStyle="None"  Tag="南航机场"
+        Title="MainWindow" WindowState="Maximized">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/AirportCS/Main.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid  >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="266"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--#region 标题栏 -->
+        <Border Grid.ColumnSpan="2" Background="#2F7Df1"  />
+        <StackPanel Orientation="Horizontal" MouseDown="StackPanel_MouseDown"  Cursor="Hand">
+            <icon:IconFont  Margin="16,0,16,0" Foreground="#FF1A6ABF" IconName="Plan" >
+                <icon:IconFont.Effect>
+                    <DropShadowEffect ShadowDepth="2" BlurRadius="3"></DropShadowEffect>
+                </icon:IconFont.Effect>
+            </icon:IconFont>
+            <Grid>
+
+                <TextBlock Style="{StaticResource HTitle}"   Foreground="{StaticResource HSFontColor}">协同管理系统</TextBlock>
+                <Label  Margin="0,28,0,0" Foreground="{StaticResource H2FontColor}"  >
+                    <Label.Style>
+                        <Style TargetType="Label">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate>
+                                        <ItemsControl  ItemsSource="{Binding Path=Tag, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"   >
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <StackPanel Orientation="Horizontal"/>
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Border Margin="0,0,5,0" >
+                                                        <ContentPresenter Content="{Binding}"/>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Label.Style>
+
+                </Label>
+            </Grid>
+
+        </StackPanel>
+        <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+         
+            <ToggleButton Background="Transparent" Margin="8" BorderBrush="Transparent">
+                <StackPanel>
+                    <icon:IconFont Width="16" Height="16" Foreground="{StaticResource H3FontColor}" IconName="Plan" >
+                        <icon:IconFont.Effect>
+                            <DropShadowEffect ShadowDepth="2" BlurRadius="3"></DropShadowEffect>
+                        </icon:IconFont.Effect>
+                    </icon:IconFont>
+                    <Label VerticalAlignment="Top"
+                               Foreground="{StaticResource H3FontColor}" FontSize="12">系统</Label>
+                </StackPanel>
+            </ToggleButton>
+            <ToggleButton Background="Transparent" Margin="8" BorderBrush="Transparent">
+                <StackPanel>
+                    <icon:IconFont Width="16" Height="16" Foreground="{StaticResource H3FontColor}" IconName="Plan" >
+                        <icon:IconFont.Effect>
+                            <DropShadowEffect ShadowDepth="2" BlurRadius="3"></DropShadowEffect>
+                        </icon:IconFont.Effect>
+                    </icon:IconFont>
+                    <Label VerticalAlignment="Top"
+                               Foreground="{StaticResource H3FontColor}" FontSize="12">系统</Label>
+                </StackPanel>
+            </ToggleButton>
+            <ToggleButton Background="Transparent" Margin="8" BorderBrush="Transparent">
+                <StackPanel>
+                    <icon:IconFont Width="16" Height="16" Foreground="{StaticResource H3FontColor}" IconName="Plan" >
+                        <icon:IconFont.Effect>
+                            <DropShadowEffect ShadowDepth="2" BlurRadius="3"></DropShadowEffect>
+                        </icon:IconFont.Effect>
+                    </icon:IconFont>
+                    <Label VerticalAlignment="Top"
+                               Foreground="{StaticResource H3FontColor}" FontSize="12">系统</Label>
+                </StackPanel>
+            </ToggleButton>
+            <ToggleButton Background="Transparent" Margin="8" BorderBrush="Transparent">
+                <StackPanel>
+                    <icon:IconFont Width="16" Height="16" Foreground="{StaticResource H3FontColor}" IconName="Plan" >
+                        <icon:IconFont.Effect>
+                            <DropShadowEffect ShadowDepth="2" BlurRadius="3"></DropShadowEffect>
+                        </icon:IconFont.Effect>
+                    </icon:IconFont>
+                    <Label VerticalAlignment="Top"
+                               Foreground="{StaticResource H3FontColor}" FontSize="12">系统</Label>
+                </StackPanel>
+            </ToggleButton>
+            <ToggleButton  Background="Transparent" Margin="8" BorderBrush="Transparent">
+                <StackPanel>
+                    <icon:IconFont Width="16" Height="16" Foreground="{StaticResource H3FontColor}" IconName="Plan" >
+                        <icon:IconFont.Effect>
+                            <DropShadowEffect ShadowDepth="2" BlurRadius="3"></DropShadowEffect>
+                        </icon:IconFont.Effect>
+                    </icon:IconFont>
+                    <Label VerticalAlignment="Top"
+                               Foreground="{StaticResource H3FontColor}" FontSize="12">系统</Label>
+                </StackPanel>
+            </ToggleButton>
+        </StackPanel>
+        <Grid Grid.Column="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0">
+                <Label x:Name="LoginNameLabel" Padding="20,0" Foreground="White" FontSize="16" Content="丞琳"   VerticalAlignment="Center" Margin="22,0,0,2">
+                    <Label.Effect>
+                        <DropShadowEffect   ShadowDepth="1" BlurRadius="2"></DropShadowEffect>
+                    </Label.Effect>
+                </Label>
+
+                <Image  Margin="8"
+                    MouseLeftButtonDown="PersonalCenter_ButtonDown"
+                    MouseRightButtonDown="PersonalCenter_ButtonDown"  Cursor="Hand"
+                       Width="32" Stretch="Fill" Height="32" Source="pack://application:,,,/CZY.SlackToolBox.FrameTemplate;component/AirportCS/images/Photo.png">
+                    <Image.Effect>
+                        <DropShadowEffect ShadowDepth="2" BlurRadius="3"></DropShadowEffect>
+                    </Image.Effect>
+                    <Image.Clip>
+                        <EllipseGeometry Center="16,16" RadiusX="16" RadiusY="16"></EllipseGeometry>
+                    </Image.Clip>
+                </Image>
+
+                <icon:IconFont Margin="8" IconName="Menu" Foreground="Black" Width="16" Height="16" 
+                               Cursor="Hand"
+                               ></icon:IconFont>
+            </StackPanel>
+        </Grid>
+        <!--#endregion-->
+
+        <!--#region 内容页及版权说明 -->
+        <Grid  Grid.Row="1" Background="White"  Grid.Column="1">
+            <ContentControl x:Name="MainContentControl"  />
+        </Grid>
+        <!--#endregion-->
+        <LuckyPanel:TipContentPanel x:Name="PersonContentPanel"  Visibility="Collapsed"  TipArrowState="Top"  CustomBackground="#FF343A40" TipState="Custom"  
+                                    Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,46,44,0">
+
+        </LuckyPanel:TipContentPanel>
+
+        <LuckyNotify:FormsNotify x:Name="WindowTip" Grid.RowSpan="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0">
+
+        </LuckyNotify:FormsNotify>
+
+
+        <LuckyNotify:FormsNotify x:Name="WindowNotify" Grid.RowSpan="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,30,30">
+        </LuckyNotify:FormsNotify>
+
+    </Grid>
+</Window>

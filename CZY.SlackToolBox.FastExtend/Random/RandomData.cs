@@ -742,53 +742,53 @@ namespace CZY.SlackToolBox.FastExtend
 
         public string ChineseName()
         {
-            return RandomTool.GetVcodeNum(1, AllNames) + RandomTool.GetVcodeNum(1, Names);
+            return Random.GetVcodeNum(1, AllNames) + Random.GetVcodeNum(1, Names);
         }
 
         public string CTCNumber()
         {
-            return RandomTool.GetVcodeNum(1, CTC) + RandomTool.GetNum(9);
+            return Random.GetVcodeNum(1, CTC) + Random.GetNum(9);
         }
 
         public string CUCCNumber()
         {
-            return RandomTool.GetVcodeNum(1, CUCC) + RandomTool.GetNum(9);
+            return Random.GetVcodeNum(1, CUCC) + Random.GetNum(9);
         }
 
         public string CMCCNumber()
         {
-            return RandomTool.GetVcodeNum(1, CMCC) + RandomTool.GetNum(9);
+            return Random.GetVcodeNum(1, CMCC) + Random.GetNum(9);
         }
 
 
         public string PhoneEmailNumber()
         {
-            return CMCCNumber() + RandomTool.GetVcodeNum(1, EMail);
+            return CMCCNumber() + Random.GetVcodeNum(1, EMail);
         }
 
         public string CharEmailNumber()
         {
-            return RandomTool.GetVcodeNum(8) + RandomTool.GetVcodeNum(1, EMail);
+            return Random.GetVcodeNum(8) + Random.GetVcodeNum(1, EMail);
         }
 
         public string IDCodeNumber()
         {
-            return RandomTool.GetVcodeNum(1, RegionCode) + YearNumber() + MonthNumber() + RandomTool.GetNum(4);
+            return Random.GetVcodeNum(1, RegionCode) + YearNumber() + MonthNumber() + Random.GetNum(4);
         }
 
         public string YearNumber()
         {
-            return RandomTool.GetNum(DateTime.MinValue.Year, DateTime.Now.AddYears(-18).Year);
+            return Random.GetNum(DateTime.MinValue.Year, DateTime.Now.AddYears(-18).Year);
         }
 
         public string MonthNumber()
         {
-            return RandomTool.GetNum(1, 12).PadLeft(2, '0');
+            return Random.GetNum(1, 12).PadLeft(2, '0');
         }
 
         public string DayNumber()
         {
-            return RandomTool.GetNum(1, 31).PadLeft(2, '0');
+            return Random.GetNum(1, 31).PadLeft(2, '0');
         }
 
         /// <summary>
@@ -797,12 +797,12 @@ namespace CZY.SlackToolBox.FastExtend
         /// <returns></returns>
         public bool StateData()
         {
-            int t = RandomTool.GetSimpNum(1, 9999);
+            int t = Random.GetSimpNum(1, 9999);
             return t % 2 == 0;
         }
         public DateTime DataNumber(int day)
         {
-            return DateTime.Now.AddDays(RandomTool.GetSimpNum(1, day) * -1);
+            return DateTime.Now.AddDays(Random.GetSimpNum(1, day) * -1);
         }
 
         /// <summary>
@@ -815,7 +815,7 @@ namespace CZY.SlackToolBox.FastExtend
         /// <returns></returns>
         public int[] RectanglePoint(int x1, int x2, int y1, int y2)
         {
-            return new int[] { RandomTool.GetSimpNum(x1, x2), RandomTool.GetSimpNum(y1, y2) };
+            return new int[] { Random.GetSimpNum(x1, x2), Random.GetSimpNum(y1, y2) };
         }
         /// <summary>
         /// 获取护照号
@@ -827,7 +827,7 @@ namespace CZY.SlackToolBox.FastExtend
         /// <returns></returns>
         public string IDPostCodeNumber(string format = "PE")
         {
-            return format + RandomTool.GetNum(7);
+            return format + Random.GetNum(7);
         }
     }
 }

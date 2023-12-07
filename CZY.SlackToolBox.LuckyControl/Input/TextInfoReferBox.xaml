@@ -19,7 +19,7 @@
         <Grid        >
             <TextBox BorderThickness="0,0.5,0.5,0.5"  IsReadOnly="True" 
                      HorizontalAlignment="Center" Padding="10,12" Height="42"  
-                 x:Name="InputValue"  Width="{Binding TextValueWidth}"    
+                 x:Name="InputValue"  Width="{Binding TextValueWidth}"     TextWrapping="Wrap"
                   BorderBrush="Gray"   >
                 <TextBox.Resources>
                     <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5"  Stretch="None" AlignmentX="Left">

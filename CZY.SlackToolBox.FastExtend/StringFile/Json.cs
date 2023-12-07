@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace  CZY.SlackToolBox.FastExtend
 {
-    public static class JsonTool
+    public static class Json
     {
         //json文件存储的字符集
         public static Encoding Encoding = Encoding.UTF8;

@@ -207,57 +207,7 @@ namespace CZY.SlackToolBox.FastExtend
                         server.BeginAccept(new AsyncCallback(HandleAcceptConnected), server);
                 }
             }
-        }
-        /// <summary>
-        /// 处理客户端数据
-        /// </summary>
-        /// <param name="ar"></param>
-        //private void HandleDataReceived(IAsyncResult ar)
-        //{
-        //    if (IsRunning)
-        //    {
-        //        NetState state = (NetState)ar.AsyncState;
-        //        Socket client = state.ClientSocket;
-        //        try
-        //        {
-        //            //如果两次开始了异步的接收,所以当客户端退出的时候
-        //            //会两次执行EndReceive
-        //            int recv = client.EndReceive(ar);
-        //            if (recv == 0)
-        //            {
-        //                //C- TODO 触发事件 (关闭客户端)
-        //                Close(state);
-        //                RaiseNetError(state);
-        //                return;
-        //            }
-        //            state.DataLength = recv;
-        //            //TODO 处理已经读取的数据 ps:数据在state的RecvDataBuffer中
-
-        //            //C- TODO 触发数据接收事件
-        //            RaiseDataArrived(state);
-
-        //            if (state.ByteBuffer != null)
-        //            {
-        //                //继续接收来自来客户端的数据
-        //                client.BeginReceive(state.ByteBuffer, 0, state.ByteBuffer.Length, SocketFlags.None,
-        //                new AsyncCallback(HandleDataReceived), state);
-        //            }
-
-        //        }
-        //        catch (SocketException e)
-        //        {
-        //            //C- TODO 异常处理
-        //            RaiseNetError(state);
-
-        //            Close(state);
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            RaiseOtherException(e);
-        //            Close(state);
-        //        }
-        //    }
-        //}
+        } 
 
         /// <summary>
         /// 将数据发送至指定ip的客户端
@@ -277,6 +227,7 @@ namespace CZY.SlackToolBox.FastExtend
                 }
             }
         }
+
         /// <summary>
         /// 通过IP终结点指定发送的客户端
         /// </summary>
@@ -487,6 +438,7 @@ namespace CZY.SlackToolBox.FastExtend
             client.Init();
         }
         #endregion
+
         #region Close
         /// <summary>
         /// 关闭一个与客户端之间的会话

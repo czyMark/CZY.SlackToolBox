@@ -5,16 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CZY.SlackToolBox.FrameTemplate.SettingWindow.View"
              xmlns:input="clr-namespace:CZY.SlackToolBox.LuckyControl.Input;assembly=CZY.SlackToolBox.LuckyControl"
+             xmlns:back="clr-namespace:CZY.SlackToolBox.AnimationBank.Background;assembly=CZY.SlackToolBox.AnimationBank"
+             xmlns:core="clr-namespace:CZY.SlackToolBox.AnimationBank.Common;assembly=CZY.SlackToolBox.AnimationBank"
              mc:Ignorable="d" Height="1010"   Width="1920">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/YXKJ/TabControl.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/YXKJ/TabItem.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
+             </ResourceDictionary.MergedDictionaries>
+            <core:RepeatCollection x:Key="WavesCanvasCollection">
+                <SolidColorBrush>#CC4a0e68</SolidColorBrush>
+                <SolidColorBrush>#CCb62223</SolidColorBrush>
+                <SolidColorBrush>#CCfdd70c</SolidColorBrush>
+                <SolidColorBrush>#CCf16704</SolidColorBrush>
+                <SolidColorBrush>#CC69982d</SolidColorBrush> 
+                </core:RepeatCollection>
         </ResourceDictionary>
     </UserControl.Resources>
-    <TabControl    TabStripPlacement="Top" Margin="5">
+    <TabControl    TabStripPlacement="Top"   Margin="5">
         <TabItem Header="数据库">
             <Grid Background="Purple">
             </Grid>
@@ -154,7 +163,11 @@
             </Grid>
         </TabItem>
         <TabItem Header="皮肤">
-            <Grid Background="Beige" />
+            <Grid Background="White" >
+                <back:WavesCanvas Width="100" Height="100" WaveHeight="20"  WaveCount="5" Background="Black"
+                                  WaveColor="{StaticResource  WavesCanvasCollection}"    > 
+                </back:WavesCanvas>
+            </Grid>
         </TabItem>
     </TabControl>
 </UserControl>

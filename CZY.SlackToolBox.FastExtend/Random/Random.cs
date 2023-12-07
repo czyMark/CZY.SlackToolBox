@@ -4,7 +4,7 @@ namespace CZY.SlackToolBox.FastExtend
 {
 
 
-    public static class RandomTool
+    public static class Random
 	{
         public enum RandomNumFormat
         {
@@ -22,7 +22,7 @@ namespace CZY.SlackToolBox.FastExtend
             Slash
         }
 
-        private static Random random = new Random();
+        private static System.Random random = new System.Random();
 		private static double oldNum;
 
         /// <summary>
@@ -109,13 +109,13 @@ namespace CZY.SlackToolBox.FastExtend
             string code = "";//产生的随机数
             int temp = -1;//记录上次随机数值，尽量避避免生产几个一样的随机数
 
-            Random rand = new Random();
+            System.Random rand = new System.Random();
             //采用一个简单的算法以保证生成随机数的不同
             for (int i = 1; i < VcodeNum + 1; i++)
             {
                 if (temp != -1)
                 {
-                    rand = new Random(i * temp * unchecked((int)DateTime.Now.Ticks));//初始化随机类
+                    rand = new System.Random(i * temp * unchecked((int)DateTime.Now.Ticks));//初始化随机类
                 }
                 int t = rand.Next(VcArray.Length);//获取随机数
                 if (temp != -1 && temp == t)
@@ -140,13 +140,13 @@ namespace CZY.SlackToolBox.FastExtend
             string code = "";//产生的随机数
             int temp = -1;//记录上次随机数值，尽量避避免生产几个一样的随机数
 
-            Random rand = new Random();
+            System.Random rand = new System.Random();
             //采用一个简单的算法以保证生成随机数的不同
             for (int i = 1; i < VcodeNum + 1; i++)
             {
                 if (temp != -1)
                 {
-                    rand = new Random(i * temp * unchecked((int)DateTime.Now.Ticks));//初始化随机类
+                    rand = new System.Random(i * temp * unchecked((int)DateTime.Now.Ticks));//初始化随机类
                 }
                 int t = rand.Next(VcArray.Length);//获取随机数
                 if (temp != -1 && temp == t)
@@ -171,13 +171,13 @@ namespace CZY.SlackToolBox.FastExtend
             string code = "";//产生的随机数
             int temp = -1;//记录上次随机数值，尽量避避免生产几个一样的随机数
 
-            Random rand = new Random();
+            System.Random rand = new System.Random();
             //采用一个简单的算法以保证生成随机数的不同
             for (int i = 1; i < VcodeNum + 1; i++)
             {
                 if (temp != -1)
                 {
-                    rand = new Random(i * temp * unchecked((int)DateTime.Now.Ticks));//初始化随机类
+                    rand = new System.Random(i * temp * unchecked((int)DateTime.Now.Ticks));//初始化随机类
                 }
                 int t = rand.Next(VcArray.Length);//获取随机数
                 if (temp != -1 && temp == t)

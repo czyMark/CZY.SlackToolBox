@@ -13,7 +13,6 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.View
         {
             InitializeComponent();
             this.DataContext = new DataListContentViewModel();
-
         }
 
         private void SearchPanel_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)

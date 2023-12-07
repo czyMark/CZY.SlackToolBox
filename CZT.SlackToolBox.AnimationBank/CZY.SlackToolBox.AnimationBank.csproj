@@ -57,6 +57,9 @@
     <Compile Include="Background\FloatParticle.xaml.cs">
       <DependentUpon>FloatParticle.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Background\WavesCanvas.xaml.cs">
+      <DependentUpon>WavesCanvas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Common\AnimateDoubleWrapper.cs" />
     <Compile Include="Common\RepeatCollection.cs" />
     <Compile Include="Grid\AlignmentGrid.cs" />
@@ -127,6 +130,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Background\Waves.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Background\WavesCanvas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Common\Focus.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

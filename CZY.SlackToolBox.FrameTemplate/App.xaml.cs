@@ -1,6 +1,5 @@
 ﻿using CZY.SlackToolBox.FastExtend;
-using CZY.SlackToolBox.FrameTemplate.Functional;
-using CZY.SlackToolBox.FrameTemplate.YXKJ.Core;
+using CZY.SlackToolBox.FrameTemplate.Functional; 
 using CZY.SlackToolBox.FrameTemplate.YXKJ.View;
 using System;
 using System.Windows;
@@ -69,10 +68,15 @@ namespace CZY.SlackToolBox.FrameTemplate
             this.ShutdownMode = System.Windows.ShutdownMode.OnExplicitShutdown;
 
 
-            //UserCache.Init();
+            //CZY.SlackToolBox.FrameTemplate.SettingWindow.Core.UserCache.Init();
             //CZY.SlackToolBox.FrameTemplate.SettingWindow.View.MainWindow win = new SettingWindow.View.MainWindow();
             //win.Show();
 
+
+
+            CZY.SlackToolBox.FrameTemplate.AirportCS.Core.UserCache.Init();
+            CZY.SlackToolBox.FrameTemplate.AirportCS.View.MainWindow win = new AirportCS.View.MainWindow();
+            win.Show();
 
             //TrayWindow Tray = new TrayWindow();
 
@@ -81,8 +85,7 @@ namespace CZY.SlackToolBox.FrameTemplate
             //InitSysWindow win = new InitSysWindow();
             //win.ShowDialog();
 
-
-            //登录窗体
+            ////登录窗体
             //LoginWindow loginWindow = new LoginWindow();
             //loginWindow.Show();
 
