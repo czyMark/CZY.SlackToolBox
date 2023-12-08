@@ -68,15 +68,15 @@ namespace CZY.SlackToolBox.FrameTemplate
             this.ShutdownMode = System.Windows.ShutdownMode.OnExplicitShutdown;
 
 
-            //CZY.SlackToolBox.FrameTemplate.SettingWindow.Core.UserCache.Init();
-            //CZY.SlackToolBox.FrameTemplate.SettingWindow.View.MainWindow win = new SettingWindow.View.MainWindow();
-            //win.Show();
-
-
-
-            CZY.SlackToolBox.FrameTemplate.AirportCS.Core.UserCache.Init();
-            CZY.SlackToolBox.FrameTemplate.AirportCS.View.MainWindow win = new AirportCS.View.MainWindow();
+            CZY.SlackToolBox.FrameTemplate.SettingWindow.Core.UserCache.Init();
+            CZY.SlackToolBox.FrameTemplate.SettingWindow.View.MainWindow win = new SettingWindow.View.MainWindow();
             win.Show();
+
+
+
+            //CZY.SlackToolBox.FrameTemplate.AirportCS.Core.UserCache.Init();
+            //CZY.SlackToolBox.FrameTemplate.AirportCS.View.MainWindow win = new AirportCS.View.MainWindow();
+            //win.Show();
 
             //TrayWindow Tray = new TrayWindow();
 

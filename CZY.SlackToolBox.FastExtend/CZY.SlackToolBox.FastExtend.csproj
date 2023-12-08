@@ -39,6 +39,7 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BarCode\QRCodeTool.cs" />
     <Compile Include="Communication\FTP\Ftp.cs" />
     <Compile Include="Communication\Pop3\Pop3.cs" />
     <Compile Include="Communication\Serial\SerialPort.cs" />
@@ -67,7 +68,7 @@
     <Compile Include="Window\EnabledShortcutKeyWindows.cs" />
     <Compile Include="Window\WindowManager.cs" />
     <Compile Include="Random\RandomData.cs" />
-    <Compile Include="Random\Random.cs" />
+    <Compile Include="Random\Tool.cs" />
     <Compile Include="Security\DissymmetryEncryption.cs" />
     <Compile Include="StringFile\Json.cs" />
     <Compile Include="Extention\XmlTool.cs" />
@@ -111,6 +112,9 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="QRCoder, Version=1.4.3.0, Culture=neutral, PublicKeyToken=c4ed5b9ae8358a28, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.4.3\lib\net40\QRCoder.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -120,9 +124,6 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="TouchSocket, Version=1.3.9.0, Culture=neutral, PublicKeyToken=e66400a0f8ce7abb, processorArchitecture=MSIL">
-      <HintPath>..\packages\TouchSocket.1.3.9\lib\net45\TouchSocket.dll</HintPath>
-    </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>

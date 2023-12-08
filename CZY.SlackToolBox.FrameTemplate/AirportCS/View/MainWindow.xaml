@@ -18,6 +18,84 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/AirportCS/Main.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="ToggleButtonBaseStyle"   TargetType="{x:Type ToggleButton}">
+                <Setter Property="Width" Value="60"></Setter>
+                <Setter Property="Cursor" Value="Hand"></Setter>
+                <Setter Property="BorderThickness" Value="0"></Setter>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ToggleButton}">
+                            <Grid>
+                                <Border x:Name="border" CornerRadius="4" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="0" SnapsToDevicePixels="true">
+                                    <!--点下时显示-->
+                                    <Grid x:Name="CheckedLayer" Visibility="Collapsed">
+                                        <Rectangle Height="3" VerticalAlignment="Top" Fill="Transparent" RadiusX="4" RadiusY="4">
+                                            <Rectangle.Effect>
+                                                <BlurEffect Radius="5"></BlurEffect>
+                                            </Rectangle.Effect>
+                                        </Rectangle>
+                                        <Border CornerRadius="4" Background="#487EE9" BorderBrush="Transparent" BorderThickness="0">
+                                            <Border.Effect>
+                                                <BlurEffect Radius="3"></BlurEffect>
+                                            </Border.Effect>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                                <Border BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
+                                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                </Border>
+                                <!--禁用时显示-->
+                                <Rectangle x:Name="EnabledLayer" Fill="#CED1D7" RadiusX="4" RadiusY="4" Visibility="Collapsed"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="true">
+                                    <Setter TargetName="CheckedLayer" Property="Visibility" Value="Visible"/>
+                                    <Setter TargetName="border" Property="BorderBrush" Value="#80cccccc"/>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="false">
+                                    <Setter TargetName="EnabledLayer" Property="Visibility" Value="Visible"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+
+
+            <Storyboard x:Key="CloseAgentMatters">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="AgentMattersGrid">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="230"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="280"/>
+                </DoubleAnimationUsingKeyFrames>
+                <!--<ObjectAnimationUsingKeyFrames  Storyboard.TargetName="MaskGrid"  Storyboard.TargetProperty="Visibility"  >
+                    <ObjectAnimationUsingKeyFrames.KeyFrames>
+                        <DiscreteObjectKeyFrame KeyTime="0:0:0.1" >
+                            <DiscreteObjectKeyFrame.Value>
+                                <Visibility>Collapsed</Visibility>
+                            </DiscreteObjectKeyFrame.Value>
+                        </DiscreteObjectKeyFrame>
+                    </ObjectAnimationUsingKeyFrames.KeyFrames>
+                </ObjectAnimationUsingKeyFrames>-->
+
+            </Storyboard>
+            <Storyboard x:Key="OpenAgentMatters">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="AgentMattersGrid">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-20"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+                <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetName="MaskGrid"  Storyboard.TargetProperty="Visibility"  >
+                    <ObjectAnimationUsingKeyFrames.KeyFrames>
+                        <DiscreteObjectKeyFrame KeyTime="0:0:0.1" >
+                            <DiscreteObjectKeyFrame.Value>
+                                <Visibility>Visible</Visibility>
+                            </DiscreteObjectKeyFrame.Value>
+                        </DiscreteObjectKeyFrame>
+                    </ObjectAnimationUsingKeyFrames.KeyFrames>
+                </ObjectAnimationUsingKeyFrames>-->
+            </Storyboard>
+
         </ResourceDictionary>
     </Window.Resources>
     <Grid  >
@@ -30,7 +108,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <!--#region 标题栏 -->
-        <Border Grid.ColumnSpan="2" Background="#2F7Df1"  />
+        <Border Grid.ColumnSpan="2" Background="#30487A"  />
         <StackPanel Orientation="Horizontal" MouseDown="StackPanel_MouseDown"  Cursor="Hand">
             <icon:IconFont  Margin="16,0,16,0" Foreground="#FF1A6ABF" IconName="Plan" >
                 <icon:IconFont.Effect>
@@ -38,7 +116,6 @@
                 </icon:IconFont.Effect>
             </icon:IconFont>
             <Grid>
-
                 <TextBlock Style="{StaticResource HTitle}"   Foreground="{StaticResource HSFontColor}">协同管理系统</TextBlock>
                 <Label  Margin="0,28,0,0" Foreground="{StaticResource H2FontColor}"  >
                     <Label.Style>
@@ -70,9 +147,10 @@
             </Grid>
 
         </StackPanel>
-        <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
-         
-            <ToggleButton Background="Transparent" Margin="8" BorderBrush="Transparent">
+        <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0,5,0,0" HorizontalAlignment="Center">
+            <ToggleButton Background="Transparent"  BorderThickness="0" 
+                          Style="{StaticResource ToggleButtonBaseStyle}"
+                          Margin="8" BorderBrush="Transparent">
                 <StackPanel>
                     <icon:IconFont Width="16" Height="16" Foreground="{StaticResource H3FontColor}" IconName="Plan" >
                         <icon:IconFont.Effect>
@@ -83,7 +161,9 @@
                                Foreground="{StaticResource H3FontColor}" FontSize="12">系统</Label>
                 </StackPanel>
             </ToggleButton>
-            <ToggleButton Background="Transparent" Margin="8" BorderBrush="Transparent">
+            <ToggleButton Background="Transparent"
+                          Style="{StaticResource ToggleButtonBaseStyle}"
+                          Margin="8" BorderBrush="Transparent">
                 <StackPanel>
                     <icon:IconFont Width="16" Height="16" Foreground="{StaticResource H3FontColor}" IconName="Plan" >
                         <icon:IconFont.Effect>
@@ -94,29 +174,8 @@
                                Foreground="{StaticResource H3FontColor}" FontSize="12">系统</Label>
                 </StackPanel>
             </ToggleButton>
-            <ToggleButton Background="Transparent" Margin="8" BorderBrush="Transparent">
-                <StackPanel>
-                    <icon:IconFont Width="16" Height="16" Foreground="{StaticResource H3FontColor}" IconName="Plan" >
-                        <icon:IconFont.Effect>
-                            <DropShadowEffect ShadowDepth="2" BlurRadius="3"></DropShadowEffect>
-                        </icon:IconFont.Effect>
-                    </icon:IconFont>
-                    <Label VerticalAlignment="Top"
-                               Foreground="{StaticResource H3FontColor}" FontSize="12">系统</Label>
-                </StackPanel>
-            </ToggleButton>
-            <ToggleButton Background="Transparent" Margin="8" BorderBrush="Transparent">
-                <StackPanel>
-                    <icon:IconFont Width="16" Height="16" Foreground="{StaticResource H3FontColor}" IconName="Plan" >
-                        <icon:IconFont.Effect>
-                            <DropShadowEffect ShadowDepth="2" BlurRadius="3"></DropShadowEffect>
-                        </icon:IconFont.Effect>
-                    </icon:IconFont>
-                    <Label VerticalAlignment="Top"
-                               Foreground="{StaticResource H3FontColor}" FontSize="12">系统</Label>
-                </StackPanel>
-            </ToggleButton>
-            <ToggleButton  Background="Transparent" Margin="8" BorderBrush="Transparent">
+            <ToggleButton Background="Transparent"
+                          Style="{StaticResource ToggleButtonBaseStyle}" Margin="8" BorderBrush="Transparent">
                 <StackPanel>
                     <icon:IconFont Width="16" Height="16" Foreground="{StaticResource H3FontColor}" IconName="Plan" >
                         <icon:IconFont.Effect>
@@ -149,8 +208,13 @@
                 </Image>
 
                 <icon:IconFont Margin="8" IconName="Menu" Foreground="Black" Width="16" Height="16" 
-                               Cursor="Hand"
-                               ></icon:IconFont>
+                               Cursor="Hand"  >
+                    <icon:IconFont.Triggers>
+                        <EventTrigger RoutedEvent="UIElement.MouseDown">
+                            <BeginStoryboard Storyboard="{StaticResource OpenAgentMatters}"/>
+                        </EventTrigger>
+                    </icon:IconFont.Triggers> 
+                </icon:IconFont>
             </StackPanel>
         </Grid>
         <!--#endregion-->
@@ -160,6 +224,32 @@
             <ContentControl x:Name="MainContentControl"  />
         </Grid>
         <!--#endregion-->
+
+        <Grid x:Name="AgentMattersGrid" Grid.RowSpan="2" Width="280"
+              Background="White" HorizontalAlignment="Right"  
+              RenderTransformOrigin="0.5,0.5" Grid.Column="1">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+
+            <icon:IconFont Margin="8" IconName="Close" Foreground="Black"
+                           Width="32" Height="32" 
+                           Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Top"  >
+                <icon:IconFont.Triggers>
+                    <EventTrigger RoutedEvent="UIElement.MouseDown">
+                        <BeginStoryboard  Storyboard="{StaticResource CloseAgentMatters}"/>
+                    </EventTrigger>
+                </icon:IconFont.Triggers>
+            </icon:IconFont>
+      
+        </Grid>
+
+
         <LuckyPanel:TipContentPanel x:Name="PersonContentPanel"  Visibility="Collapsed"  TipArrowState="Top"  CustomBackground="#FF343A40" TipState="Custom"  
                                     Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,46,44,0">
 
@@ -168,7 +258,6 @@
         <LuckyNotify:FormsNotify x:Name="WindowTip" Grid.RowSpan="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0">
 
         </LuckyNotify:FormsNotify>
-
 
         <LuckyNotify:FormsNotify x:Name="WindowNotify" Grid.RowSpan="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,30,30">
         </LuckyNotify:FormsNotify>

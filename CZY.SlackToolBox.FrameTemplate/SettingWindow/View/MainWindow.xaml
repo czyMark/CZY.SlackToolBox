@@ -10,8 +10,7 @@
         x:Name="window" Icon="pack://application:,,,/CZY.SlackToolBox.FrameTemplate;component/product.ico"
         Title="工具箱"  WindowState="Maximized" WindowStyle="None" ResizeMode="NoResize"  >
     <Window.Resources>
-        <PathGeometry x:Key="path" Figures="M-15.500207,-7.7077957 C10.791322,-7.2911776 23.95792,-4.9167829 23.95792,-4.9167829 L-186.66747,22.166988 L-276.6673,-81.832578 C-276.6673,-81.832578 0.66657904,-103.16616 3.9999149,-103.83282 C7.3332508,-104.49949 120,-58.49989 120,-58.49989 C120,-58.49989 -139.33353,67.499985 -152.0002,68.833319 C-164.66688,70.166652 -320.667,72.166986 -320.667,72.166986 L-302.66667,43.5"/>
-        <Storyboard x:Key="CloseMenu">
+       <Storyboard x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="20"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
@@ -30,7 +29,7 @@
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="130"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="150"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="280"/>
             </DoubleAnimationUsingKeyFrames>
             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="MaskGrid"  Storyboard.TargetProperty="Visibility"  >
                 <ObjectAnimationUsingKeyFrames.KeyFrames>
@@ -53,18 +52,18 @@
     </Window.Triggers>
     <Grid Background="Transparent"  >
         <Grid.RowDefinitions>
-            <RowDefinition Height="36"></RowDefinition>
+            <RowDefinition Height="54"></RowDefinition>
             <RowDefinition ></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid VerticalAlignment="Top"  Background="AliceBlue">
+        <Grid VerticalAlignment="Top" Height="54" Background="AliceBlue">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="52"></ColumnDefinition>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="52"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Button x:Name="ButtonOpen"  HorizontalContentAlignment="Center"
-                    Cursor="Hand"  HorizontalAlignment="Center"   VerticalAlignment="Top"
+                    Cursor="Hand"  HorizontalAlignment="Center"  Margin="0,8,0,0"  VerticalAlignment="Top"
                     Background="{x:Null}" BorderBrush="{x:Null}"  >
                 <lcon:IconFont IconName="Menu" Foreground="Black" Width="32" Height="32"></lcon:IconFont>
             </Button>
@@ -98,7 +97,7 @@
 
         <Grid x:Name="MaskGrid" Grid.RowSpan="3" Background="AliceBlue" Opacity="0.6" Visibility="Collapsed"></Grid>
         <!--左侧抽屉菜单，默认在显示窗体以外，点击菜单图标再经过简单的动画呈现出来-->
-        <Grid x:Name="GridMenu" Grid.RowSpan="3" Width="150" Background="White" HorizontalAlignment="Left" Margin="-150 0 0 0"  RenderTransformOrigin="0.5,0.5">
+        <Grid x:Name="GridMenu" Grid.RowSpan="3" Width="280" Background="White" HorizontalAlignment="Left" Margin="-280 0 0 0"  RenderTransformOrigin="0.5,0.5">
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -136,7 +135,7 @@
                 </ListView>
             </StackPanel>
             <Button x:Name="ButtonClose"  HorizontalAlignment="Right"  VerticalAlignment="Top" 
-                    Background="{x:Null}"     BorderBrush="{x:Null}"  Padding="0">
+                    Background="{x:Null}"     BorderBrush="{x:Null}" Margin="0,8,0,0"   Padding="0">
                 <lcon:IconFont IconName="Menu" Foreground="#13227a" Width="32" Height="32"></lcon:IconFont>
             </Button>
         </Grid>

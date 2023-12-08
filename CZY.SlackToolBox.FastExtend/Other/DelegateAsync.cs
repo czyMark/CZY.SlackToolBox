@@ -13,15 +13,14 @@ namespace CZY.SlackToolBox.FastExtend
         /// </summary>
         /// <param name="firstFunc">首先执行的方法</param>
         /// <param name="next">接下来执行的方法</param>
-        public static void DoneRunAsync(this Action firstFunc, Action next)
+        public static Task DoneRunAsync(this Action firstFunc)
         {
             Task firstTask = new Task(() =>
             {
                 firstFunc();
             });
-
             firstTask.Start();
-            firstTask.ContinueWith(x => next());
+            return firstTask;
         }
 
         /// <summary>
@@ -29,17 +28,15 @@ namespace CZY.SlackToolBox.FastExtend
         /// </summary>
         /// <param name="firstFunc">首先执行的方法</param>
         /// <param name="next">接下来执行的方法</param>
-        public static void DoneRunAsync(this Func<object> firstFunc, Action<object> next)
+        public static Task DoneRunAsync(this Func<object> firstFunc )
         {
-            Task<object> firstTask = new Task<object>(() =>
+            Task<object> task = new Task<object>(() =>
             {
                 return firstFunc();
             });
-
-            firstTask.Start();
-            firstTask.ContinueWith(x => next(x.Result));
-        }
-         
-
+            task.Start();
+            return task;
+        }  
     }
+     
 }

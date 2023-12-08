@@ -7,6 +7,7 @@
              xmlns:input="clr-namespace:CZY.SlackToolBox.LuckyControl.Input;assembly=CZY.SlackToolBox.LuckyControl"
              xmlns:back="clr-namespace:CZY.SlackToolBox.AnimationBank.Background;assembly=CZY.SlackToolBox.AnimationBank"
              xmlns:core="clr-namespace:CZY.SlackToolBox.AnimationBank.Common;assembly=CZY.SlackToolBox.AnimationBank"
+             xmlns:verify="clr-namespace:CZY.SlackToolBox.LuckyControl.Verify;assembly=CZY.SlackToolBox.LuckyControl"
              mc:Ignorable="d" Height="1010"   Width="1920">
     <UserControl.Resources>
         <ResourceDictionary>
@@ -150,7 +151,7 @@
                         </input:TextInfoBox>
                         <WrapPanel Width="120">
                             <Button   Width="90" Margin="0,6">全部发送</Button>
-                            <Button   Width="90"  Margin="0,6">发送给2</Button>
+                            <Button   Width="90"  Margin="0,6">发送给1</Button>
                         </WrapPanel>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="3">
@@ -167,6 +168,20 @@
                 <back:WavesCanvas Width="100" Height="100" WaveHeight="20"  WaveCount="5" Background="Black"
                                   WaveColor="{StaticResource  WavesCanvasCollection}"    > 
                 </back:WavesCanvas>
+            </Grid>
+        </TabItem>
+        <TabItem Header="验证码">
+            <Grid Background="LightGray" >
+                <WrapPanel>
+                    <verify:SliderVerify Margin="20"  Width="500" Height="300"
+                                         ImageUri="pack://application:,,,/CZY.SlackToolBox.FrameTemplate;component/SettingWindow/Images/background.jpg">
+                    </verify:SliderVerify>
+
+
+                    <verify:TextClickVerify Margin="20"  Width="500" Height="300" TextVerify="Chinese"
+                                         ImageUri="pack://application:,,,/CZY.SlackToolBox.FrameTemplate;component/SettingWindow/Images/background.jpg">
+                    </verify:TextClickVerify>
+                </WrapPanel>
             </Grid>
         </TabItem>
     </TabControl>

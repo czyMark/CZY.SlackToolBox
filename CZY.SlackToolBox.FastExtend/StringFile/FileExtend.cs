@@ -464,6 +464,21 @@ namespace  CZY.SlackToolBox.FastExtend
         #region 快捷操作
 
         /// <summary>
+        /// 获取文件路径中的目录位置（不包括文件名）
+        /// </summary>
+        /// <param name="path">文件位置</param>
+        /// <returns></returns>
+        public static string GetPathDirectory(this string filepath)
+        {
+            if (!filepath.Contains("\\"))
+                return CurrentDir;
+
+            string pattern = @"^(.*)\\.*?$";
+            Match match = Regex.Match(filepath, pattern);
+
+            return match.Groups[1].ToString();
+        }
+        /// <summary>
         /// 判断文件是否存在
         /// </summary>
         /// <param name="path">文件目录</param>
@@ -477,10 +492,8 @@ namespace  CZY.SlackToolBox.FastExtend
         /// 获取当前程序根目录
         /// </summary>
         /// <returns></returns>
-        public static string GetCurrentDir()
-        {
-            return AppDomain.CurrentDomain.BaseDirectory;
-        }
+        public static string CurrentDir => AppDomain.CurrentDomain.BaseDirectory;
+       
 
         #endregion
 
@@ -571,7 +584,7 @@ namespace  CZY.SlackToolBox.FastExtend
         {
             if (string.IsNullOrEmpty(path))
             { 
-                 path=$"{GetCurrentDir()}\\logs\\{DateTime.Now.ToString("yyyy-MM-dd-HH")}.txt";
+                 path=$"{CurrentDir}\\logs\\{DateTime.Now.ToString("yyyy-MM-dd-HH")}.txt";
             }
             string content = $"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}:{msg}";
 

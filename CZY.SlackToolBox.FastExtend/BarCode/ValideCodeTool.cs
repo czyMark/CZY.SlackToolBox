@@ -5,6 +5,10 @@ using System.IO;
 
 namespace CZY.SlackToolBox.FastExtend
 {
+
+    /// <summary>
+    /// 验证码生成
+    /// </summary>
     public static  class ValideCodeTool
 	{
         /// <summary>
@@ -12,7 +16,7 @@ namespace CZY.SlackToolBox.FastExtend
         /// </summary>
         /// <param name="code">生成图片的验证码</param>
         /// <returns></returns>
-        public static Bitmap ValideImage(this string code)
+        public static Bitmap ToValideImage(this string code)
         {
             Bitmap Img = null;
             Graphics g = null;
@@ -63,7 +67,7 @@ namespace CZY.SlackToolBox.FastExtend
         /// </summary>
         /// <param name="code">生成图片的验证码缓存</param>
         /// <returns></returns>
-        public static MemoryStream ValideImageMemory(this string code)
+        public static MemoryStream ToValideImageMemory(this string code)
         {
             Bitmap Img = null;
             Graphics g = null;

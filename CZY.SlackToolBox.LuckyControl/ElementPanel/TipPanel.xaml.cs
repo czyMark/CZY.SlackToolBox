@@ -54,15 +54,15 @@ namespace CZY.SlackToolBox.LuckyControl.ElementPanel
         #region PanelState
         public TipPanelState PanelState
         {
-            get { return (TipPanelState)GetValue(MaskStateProperty); }
-            set { SetValue(MaskStateProperty, value); }
+            get { return (TipPanelState)GetValue(PanelStateProperty); }
+            set { SetValue(PanelStateProperty, value); }
         }
 
-        public static readonly DependencyProperty MaskStateProperty = DependencyProperty.Register(
+        public static readonly DependencyProperty PanelStateProperty = DependencyProperty.Register(
          "PanelState",
          typeof(TipPanelState),
-         typeof(TipPanel), new PropertyMetadata(MaskStateChanged));
-        private static void MaskStateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+         typeof(TipPanel), new PropertyMetadata(PanelStateChanged));
+        private static void PanelStateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (e.NewValue != null)
             {

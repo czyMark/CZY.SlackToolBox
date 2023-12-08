@@ -435,5 +435,24 @@ namespace  CZY.SlackToolBox.FastExtend
 
 			}
 		}
-	}
+
+
+
+
+
+
+
+        /// <summary>
+        /// 从base64字符串读入图片
+        /// </summary>
+        /// <param name="base64">base64字符串</param>
+        /// <returns></returns>
+        public static System.Drawing.Image FromBase64ToImage(this string base64)
+        {
+            byte[] bytes = Convert.FromBase64String(base64);
+            MemoryStream memStream = new MemoryStream(bytes);
+            System.Drawing.Image img = System.Drawing.Image.FromStream(memStream);
+            return img;
+        }
+    }
 }

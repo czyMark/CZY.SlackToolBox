@@ -76,8 +76,7 @@ namespace CZY.SlackToolBox.FrameTemplate.SettingWindow.ViewModel
 
 
         public MainWindowViewModel()
-        {
-
+        { 
             VersionNumber = "V1.0";
             FunList = new List<FunMenuItem>(){
                 new FunMenuItem() {   IconName="Setting", Path="",FunName="Setting", TextName="基础设置" },

@@ -125,6 +125,11 @@ namespace CZY.SlackToolBox.FastExtend
         /// </summary>
         public string[] ITPosition;
 
+        /// <summary>
+        /// 常见成语
+        /// </summary>
+        public string[] Idioms;
+
 
         /// <summary>
         /// 城市机构
@@ -702,10 +707,14 @@ namespace CZY.SlackToolBox.FastExtend
             EMail = temp.Split(',');
 
             temp = @"110101,110102,110105,110106,110107,110108,110109,110111,110112,130107,130108,130109,130110,130111,130121,130123,130125,120110,120111,120112,120113,120114,120115,130204,130205,130207,130208,130209,130224,130425,130426,130427,130430,130431,130432,130607,130608,130609,130623,130624,130626,130627,130628,130629,130804,130821,130822,130824,130825,130826,130827,131023,131024,131025,131026,131028,131081,140107,140108,140109,140110,140405,140406,140423,140425,140426,140427,140428,140822,140823,140824,140825,140826,140827,140828,140829,140830,140881,141031,141032,141033,141034,141081,141082,150105,150121,150122,150123,150124,150204,150205,150206,150207,150221,150222,150522,150523,150524,150525,150703,150721,150722,150723,150724,150725,150822,150823,150824,150825,152502,152522,152523,152524,152525,210112,210113,210114,210115,210123,210124,210212,210213,210214,210224,210281,210404,210411,210421,220204,220211,220221,220281,220282,220605,220621,220622,220623,220503,220521,220523,220524,220403,220421,220422,222403,222404,222405,222406,230104,230108,230109,230110,230111,230112,230113,230123,230124,230125,230126,230205,230206,230207,230208,230221,230223,230224,230225,230227,230305,230306,230307,230321,230381,230403,230404,230405,230406,230407,230505,230506,230521,230522,230604,230605,230606,230621,230622,230722,230723,230724,230725,230726,230751,230811,230822,230826,230828,231004,231005,231025,231081,231083,231084,231085";
-              RegionCode = temp.Split(',');
+            RegionCode = temp.Split(',');
 
             temp = "开发工程师,测试工程师,运维工程师,数据分析师,系统架构师,软件架构师,前端工程师,后端工程师,数据库管理员,网络安全工程师,UI设计师,平面设计师,产品经理,运营经理,项目经理,系统集成工程师";
             ITPosition = temp.Split(',');
+
+            temp = "画龙点睛,半途而废,金玉满堂,人山人海,井底之蛙,一步登天,口是心非,脚踏实地,守株待兔,百折不挠,背水一战,全力以赴,志在千里,坚持不懈,不耻下问,学无止境,一往无前,义无反顾,海纳百川,厚积薄发,集思广益,知己知彼,对症下药,以一当十,以一持万,千锤百炼,胸有成竹,运筹帷幄,神来之笔,耳目一新,视死如归,有口皆碑,大获全胜,八面玲珑,移花接木,大显身手,雨后春笋,有头有脸,雪中送炭,如鱼得水,如虎添翼,知足常乐,举一反三,临危不惧,喜出望外,再接再厉,古为今用,无懈可击,养虎为患,守株待兔,画蛇添足,一箭双雕,一石二鸟,掩耳盗铃,画龙点睛,亡羊补牢,指鹿为马,拔苗助长,一叶障目,惊弓之鸟,掩耳盗铃,画龙点睛,人仰马翻,狐假虎威,指鹿为马";
+            Idioms = temp.Split(',');
+
         }
 
         #region 统计局指标项
@@ -742,53 +751,53 @@ namespace CZY.SlackToolBox.FastExtend
 
         public string ChineseName()
         {
-            return Random.GetVcodeNum(1, AllNames) + Random.GetVcodeNum(1, Names);
+            return Tool.GetVcodeNum(1, AllNames) + Tool.GetVcodeNum(1, Names);
         }
 
         public string CTCNumber()
         {
-            return Random.GetVcodeNum(1, CTC) + Random.GetNum(9);
+            return Tool.GetVcodeNum(1, CTC) + Tool.GetNum(9);
         }
 
         public string CUCCNumber()
         {
-            return Random.GetVcodeNum(1, CUCC) + Random.GetNum(9);
+            return Tool.GetVcodeNum(1, CUCC) + Tool.GetNum(9);
         }
 
         public string CMCCNumber()
         {
-            return Random.GetVcodeNum(1, CMCC) + Random.GetNum(9);
+            return Tool.GetVcodeNum(1, CMCC) + Tool.GetNum(9);
         }
 
 
         public string PhoneEmailNumber()
         {
-            return CMCCNumber() + Random.GetVcodeNum(1, EMail);
+            return CMCCNumber() + Tool.GetVcodeNum(1, EMail);
         }
 
         public string CharEmailNumber()
         {
-            return Random.GetVcodeNum(8) + Random.GetVcodeNum(1, EMail);
+            return Tool.GetVcodeNum(8) + Tool.GetVcodeNum(1, EMail);
         }
 
         public string IDCodeNumber()
         {
-            return Random.GetVcodeNum(1, RegionCode) + YearNumber() + MonthNumber() + Random.GetNum(4);
+            return Tool.GetVcodeNum(1, RegionCode) + YearNumber() + MonthNumber() + Tool.GetNum(4);
         }
 
         public string YearNumber()
         {
-            return Random.GetNum(DateTime.MinValue.Year, DateTime.Now.AddYears(-18).Year);
+            return Tool.GetNum(DateTime.MinValue.Year, DateTime.Now.AddYears(-18).Year);
         }
 
         public string MonthNumber()
         {
-            return Random.GetNum(1, 12).PadLeft(2, '0');
+            return Tool.GetNum(1, 12).PadLeft(2, '0');
         }
 
         public string DayNumber()
         {
-            return Random.GetNum(1, 31).PadLeft(2, '0');
+            return Tool.GetNum(1, 31).PadLeft(2, '0');
         }
 
         /// <summary>
@@ -797,12 +806,12 @@ namespace CZY.SlackToolBox.FastExtend
         /// <returns></returns>
         public bool StateData()
         {
-            int t = Random.GetSimpNum(1, 9999);
+            int t = Tool.GetSimpNum(1, 9999);
             return t % 2 == 0;
         }
         public DateTime DataNumber(int day)
         {
-            return DateTime.Now.AddDays(Random.GetSimpNum(1, day) * -1);
+            return DateTime.Now.AddDays(Tool.GetSimpNum(1, day) * -1);
         }
 
         /// <summary>
@@ -815,7 +824,7 @@ namespace CZY.SlackToolBox.FastExtend
         /// <returns></returns>
         public int[] RectanglePoint(int x1, int x2, int y1, int y2)
         {
-            return new int[] { Random.GetSimpNum(x1, x2), Random.GetSimpNum(y1, y2) };
+            return new int[] { Tool.GetSimpNum(x1, x2), Tool.GetSimpNum(y1, y2) };
         }
         /// <summary>
         /// 获取护照号
@@ -827,7 +836,7 @@ namespace CZY.SlackToolBox.FastExtend
         /// <returns></returns>
         public string IDPostCodeNumber(string format = "PE")
         {
-            return format + Random.GetNum(7);
+            return format + Tool.GetNum(7);
         }
     }
 }
