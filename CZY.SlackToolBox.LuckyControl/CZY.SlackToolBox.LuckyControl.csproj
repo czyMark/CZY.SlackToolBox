@@ -77,15 +77,18 @@
     <Compile Include="Input\TextPasswordBox.xaml.cs">
       <DependentUpon>TextPasswordBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NimbleMenu\HideMenuControl.cs" />
+    <Compile Include="NimbleMenu\CircularFusionMenu.xaml.cs">
+      <DependentUpon>CircularFusionMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NimbleMenu\EnabledShortcutKeyMenu.cs" />
     <Compile Include="MultiData\PagingModel.cs" />
     <Compile Include="NimbleMenu\CircularMenu.xaml.cs">
       <DependentUpon>CircularMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="NimbleMenu\CircularMenuItem.cs" />
-    <Compile Include="NimbleMenu\ElementPosition.cs" />
+    <Compile Include="NimbleMenu\SwitchMenu\ElementPosition.cs" />
     <Compile Include="NimbleMenu\MenuModel.cs" />
-    <Compile Include="NimbleMenu\Switcher.cs" />
+    <Compile Include="NimbleMenu\SwitchMenu\Switcher.cs" />
     <Compile Include="MessageNotify\ContentBoxWin.xaml.cs">
       <DependentUpon>ContentBoxWin.xaml</DependentUpon>
     </Compile>
@@ -256,6 +259,58 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Resource>
+    <Resource Include="IconResource\Icon\Theme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="IconResource\Icon\Fire.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="IconResource\Icon\Cloud.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="IconResource\Icon\ChatPlus.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="IconResource\Icon\Emoticon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="IconResource\Icon\Clock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="IconResource\Icon\Microphone.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="IconResource\Icon\PhoneAlert.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="IconResource\Icon\Image.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="IconResource\Icon\Folder.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="IconResource\Icon\Clipboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Page Include="NimbleMenu\CircularFusionMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\AirportCS\Button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Verify\SliderVerify.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -388,7 +443,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="NimbleMenu\TabControlMenu.xaml">
+    <Page Include="NimbleMenu\SwitchMenu\SwitchMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

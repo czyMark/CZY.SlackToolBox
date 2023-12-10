@@ -6,7 +6,7 @@ using System.Windows.Shapes;
 
 namespace CZY.SlackToolBox.AnimationBank
 {
-    internal class EllipseCircle : System.Windows.Controls.Grid
+    internal class EllipseCircleGrid : System.Windows.Controls.Grid
     {
         private int ellipseCount = 5;
         private Color[] ellipseColors = { (Color)ColorConverter.ConvertFromString("#DB2F00"), (Color)ColorConverter.ConvertFromString("#FF6D37"), (Color)ColorConverter.ConvertFromString("#FFA489"),

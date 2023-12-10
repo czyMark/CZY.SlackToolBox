@@ -1,15 +1,15 @@
-﻿using CZY.SlackToolBox.FrameTemplate.YXKJ.View;
-using CZY.SlackToolBox.LuckyControl;
-using System.Threading.Tasks;
+﻿using CZY.SlackToolBox.FrameTemplate.AirportCS.View;
+using CZY.SlackToolBox.LuckyControl; 
 using System.Windows;
 
 namespace CZY.SlackToolBox.FrameTemplate.AirportCS.Core
 {
-    public class UserCache
+    public static class UserCache
     {
         public static string AccountID { get; set; }
         public static string AccountName { get; set; }
-         
+        public static string LockScreenPwd { get; set; }
+
         #region 通用命令
         public static RelayCommand Shutdown { get; private set; }
 
@@ -67,11 +67,12 @@ namespace CZY.SlackToolBox.FrameTemplate.AirportCS.Core
                     ContentChangeEvent(NameSpaceName, value);
                 }
             }
-        }  
+        }
         #endregion
 
+         
         public static void Init()
-        {
+        { 
             if (Shutdown == null)
                 Shutdown = new RelayCommand(ExecuteShutdownCommand);
             if (ExitLogin == null)

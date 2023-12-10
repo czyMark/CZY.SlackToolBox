@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:localIncreaser="clr-namespace:CZY.SlackToolBox.AnimationBank.Increaser"
-                    xmlns:localGrid="clr-namespace:CZY.SlackToolBox.AnimationBank.Grid"
+                    xmlns:localGrid="clr-namespace:CZY.SlackToolBox.AnimationBank"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <ControlTemplate TargetType="ContentControl"  x:Key="BarProgress">

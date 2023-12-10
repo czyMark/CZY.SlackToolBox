@@ -58,12 +58,28 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AirportCS\Core\UserCache.cs" />
+    <Compile Include="AirportCS\ViewModel\HomeContentViewModel.cs" />
+    <Compile Include="AirportCS\ViewModel\LoginWindowViewModel.cs" />
     <Compile Include="AirportCS\ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="AirportCS\View\HomeContent.xaml.cs">
+      <DependentUpon>HomeContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AirportCS\View\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AirportCS\View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="AirportCS\View\PersonalCenter.xaml.cs">
       <DependentUpon>PersonalCenter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChartTool\Core\UserCache.cs" />
+    <Compile Include="ChartTool\ViewModel\LoginWindowViewModel.cs" />
+    <Compile Include="ChartTool\View\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChartTool\View\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Functional\InitSysWindow.xaml.cs">
       <DependentUpon>InitSysWindow.xaml</DependentUpon>
@@ -107,11 +123,39 @@
     <Compile Include="YXKJ\View\DataListContent.xaml.cs">
       <DependentUpon>DataListContent.xaml</DependentUpon>
     </Compile>
+    <Page Include="AirportCS\View\HomeContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AirportCS\View\LoginWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="AirportCS\View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="AirportCS\View\PersonalCenter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ChartTool\Style\Dark.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ChartTool\Style\Light.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ChartTool\Style\Main.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ChartTool\View\LoginWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ChartTool\View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -227,15 +271,22 @@
   <ItemGroup>
     <Folder Include="Communication\" />
     <Folder Include="DataReport\" />
+    <Folder Include="SettingWindow\images\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="product.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="AirportCS\images\Photo.png" />
+    <Resource Include="ChartTool\images\Photo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="SettingWindow\images\background.jpg" />
+    <Resource Include="AirportCS\images\background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ChartTool\images\Contact.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AirportCS\images\Photo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,13 +1,9 @@
-﻿using CZY.SlackToolBox.FrameTemplate.YXKJ.Core;
+﻿using CZY.SlackToolBox.FastExtend;
 using CZY.SlackToolBox.FrameTemplate.YXKJ.View;
 using CZY.SlackToolBox.LuckyControl;
 using CZY.SlackToolBox.LuckyControl.MessageNotify;
-using CZY.SlackToolBox.LuckyControl.MultiData;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Threading.Tasks;
-using System.Windows;
-using CZY.SlackToolBox.FastExtend;
 
 namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
 {

@@ -8,11 +8,13 @@
         xmlns:LuckyNotify="clr-namespace:CZY.SlackToolBox.LuckyControl.MessageNotify;assembly=CZY.SlackToolBox.LuckyControl" 
         xmlns:i="clr-namespace:CZY.SlackToolBox.LuckyControl;assembly=CZY.SlackToolBox.LuckyControl" 
         xmlns:icon="clr-namespace:CZY.SlackToolBox.LuckyControl.IconResource;assembly=CZY.SlackToolBox.LuckyControl" 
+        xmlns:back="clr-namespace:CZY.SlackToolBox.AnimationBank.Background;assembly=CZY.SlackToolBox.AnimationBank" 
+    xmlns:input="clr-namespace:CZY.SlackToolBox.LuckyControl.Input;assembly=CZY.SlackToolBox.LuckyControl"
          xmlns:cache="clr-namespace:CZY.SlackToolBox.FrameTemplate.AirportCS.Core"
          mc:Ignorable="d"   x:Name="window" Icon="pack://application:,,,/CZY.SlackToolBox.FrameTemplate;component/product.ico" 
         AllowsTransparency="True"  MouseLeftButtonDown="Window_MouseLeftButtonDown"
           Width="1920" Height="1080" WindowStyle="None"  Tag="南航机场"
-        Title="MainWindow" WindowState="Maximized">
+        Title="南航机场" WindowState="Maximized">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -96,6 +98,51 @@
                 </ObjectAnimationUsingKeyFrames>-->
             </Storyboard>
 
+            <Style TargetType="RadioButton">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="RadioButton">
+
+                            <BulletDecorator  Background="Transparent">
+                                <Grid>
+
+                                    <Border x:Name="border" CornerRadius="4" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="0" SnapsToDevicePixels="true">
+                                        <!--点下时显示-->
+                                        <Grid x:Name="CheckedLayer" Visibility="Collapsed">
+                                            <Rectangle Height="3" VerticalAlignment="Top" Fill="Transparent" RadiusX="4" RadiusY="4">
+                                                <Rectangle.Effect>
+                                                    <BlurEffect Radius="5"></BlurEffect>
+                                                </Rectangle.Effect>
+                                            </Rectangle>
+                                            <Border CornerRadius="4" Background="#487EE9" BorderBrush="Transparent" BorderThickness="0">
+                                                <Border.Effect>
+                                                    <BlurEffect Radius="3"></BlurEffect>
+                                                </Border.Effect>
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+                                    <Border BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                    </Border>
+                                    <!--禁用时显示-->
+                                    <Rectangle x:Name="EnabledLayer" Fill="#CED1D7" RadiusX="4" RadiusY="4" Visibility="Collapsed"/>
+                                </Grid>
+                            </BulletDecorator>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="true">
+                                    <Setter TargetName="CheckedLayer" Property="Visibility" Value="Visible"/>
+                                    <Setter TargetName="border" Property="BorderBrush" Value="#80cccccc"/>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="false">
+                                    <Setter TargetName="EnabledLayer" Property="Visibility" Value="Visible"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+
+                    </Setter.Value>
+                </Setter>
+            </Style>
         </ResourceDictionary>
     </Window.Resources>
     <Grid  >
@@ -148,7 +195,53 @@
 
         </StackPanel>
         <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0,5,0,0" HorizontalAlignment="Center">
-            <ToggleButton Background="Transparent"  BorderThickness="0" 
+            <!--<ToggleButton Background="Transparent"  BorderThickness="0" 
+                          Style="{StaticResource ToggleButtonBaseStyle}"  
+                          Margin="8" BorderBrush="Transparent">
+                <StackPanel>
+                    <icon:IconFont Width="16" Height="16" Foreground="{StaticResource H3FontColor}" IconName="Plan" >
+                        <icon:IconFont.Effect>
+                            <DropShadowEffect ShadowDepth="2" BlurRadius="3"></DropShadowEffect>
+                        </icon:IconFont.Effect>
+                    </icon:IconFont>
+                    <Label VerticalAlignment="Top" Foreground="{StaticResource H3FontColor}" FontSize="12">系统</Label>
+                </StackPanel>
+            </ToggleButton>-->
+
+            <RadioButton  Background="Transparent"  GroupName="MainNavFun" BorderThickness="0"  Margin="8" >
+                <StackPanel>
+                    <icon:IconFont Width="16" Height="16" Foreground="{StaticResource H3FontColor}" IconName="Plan" >
+                        <icon:IconFont.Effect>
+                            <DropShadowEffect ShadowDepth="2" BlurRadius="3"></DropShadowEffect>
+                        </icon:IconFont.Effect>
+                    </icon:IconFont>
+                    <Label VerticalAlignment="Top" Foreground="{StaticResource H3FontColor}" FontSize="12">信息登记</Label>
+                </StackPanel>
+            </RadioButton>
+
+            <RadioButton  Background="Transparent" GroupName="MainNavFun"   BorderThickness="0"  Margin="8" >
+                <StackPanel>
+                    <icon:IconFont Width="16" Height="16" Foreground="{StaticResource H3FontColor}" IconName="Plan" >
+                        <icon:IconFont.Effect>
+                            <DropShadowEffect ShadowDepth="2" BlurRadius="3"></DropShadowEffect>
+                        </icon:IconFont.Effect>
+                    </icon:IconFont>
+                    <Label VerticalAlignment="Top" Foreground="{StaticResource H3FontColor}" FontSize="12">航班查询</Label>
+                </StackPanel>
+            </RadioButton>
+
+            <RadioButton  Background="Transparent" GroupName="MainNavFun"  BorderThickness="0"  Margin="8" >
+                <StackPanel>
+                    <icon:IconFont Width="16" Height="16" Foreground="{StaticResource H3FontColor}" IconName="Plan" >
+                        <icon:IconFont.Effect>
+                            <DropShadowEffect ShadowDepth="2" BlurRadius="3"></DropShadowEffect>
+                        </icon:IconFont.Effect>
+                    </icon:IconFont>
+                    <Label VerticalAlignment="Top" Foreground="{StaticResource H3FontColor}" FontSize="12">飞行计划</Label>
+                </StackPanel>
+            </RadioButton>
+
+            <!--<ToggleButton Background="Transparent"
                           Style="{StaticResource ToggleButtonBaseStyle}"
                           Margin="8" BorderBrush="Transparent">
                 <StackPanel>
@@ -160,36 +253,25 @@
                     <Label VerticalAlignment="Top"
                                Foreground="{StaticResource H3FontColor}" FontSize="12">系统</Label>
                 </StackPanel>
-            </ToggleButton>
-            <ToggleButton Background="Transparent"
-                          Style="{StaticResource ToggleButtonBaseStyle}"
-                          Margin="8" BorderBrush="Transparent">
-                <StackPanel>
-                    <icon:IconFont Width="16" Height="16" Foreground="{StaticResource H3FontColor}" IconName="Plan" >
-                        <icon:IconFont.Effect>
-                            <DropShadowEffect ShadowDepth="2" BlurRadius="3"></DropShadowEffect>
-                        </icon:IconFont.Effect>
-                    </icon:IconFont>
-                    <Label VerticalAlignment="Top"
-                               Foreground="{StaticResource H3FontColor}" FontSize="12">系统</Label>
-                </StackPanel>
-            </ToggleButton>
-            <ToggleButton Background="Transparent"
+            </ToggleButton>-->
+
+            <ToggleButton Background="Transparent" Click="ToggleButton_Click" x:Name="LockBtn"
                           Style="{StaticResource ToggleButtonBaseStyle}" Margin="8" BorderBrush="Transparent">
                 <StackPanel>
-                    <icon:IconFont Width="16" Height="16" Foreground="{StaticResource H3FontColor}" IconName="Plan" >
+                    <icon:IconFont Width="16" Height="16" Foreground="{StaticResource H3FontColor}" IconName="Password" >
                         <icon:IconFont.Effect>
                             <DropShadowEffect ShadowDepth="2" BlurRadius="3"></DropShadowEffect>
                         </icon:IconFont.Effect>
                     </icon:IconFont>
                     <Label VerticalAlignment="Top"
-                               Foreground="{StaticResource H3FontColor}" FontSize="12">系统</Label>
+                               Foreground="{StaticResource H3FontColor}" FontSize="12">锁屏挂机</Label>
                 </StackPanel>
             </ToggleButton>
         </StackPanel>
         <Grid Grid.Column="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0">
-                <Label x:Name="LoginNameLabel" Padding="20,0" Foreground="White" FontSize="16" Content="丞琳"   VerticalAlignment="Center" Margin="22,0,0,2">
+                <Label x:Name="LoginNameLabel"   HorizontalAlignment="Right" Margin="8"
+                       Foreground="White" FontSize="16" Content="{x:Static cache:UserCache.AccountName}"   VerticalAlignment="Center"  >
                     <Label.Effect>
                         <DropShadowEffect   ShadowDepth="1" BlurRadius="2"></DropShadowEffect>
                     </Label.Effect>
@@ -213,7 +295,7 @@
                         <EventTrigger RoutedEvent="UIElement.MouseDown">
                             <BeginStoryboard Storyboard="{StaticResource OpenAgentMatters}"/>
                         </EventTrigger>
-                    </icon:IconFont.Triggers> 
+                    </icon:IconFont.Triggers>
                 </icon:IconFont>
             </StackPanel>
         </Grid>
@@ -225,6 +307,7 @@
         </Grid>
         <!--#endregion-->
 
+        <!--#region 左侧代办事项窗口 -->
         <Grid x:Name="AgentMattersGrid" Grid.RowSpan="2" Width="280"
               Background="White" HorizontalAlignment="Right"  
               RenderTransformOrigin="0.5,0.5" Grid.Column="1">
@@ -233,10 +316,11 @@
                     <ScaleTransform/>
                     <SkewTransform/>
                     <RotateTransform/>
-                    <TranslateTransform/>
+                    <TranslateTransform X="280"/>
                 </TransformGroup>
             </Grid.RenderTransform>
 
+            <ContentControl x:Name="AgentMattersControl"  />
             <icon:IconFont Margin="8" IconName="Close" Foreground="Black"
                            Width="32" Height="32" 
                            Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Top"  >
@@ -246,14 +330,68 @@
                     </EventTrigger>
                 </icon:IconFont.Triggers>
             </icon:IconFont>
-      
+
         </Grid>
+        <!--#endregion-->
 
 
         <LuckyPanel:TipContentPanel x:Name="PersonContentPanel"  Visibility="Collapsed"  TipArrowState="Top"  CustomBackground="#FF343A40" TipState="Custom"  
                                     Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,46,44,0">
 
         </LuckyPanel:TipContentPanel>
+
+
+        <Grid Grid.Row="0" x:Name="whiteCloudsLock" Visibility="Collapsed"  Grid.ColumnSpan="2" Grid.RowSpan="2" ClipToBounds="True"  >
+            <back:WhiteClouds  Opacity="0.4" ></back:WhiteClouds>
+            <Grid  HorizontalAlignment="Center" VerticalAlignment="Center" Width="451" >
+                <Rectangle Fill="White"  RadiusX="10" RadiusY="10" Opacity="0.8"/>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock x:Name="UserLoginTitle"    HorizontalAlignment="Center" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" Text="请输入锁屏密码" VerticalAlignment="Top" FontSize="29.333"/>
+                    <Grid Height="50"  Margin="30,20" VerticalAlignment="Top">
+                        <Rectangle Fill="White" RadiusY="2" RadiusX="2" Stroke="#FFD6D6D6"/>
+                        <StackPanel Orientation="Horizontal">
+                            <icon:IconFont  IconName="Password" HorizontalAlignment="Left" Margin="10"></icon:IconFont>
+                            <Grid Width="295">
+                                <PasswordBox  x:Name="pwdBox" FontSize="16"  VerticalContentAlignment="Center" VerticalAlignment="Center"    Padding="0,5,0,0"
+                      PasswordChar="*"     input:InputAttach.Attach="True"  
+                     Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" KeyUp="pwdBox_KeyUp" KeyDown="pwdBox_KeyDown" />
+                                <TextBox   x:Name="promptBox"   FontSize="16" VerticalContentAlignment="Center" 
+                                        Height="{Binding ElementName=eyeBtn,Path=ActualHeight}"  IsHitTestVisible="False"
+                               BorderThickness="0" TabIndex="0" UndoLimit="1" BorderBrush="Transparent">
+                                    <TextBox.Resources>
+                                        <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5"  Stretch="None" AlignmentX="Left">
+                                            <VisualBrush.Visual>
+                                                <TextBlock FontStyle="Normal" FontSize="16" Text="密码"/>
+                                            </VisualBrush.Visual>
+                                        </VisualBrush>
+                                    </TextBox.Resources>
+                                    <TextBox.Style>
+                                        <Style TargetType="TextBox">
+                                            <Style.Triggers>
+                                                <Trigger Property="Text" Value="{x:Null}">
+                                                    <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                                </Trigger>
+                                                <Trigger Property="Text" Value="">
+                                                    <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBox.Style>
+                                </TextBox>
+                            </Grid>
+                            <Button HorizontalAlignment="Right" Margin="3"  x:Name="eyeBtn"  
+                                Tag="0" Grid.Column="1"  Background="Transparent" Cursor="Hand"    >
+                                <icon:IconFont  IconName="PasswordEyeHiden"  ></icon:IconFont>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Width="176"   Height="50" Margin="10,10" Content="确认"  Style="{StaticResource GreenBtn}" Click="Button_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Grid>
+
 
         <LuckyNotify:FormsNotify x:Name="WindowTip" Grid.RowSpan="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0">
 

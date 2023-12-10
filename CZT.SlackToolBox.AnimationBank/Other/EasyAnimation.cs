@@ -98,17 +98,18 @@ namespace CZY.SlackToolBox.AnimationBank.Other
         }
 
         /// <summary>
-        /// 飞入
+        /// 展开
         /// </summary>
         /// <param name="element"></param>
-        public static void FlyInto(this FrameworkElement element, AnimationDirection Direction)
+        public static void UnfoldMe(this FrameworkElement element,int unfoldPix,AnimationDirection Direction)
         { 
+
             DoubleAnimation doubleAnimation = new DoubleAnimation();
-            doubleAnimation.Duration = new TimeSpan(0, 0, 0, 500);
+            doubleAnimation.Duration = new TimeSpan(0, 0, 0, 300);
             if (Direction == AnimationDirection.Left)
-                doubleAnimation.To = element.Width;
+                doubleAnimation.To = unfoldPix;
             else
-                doubleAnimation.To = element.Height;
+                doubleAnimation.To = unfoldPix;
             if (Direction == AnimationDirection.Left)
                 element.BeginAnimation(FrameworkElement.WidthProperty, doubleAnimation);
             else
@@ -117,13 +118,13 @@ namespace CZY.SlackToolBox.AnimationBank.Other
         }
       
         /// <summary>
-        /// 飞出
+        /// 折叠
         /// </summary>
         /// <param name="element"></param>
-        public static void FlyOff(this FrameworkElement element, AnimationDirection Direction)
+        public static void FoldMe(this FrameworkElement element, AnimationDirection Direction)
         {
             DoubleAnimation doubleAnimation = new DoubleAnimation();
-            doubleAnimation.Duration = new TimeSpan(0, 0, 0, 500);
+            doubleAnimation.Duration = new TimeSpan(0, 0, 0, 300);
             doubleAnimation.To = 0;
 
             if (Direction == AnimationDirection.Left)

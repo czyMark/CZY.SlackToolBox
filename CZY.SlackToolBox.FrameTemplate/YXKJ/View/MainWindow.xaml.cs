@@ -1,5 +1,4 @@
 ﻿using CZY.SlackToolBox.AnimationBank.Other;
-using CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel;
 using CZY.SlackToolBox.LuckyControl.ElementPanel;
 using System;
 using System.Reflection;

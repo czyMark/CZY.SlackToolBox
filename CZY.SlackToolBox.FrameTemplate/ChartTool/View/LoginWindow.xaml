@@ -1,0 +1,113 @@
+﻿<Window 
+                      x:Class="CZY.SlackToolBox.FrameTemplate.ChartTool.View.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:loading="clr-namespace:CZY.SlackToolBox.AnimationBank.Loading;assembly=CZY.SlackToolBox.AnimationBank"
+        xmlns:icon="clr-namespace:CZY.SlackToolBox.LuckyControl.IconResource;assembly=CZY.SlackToolBox.LuckyControl"
+    xmlns:input="clr-namespace:CZY.SlackToolBox.LuckyControl.Input;assembly=CZY.SlackToolBox.LuckyControl"
+        xmlns:cache="clr-namespace:CZY.SlackToolBox.FrameTemplate.ChartTool.Core"
+       mc:Ignorable="d"   x:Name="window" Icon="pack://application:,,,/CZY.SlackToolBox.FrameTemplate;component/product.ico"
+         WindowStyle="None" AllowsTransparency="True"   Background="Transparent"  MouseLeftButtonDown="window_MouseLeftButtonDown"
+        Title="XX聊天器">
+    <Window.Resources>
+        <ResourceDictionary>
+
+        </ResourceDictionary>
+    </Window.Resources>
+
+
+    <!--#region 登录 -->
+
+    <Grid ClipToBounds="True"   Width="451" Height="500">
+        <Border  HorizontalAlignment="Center" VerticalAlignment="Center" Background="WhiteSmoke" CornerRadius="10"  Width="451" Height="460" >
+
+        </Border>
+        <StackPanel Orientation="Vertical">
+            <TextBlock x:Name="UserLoginTitle" Height="38"  HorizontalAlignment="Center" Margin="41" 
+                           TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" Text="XX聊天工具" VerticalAlignment="Top" FontSize="29.333"/>
+            <Grid Height="50"  Margin="30,20" VerticalAlignment="Top" >
+                <Rectangle Fill="White" RadiusY="2" RadiusX="2" Stroke="#FFD6D6D6"/>
+                <icon:IconFont Width="24" Height="24" IconName="User" HorizontalAlignment="Left" Margin="10"></icon:IconFont>
+                <TextBox x:Name="userID"   input:InputAttach.RegexString="[^A-Fa-z0-9]"
+						 TextWrapping="Wrap" FontSize="16" Margin="46,2,2,2" VerticalContentAlignment="Center"   Text="{Binding Account,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                               BorderThickness="0" TabIndex="0" UndoLimit="1" BorderBrush="Transparent">
+                    <TextBox.Resources>
+                        <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5"  Stretch="None" AlignmentX="Left">
+                            <VisualBrush.Visual>
+                                <TextBlock FontStyle="Normal" FontSize="16" Text="用户名"/>
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </TextBox.Resources>
+                    <TextBox.Style>
+                        <Style TargetType="TextBox">
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="{x:Null}">
+                                    <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                </Trigger>
+                                <Trigger Property="Text" Value="">
+                                    <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
+
+            </Grid>
+            <Grid Height="50"  Margin="30,20" VerticalAlignment="Top">
+                <Rectangle Fill="White" RadiusY="2" RadiusX="2" Stroke="#FFD6D6D6"/>
+                <StackPanel Orientation="Horizontal">
+                    <icon:IconFont  IconName="Password" HorizontalAlignment="Left" Margin="10"></icon:IconFont>
+                    <Grid Width="295">
+                        <PasswordBox  x:Name="pwdBox" FontSize="16"  VerticalContentAlignment="Center" VerticalAlignment="Center"    Padding="0,5,0,0"
+                      PasswordChar="*"     input:InputAttach.Attach="True" input:InputAttach.Password="{Binding Password,Mode=TwoWay}"
+                     Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0"  KeyUp="pwdBox_KeyUp" KeyDown="pwdBox_KeyDown" />
+                        <TextBox   x:Name="promptBox"   FontSize="16" VerticalContentAlignment="Center" 
+                                        Height="{Binding ElementName=eyeBtn,Path=ActualHeight}"  IsHitTestVisible="False"
+                               BorderThickness="0" TabIndex="0" UndoLimit="1" BorderBrush="Transparent">
+                            <TextBox.Resources>
+                                <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5"  Stretch="None" AlignmentX="Left">
+                                    <VisualBrush.Visual>
+                                        <TextBlock FontStyle="Normal" FontSize="16" Text="密码"/>
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </TextBox.Resources>
+                            <TextBox.Style>
+                                <Style TargetType="TextBox">
+                                    <Style.Triggers>
+                                        <Trigger Property="Text" Value="{x:Null}">
+                                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                        </Trigger>
+                                        <Trigger Property="Text" Value="">
+                                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBox.Style>
+                        </TextBox>
+                    </Grid>
+                    <Button HorizontalAlignment="Right" Margin="3"  x:Name="eyeBtn"  
+                                Tag="0" Grid.Column="1"  Background="Transparent" Cursor="Hand"    >
+                        <icon:IconFont  IconName="PasswordEyeHiden"  ></icon:IconFont>
+                    </Button>
+                </StackPanel>
+            </Grid>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Width="176" Content="登录" Height="50" Margin="10,50"  Style="{StaticResource GreenBtn}"
+                            Command="{Binding LoginCommand}" 
+                            CommandParameter="{Binding ElementName=window}"
+                            >
+
+                </Button>
+                <Button Width="176" Content="退出" Height="50" Margin="10,50"   Command="{x:Static cache:UserCache.Shutdown}" >
+
+                </Button>
+            </StackPanel>
+        </StackPanel>
+        <loading:LoadingAdorner Opacity="0.6" Visibility="{Binding LoadingVisibility}"></loading:LoadingAdorner>
+        
+    </Grid>
+    <!--#endregion-->
+
+</Window>

@@ -12,7 +12,7 @@
        mc:Ignorable="d"   x:Name="window" Icon="pack://application:,,,/CZY.SlackToolBox.FrameTemplate;component/product.ico" 
         AllowsTransparency="True"  MouseLeftButtonDown="Window_MouseLeftButtonDown"
           Width="1920" Height="1080" WindowStyle="None"
-        Title="MainWindow" WindowState="Maximized">
+        Title="XX管理系统" WindowState="Maximized">
     <Grid  >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="266"></ColumnDefinition>

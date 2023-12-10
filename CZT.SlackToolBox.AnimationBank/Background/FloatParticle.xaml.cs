@@ -16,21 +16,6 @@ using System.Windows.Threading;
 
 namespace CZY.SlackToolBox.AnimationBank.Background
 {
-    /// <summary>
-    /// 粒子坐标
-    /// </summary>
-    internal class GrainBase
-    {
-        public double? x { get; set; }
-        public double? y { get; set; }
-
-        public double xa { get; set; }
-
-        public double ya { get; set; }
-
-        public double max { get; set; }
-
-    }
 
     /// <summary>
     /// FloatParticle.xaml 的交互逻辑
@@ -39,6 +24,21 @@ namespace CZY.SlackToolBox.AnimationBank.Background
     {
 
 
+        /// <summary>
+        /// 粒子坐标
+        /// </summary>
+        internal class GrainBase
+        {
+            public double? x { get; set; }
+            public double? y { get; set; }
+
+            public double xa { get; set; }
+
+            public double ya { get; set; }
+
+            public double max { get; set; }
+
+        }
 
         #region 依赖属性
         public static readonly DependencyProperty ParticleCountProperty =

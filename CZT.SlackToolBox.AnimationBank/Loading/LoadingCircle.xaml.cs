@@ -18,19 +18,19 @@ namespace CZY.SlackToolBox.AnimationBank.Loading
         private void InitCircle()
         {
             //右上角
-            EllipseCircle rightUpCircle = new EllipseCircle();
+            EllipseCircleGrid rightUpCircle = new EllipseCircleGrid();
             rightUpCircle.InitEllipse(new Point(0, 0));
             rightUpCircle.BeginPathAnimation(CircleGeometry(new Point(0, 0), new Point(141, 141), 100, true, SweepDirection.Clockwise), 2);
             //右下角
-            EllipseCircle rightDownCircle = new EllipseCircle();
+            EllipseCircleGrid rightDownCircle = new EllipseCircleGrid();
             rightDownCircle.InitEllipse(new Point(0, 0));
             rightDownCircle.BeginPathAnimation(CircleGeometry(new Point(0, 0), new Point(141, -141), 100, true, SweepDirection.Clockwise), 2);
             //左上角
-            EllipseCircle leftUpCircle = new EllipseCircle();
+            EllipseCircleGrid leftUpCircle = new EllipseCircleGrid();
             leftUpCircle.InitEllipse(new Point(0, 0));
             leftUpCircle.BeginPathAnimation(CircleGeometry(new Point(0, 0), new Point(-141, 141), 100, true, SweepDirection.Clockwise), 2);
             //左下角
-            EllipseCircle leftDownCircle = new EllipseCircle();
+            EllipseCircleGrid leftDownCircle = new EllipseCircleGrid();
             leftDownCircle.InitEllipse(new Point(0, 0));
             leftDownCircle.BeginPathAnimation(CircleGeometry(new Point(0, 0), new Point(-141, -141), 100, true, SweepDirection.Clockwise), 2);
 

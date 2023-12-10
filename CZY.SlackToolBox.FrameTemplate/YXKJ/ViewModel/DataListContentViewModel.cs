@@ -1,5 +1,4 @@
-﻿using CZY.SlackToolBox.FastExtend;
-using CZY.SlackToolBox.FrameTemplate.YXKJ.Core;
+﻿using CZY.SlackToolBox.FrameTemplate.YXKJ.Core;
 using CZY.SlackToolBox.FrameTemplate.YXKJ.View;
 using CZY.SlackToolBox.LuckyControl;
 using CZY.SlackToolBox.LuckyControl.MessageNotify;

@@ -1,0 +1,47 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--ButtonBase基样式-->
+    <Style  TargetType="{x:Type Button}">
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="Height" Value="38"></Setter>
+        <Setter Property="Background" Value="#409eff"></Setter>
+        <Setter Property="Padding" Value="10,0"></Setter>
+    </Style>
+    
+    <Style x:Key="GreenBtn" TargetType="Button">
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="Height" Value="38"></Setter>
+        <Setter Property="Background" Value="#71bd83"></Setter>
+        <Setter Property="Padding" Value="10,0"></Setter>
+    </Style>
+    <Style x:Key="BlueBtn" TargetType="Button">
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="Height" Value="38"></Setter>
+        <Setter Property="Background" Value="#FF5BC0DE"></Setter>
+        <Setter Property="Padding" Value="10,0"></Setter>
+    </Style>
+    <Style x:Key="RedBtn" TargetType="Button">
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="Height" Value="38"></Setter>
+        <Setter Property="Background" Value="#d9534f"></Setter>
+        <Setter Property="Padding" Value="10,0"></Setter>
+    </Style>
+    <Style x:Key="PrimaryBtn" TargetType="Button">
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="BorderThickness" Value="0.5"></Setter>
+        <Setter Property="BorderBrush" Value="#f8f9fa"></Setter>
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="Height" Value="38"></Setter>
+        <Setter Property="Background" Value="#409eff"></Setter>
+        <Setter Property="Padding" Value="10,0"></Setter>
+    </Style>
+</ResourceDictionary>

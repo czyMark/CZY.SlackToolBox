@@ -1,5 +1,4 @@
 ﻿using CZY.SlackToolBox.FastExtend;
-using CZY.SlackToolBox.LuckyControl;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;

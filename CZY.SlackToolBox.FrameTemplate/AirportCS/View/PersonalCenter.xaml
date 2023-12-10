@@ -32,6 +32,7 @@
     </UserControl.Resources>
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <Button Style="{StaticResource PersonalCenterBtn}" Cursor="Hand"  Content="个人中心" Click="Button_Click" />
+        <Button Style="{StaticResource PersonalCenterBtn}" Cursor="Hand"  Content="挂机锁屏" Click="Button_Click" />
         <Button Style="{StaticResource PersonalCenterBtn}" Cursor="Hand"  Content="修改密码" Click="Button_Click" />
         <Button Style="{StaticResource PersonalCenterBtn}" Cursor="Hand"  Content="退出登录" Command="{x:Static cache:UserCache.ExitLogin}" />
         <Button Style="{StaticResource PersonalCenterBtn}" Cursor="Hand"  Content="关闭系统" Command="{x:Static cache:UserCache.Shutdown}" />

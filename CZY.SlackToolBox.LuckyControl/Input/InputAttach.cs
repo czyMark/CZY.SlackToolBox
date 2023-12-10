@@ -64,9 +64,7 @@ namespace CZY.SlackToolBox.LuckyControl.Input
             e.Handled = re.IsMatch(e.Text);
         }
         #endregion
-
-
-
+         
         #region TextBox 代码实现提示文本
 
         public static readonly DependencyProperty IsTextBoxProperty = DependencyProperty.RegisterAttached(
@@ -179,9 +177,7 @@ namespace CZY.SlackToolBox.LuckyControl.Input
             }
         }
         #endregion
-
-
-
+         
         #region 密码框通知绑定数据源更新密码
 
         public static readonly DependencyProperty PasswordProperty =
@@ -258,6 +254,13 @@ namespace CZY.SlackToolBox.LuckyControl.Input
             SetPassword(passwordBox, passwordBox.Password);
             SetIsUpdating(passwordBox, false);
         }
+        #endregion
+
+        #region 实现ToggleButton分组内只能选中一个
+
+
+
+
         #endregion
     }
 }

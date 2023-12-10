@@ -3,8 +3,8 @@
                     xmlns:localMenu="clr-namespace:CZY.SlackToolBox.LuckyControl.NimbleMenu"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    
-    <Style x:Key="TabControlMenu" TargetType="{x:Type TabControl}">
+
+    <Style x:Key="SwitchMenu" TargetType="{x:Type TabControl}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Background" Value="Transparent" />
@@ -109,7 +109,7 @@
         </Setter>
     </Style>
 
-    <Style  x:Key="TabControlMenuItem"  TargetType="TabItem">
+    <Style  x:Key="SwitchMenuItem"  TargetType="TabItem">
         <Setter Property="Template"  >
             <Setter.Value>
                 <ControlTemplate TargetType="TabItem">

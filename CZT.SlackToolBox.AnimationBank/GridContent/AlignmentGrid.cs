@@ -3,7 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace CZY.SlackToolBox.AnimationBank.Grid
+namespace CZY.SlackToolBox.AnimationBank
 {
     public  class AlignmentGrid : ContentControl
     {

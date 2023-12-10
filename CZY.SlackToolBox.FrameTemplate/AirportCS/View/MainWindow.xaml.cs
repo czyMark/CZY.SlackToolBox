@@ -1,10 +1,13 @@
 ﻿using CZY.SlackToolBox.AnimationBank.Other;
+using CZY.SlackToolBox.FrameTemplate.AirportCS.Core;
 using CZY.SlackToolBox.FrameTemplate.AirportCS.ViewModel;
 using CZY.SlackToolBox.LuckyControl.ElementPanel;
+using CZY.SlackToolBox.LuckyControl.IconResource;
 using System;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 using DataV = CZY.SlackToolBox.FrameTemplate.AirportCS.ViewModel;
@@ -15,18 +18,22 @@ namespace CZY.SlackToolBox.FrameTemplate.AirportCS.View
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
     public partial class MainWindow : Window
-    {  
+    {
         public MainWindow()
         {
             InitializeComponent();
             //默认显示主页面
-            StackPanel_MouseDown(null, null);  
+            StackPanel_MouseDown(null, null);
 
             PersonalCenter personalCenter = new PersonalCenter();
             personalCenter.selectedFuntion += PersonalCenter_selectedFuntion;
             PersonContentPanel.TipContent = personalCenter;
 
+            //AgentMattersControl
+            //绑定相关内容
             this.DataContext = new DataV.MainWindowViewModel();
+            eyeBtn.AddHandler(Button.MouseDownEvent, new RoutedEventHandler(eyeBtn_Down), true);
+            eyeBtn.AddHandler(Button.MouseUpEvent, new RoutedEventHandler(eyeBtn_Up), true);
 
         }
         /// <summary>
@@ -76,7 +83,7 @@ namespace CZY.SlackToolBox.FrameTemplate.AirportCS.View
         }
 
         private void PersonalCenter_ButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        { 
+        {
             if (PersonContentPanel.Visibility == Visibility.Collapsed || PersonContentPanel.Visibility == Visibility.Hidden)
                 PersonContentPanel.ShowMe();
             else
@@ -92,6 +99,10 @@ namespace CZY.SlackToolBox.FrameTemplate.AirportCS.View
                 case PersonalCenter.PersonalFunction.PersonalCenter:
                     //切换到个人中心
 
+                    break;
+                case PersonalCenter.PersonalFunction.LockScreen:
+                    //挂机锁屏
+                    whiteCloudsLock.Visibility = Visibility.Visible;
                     break;
                 case PersonalCenter.PersonalFunction.EditPwd:
 
@@ -117,8 +128,94 @@ namespace CZY.SlackToolBox.FrameTemplate.AirportCS.View
         private void StackPanel_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Assembly assembly = Assembly.Load("CZY.SlackToolBox.FrameTemplate");
-            Type type = assembly.GetType("CZY.SlackToolBox.FrameTemplate.YXKJ.View.HomeContent");
+            Type type = assembly.GetType("CZY.SlackToolBox.FrameTemplate.AirportCS.View.HomeContent");
             MainContentControl.Content = Activator.CreateInstance(type);
+        }
+
+        int lockNum = 3;
+        /// <summary>
+        /// 验证锁屏密码
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (pwdBox.Password == UserCache.LockScreenPwd)
+            {
+                whiteCloudsLock.Visibility ^= Visibility.Collapsed;
+                LockBtn.IsChecked = false;
+            }
+            else
+            {
+                //提示密码错误
+                MessageTip($"锁屏密码错误!还有{lockNum}次机会。",TipPanel.TipPanelState.Warn);
+                lockNum--;
+                if (lockNum == -1)
+                {
+                    UserCache.ExitLogin.Execute(null);
+                }
+            }
+        }
+
+        private void pwdBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            promptBox.Text = String.Empty;
+            promptBox.Visibility = Visibility.Collapsed;
+        }
+
+
+        private void pwdBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (string.IsNullOrEmpty(pwdBox.Password))
+            {
+                promptBox.Text = String.Empty;
+                promptBox.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                promptBox.Text = String.Empty;
+                promptBox.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void eyeBtn_Down(object sender, RoutedEventArgs e)
+        {
+            //显示文本
+            Button btn = sender as Button;
+            promptBox.Text = pwdBox.Password;
+            if (string.IsNullOrEmpty(promptBox.Text))
+            {
+                return;
+            }
+
+            promptBox.Visibility = Visibility.Visible;
+            pwdBox.Visibility = Visibility.Collapsed;
+            IconFont icon = new IconFont();
+            icon.IconName = "PasswordEye";
+            btn.Content = icon;
+            btn.Tag = 1;
+        }
+        private void eyeBtn_Up(object sender, RoutedEventArgs e)
+        {
+            //隐藏文本
+            Button btn = sender as Button;
+            if (string.IsNullOrEmpty(pwdBox.Password))
+            {
+                return;
+            }
+            promptBox.Text = string.Empty;
+            promptBox.Visibility = Visibility.Collapsed;
+            pwdBox.Visibility = Visibility.Visible;
+            IconFont icon = new IconFont();
+            icon.IconName = "PasswordEyeHiden";
+            btn.Content = icon;
+            btn.Tag = 0;
+
+        }
+        private void ToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            whiteCloudsLock.Visibility ^= Visibility.Collapsed;
         }
     }
 }

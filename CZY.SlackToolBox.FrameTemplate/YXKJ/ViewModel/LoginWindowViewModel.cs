@@ -16,6 +16,27 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
 
         #region 属性
 
+
+        /// <summary>
+        /// 加载等待条是否显示
+        /// </summary>
+        private Visibility loadingVisibility;
+        public Visibility LoadingVisibility
+        {
+            get
+            {
+                return loadingVisibility;
+            }
+            set
+            {
+                loadingVisibility = value;
+                if (this.PropertyChanged != null)
+                {
+                    this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs("LoadingVisibility"));
+                }
+            }
+        }
+
         /// <summary>
         /// 用户名
         /// </summary>
@@ -73,6 +94,7 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
         //登录
         void ExecuteLoginCommand(object obj)
         {
+            LoadingVisibility = Visibility.Visible;
             //程序登录成功后关闭当前程序
             var win = obj as Window;
             if (win != null)
@@ -92,6 +114,7 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
 
         public LoginWindowViewModel()
         {
+            loadingVisibility = Visibility.Collapsed;
             LoginCommand = new RelayCommand(ExecuteLoginCommand); 
         }
     }
