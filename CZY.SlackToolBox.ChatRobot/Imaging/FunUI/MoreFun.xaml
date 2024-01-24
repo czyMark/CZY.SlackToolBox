@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="CZY.SlackToolBox.ChatRobot.Imaging.FunUI.MoreFun"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CZY.SlackToolBox.ChatRobot.Imaging.FunUI"
+             mc:Ignorable="d"  Background="White"
+             d:DesignHeight="765" d:DesignWidth="800">
+    <Grid Width="765"   Margin="24">
+        <StackPanel>
+            <Label>用于测试消息窗口</Label>
+
+
+            <WrapPanel>
+                <Label VerticalAlignment="Center">系统通知窗</Label>
+                <Button Margin="6" Click="Button_Click_6">微粉大师</Button> 
+            </WrapPanel>
+            
+            <WrapPanel>
+                <Label VerticalAlignment="Center">错误提示框</Label>
+                <Button Margin="6" Click="Button_Click_4">请选择标签</Button>
+                <Button Margin="6" Click="Button_Click_5">功能开发中，敬请期待~</Button>
+            </WrapPanel>
+
+
+            <WrapPanel>
+                <Label VerticalAlignment="Center">信息提示框</Label>
+                <Button Margin="6" Click="Button_Click_1">确定开启标签检测？</Button>
+                <Button Margin="6" Click="Button_Click_3">已检测微信好友标签200个</Button>
+                <Button Margin="6" Click="Button_Click">确定开启标签更新？</Button>
+                <Button Margin="6" Click="Button_Click_2">已为您更新标签7个</Button>
+            </WrapPanel>
+            
+            <WrapPanel>
+                <Label VerticalAlignment="Center">点击了</Label>
+                <Label VerticalAlignment="Center" x:Name="ClickBtn"></Label>
+            </WrapPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

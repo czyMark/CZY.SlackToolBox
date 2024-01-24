@@ -1,0 +1,17 @@
+﻿<Application x:Class="CZY.SlackToolBox.ChatRobot.Imaging.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:CZY.SlackToolBox.ChatRobot.Imaging"
+             StartupUri="/Imaging/MainWindow.xaml">
+    <Application.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+
+                <!--<ResourceDictionary Source="/Master/Style/Main.xaml"></ResourceDictionary>-->
+                <ResourceDictionary Source="/Imaging/Style/Main.xaml"></ResourceDictionary>
+          
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

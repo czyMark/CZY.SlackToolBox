@@ -1,0 +1,129 @@
+﻿<UserControl x:Class="CZY.SlackToolBox.ChatRobot.Master.FunUI.Home"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CZY.SlackToolBox.ChatRobot.Master.FunUI"
+             xmlns:localConvert="clr-namespace:CZY.SlackToolBox.ChatRobot.ControlConvert"
+             mc:Ignorable="d" 
+             d:DesignHeight="708" d:DesignWidth="952" Background="White">
+ 
+    
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <localConvert:CheckedToVisible x:Key="CTV"></localConvert:CheckedToVisible>
+            <localConvert:UnCheckedToVisible x:Key="UNCTV"></localConvert:UnCheckedToVisible>
+            
+            <Storyboard x:Key="Storyboard1">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="BackBorder">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <ScrollViewer Height="708">
+        <Grid>
+     
+            <Grid.RowDefinitions>
+                <RowDefinition Height="299"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions> 
+
+
+            <StackPanel>
+                <!--#region 标题 -->
+                <Grid Width="888" Height="45" Margin="0,35,0,0">
+                    <Label  Content="全部模板" FontSize="14" Foreground="#1A1A1A"></Label>
+                    <StackPanel x:Name="MorePanel" HorizontalAlignment="Right" Orientation="Horizontal" 
+                                MouseLeftButtonDown="MorePanel_MouseLeftButtonDown"
+                                Margin="0,0,-2,0" Cursor="Hand" Background="White" VerticalAlignment="Top"  
+                            MouseEnter="MorePanel_MouseEnter" MouseLeave="MorePanel_MouseLeave">
+                        <Label  Content="更多模板" x:Name="MorePanelTitle" FontSize="12"  Foreground="#666666"></Label>
+                        <Image Source="/Master/images/arrow.png" x:Name="arrow" Width="16" Height="16"  Visibility="Collapsed">
+                        </Image>
+                        <Image Source="/Master/images/arrow-n.png"   x:Name="arrown" Width="16" Height="16"   >
+                        </Image>
+                    </StackPanel>
+                </Grid>
+                <!--#endregion-->
+                <!--#region 图像展示控件 
+            - 以静态为主，界面上直接使用WraoPanel AddChild
+            - 如果需要的话可以按照要求 单独封装成独立控件
+            -->
+                <WrapPanel Width="888" Cursor="Hand" Margin="12,0,0,0" >
+
+                    <StackPanel Margin="0,0,0,0">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}" Background="#FBFBFB" BorderBrush="#EBEBEC" BorderThickness="1">
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+                           Padding="0,8,0,0" Margin="0,4,0,0" Content="空白流程"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+                           Padding="0" FontSize="10" Margin="0,5,0,0" Content="新建一个自动化空白流程"></Label>
+                    </StackPanel>
+
+                    <StackPanel Margin="22,0,0,0">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="七脉"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="七脉数据采集"></Label> 
+                    </StackPanel>
+
+                    <StackPanel Margin="22,0,0,0">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="京东"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="京东热卖对比采集"></Label>
+                    </StackPanel>
+
+                    <StackPanel Margin="22,0,0,0">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+
+                </WrapPanel>
+                <!--#endregion-->
+            </StackPanel>
+ 
+            <StackPanel Grid.Row="1">
+                <!--#region 标题 -->
+                <Grid Width="888" Height="26" Margin="0,0,0,0">
+                    <Label  Content="最近打开" FontSize="14" Foreground="#1A1A1A"></Label>
+                </Grid>
+                <!--#endregion-->
+
+                <!--#region 文件列表 -->
+
+                <StackPanel Orientation="Horizontal" Width="888" Height="37" >
+                    <Label  Content="名称" FontSize="12" Foreground="#666666" Width="640" VerticalContentAlignment="Center"></Label>
+                    <Label  Content="上次打开时间" FontSize="12" Foreground="#666666" Width="240" VerticalContentAlignment="Center"></Label>
+                </StackPanel>
+
+
+                <StackPanel x:Name="Recommend">
+                  
+                </StackPanel>
+
+
+                <StackPanel Width="888" Height="54" Margin="16,2,0,0" >
+                    <TextBlock Foreground="#007AFF" Cursor="Hand" FontSize="16" HorizontalAlignment="Left" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown"> 查看更多</TextBlock>
+                </StackPanel>
+                <!--#endregion-->
+            </StackPanel>
+
+
+        </Grid>
+    </ScrollViewer>
+</UserControl>

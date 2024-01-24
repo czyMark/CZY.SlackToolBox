@@ -19,6 +19,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaptureApply", "CZY.SlackToolBox.Integration\CaptureApply\CaptureApply.csproj", "{4B394901-49EA-498C-B696-A53562DFAE70}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Private", "Private", "{C7222002-6688-420E-B946-0D047F2CDA87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CZY.SlackToolBox.ChatRobot", "CZY.SlackToolBox.ChatRobot\CZY.SlackToolBox.ChatRobot.csproj", "{0223FA95-B84B-40DB-B3A8-A696D6BCD195}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +53,10 @@ Global
 		{4B394901-49EA-498C-B696-A53562DFAE70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B394901-49EA-498C-B696-A53562DFAE70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B394901-49EA-498C-B696-A53562DFAE70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0223FA95-B84B-40DB-B3A8-A696D6BCD195}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0223FA95-B84B-40DB-B3A8-A696D6BCD195}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0223FA95-B84B-40DB-B3A8-A696D6BCD195}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0223FA95-B84B-40DB-B3A8-A696D6BCD195}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,6 +66,7 @@ Global
 		{552D9761-F586-440C-B9B3-9FA5F2D20310} = {5C044CB4-60C5-4FB5-9528-559A469E198C}
 		{6D9AD78A-67C5-4C15-90BE-E630A7069A83} = {5C044CB4-60C5-4FB5-9528-559A469E198C}
 		{4B394901-49EA-498C-B696-A53562DFAE70} = {65CD1BC8-BF29-42CD-BAC5-9F8603AD7906}
+		{0223FA95-B84B-40DB-B3A8-A696D6BCD195} = {C7222002-6688-420E-B946-0D047F2CDA87}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {02C9BE72-C983-4825-A318-9CAAB42926F9}

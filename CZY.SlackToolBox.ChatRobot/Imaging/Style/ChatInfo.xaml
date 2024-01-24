@@ -1,0 +1,93 @@
+﻿<UserControl x:Class="CZY.SlackToolBox.ChatRobot.Imaging.Style.ChatInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CZY.SlackToolBox.ChatRobot.Imaging.Style"
+        xmlns:core="clr-namespace:CZY.SlackToolBox.ChatRobot.Core"  MouseLeftButtonDown="UserControl_MouseLeftButtonDown"
+             mc:Ignorable="d"  >
+    <StackPanel Width="318" Height="232" 
+             VerticalAlignment="Bottom" Margin="0,24,12,0"
+             HorizontalAlignment="Right">
+        <Border BorderBrush="#EEEEEE" BorderThickness="1" Background="#FFFFFF"
+             Height="207" CornerRadius="10" >
+
+            <StackPanel Margin="16,10,16,0">
+                <Grid Margin="0,0,0,0" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="62"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="24"></RowDefinition>
+                        <RowDefinition Height="24"></RowDefinition>
+                        <RowDefinition Height="18"></RowDefinition>
+                        <RowDefinition Height="24"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label FontSize="12" Foreground="#333333" Grid.Column="0" Grid.Row="0">发送标签：</Label>
+                    <TextBlock VerticalAlignment="Center" FontSize="12" Foreground="#666666" Padding="0,0,0,7"
+                            Grid.Column="1" Grid.Row="0" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis">高中同学、小学同学等5个标签</TextBlock>
+
+                    <Label FontSize="12" Foreground="#333333" Grid.Column="0" Grid.Row="1">发送对象：</Label>
+                    <TextBlock VerticalAlignment="Center" FontSize="12" Foreground="#666666"  Padding="0,0,0,7"
+                            Grid.Column="1" Grid.Row="1" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis">张小三、王红红、肖怡人、刘美丽等3人</TextBlock>
+
+
+                    <Label FontSize="12" Foreground="#333333" Grid.Column="0" Grid.Row="2">已发送：</Label>
+
+                    <StackPanel Orientation="Horizontal"   Grid.Column="1" Grid.Row="2">
+                        <TextBlock VerticalAlignment="Top" FontSize="12" Foreground="#FD3459" 
+                           TextWrapping="NoWrap" TextTrimming="CharacterEllipsis">10</TextBlock>
+                        <Label  Foreground="#666666"  FontSize="12"  >/</Label>
+                        <TextBlock VerticalAlignment="Top" FontSize="12" Foreground="#666666" 
+                           TextWrapping="NoWrap" TextTrimming="CharacterEllipsis">100</TextBlock>
+                        <Label  Foreground="#666666"  FontSize="12" >人</Label>
+                    </StackPanel>
+
+
+                    <Label FontSize="12" Foreground="#ABABAB" VerticalContentAlignment="Bottom" HorizontalAlignment="Left"
+                        Grid.Column="0" Grid.Row="3" Padding="0,0,0,0">消息内容</Label>
+                    <Border  BorderBrush="#EBEBEB" Grid.Column="1" Grid.Row="3" Height="1" 
+                          Margin="0,8,0,0" BorderThickness="1"></Border>
+                </Grid>
+
+                <StackPanel Orientation="Horizontal"  MouseLeftButtonDown="UserControl_MouseLeftButtonDown">
+                    <core:CornerClip  Margin="16,12,8,16"  Width="34" Height="34" CornerRadius="8" >
+                        <Grid>
+                            <Image Source="/imaging/images/temp.png"/>
+                            <Border Background="Black" Opacity="0.3"></Border>
+                            <Label Content="5" Foreground="White" FontSize="13"
+                                   HorizontalAlignment="Center"
+                                   VerticalContentAlignment="Center"></Label>
+                        </Grid>
+                    </core:CornerClip>
+                    <TextBlock TextTrimming="CharacterEllipsis" Margin="0,0,0,0" 
+                            TextWrapping="Wrap" Width="226" Height="34" FontSize="11"  Foreground="#444444" 
+                             Padding="0"
+                            Text="第「midjourney」新春icon &#x000A;这套透明质感关键词真的乱好用！每次节日...">
+                    </TextBlock>
+                </StackPanel>
+                <Border  BorderBrush="#EBEBEB" Grid.Column="1" Grid.Row="3" Height="1"    BorderThickness="1"></Border>
+
+                <core:CornerClip CornerRadius="0,0,10,10">
+
+                    <StackPanel  Height="40" Orientation="Horizontal">
+                        <Label VerticalAlignment="Center" HorizontalContentAlignment="Center" Width="140"
+                            Content="再发一次" MouseMove="Label_MouseMove" MouseLeave="Label_MouseLeave"
+                               Foreground="#333333" Cursor="Hand" MouseDown="LabelAgain_MouseDown" Padding="0,9">
+                           
+                        </Label>
+                        <Border BorderBrush="#EBEBEB" Width="1"  Height="30"   BorderThickness="1"></Border>
+                        <Label  VerticalAlignment="Center"  HorizontalContentAlignment="Center" Width="140" 
+                                Content="继续发送" MouseMove="Label_MouseMove" MouseLeave="Label_MouseLeave"
+                              Foreground="#333333" Cursor="Hand" MouseDown="LabelContinue_MouseDown" Padding="0,9" >
+                            
+                        </Label>
+                    </StackPanel>
+                </core:CornerClip>
+            </StackPanel>
+        </Border>
+        <Label Foreground="#B4B4B4" HorizontalAlignment="Right">1月11日 19:53:41</Label>
+    </StackPanel>
+
+</UserControl>
