@@ -126,6 +126,12 @@
     <Compile Include="Master\Style\FileListRowStyle.xaml.cs">
       <DependentUpon>FileListRowStyle.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProcessDesign\DevControl\TipPanel.xaml.cs">
+      <DependentUpon>TipPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProcessDesign\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -257,6 +263,34 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="ProcessDesign\DevControl\TipPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ProcessDesign\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ProcessDesign\Style\Button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ProcessDesign\Style\ComboBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ProcessDesign\Style\main.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ProcessDesign\Style\Scrollbar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ProcessDesign\Style\ToolTip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imaging\Images\checkbox-input-n.png" />
@@ -301,6 +335,82 @@
     <Resource Include="Master\Images\启动台01.png" />
     <Resource Include="Master\Images\启动台03.png" />
     <Resource Include="Master\Images\启动台04.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ProcessDesign\FunUI\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ProcessDesign\Images\Close.png" />
+    <Resource Include="ProcessDesign\Images\Frame_427322496%403x.png" />
+    <Resource Include="ProcessDesign\Images\Icon-12%403x.png" />
+    <Resource Include="ProcessDesign\Images\Icon-14%403x.png" />
+    <Resource Include="ProcessDesign\Images\Max.png" />
+    <Resource Include="ProcessDesign\Images\Min.png" />
+    <Resource Include="ProcessDesign\Images\Tooltip-angle%403x.png" />
+    <Resource Include="ProcessDesign\Images\下载文件%403x.png" />
+    <Resource Include="ProcessDesign\Images\侧边栏_代码片段_其他%403x.png" />
+    <Resource Include="ProcessDesign\Images\侧边栏_项目_.screenshots%403x.png" />
+    <Resource Include="ProcessDesign\Images\侧边栏_项目_JS%403x.png" />
+    <Resource Include="ProcessDesign\Images\侧边栏_项目_xaml%403x.png" />
+    <Resource Include="ProcessDesign\Images\侧边栏_项目_依赖包%403x.png" />
+    <Resource Include="ProcessDesign\Images\侧边栏_项目_文件夹%403x.png" />
+    <Resource Include="ProcessDesign\Images\停止%403x.png" />
+    <Resource Include="ProcessDesign\Images\关闭标签页%403x.png" />
+    <Resource Include="ProcessDesign\Images\切换标签页%403x.png" />
+    <Resource Include="ProcessDesign\Images\刷新%403x.png" />
+    <Resource Include="ProcessDesign\Images\Selected.png" />
+    <Resource Include="ProcessDesign\Images\前进%403x.png" />
+    <Resource Include="ProcessDesign\Images\加载%403x.png" />
+    <Resource Include="ProcessDesign\Images\回退%403x.png" />
+    <Resource Include="ProcessDesign\Images\导航%403x.png" />
+    <Resource Include="ProcessDesign\Images\打开浏览器%403x.png" />
+    <Resource Include="ProcessDesign\Images\注入JS代码%403x.png" />
+    <Resource Include="ProcessDesign\Images\注入JS库%403x.png" />
+    <Resource Include="ProcessDesign\Images\注入JS库_1%403x.png" />
+    <Resource Include="ProcessDesign\Images\注入JS文件%403x.png" />
+    <Resource Include="ProcessDesign\Images\注入JS脚本%403x.png" />
+    <Resource Include="ProcessDesign\Images\浏览器%403x.png" />
+    <Resource Include="ProcessDesign\Images\浏览器显示%403x.png" />
+    <Resource Include="ProcessDesign\Images\浏览器隐藏%403x.png" />
+    <Resource Include="ProcessDesign\Images\滚动条位置%403x.png" />
+    <Resource Include="ProcessDesign\Images\箭头-左边-小%403x.png" />
+    <Resource Include="ProcessDesign\Images\获取cookoes%403x.png" />
+    <Resource Include="ProcessDesign\Images\获取网页URL%403x.png" />
+    <Resource Include="ProcessDesign\Images\获取网页标题%403x.png" />
+    <Resource Include="ProcessDesign\Images\设置cookoes%403x.png" />
+    <Resource Include="ProcessDesign\Images\设置滚动条位置%403x.png" />
+    <Resource Include="ProcessDesign\Images\附加浏览器%403x.png" />
+    <Resource Include="ProcessDesign\Images\break.png" />
+    <Resource Include="ProcessDesign\Images\Save.png" />
+    <Resource Include="ProcessDesign\Images\顶部菜单_停止2%403x.png" />
+    <Resource Include="ProcessDesign\Images\publish.png" />
+    <Resource Include="ProcessDesign\Images\Saveas.png" />
+    <Resource Include="ProcessDesign\Images\顶部菜单_商店%403x.png" />
+    <Resource Include="ProcessDesign\Images\ExceptionBreak.png" />
+    <Resource Include="ProcessDesign\Images\record.png" />
+    <Resource Include="ProcessDesign\Images\SlowDebugging.png" />
+    <Resource Include="ProcessDesign\Images\OpenLog.png" />
+    <Resource Include="ProcessDesign\Images\FindData.png" />
+    <Resource Include="ProcessDesign\Images\BreakingPoint.png" />
+    <Resource Include="ProcessDesign\Images\Add.png" />
+    <Resource Include="ProcessDesign\Images\verify.png" />
+    <Resource Include="ProcessDesign\Images\ClearBreakingPoint.png" />
+    <Resource Include="ProcessDesign\Images\RecordActive.png" />
+    <Resource Include="ProcessDesign\Images\debugger.png" />
+    <Resource Include="ProcessDesign\Images\Run.png" />
+    <Resource Include="ProcessDesign\Images\StepByStatement.png" />
+    <Resource Include="ProcessDesign\Images\StepByProcess.png" />
+    <Resource Include="ProcessDesign\Images\顶部菜单_顶部-更多%403x.png" />
+    <Resource Include="ProcessDesign\Images\HighlightElements.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ProcessDesign\Images\Machine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ProcessDesign\Images\Tip-Error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ProcessDesign\Images\home.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

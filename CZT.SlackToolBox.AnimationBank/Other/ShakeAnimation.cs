@@ -5,7 +5,7 @@ using System.Windows.Media.Animation;
 
 namespace CZY.SlackToolBox.AnimationBank.Other
 {
-    public static class Shake
+    public static class ShakeAnimation
     {
         public enum Direction
         {

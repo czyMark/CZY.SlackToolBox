@@ -26,6 +26,27 @@ namespace CZY.SlackToolBox.ChatRobot.Core
             get { return (Brush)GetValue(MouseOverBorderBrushProperty); }
             set { SetValue(MouseOverBorderBrushProperty, value); }
         }
+         
+          
+
+        public static readonly DependencyProperty DropDownIconProperty =
+           DependencyProperty.RegisterAttached("DropDownIcon", typeof(string), typeof(AttachAttribute), 
+               new PropertyMetadata("", new PropertyChangedCallback(OnDropDownIconChanged)));
+
+        private static void OnDropDownIconChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
+
+        public static string GetDropDownIcon(DependencyObject obj)
+        {
+            return (string)obj.GetValue(DropDownIconProperty);
+        }
+
+        public static void SetDropDownIcon(DependencyObject obj, string value)
+        {
+            obj.SetValue(DropDownIconProperty, value);
+        }
 
     }
 }

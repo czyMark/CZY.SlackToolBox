@@ -1,0 +1,83 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+
+
+
+    <Style  TargetType="{x:Type Button}">
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="Opacity" Value="1"></Setter>
+        <Setter Property="Foreground" Value="#FFFFFF"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+
+                        <Border BorderBrush="Transparent" Background="Transparent" BorderThickness="1"
+                                    CornerRadius="2" >
+                            <ContentPresenter Margin="2"   Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+
+                        <Border BorderBrush="#007AFF" Background="#19007AFF" BorderThickness="1"
+            CornerRadius="2" Name="PART_Background" Visibility="Collapsed">
+                       </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PART_Background" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="OkBtn" TargetType="{x:Type Button}">
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="Height" Value="40"></Setter>
+        <Setter Property="Opacity" Value="1"></Setter>
+        <Setter Property="Foreground" Value="#FFFFFF"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border BorderBrush="#FD3459" Background="#FD3459" BorderThickness="0"
+                                    CornerRadius="6" Name="PART_Background">
+                        <ContentPresenter  Margin="8.5,0"
+                                    Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CancelBtn" TargetType="{x:Type Button}">
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="Height" Value="40"></Setter>
+        <Setter Property="Opacity" Value="1"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+
+                    <Border BorderBrush="#F2F3F5" Background="#F2F3F5" BorderThickness="0"
+                                    CornerRadius="6" Name="PART_Background">
+                        <StackPanel  Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" >
+                            <Label x:Name="PART_Txt" Margin="0,5" Content="{TemplateBinding Content}"
+                                            FontSize="{TemplateBinding FontSize}"  
+                                           Foreground="#4E5969"
+                                               HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PART_Background" Property="Background" Value="#19FD3459"/>
+                            <Setter TargetName="PART_Txt" Property="Foreground" Value="#FD3459"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -21,12 +21,9 @@ namespace CZY.SlackToolBox.FrameTemplate
 
             try
             {
-
                 System.Windows.FrameworkCompatibilityPreferences.KeepTextBoxDisplaySynchronizedWithTextProperty = false;
                 AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
                 Application.Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
-
-
             }
             catch (Exception ex)
             {
