@@ -23,6 +23,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CZY.SlackToolBox.ChatRobot"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CZY.SlackToolBox.FastApply", "CZY.SlackToolBox.FastApply\CZY.SlackToolBox.FastApply.csproj", "{AE37F2A3-D65A-401D-9D72-00843D61511C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StudyGlobal", "StudyGlobal", "{57F35C21-FDB8-4A49-9A9A-1BB13AA179F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CZY.SlackToolBox.DesignPatterns", "CZY.SlackToolBox.DesignPatterns\CZY.SlackToolBox.DesignPatterns.csproj", "{EFEA7AE5-A4A5-40E6-B2D1-BB9A0B7A74BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CZY.SlackToolBox.FragmentedClient", "CZY.SlackToolBox.FragmentedClient\CZY.SlackToolBox.FragmentedClient.csproj", "{F8237EC0-472E-4DA4-804B-2CB06C8D42B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +63,14 @@ Global
 		{AE37F2A3-D65A-401D-9D72-00843D61511C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE37F2A3-D65A-401D-9D72-00843D61511C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE37F2A3-D65A-401D-9D72-00843D61511C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFEA7AE5-A4A5-40E6-B2D1-BB9A0B7A74BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFEA7AE5-A4A5-40E6-B2D1-BB9A0B7A74BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFEA7AE5-A4A5-40E6-B2D1-BB9A0B7A74BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFEA7AE5-A4A5-40E6-B2D1-BB9A0B7A74BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8237EC0-472E-4DA4-804B-2CB06C8D42B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8237EC0-472E-4DA4-804B-2CB06C8D42B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8237EC0-472E-4DA4-804B-2CB06C8D42B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8237EC0-472E-4DA4-804B-2CB06C8D42B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +82,8 @@ Global
 		{5A68425C-6402-4AF5-9C7A-A3048DFF8C7A} = {C7222002-6688-420E-B946-0D047F2CDA87}
 		{4B394901-49EA-498C-B696-A53562DFAE70} = {65CD1BC8-BF29-42CD-BAC5-9F8603AD7906}
 		{0223FA95-B84B-40DB-B3A8-A696D6BCD195} = {C7222002-6688-420E-B946-0D047F2CDA87}
+		{EFEA7AE5-A4A5-40E6-B2D1-BB9A0B7A74BB} = {57F35C21-FDB8-4A49-9A9A-1BB13AA179F3}
+		{F8237EC0-472E-4DA4-804B-2CB06C8D42B1} = {57F35C21-FDB8-4A49-9A9A-1BB13AA179F3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {02C9BE72-C983-4825-A318-9CAAB42926F9}

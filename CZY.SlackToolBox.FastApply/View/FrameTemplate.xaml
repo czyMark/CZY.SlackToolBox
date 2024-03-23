@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="CZY.SlackToolBox.FastApply.View.FrameTemplate"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CZY.SlackToolBox.FastApply.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/Bootstrap/Button.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="Label">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Margin" Value="10"></Setter>
+            </Style>
+            <Style TargetType="Border">
+                <Setter Property="BorderThickness" Value="0,0,0,1"></Setter>
+                <Setter Property="BorderBrush" Value="AliceBlue"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <StackPanel >
+        <Border>
+            <WrapPanel>
+                <Label>开发模板</Label>
+                <Button Margin="10"  Click="Button_Click">英骁科技</Button>
+                <Button Margin="10"  Click="Button_Click">工具箱窗口</Button>
+                <Button Margin="10"  Click="Button_Click">平台聊天</Button>
+                <Button Margin="10"  Click="Button_Click">机场管理系统</Button>
+                <Button Margin="10"  Click="Button_Click">数据报表</Button>
+                <Button Margin="10"  Click="Button_Click">系统加载</Button>
+                <Button Margin="10"  Click="Button_Click">最小化窗口</Button>
+            </WrapPanel>
+        </Border>
+        <Border>
+            <WrapPanel>
+                <Label>私有化模板</Label>
+                <Button Margin="10" Click="Button_Click">微粉机器人</Button>
+                <Button Margin="10" Click="Button_Click">映彩机器人</Button>
+                <Button Margin="10" Click="Button_Click">最小化窗口</Button>
+                <Button Margin="10" Click="Button_Click">数据报表</Button>
+                <Button Margin="10" Click="Button_Click">平台聊天</Button>
+                <Button Margin="10" Click="Button_Click">机场管理系统</Button>
+            </WrapPanel>
+        </Border>
+    </StackPanel>
+</UserControl>

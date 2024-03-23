@@ -8,12 +8,13 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>CZY.SlackToolBox.FastApply</RootNamespace>
     <AssemblyName>CZY.SlackToolBox.FastApply</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -55,6 +56,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="View\FrameTemplate.xaml.cs">
+      <DependentUpon>FrameTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StudyGlobal\DesignPatterns.xaml.cs">
+      <DependentUpon>DesignPatterns.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StudyGlobal\Fragmented.xaml.cs">
+      <DependentUpon>Fragmented.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UpdateSystemControl.xaml.cs">
+      <DependentUpon>UpdateSystemControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,6 +80,22 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\FrameTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\StudyGlobal\DesignPatterns.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\StudyGlobal\Fragmented.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UpdateSystemControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -106,9 +135,17 @@
       <Project>{0223fa95-b84b-40db-b3a8-a696d6bcd195}</Project>
       <Name>CZY.SlackToolBox.ChatRobot</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CZY.SlackToolBox.DesignPatterns\CZY.SlackToolBox.DesignPatterns.csproj">
+      <Project>{efea7ae5-a4a5-40e6-b2d1-bb9a0b7a74bb}</Project>
+      <Name>CZY.SlackToolBox.DesignPatterns</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CZY.SlackToolBox.FastExtend\CZY.SlackToolBox.FastExtend.csproj">
       <Project>{6d9ad78a-67c5-4c15-90be-e630a7069a83}</Project>
       <Name>CZY.SlackToolBox.FastExtend</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CZY.SlackToolBox.FragmentedClient\CZY.SlackToolBox.FragmentedClient.csproj">
+      <Project>{f8237ec0-472e-4da4-804b-2cb06c8d42b1}</Project>
+      <Name>CZY.SlackToolBox.FragmentedClient</Name>
     </ProjectReference>
     <ProjectReference Include="..\CZY.SlackToolBox.FrameTemplate\CZY.SlackToolBox.FrameTemplate.csproj">
       <Project>{5a68425c-6402-4af5-9c7a-a3048dff8c7a}</Project>
@@ -122,6 +159,11 @@
       <Project>{552d9761-f586-440c-b9b3-9fa5f2d20310}</Project>
       <Name>CZY.SlackToolBox.LuckyControl</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\AnimationBank\" />
+    <Folder Include="View\FastDevelop\" />
+    <Folder Include="View\LuckyControl\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

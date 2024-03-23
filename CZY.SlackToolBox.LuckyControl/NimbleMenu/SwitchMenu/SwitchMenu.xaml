@@ -3,6 +3,13 @@
                     xmlns:localMenu="clr-namespace:CZY.SlackToolBox.LuckyControl.NimbleMenu"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+    <SolidColorBrush x:Key="TabControlMenuBorderBrush">Transparent</SolidColorBrush>
+    <SolidColorBrush x:Key="TabControlMenuForeground">#0b0045</SolidColorBrush>
+    <SolidColorBrush x:Key="TabControlMenuPanel">Transparent</SolidColorBrush>
+    <SolidColorBrush x:Key="TabControlMenuSelectedIndex">#e3008c</SolidColorBrush>
+    <SolidColorBrush x:Key="TabControlMenuSelectedPanel">Transparent</SolidColorBrush>
+    <SolidColorBrush x:Key="TabControlMenuSelectedForeground">#0075a5</SolidColorBrush>
+
 
     <Style x:Key="SwitchMenu" TargetType="{x:Type TabControl}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
