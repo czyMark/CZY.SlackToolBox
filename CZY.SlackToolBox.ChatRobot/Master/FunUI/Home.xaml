@@ -11,6 +11,9 @@
     
     <UserControl.Resources>
         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/Style/Main.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
             <localConvert:CheckedToVisible x:Key="CTV"></localConvert:CheckedToVisible>
             <localConvert:UnCheckedToVisible x:Key="UNCTV"></localConvert:UnCheckedToVisible>
             
@@ -41,9 +44,9 @@
                                 Margin="0,0,-2,0" Cursor="Hand" Background="White" VerticalAlignment="Top"  
                             MouseEnter="MorePanel_MouseEnter" MouseLeave="MorePanel_MouseLeave">
                         <Label  Content="更多模板" x:Name="MorePanelTitle" FontSize="12"  Foreground="#666666"></Label>
-                        <Image Source="/Master/images/arrow.png" x:Name="arrow" Width="16" Height="16"  Visibility="Collapsed">
+                        <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/arrow.png" x:Name="arrow" Width="16" Height="16"  Visibility="Collapsed">
                         </Image>
-                        <Image Source="/Master/images/arrow-n.png"   x:Name="arrown" Width="16" Height="16"   >
+                        <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/arrow-n.png"   x:Name="arrown" Width="16" Height="16"   >
                         </Image>
                     </StackPanel>
                 </Grid>
@@ -65,7 +68,7 @@
 
                     <StackPanel Margin="22,0,0,0">
                         <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
-                            <Image Source="/Master/images/default-n.png"></Image>
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
                         </Border>
                         <Label Foreground="#1A1A1A" FontSize="14"  
      Padding="0,8,0,0" Margin="0,4,0,0" Content="七脉"  ></Label>
@@ -75,7 +78,7 @@
 
                     <StackPanel Margin="22,0,0,0">
                         <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
-                            <Image Source="/Master/images/default-n.png"></Image>
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
                         </Border>
                         <Label Foreground="#1A1A1A" FontSize="14"  
      Padding="0,8,0,0" Margin="0,4,0,0" Content="京东"  ></Label>
@@ -85,7 +88,7 @@
 
                     <StackPanel Margin="22,0,0,0">
                         <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
-                            <Image Source="/Master/images/default-n.png"></Image>
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
                         </Border>
                         <Label Foreground="#1A1A1A" FontSize="14"  
      Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>

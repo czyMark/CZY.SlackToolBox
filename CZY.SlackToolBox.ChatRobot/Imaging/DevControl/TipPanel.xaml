@@ -37,7 +37,7 @@
         </Border>
 
         <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-            <Image Source="/imaging/images/Tip-Error.png" Width="22" Height="22" Margin="15,10,8,10"></Image>
+            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/imaging/images/Tip-Error.png" Width="22" Height="22" Margin="15,10,8,10"></Image>
             <TextBlock Foreground="#333333"  x:Name="TipContent" Margin="0,11,15,11"
                        TextTrimming="CharacterEllipsis"   TextAlignment="Center" FontSize="16" Padding="0" VerticalAlignment="Center" TextWrapping="NoWrap" >请选择标签</TextBlock>
         </StackPanel>

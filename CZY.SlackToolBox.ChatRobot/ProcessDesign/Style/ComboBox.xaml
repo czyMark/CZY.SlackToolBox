@@ -50,7 +50,7 @@
                                 <Grid Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
                                     <Border x:Name="_borderbg" Background="Transparent"/>
                                     <StackPanel Orientation="Horizontal">
-                                        <Image Source="/ProcessDesign/images/Selected.png" Width="18" Height="18" Visibility="Hidden" x:Name="_selected"></Image>
+                                        <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/Selected.png" Width="18" Height="18" Visibility="Hidden" x:Name="_selected"></Image>
                                         <TextBlock Margin="2 6 70 6" VerticalAlignment="Center" x:Name="_txt" Foreground="#333" Text="{Binding Content,RelativeSource={RelativeSource TemplatedParent}}"/>
                                     </StackPanel>
                                  </Grid>

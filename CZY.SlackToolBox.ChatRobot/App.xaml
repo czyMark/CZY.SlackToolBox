@@ -8,9 +8,9 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
 
-                <!--<ResourceDictionary Source="/Master/Style/Main.xaml"></ResourceDictionary>-->
-                <!--<ResourceDictionary Source="/Imaging/Style/Main.xaml"></ResourceDictionary>-->
-                <ResourceDictionary Source="/ProcessDesign/Style/Main.xaml"></ResourceDictionary>
+                <!--<ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/Style/Main.xaml"></ResourceDictionary>-->
+                <!--<ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Imaging/Style/Main.xaml"></ResourceDictionary>-->
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/Style/Main.xaml"></ResourceDictionary>
           
                 
             </ResourceDictionary.MergedDictionaries>

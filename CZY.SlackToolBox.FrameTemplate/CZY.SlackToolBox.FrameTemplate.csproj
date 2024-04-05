@@ -90,6 +90,7 @@
     <Compile Include="SettingWindow\View\SettingContent.xaml.cs">
       <DependentUpon>SettingContent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="StartFrame.cs" />
     <Compile Include="YXKJ\Core\FramePage.cs" />
     <Compile Include="YXKJ\Core\MainWindowManager.cs" />
     <Compile Include="YXKJ\Core\UserCache.cs" />

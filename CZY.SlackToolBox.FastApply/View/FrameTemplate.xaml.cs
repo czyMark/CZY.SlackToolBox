@@ -34,6 +34,7 @@ namespace CZY.SlackToolBox.FastApply.View
             switch (btn.Content)
             {
                 case "英骁科技":
+                    FT.YXKJ.Core.UserCache.Init();
                     new FT.YXKJ.View.LoginWindow().Show();
                     break;
                 case "工具箱窗口":
@@ -54,6 +55,19 @@ namespace CZY.SlackToolBox.FastApply.View
                     var win = new FT.Functional.TrayWindow();
                     win.ShowNotofy("程序退出", "正常退出");
                     break;
+
+
+                case "微粉大师":
+                    new ChatRobot.Imaging.MainWindow().ShowDialog();
+                    break;
+
+                case "映彩机器人":
+                    new ChatRobot.Master.MainWindow().ShowDialog();
+                    break;
+                case "映彩机器人自定义":
+                    new ChatRobot.ProcessDesign.MainWindow().ShowDialog();
+                    break;
+
 
             }
 

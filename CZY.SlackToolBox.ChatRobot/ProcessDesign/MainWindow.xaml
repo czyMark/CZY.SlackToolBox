@@ -11,6 +11,9 @@
         Title="MainWindow" Width="1440" Height="900" >
     <Window.Resources>
         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/Style/Main.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
             <localConvert:CheckedToVisible x:Key="CTV"></localConvert:CheckedToVisible>
             <localConvert:UnCheckedToVisible x:Key="UNCTV"></localConvert:UnCheckedToVisible>
             <Style TargetType="RadioButton">
@@ -99,15 +102,15 @@
                             Background="#FFF" MouseLeftButtonDown="Border_MouseLeftButtonDown">
                         <Grid HorizontalAlignment="Right">
                             <StackPanel Orientation="Horizontal">
-                                <Image Cursor="Hand" Source="/ProcessDesign/images/Min.png" Width="12" Height="12" Margin="9"  
+                                <Image Cursor="Hand" Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/Min.png" Width="12" Height="12" Margin="9"  
                                    MouseLeftButtonDown="Label_MouseLeftButtonDown_2">
 
                                 </Image>
-                                <Image Cursor="Hand" Source="/ProcessDesign/images/Max.png" Width="12" Height="12" Margin="9" 
+                                <Image Cursor="Hand" Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/Max.png" Width="12" Height="12" Margin="9" 
                                    MouseLeftButtonDown="Label_MouseLeftButtonDown_1">
 
                                 </Image>
-                                <Image Cursor="Hand" Source="/ProcessDesign/images/Close.png" Width="12" Height="12" Margin="9" 
+                                <Image Cursor="Hand" Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/Close.png" Width="12" Height="12" Margin="9" 
                                    MouseLeftButtonDown="Label_MouseLeftButtonDown">
 
                                 </Image>
@@ -127,7 +130,7 @@
 
                     <StackPanel VerticalAlignment="Center"  Margin="10,4,0,4" Orientation="Horizontal"
                             HorizontalAlignment="Left" >
-                        <Image Source="/ProcessDesign/images/machine.png" Width="24" Height="24" />
+                        <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/machine.png" Width="24" Height="24" />
                         <Label Cursor="Hand" Width="59" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  >文件(F)</Label>
                         <Label Cursor="Hand" Width="59" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  >操作(E)</Label>
                         <Label Cursor="Hand" Width="59" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  >其他(V)</Label>
@@ -177,12 +180,12 @@
                                      ToolTipService.HorizontalOffset="-16"
                                      ToolTipService.VerticalOffset="-4"
                                      ToolTip="返回">
-                                <Image Source="/ProcessDesign/images/home.png" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/home.png" Width="20" Height="20" VerticalAlignment="Center"></Image>
                             </Button>
                             
                             <Border BorderThickness="1,0,0,0" Height="24" BorderBrush="#EEEEEE"></Border>
                             <!--#region 文件处理 -->
-                            <ComboBox x:Name="IntervalTime" Margin="20,0,0,0" core:AttachAttribute.DropDownIcon="/ProcessDesign/Images/Add.png"
+                            <ComboBox x:Name="IntervalTime" Margin="20,0,0,0" core:AttachAttribute.DropDownIcon="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/Images/Add.png"
                                   Style="{StaticResource ComboBoxIcon}"   BorderBrush="Transparent"
                                      Width="35" VerticalAlignment="Center" VerticalContentAlignment="Center"
                                   SelectedIndex="0"   >
@@ -194,13 +197,13 @@
                             <Button  Margin="14,0,0,0" Height="24" Width="24" 
          ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
                                      ToolTip="保存">
-                                <Image Source="/ProcessDesign/images/save.png" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/save.png" Width="20" Height="20" VerticalAlignment="Center"></Image>
                             </Button>
 
                             <Button  Margin="14,0,0,0" Height="24" Width="24" 
          ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
                                      ToolTip="另存">
-                                <Image Source="/ProcessDesign/images/save.png" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/save.png" Width="20" Height="20" VerticalAlignment="Center"></Image>
                             </Button>
                             <!--#endregion-->
 
@@ -210,13 +213,13 @@
                             <Button  Margin="14,0,0,0" Height="24" Width="24" 
          ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
                                      ToolTip="运行">
-                                <Image Source="/ProcessDesign/images/run.png" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/run.png" Width="20" Height="20" VerticalAlignment="Center"></Image>
                             </Button>
 
                             <Button  Margin="14,0,0,0" Height="24" Width="24" 
          ToolTipService.HorizontalOffset="-36" ToolTipService.VerticalOffset="-4"  
                                      ToolTip="数据抓取">
-                                <Image Source="/ProcessDesign/images/finddata.png" Width="20" Margin="-1,0,0,0" Height="20" 
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/finddata.png" Width="20" Margin="-1,0,0,0" Height="20" 
                                          VerticalAlignment="Center"></Image>
                             </Button>
 
@@ -224,13 +227,13 @@
                             <Button  Margin="14,0,0,0" Height="24" Width="24" 
          ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
                                      ToolTip="录制">
-                                <Image Source="/ProcessDesign/images/record.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/record.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
                             </Button>
 
                             <Button  Margin="14,0,0,0" Height="24" Width="24" 
          ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
                                      ToolTip="发布">
-                                <Image Source="/ProcessDesign/images/publish.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/publish.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
                             </Button>
                             <!--#endregion-->
 
@@ -239,57 +242,57 @@
                             <Button  Margin="14,0,0,0" Height="24" Width="24" 
 ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
                             ToolTip="调试">
-                                <Image Source="/ProcessDesign/images/debugger.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/debugger.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
                             </Button>
 
 
                             <Button  Margin="14,0,0,0" Height="24" Width="24" 
 ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
                             ToolTip="中断">
-                                <Image Source="/ProcessDesign/images/break.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/break.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
                             </Button>
 
 
                             <Button  Margin="14,0,0,0" Height="24" Width="24" 
 ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
                             ToolTip="逐语句">
-                                <Image Source="/ProcessDesign/images/StepByStatement.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/StepByStatement.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
                             </Button>
 
                             <Button  Margin="14,0,0,0" Height="24" Width="24" 
 ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
                             ToolTip="逐过程">
-                                <Image Source="/ProcessDesign/images/StepByProcess.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/StepByProcess.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
                             </Button>
 
                             <Button  Margin="14,0,0,0" Height="24" Width="24" 
 ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
                             ToolTip="校验">
-                                <Image Source="/ProcessDesign/images/verify.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/verify.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
                             </Button>
 
                             <Button  Margin="14,0,0,0" Height="24" Width="24" 
 ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
                             ToolTip="校验">
-                                <Image Source="/ProcessDesign/images/verify.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/verify.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
                             </Button>
 
 
                             <Button  Margin="14,0,0,0" Height="24" Width="24" 
 ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
                             ToolTip="断点">
-                                <Image Source="/ProcessDesign/images/BreakingPoint.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/BreakingPoint.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
                             </Button>
 
                             <Button  Margin="14,0,0,0" Height="24" Width="24" 
 ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
                             ToolTip="清除所有断点">
-                                <Image Source="/ProcessDesign/images/ClearBreakingPoint.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/ClearBreakingPoint.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
                             </Button>
 
 
 
-                            <ComboBox Margin="20,0,0,0" core:AttachAttribute.DropDownIcon="/ProcessDesign/Images/SlowDebugging.png"
+                            <ComboBox Margin="20,0,0,0" core:AttachAttribute.DropDownIcon="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/Images/SlowDebugging.png"
           Style="{StaticResource ComboBoxIcon}"   BorderBrush="Transparent"
              Width="35" Height="26" VerticalAlignment="Center" VerticalContentAlignment="Center"
           SelectedIndex="0"   >
@@ -304,20 +307,20 @@ ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"
                             <Button  Margin="14,0,0,0" Height="24" Width="24" 
 ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
                             ToolTip="高亮元素">
-                                <Image Source="/ProcessDesign/images/HighlightElements.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/HighlightElements.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
                             </Button>
 
                             <Button  Margin="14,0,0,0" Height="24" Width="24" 
 ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
                             ToolTip="记录活动">
-                                <Image Source="/ProcessDesign/images/RecordActive.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/RecordActive.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
                             </Button>
 
 
                             <Button  Margin="14,0,0,0" Height="24" Width="24" 
 ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
                             ToolTip="异常中断">
-                                <Image Source="/ProcessDesign/images/ExceptionBreak.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/ExceptionBreak.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
                             </Button>
                             <!--#endregion-->
 
@@ -328,7 +331,7 @@ ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"
                             <Button  Margin="14,0,0,0" Height="24" Width="24" 
 ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
                             ToolTip="打开日志">
-                                <Image Source="/ProcessDesign/images/OpenLog.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/OpenLog.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
                             </Button>
                             <!--#endregion-->
 

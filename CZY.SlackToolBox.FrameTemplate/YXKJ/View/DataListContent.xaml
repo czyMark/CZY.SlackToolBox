@@ -12,6 +12,9 @@
     <LocalCore:FrameControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/YXKJ/Button.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/YXKJ/DataGrid.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/YXKJ/ComBox.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5"  Stretch="None" AlignmentX="Left">
                 <VisualBrush.Visual>
@@ -165,7 +168,7 @@
 
                     <StackPanel Margin="3" Orientation="Horizontal">
                         <Label Content="每页"  Foreground="Black"     VerticalAlignment="Center"    />
-                        <ComboBox ItemsSource="{Binding SplitCount}"  Background="#f8f9fa"  VerticalContentAlignment="Center"    SelectedItem="{Binding CurrentSplit}" />
+                        <ComboBox ItemsSource="{Binding AvailablePageSize}"  Background="#f8f9fa"  VerticalContentAlignment="Center"    SelectedItem="{Binding CurrentSplit}" />
                         <Label Content="条"   Foreground="Black"    VerticalAlignment="Center"    />
                     </StackPanel>
                 </WrapPanel>

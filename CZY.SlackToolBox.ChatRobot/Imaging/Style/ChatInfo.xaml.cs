@@ -54,11 +54,11 @@ namespace CZY.SlackToolBox.ChatRobot.Imaging.Style
             //查看详情预留的接口， 不知道应该点击哪里进入
 
             ChatDetailInfo MessageWin = new ChatDetailInfo();
-            MessageWin.Owner = Application.Current.MainWindow;
-            MessageWin.Width = Application.Current.MainWindow.Width;
-            MessageWin.Height = Application.Current.MainWindow.Height;
-            MessageWin.Left = Application.Current.MainWindow.Left;
-            MessageWin.Top = Application.Current.MainWindow.Top;
+            MessageWin.Owner = Window.GetWindow(this);
+            MessageWin.Width = Window.GetWindow(this).Width;
+            MessageWin.Height = Window.GetWindow(this).Height;
+            MessageWin.Left = Window.GetWindow(this).Left;
+            MessageWin.Top = Window.GetWindow(this).Top;
             MessageWin.ShowInTaskbar = false;
             MessageWin.Closed += MessageWin_Closed;
             MessageWin.Show();

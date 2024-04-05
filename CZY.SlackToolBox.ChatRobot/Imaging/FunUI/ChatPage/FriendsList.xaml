@@ -5,6 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CZY.SlackToolBox.ChatRobot.Imaging.FunUI"
              mc:Ignorable="d" >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Imaging/Style/Button.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid   Width="159" Background="White">
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
 
@@ -17,7 +24,7 @@
         </StackPanel>
 
         <StackPanel Margin="20,76,20,0"     VerticalAlignment="Top" x:Name="NoFriendsTip">
-            <Image Source="/imaging/images/NoFriends.png" HorizontalAlignment="Center" Width="109" Height="109" ></Image>
+            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/imaging/images/NoFriends.png" HorizontalAlignment="Center" Width="109" Height="109" ></Image>
             <Label Margin="0,8,0,0" FontSize="12" Foreground="#1D2129" Opacity="0.8">未检测到您的好友标签</Label>
             <Button Margin="0,12,0,0" Width="60" Height="26" Click="Button_Click_1">去检测</Button>
         </StackPanel>

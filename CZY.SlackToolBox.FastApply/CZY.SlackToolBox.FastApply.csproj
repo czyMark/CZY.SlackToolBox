@@ -165,5 +165,10 @@
     <Folder Include="View\FastDevelop\" />
     <Folder Include="View\LuckyControl\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="product.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

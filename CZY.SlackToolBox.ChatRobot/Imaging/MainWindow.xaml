@@ -11,6 +11,9 @@
         Title="MainWindow" Width="830" Height="556" >
     <Window.Resources>
         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Imaging/Style/Main.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
             <localConvert:CheckedToVisible x:Key="CTV"></localConvert:CheckedToVisible>
             <localConvert:UnCheckedToVisible x:Key="UNCTV"></localConvert:UnCheckedToVisible>
             <Style TargetType="RadioButton">
@@ -71,7 +74,7 @@
     <core:CornerClip CornerRadius="8" > 
             <Grid   Background="#D6DDE2">
                 <!--<Grid.Background>
-                <ImageBrush ImageSource="/imaging/images/启动台04.png"></ImageBrush>
+                <ImageBrush ImageSource="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/imaging/images/启动台04.png"></ImageBrush>
             </Grid.Background>-->
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="68"></ColumnDefinition>
@@ -82,7 +85,7 @@
                     <Grid >
                         <!--#region 登录 -->
                         <StackPanel Margin="0,40,0,0" VerticalAlignment="Top"  Cursor="Hand">
-                            <Image Source="/imaging/images/machine.png"  
+                        <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/imaging/images/machine.png"  
                            DockPanel.Dock="Top" RenderOptions.BitmapScalingMode="Fant" Stretch="UniformToFill" 
                            Width="44" Height="44"  >
                                 <Image.Clip>
@@ -100,7 +103,7 @@
                                 <Grid  Width="52"  Height="52">
                                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"
                                             Visibility="{Binding ElementName=InfoNavFun,Path=IsChecked,Converter={StaticResource CTV}}">
-                                        <Image Source="/imaging/images/info-n.png"  Margin="0,7,0,0"    Width="24" Height="24"  >
+                                    <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/imaging/images/info-n.png"  Margin="0,7,0,0"    Width="24" Height="24"  >
                                             <Image.Clip>
                                                 <EllipseGeometry Center="17,17" RadiusX="17" RadiusY="17"/>
                                             </Image.Clip>
@@ -111,7 +114,7 @@
                                     </StackPanel>
                                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"
                                             Visibility="{Binding ElementName=InfoNavFun,Path=IsChecked,Converter={StaticResource UNCTV}}">
-                                        <Image Source="/imaging/images/info.png"    Margin="0,7,0,0"   Width="24" Height="24"  >
+                                    <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/imaging/images/info.png"    Margin="0,7,0,0"   Width="24" Height="24"  >
 
                                         </Image>
                                         <Label VerticalAlignment="Top"   FontSize="10" Foreground="#FD3459" 
@@ -129,7 +132,7 @@ HorizontalAlignment="Center" Content="首页" ToolTip="Totip">
                                 <Grid  Width="52"  Height="52">
                                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"
                                             Visibility="{Binding ElementName=MarkNavFun,Path=IsChecked,Converter={StaticResource CTV}}">
-                                        <Image Source="/imaging/images/Mark-n.png"  Margin="0,7,0,0"  Width="24" Height="24"  >
+                                    <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/imaging/images/Mark-n.png"  Margin="0,7,0,0"  Width="24" Height="24"  >
                                             <Image.Clip>
                                                 <EllipseGeometry Center="17,17" RadiusX="17" RadiusY="17"/>
                                             </Image.Clip>
@@ -142,7 +145,7 @@ HorizontalAlignment="Center" Content="首页" ToolTip="Totip">
 
                                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"
                                             Visibility="{Binding ElementName=MarkNavFun,Path=IsChecked,Converter={StaticResource UNCTV}}">
-                                        <Image Source="/imaging/images/Mark.png"    Margin="0,7,0,0"   Width="24" Height="24"  >
+                                    <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/imaging/images/Mark.png"    Margin="0,7,0,0"   Width="24" Height="24"  >
                                             <Image.Clip>
                                                 <EllipseGeometry Center="17,17" RadiusX="17" RadiusY="17"/>
                                             </Image.Clip>
@@ -173,15 +176,15 @@ HorizontalAlignment="Center" Content="更多功能" ToolTip="Totip">
                             Background="#F1F2F3" MouseLeftButtonDown="Border_MouseLeftButtonDown">
                         <Grid HorizontalAlignment="Right">
                             <StackPanel Orientation="Horizontal">
-                            <Image Cursor="Hand" Source="/Imaging/images/Min.png" Width="12" Height="12" Margin="9"  
+                            <Image Cursor="Hand" Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Imaging/images/Min.png" Width="12" Height="12" Margin="9"  
                                    MouseLeftButtonDown="Label_MouseLeftButtonDown_2">
 
                                 </Image>
-                            <Image Cursor="Hand" Source="/Imaging/images/Max.png" Width="12" Height="12" Margin="9" 
+                            <Image Cursor="Hand" Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Imaging/images/Max.png" Width="12" Height="12" Margin="9" 
                                    MouseLeftButtonDown="Label_MouseLeftButtonDown_1">
 
                                 </Image>
-                            <Image Cursor="Hand" Source="/Imaging/images/Close.png" Width="12" Height="12" Margin="9" 
+                            <Image Cursor="Hand" Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Imaging/images/Close.png" Width="12" Height="12" Margin="9" 
                                    MouseLeftButtonDown="Label_MouseLeftButtonDown">
 
                                 </Image>

@@ -8,6 +8,16 @@
         Background="Transparent"
         mc:Ignorable="d" AllowsTransparency="True" WindowStyle="None"
         Title="MainWindow" Width="830" Height="556">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Imaging/Style/Main.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Imaging/Style/Scrollbar.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Imaging/Style/Button.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <core:CornerClip CornerRadius="10" >
 
 
@@ -24,7 +34,7 @@
 
                 <Label Foreground="#1D2129" Margin="16,12,0,12" FontSize="16" FontWeight="Medium">消息详情</Label>
 
-                <Image Source="/imaging/images/Close-b.png" Width="16" Height="16"
+                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/imaging/images/Close-b.png" Width="16" Height="16"
                        HorizontalAlignment="Right" Margin="0,16,22,16" Cursor="Hand" 
                        MouseLeftButtonDown="Image_MouseLeftButtonDown"
                        ></Image>
@@ -50,7 +60,7 @@
 
                         <Label FontSize="12" Foreground="#333333" Grid.Column="0" Grid.Row="1">发送对象：</Label>
                         <TextBlock VerticalAlignment="Top" FontSize="12" Foreground="#666666"  
-            Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" FontWeight="Regular"  >张小三、.</TextBlock>
+            Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" FontWeight="Regular"  >张小三、张小三张小三张小三张小三张小三张小三张小三张小三.</TextBlock>
                         <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" 
                            VerticalAlignment="Bottom" Foreground="#FD3459" Margin="0,0,0,0">查看全部</Label>
 

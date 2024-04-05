@@ -102,6 +102,7 @@ namespace CZY.SlackToolBox.FrameTemplate.AirportCS.View
                     break;
                 case PersonalCenter.PersonalFunction.LockScreen:
                     //挂机锁屏
+                    pwdBox.Password = string.Empty;
                     whiteCloudsLock.Visibility = Visibility.Visible;
                     break;
                 case PersonalCenter.PersonalFunction.EditPwd:

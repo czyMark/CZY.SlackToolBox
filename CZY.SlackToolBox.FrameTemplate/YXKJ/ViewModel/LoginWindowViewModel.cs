@@ -108,6 +108,8 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
                 main.Show();
             }
         }
+
+
          
 
         #endregion

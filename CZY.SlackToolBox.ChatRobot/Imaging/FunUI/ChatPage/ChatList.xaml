@@ -8,6 +8,15 @@
              xmlns:tip="clr-namespace:CZY.SlackToolBox.ChatRobot.Imaging.FunUI.NotificationPage"  
              mc:Ignorable="d" 
              d:DesignHeight="524" d:DesignWidth="605">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Imaging/Style/Button.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Imaging/Style/Scrollbar.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid    Background="#F1F2F3">
         <Grid.RowDefinitions>
             <RowDefinition ></RowDefinition>
@@ -41,7 +50,7 @@
                     </Style>
                 </Border.Style>
                 <StackPanel Orientation="Horizontal"   Cursor="Hand">
-                    <Image Source="/imaging/images/image.png" Width="16" Height="16" Margin="8,4,0,4"></Image>
+                    <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/imaging/images/image.png" Width="16" Height="16" Margin="8,4,0,4"></Image>
                     <Label Foreground="#333333" FontSize="12" VerticalAlignment="Center"
                                    Margin="4,4,8,4">发图片</Label>
                 </StackPanel>
@@ -61,7 +70,7 @@ MouseLeftButtonDown="AddNameStackPanel_MouseLeftButtonDown"
                     </Style>
                 </Border.Style>
                 <StackPanel Orientation="Horizontal"   >
-                    <Image Source="/imaging/images/heart.png" Width="16" Height="16" Margin="8,4,0,4"></Image>
+                    <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/imaging/images/heart.png" Width="16" Height="16" Margin="8,4,0,4"></Image>
                     <Label Foreground="#333333" FontSize="12" VerticalAlignment="Center" 
                                    Margin="4,4,8,4">加亲密昵称</Label>
                 </StackPanel>
@@ -81,7 +90,7 @@ MouseLeftButtonDown="AddNameStackPanel_MouseLeftButtonDown"
                     </Style>
                 </Border.Style>
                 <StackPanel Orientation="Horizontal" Cursor="Hand">
-                    <Image Source="/imaging/images/time.png" Width="16" Height="16" Margin="8,4,0,4"></Image>
+                    <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/imaging/images/time.png" Width="16" Height="16" Margin="8,4,0,4"></Image>
                     <Label Foreground="#333333" FontSize="12" VerticalAlignment="Center"
                                    Margin="4,4,8,4" x:Name="IntervalTime">群发间隔时间</Label>
                 </StackPanel>
@@ -100,7 +109,7 @@ MouseLeftButtonDown="AddNameStackPanel_MouseLeftButtonDown"
                     </Style>
                 </Border.Style>
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="/imaging/images/help.png" Width="16" Height="16" Margin="8,4,0,4"></Image>
+                    <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/imaging/images/help.png" Width="16" Height="16" Margin="8,4,0,4"></Image>
                     <Label Foreground="#333333" FontSize="12" VerticalAlignment="Center"
                                    Margin="4,4,8,4">查看教程</Label>
                 </StackPanel>

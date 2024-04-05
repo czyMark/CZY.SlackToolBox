@@ -206,13 +206,13 @@ namespace CZY.SlackToolBox.ChatRobot.Imaging.FunUI
         private void StackPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             IntervalEdit intervalEdit = new IntervalEdit(Index, Start, Stop);
-            intervalEdit.Owner = Application.Current.MainWindow;
-            intervalEdit.Width = Application.Current.MainWindow.Width;
-            intervalEdit.Height = Application.Current.MainWindow.Height;
+            intervalEdit.Owner = Window.GetWindow(this);
+            intervalEdit.Width = Window.GetWindow(this).Width;
+            intervalEdit.Height = Window.GetWindow(this).Height;
             if (intervalEdit.Width == 830 || intervalEdit.Height == 556)
             {
-                intervalEdit.Left = Application.Current.MainWindow.Left;
-                intervalEdit.Top = Application.Current.MainWindow.Top;
+                intervalEdit.Left = Window.GetWindow(this).Left;
+                intervalEdit.Top = Window.GetWindow(this).Top;
             }
             else
             {

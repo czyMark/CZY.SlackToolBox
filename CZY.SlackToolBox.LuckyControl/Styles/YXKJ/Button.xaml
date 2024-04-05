@@ -6,6 +6,7 @@
         <Setter Property="Foreground" Value="White"></Setter>
         <Setter Property="BorderThickness" Value="0"></Setter>
         <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="Cursor" Value="Hand"></Setter>
         <Setter Property="Height" Value="38"></Setter>
         <Setter Property="Background" Value="#409eff"></Setter>
         <Setter Property="Padding" Value="10,0"></Setter>

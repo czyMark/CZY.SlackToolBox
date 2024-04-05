@@ -8,6 +8,15 @@
         KeyDown="Window_KeyDown" MouseLeftButtonDown="Window_MouseLeftButtonDown"
          mc:Ignorable="d"  ResizeMode="NoResize" AllowsTransparency="True" Background="Transparent"
          Height="121" Width="390">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Imaging/Style/Main.xaml"></ResourceDictionary>
+
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Imaging/Style/Button.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <core:CornerClip CornerRadius="10" >
         <Grid>
             <Grid.RowDefinitions>
@@ -15,7 +24,7 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Grid Background="#000000">
-                <Image Source="/imaging/images/machine.png" Width="16" Height="16" 
+                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/imaging/images/machine.png" Width="16" Height="16" 
                        HorizontalAlignment="Left" Margin="16,7,5,7" />
                 <Label Padding="0" HorizontalAlignment="Left" VerticalContentAlignment="Center"  FontSize="12" Foreground="#FFFFFF" Margin="37,7,0,7" >
                     微粉大师

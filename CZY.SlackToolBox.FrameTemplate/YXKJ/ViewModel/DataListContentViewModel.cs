@@ -112,13 +112,22 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
             DataEditContent dx = new DataEditContent();
             //要新建的实体
             DataEditContentViewModel dataEdit = new DataEditContentViewModel(obj);
-        
+            dataEdit.BaseData = new
+            {
+                Sex = new List<Sex>() {
+                new Sex() { Id=0, Text="女" },
+                new Sex() { Id=1, Text="男" },
+                new Sex() { Id=2, Text="未知" } }
+            };
             dx.DataContext = dataEdit;
-
-            DataEditContent dataEditContent = dx;
+            DataEditContent dataEditContent = dx; 
 
             //弹窗修改
             ContentBoxWin win = ContentBoxWin.GetContentBoxWin(dataEditContent, "添加信息", ContentBoxWin.ContentBoxWinState.YesNo);
+
+            Uri uri = new Uri("CZY.SlackToolBox.LuckyControl;component/Styles/YXKJ/Button.xaml", UriKind.Relative);
+            ResourceDictionary resource = (ResourceDictionary)Application.LoadComponent(uri);
+            win.Resources.MergedDictionaries.Add(resource);
             bool? state = win.ShowDialog();
             if (state == true)
             {
@@ -146,8 +155,8 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
             //    MainWindowManager.SetMessageTip(  "无法找到要修改的数据，请刷新数据...", LuckyControl.ElementPanel.TipPanel.TipPanelState.Warn);
             //    return;
             //}  
-            DataEditContent dx=new DataEditContent();
-            DataEditContentViewModel dataEdit=new DataEditContentViewModel(obj); 
+            DataEditContent dx = new DataEditContent();
+            DataEditContentViewModel dataEdit = new DataEditContentViewModel(obj);
             dataEdit.BaseData = new
             {
                 Sex = new List<Sex>() {
@@ -167,6 +176,10 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
             ContentBoxWin.WinHeight = 600;
             //弹窗修改
             ContentBoxWin win = ContentBoxWin.GetContentBoxWin(dataEditContent, "修改信息", ContentBoxWin.ContentBoxWinState.YesNo);
+
+            Uri uri = new Uri("CZY.SlackToolBox.LuckyControl;component/Styles/YXKJ/Button.xaml", UriKind.Relative);
+            ResourceDictionary resource = (ResourceDictionary)Application.LoadComponent(uri);
+            win.Resources.MergedDictionaries.Add(resource);
             bool? state = win.ShowDialog();
             if (state == true)
             {
@@ -247,9 +260,9 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
                 {
                     list.Add(new TempData
                     {
-                        Id=i,
-                        Question=i.ToString(),
-                        Answer=i.ToString(),
+                        Id = i,
+                        Question = i.ToString(),
+                        Answer = i.ToString(),
                         Remark = "测试数据",
                     });
                 }
@@ -278,8 +291,9 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
             });
             if (list.Count > 0)
                 GridPagingService.FreshData(list);
-            else { 
-            
+            else
+            {
+
                 //SysTipWindow.Show("系统提示", "没有该数据");
             }
             LoadingVisibility = Visibility.Collapsed;
@@ -290,7 +304,7 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
     public class Sex
     {
         public int Id { get; set; }
-        public string Text { get; set; } 
+        public string Text { get; set; }
     }
     [Serializable]
     public class TempData
@@ -298,6 +312,6 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
         public int Id { get; set; }
         public string Answer { get; set; }
         public string Question { get; set; }
-        public string Remark { get; set; } 
+        public string Remark { get; set; }
     }
 }

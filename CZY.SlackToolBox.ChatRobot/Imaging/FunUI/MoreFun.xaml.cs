@@ -21,13 +21,14 @@ namespace CZY.SlackToolBox.ChatRobot.Imaging.FunUI
         /// <param name="MessageWin"></param>
         private void ShowMessage(Window MessageWin)
         {
-            MessageWin.Owner = Application.Current.MainWindow;
-            MessageWin.Width = Application.Current.MainWindow.Width;
-            MessageWin.Height = Application.Current.MainWindow.Height;
+            //Window.GetWindow(this);
+            MessageWin.Owner = Window.GetWindow(this);
+            MessageWin.Width = Window.GetWindow(this).Width;
+            MessageWin.Height = Window.GetWindow(this).Height;
             if (MessageWin.Width == 830 || MessageWin.Height == 556)
             {
-                MessageWin.Left = Application.Current.MainWindow.Left;
-                MessageWin.Top = Application.Current.MainWindow.Top;
+                MessageWin.Left = Window.GetWindow(this).Left;
+                MessageWin.Top = Window.GetWindow(this).Top;
             }
             else
             {
@@ -70,8 +71,8 @@ namespace CZY.SlackToolBox.ChatRobot.Imaging.FunUI
 
         private void Button_Click_6(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Hide();
-            Application.Current.MainWindow.ShowInTaskbar = false;
+            Window.GetWindow(this).Hide();
+            Window.GetWindow(this).ShowInTaskbar = false;
             TrayNotification trayNotification = new TrayNotification();
 
 

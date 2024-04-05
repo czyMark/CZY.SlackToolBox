@@ -7,13 +7,22 @@
         xmlns:core="clr-namespace:CZY.SlackToolBox.ChatRobot.Core"  WindowStyle="None"
              mc:Ignorable="d"  ResizeMode="NoResize" AllowsTransparency="True" Background="Transparent"
              d:DesignHeight="556" d:DesignWidth="830">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Imaging/Style/Main.xaml"></ResourceDictionary>
+
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Imaging/Style/Button.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <core:CornerClip CornerRadius="10" >
         <Grid>
             <Border Background="#1D2129" Opacity="0.6"/>
 
             <core:CornerClip CornerRadius="12" HorizontalAlignment="Center" VerticalAlignment="Center" >
                 <Grid Width="300" Height="138" Background="#FFFFFF" >
-                    <Image Source="/imaging/images/Tip-Successful.png" Width="24" Height="24" 
+                    <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/imaging/images/Tip-Successful.png" Width="24" Height="24" 
                            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20" ></Image>
                     <Label Foreground="#1D2129" HorizontalAlignment="Left" VerticalAlignment="Top"
                            Margin="54,20" FontSize="16" Padding="0" FontWeight="Medium"

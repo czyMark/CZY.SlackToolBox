@@ -11,6 +11,9 @@
         Title="MainWindow" Width="1080" Height="740" >
     <Window.Resources>
         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/Style/Main.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
             <localConvert:CheckedToVisible x:Key="CTV"></localConvert:CheckedToVisible>
             <localConvert:UnCheckedToVisible x:Key="UNCTV"></localConvert:UnCheckedToVisible>
             <Style TargetType="RadioButton">
@@ -75,7 +78,7 @@
 
         <Grid>
             <!--<Grid.Background>
-                <ImageBrush ImageSource="/images/启动台04.png"></ImageBrush>
+                <ImageBrush ImageSource="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/images/启动台04.png"></ImageBrush>
             </Grid.Background>-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="128"></ColumnDefinition>
@@ -86,7 +89,7 @@
                 <Grid >
                     <!--#region 登录 -->
                     <StackPanel Margin="0,50,0,0" VerticalAlignment="Top"  Cursor="Hand">
-                        <Image Source="/Master/images/logo.png"  
+                        <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/logo.png"  
                            DockPanel.Dock="Top" RenderOptions.BitmapScalingMode="Fant" Stretch="UniformToFill" 
                            Width="60" Height="60"  >
                             <Image.Clip>
@@ -105,7 +108,7 @@
                         <RadioButton Tag="Home"  Checked="MainNavFun_Checked"  Background="Transparent" x:Name="HomeNavFun" GroupName="MainNavFun" Margin="0,0,0,0" Width="92" Height="86" BorderThickness="0"  >
                             <Grid  Width="92"  Height="86">
                                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding ElementName=HomeNavFun,Path=IsChecked,Converter={StaticResource CTV}}">
-                                    <Image Source="/Master/images/Home-n.png"     Width="34" Height="34"  >
+                                    <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/Home-n.png"     Width="34" Height="34"  >
                                         <Image.Clip>
                                             <EllipseGeometry Center="17,17" RadiusX="17" RadiusY="17"/>
                                         </Image.Clip>
@@ -115,7 +118,7 @@
                                     </Label>
                                 </StackPanel>
                                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"  Visibility="{Binding ElementName=HomeNavFun,Path=IsChecked,Converter={StaticResource UNCTV}}">
-                                    <Image Source="/Master/images/Home.png"     Width="34" Height="34"  >
+                                    <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/Home.png"     Width="34" Height="34"  >
                                         <Image.Clip>
                                             <EllipseGeometry Center="17,17" RadiusX="17" RadiusY="17"/>
                                         </Image.Clip>
@@ -132,7 +135,7 @@ HorizontalAlignment="Center" Content="首页" ToolTip="Totip">
                         <RadioButton  Tag="Create"  Checked="MainNavFun_Checked" Background="Transparent" x:Name="CreateNavFun" GroupName="MainNavFun" Margin="0,10,0,0" Width="92" Height="86" BorderThickness="0"  >
                             <Grid  Width="92"  Height="86">
                                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding ElementName=CreateNavFun,Path=IsChecked,Converter={StaticResource CTV}}">
-                                    <Image Source="/Master/images/Add-n.png"    Width="34" Height="34"  >
+                                    <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/Add-n.png"    Width="34" Height="34"  >
                                         <Image.Clip>
                                             <EllipseGeometry Center="17,17" RadiusX="17" RadiusY="17"/>
                                         </Image.Clip>
@@ -142,7 +145,7 @@ HorizontalAlignment="Center" Content="首页" ToolTip="Totip">
                                     </Label>
                                 </StackPanel>
                                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"  Visibility="{Binding ElementName=CreateNavFun,Path=IsChecked,Converter={StaticResource UNCTV}}">
-                                    <Image Source="/Master/images/Add.png"     Width="34" Height="34"  >
+                                    <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/Add.png"     Width="34" Height="34"  >
                                         <Image.Clip>
                                             <EllipseGeometry Center="17,17" RadiusX="17" RadiusY="17"/>
                                         </Image.Clip>
@@ -158,7 +161,7 @@ HorizontalAlignment="Center" Content="新建" ToolTip="Totip">
                         <RadioButton  Tag="Now"  Checked="MainNavFun_Checked"    Background="Transparent" x:Name="NowNavFun"  GroupName="MainNavFun" Margin="0,10,0,0" Width="92" Height="86" BorderThickness="0"  >
                             <Grid  Width="92"  Height="86">
                                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding ElementName=NowNavFun,Path=IsChecked,Converter={StaticResource CTV}}">
-                                    <Image Source="/Master/images/Time-n.png"     Width="34" Height="34"  >
+                                    <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/Time-n.png"     Width="34" Height="34"  >
                                         <Image.Clip>
                                             <EllipseGeometry Center="17,17" RadiusX="17" RadiusY="17"/>
                                         </Image.Clip>
@@ -168,7 +171,7 @@ HorizontalAlignment="Center" Content="新建" ToolTip="Totip">
                                     </Label>
                                 </StackPanel>
                                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"  Visibility="{Binding ElementName=NowNavFun,Path=IsChecked,Converter={StaticResource UNCTV}}">
-                                    <Image Source="/imaging/images/Time.png"    Width="34" Height="34"  >
+                                    <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/imaging/images/Time.png"    Width="34" Height="34"  >
                                         <Image.Clip>
                                             <EllipseGeometry Center="17,17" RadiusX="17" RadiusY="17"/>
                                         </Image.Clip>
@@ -185,7 +188,7 @@ HorizontalAlignment="Center" Content="最近" ToolTip="Totip">
                         <RadioButton Tag="Folder"  Checked="MainNavFun_Checked"  Background="Transparent" x:Name="FolderNavFun"   GroupName="MainNavFun" Margin="0,10,0,0" Width="92" Height="86" BorderThickness="0"  >
                             <Grid  Width="92"  Height="86">
                                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding ElementName=FolderNavFun,Path=IsChecked,Converter={StaticResource CTV}}">
-                                    <Image Source="/Master/images/Folder-n.png"    Width="34" Height="34"  >
+                                    <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/Folder-n.png"    Width="34" Height="34"  >
                                         <Image.Clip>
                                             <EllipseGeometry Center="17,17" RadiusX="17" RadiusY="17"/>
                                         </Image.Clip>
@@ -195,7 +198,7 @@ HorizontalAlignment="Center" Content="最近" ToolTip="Totip">
                                     </Label>
                                 </StackPanel>
                                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"  Visibility="{Binding ElementName=FolderNavFun,Path=IsChecked,Converter={StaticResource UNCTV}}">
-                                    <Image Source="/Master/images/Folder.png"      Width="34" Height="34"  >
+                                    <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/Folder.png"      Width="34" Height="34"  >
                                         <Image.Clip>
                                             <EllipseGeometry Center="17,17" RadiusX="17" RadiusY="17"/>
                                         </Image.Clip>

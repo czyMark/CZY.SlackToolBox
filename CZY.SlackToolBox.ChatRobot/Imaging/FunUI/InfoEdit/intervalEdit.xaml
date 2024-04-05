@@ -7,8 +7,14 @@
         xmlns:core="clr-namespace:CZY.SlackToolBox.ChatRobot.Core"  WindowStyle="None"
              mc:Ignorable="d"  ResizeMode="NoResize" AllowsTransparency="True" Background="Transparent"
              d:DesignHeight="556" d:DesignWidth="830">
+
     <Window.Resources>
-        <ResourceDictionary> 
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>        
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Imaging/Style/Main.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Imaging/Style/Button.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Imaging/Style/ComboBox.xaml"></ResourceDictionary>
+             </ResourceDictionary.MergedDictionaries>
             <SolidColorBrush x:Key="TextBox.Static.Border" Color="Transparent"/>
             <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FD3459"/>
             <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FD3459"/>
@@ -34,7 +40,7 @@
                                     SnapsToDevicePixels="True" CornerRadius="4">
                                 <Grid>
                                     <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
-                                     </ScrollViewer>
+                                    </ScrollViewer>
                                     <Label Content="请输入" x:Name="Tip" Margin="16,6" IsHitTestVisible="False" FontSize="14" Visibility="Collapsed" Foreground="#999999"></Label>
                                 </Grid>
                             </Border>
@@ -49,7 +55,7 @@
                                 <Trigger Property="Text" Value="">
                                     <Setter Property="Visibility" TargetName="Tip" Value="Visible"/>
                                 </Trigger>
-                                
+
                                 <Trigger Property="IsMouseOver" Value="true">
                                     <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border}"/>
                                 </Trigger>
@@ -70,7 +76,9 @@
                     </MultiTrigger>
                 </Style.Triggers>
             </Style>
-            
+
+         
+
         </ResourceDictionary>
     </Window.Resources>
     <core:CornerClip CornerRadius="10" >
@@ -83,7 +91,7 @@
                     <Label Foreground="#333333" HorizontalAlignment="Left" VerticalAlignment="Top"
                            Margin="16,20" FontSize="16" Padding="0"
                            >群发间隔时间</Label>
-                    <Image Source="/imaging/images/Close-b.png" Width="16" Height="16"  Cursor="Hand" MouseLeftButtonDown="Image_MouseLeftButtonDown"
+                    <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/imaging/images/Close-b.png" Width="16" Height="16"  Cursor="Hand" MouseLeftButtonDown="Image_MouseLeftButtonDown"
                            HorizontalAlignment="Right" VerticalAlignment="Top" Margin="15"></Image>
 
 

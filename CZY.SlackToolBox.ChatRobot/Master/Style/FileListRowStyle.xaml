@@ -25,7 +25,7 @@
         <Border x:Name="BackBorder" Background="#ECEBF0" CornerRadius="4"  Opacity="0"></Border>
         <StackPanel Width="912"  Orientation="Horizontal">
 
-            <Image Source="/Master/images/file.png" x:Name="Icon" Width="40" Height="40" Margin="18,10,12,10"></Image>
+            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/file.png" x:Name="Icon" Width="40" Height="40" Margin="18,10,12,10"></Image>
             <StackPanel Width="588" Height="40">
                 <TextBlock  Foreground="#161616" FontSize="14" x:Name="Title">AJ 8淘宝最近最低售价对比采集</TextBlock>
                 <TextBlock  Foreground="#666666" FontSize="12" x:Name="Detail" Padding="0,3,0,0">用户/桌面/AJ 8淘宝最近最低售价对比</TextBlock>

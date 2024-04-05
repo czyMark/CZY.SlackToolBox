@@ -23,8 +23,8 @@ namespace CZY.SlackToolBox.ChatRobot.Imaging.FunUI.NotificationPage
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         { 
-            Application.Current.MainWindow.Show();
-            Application.Current.MainWindow.ShowInTaskbar = true;
+            Window.GetWindow(this).Show();
+            Window.GetWindow(this).ShowInTaskbar = true;
             this.Close();
         }
     }
