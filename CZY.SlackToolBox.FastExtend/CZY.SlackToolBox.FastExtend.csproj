@@ -39,6 +39,7 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AIClient.cs" />
     <Compile Include="BarCode\QRCodeTool.cs" />
     <Compile Include="Communication\FTP\Ftp.cs" />
     <Compile Include="Communication\Pop3\Pop3.cs" />

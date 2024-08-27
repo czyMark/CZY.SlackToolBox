@@ -5,7 +5,7 @@
               Startup="Application_Startup"   
         xmlns:icon="clr-namespace:CZY.SlackToolBox.LuckyControl.IconResource;assembly=CZY.SlackToolBox.LuckyControl" >
     <Application.Resources>
-        <ResourceDictionary>
+        <!--<ResourceDictionary>
              <ResourceDictionary.MergedDictionaries>  
                 <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/AirportCS/Button.xaml"/> 
             </ResourceDictionary.MergedDictionaries>
@@ -16,11 +16,11 @@
             </Style>
  
             
-        </ResourceDictionary>
+        </ResourceDictionary>-->
 
         
         <!--#region 为了方便调试、先备份YXKJ用到的资源引用 -->
-        <!--<ResourceDictionary>
+        <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.AnimationBank;component/Skin/Default.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.AnimationBank;component/Text/FallText.xaml" />
@@ -36,7 +36,7 @@
                 <Setter Property="Width" Value="24"></Setter>
                 <Setter Property="Height" Value="24"></Setter>
             </Style>
-        </ResourceDictionary>-->
+        </ResourceDictionary>
         <!--#endregion-->
     </Application.Resources>
 </Application>

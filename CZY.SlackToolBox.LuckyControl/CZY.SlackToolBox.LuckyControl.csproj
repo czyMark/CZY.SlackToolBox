@@ -232,6 +232,22 @@
     <Compile Include="ElementPanel\TipPanel.xaml.cs">
       <DependentUpon>TipPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Styles\Bootstrap\DateTimePicker\View\DateTimePicker.xaml.cs">
+      <DependentUpon>DateTimePicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Styles\Bootstrap\DateTimePicker\View\IconButton.xaml.cs">
+      <DependentUpon>IconButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Styles\Bootstrap\DateTimePicker\View\TDateTimeView.xaml.cs">
+      <DependentUpon>TDateTimeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Styles\Bootstrap\DateTimePicker\View\THourView.xaml.cs">
+      <DependentUpon>THourView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Styles\Bootstrap\DateTimePicker\View\TMinSexView.xaml.cs">
+      <DependentUpon>TMinSexView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Styles\Bootstrap\TimePicker.cs" />
     <Compile Include="Verify\SliderVerify.xaml.cs">
       <DependentUpon>SliderVerify.xaml</DependentUpon>
     </Compile>
@@ -310,6 +326,30 @@
     <Page Include="Styles\AirportCS\Button.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Bootstrap\DateTimePicker\View\DateTimePicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Bootstrap\DateTimePicker\View\IconButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Bootstrap\DateTimePicker\View\TDateTimeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Bootstrap\DateTimePicker\View\THourView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Bootstrap\DateTimePicker\View\TMinSexView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Bootstrap\TimePicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Verify\SliderVerify.xaml">
       <SubType>Designer</SubType>
@@ -643,6 +683,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Resource Include="Styles\Bootstrap\DateTimePicker\Image\date.png" />
+    <Resource Include="Styles\Bootstrap\DateTimePicker\Image\date1.bmp" />
+    <Resource Include="Styles\Bootstrap\DateTimePicker\Image\date2.ico" />
+    <Resource Include="Styles\Bootstrap\DateTimePicker\Image\DateTimePicker1.bmp" />
+    <Resource Include="Styles\Bootstrap\DateTimePicker\Image\ooopic_1501745970.ico" />
+    <Resource Include="Styles\Bootstrap\DateTimePicker\Image\timer.bmp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CZT.SlackToolBox.AnimationBank\CZY.SlackToolBox.AnimationBank.csproj">
@@ -654,6 +700,13 @@
       <Name>CZY.SlackToolBox.FastExtend</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Styles\Bootstrap\DateTimePicker\Image\close.png" />
+    <Resource Include="Styles\Bootstrap\DateTimePicker\Image\Date.bmp" />
+    <Resource Include="Styles\Bootstrap\DateTimePicker\Image\DateTimePicker.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Styles\Bootstrap\DateTimePicker\View\DateTimePicker.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

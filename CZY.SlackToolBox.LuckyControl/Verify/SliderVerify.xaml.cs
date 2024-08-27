@@ -158,7 +158,7 @@ namespace CZY.SlackToolBox.LuckyControl.Verify
 
         private BitmapImage GetBitmapImage()
         {
-            //BitmapImage image = new BitmapImage(new Uri("pack://application:,,,/AIStudio.Wpf.Controls;component/Resources/1.jpg"));
+            //BitmapImage image = new BitmapImage(new Uri("pack://application:,,,/CZY.SlackToolBox.LuckyControl.Styles.Bootstrap;component/Resources/1.jpg"));
             if (!string.IsNullOrEmpty(ImageUri))
             {
                 // Create source.

@@ -1,5 +1,5 @@
 ﻿using CZY.SlackToolBox.FastExtend;
-using CZY.SlackToolBox.FrameTemplate.Functional; 
+using CZY.SlackToolBox.FrameTemplate.Functional;
 using CZY.SlackToolBox.FrameTemplate.YXKJ.View;
 using System;
 using System.Windows;
@@ -67,9 +67,16 @@ namespace CZY.SlackToolBox.FrameTemplate
         {
             this.ShutdownMode = System.Windows.ShutdownMode.OnExplicitShutdown;
 
+            //string config = "{ \"Url\": \"https://ark.cn-beijing.volces.com/api/v3/chat/completions\", \"ApiKey\": \"3ef4ce8d-96fa-4a49-b2dc-d78f7f186d0e\", \"EndpointId\": \"ep-20240823164642-5kqqv\" }";
 
-            CZY.SlackToolBox.FrameTemplate.ChartTool.View.LoginWindow win = new ChartTool.View.LoginWindow();
-            win.Show();
+            //AIClient aIClient = new AIClient(config);
+            //string str = aIClient.ChatAI("你好");
+            //while (true)
+            //{
+            //    string t = "";
+            //}
+            //CZY.SlackToolBox.FrameTemplate.ChartTool.View.LoginWindow win = new ChartTool.View.LoginWindow();
+            //win.Show();
 
 
             //系统设置窗口模板
@@ -86,13 +93,13 @@ namespace CZY.SlackToolBox.FrameTemplate
             //TrayWindow Tray = new TrayWindow();
 
 
-            ////启动缓存窗体。完成系统配置或外联设备参数初始化
+            //启动缓存窗体。完成系统配置或外联设备参数初始化
             //InitSysWindow win = new InitSysWindow();
             //win.ShowDialog();
 
-            ////登录窗体
-            //LoginWindow loginWindow = new LoginWindow();
-            //loginWindow.Show();
+            //登录窗体
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
 
 
             //Tray.ShowNotofy("程序退出", "正常退出");

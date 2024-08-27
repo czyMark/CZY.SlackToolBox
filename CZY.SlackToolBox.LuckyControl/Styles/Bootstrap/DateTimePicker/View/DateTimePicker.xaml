@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="CZY.SlackToolBox.LuckyControl.Styles.Bootstrap.DateTimePicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="25" 
+             d:DesignWidth="150" 
+             xmlns:my="clr-namespace:CZY.SlackToolBox.LuckyControl.Styles.Bootstrap"             
+             Loaded="UserControl_Loaded"
+             MaxWidth="150"
+             MaxHeight="25"
+             >
+    
+    <Grid Height="25" Width="150">
+        
+        <Border BorderBrush="Silver" 
+                BorderThickness="1" HorizontalAlignment="Left" 
+                Margin="0,0,0,0" 
+                Name="border1" 
+                Width="150" 
+                Height="25" 
+                VerticalAlignment="Top"
+                
+                >
+         
+            <my:IconButton 
+                x:Name="iconButton1" 
+                Height="18" 
+                Width="19" 
+                HorizontalAlignment="Right"
+                Icon="/CZY.SlackToolBox.LuckyControl;component/Styles/Bootstrap/DateTimePicker/Image/date.png"                 
+                Click="iconButton1_Click"
+                />
+            
+        </Border>
+
+        <TextBlock 
+            HorizontalAlignment="Left"   
+            VerticalAlignment="Center" 
+            x:Name="PlaceholderTxt" 
+            Height="23"  Text="{Binding Placeholder}"
+            Width="123"  
+            Padding="3,3"
+            Foreground="#9d9d9d"   />
+        <TextBlock 
+            Height="23" 
+            Width="123" 
+            Name="textBlock1"           
+            HorizontalAlignment="Left"   
+            VerticalAlignment="Center" 
+            Padding="3,3" 
+            MouseLeftButtonUp="textBlock1_MouseLeftButtonDown">
+        </TextBlock>
+
+        <Grid x:Name="girdChioce" 
+              Background="Transparent"
+              VerticalAlignment="Top"
+              Margin="0,25,0,40">
+            <Popup x:Name="popChioce" 
+                   PopupAnimation="Fade" 
+                   PlacementTarget="{Binding ElementName=girdChioce}" 
+                   Placement="Top"
+                   AllowsTransparency="True" 
+                   StaysOpen="False" 
+                   IsOpen="False">
+            </Popup>
+        </Grid>
+
+    </Grid>
+</UserControl>

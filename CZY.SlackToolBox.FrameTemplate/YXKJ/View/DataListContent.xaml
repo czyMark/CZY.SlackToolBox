@@ -4,14 +4,14 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:CZY.SlackToolBox.FrameTemplate.YXKJ"
-     xmlns:LocalCore="clr-namespace:CZY.SlackToolBox.FrameTemplate.YXKJ.Core"
-    xmlns:input="clr-namespace:CZY.SlackToolBox.LuckyControl.Input;assembly=CZY.SlackToolBox.LuckyControl"
+     xmlns:LocalCore="clr-namespace:CZY.SlackToolBox.FrameTemplate.YXKJ.Core" 
     xmlns:loading="clr-namespace:CZY.SlackToolBox.AnimationBank.Loading;assembly=CZY.SlackToolBox.AnimationBank"
-      mc:Ignorable="d"    >
+    xmlns:Time1="clr-namespace:CZY.SlackToolBox.LuckyControl.Styles.Bootstrap;assembly=CZY.SlackToolBox.LuckyControl"
+    mc:Ignorable="d"    >
     <LocalCore:FrameControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/Bootstrap/TimePicker.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5"  Stretch="None" AlignmentX="Left">
                 <VisualBrush.Visual>
@@ -83,6 +83,18 @@
             <Grid Grid.Row="0" Background="Transparent">
                 <StackPanel Margin="4,0"  HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
                     <TextBox        Style="{StaticResource SearchTextBox}"     ></TextBox>
+                    
+                    <!--<Time1:TimePicker Placeholder="开始时间" SelectedTime="00:00:00"></Time1:TimePicker>-->
+
+
+
+                    <Time1:DateTimePicker  HorizontalAlignment="Left"
+                           Margin="23,30,0,0"
+                           Name="dateTimePicker1"
+                           VerticalAlignment="Top"
+                           Height="25"
+                           Width="150"/>
+                    
                     <Button Margin="4,0" Content="查询"  Style="{StaticResource GreenBtn}" Command="{Binding RefreshDataCommand}" >
                         <Button.Triggers>
                             <EventTrigger RoutedEvent="Button.Click">
@@ -165,7 +177,7 @@
 
                     <StackPanel Margin="3" Orientation="Horizontal">
                         <Label Content="每页"  Foreground="Black"     VerticalAlignment="Center"    />
-                        <ComboBox ItemsSource="{Binding SplitCount}"  Background="#f8f9fa"  VerticalContentAlignment="Center"    SelectedItem="{Binding CurrentSplit}" />
+                        <ComboBox ItemsSource="{Binding AvailablePageSize}"  Background="#f8f9fa"  VerticalContentAlignment="Center"    SelectedItem="{Binding CurrentSplit}" />
                         <Label Content="条"   Foreground="Black"    VerticalAlignment="Center"    />
                     </StackPanel>
                 </WrapPanel>
