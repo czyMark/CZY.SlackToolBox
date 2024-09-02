@@ -80,9 +80,9 @@ namespace CZY.SlackToolBox.FrameTemplate
 
 
             //系统设置窗口模板
-            //CZY.SlackToolBox.FrameTemplate.SettingWindow.Core.UserCache.Init();
-            //CZY.SlackToolBox.FrameTemplate.SettingWindow.View.MainWindow win = new SettingWindow.View.MainWindow();
-            //win.Show();
+            CZY.SlackToolBox.FrameTemplate.SettingWindow.Core.UserCache.Init();
+            CZY.SlackToolBox.FrameTemplate.SettingWindow.View.MainWindow win = new SettingWindow.View.MainWindow();
+            win.Show();
 
 
             //机场管理系统模板
@@ -98,8 +98,8 @@ namespace CZY.SlackToolBox.FrameTemplate
             //win.ShowDialog();
 
             //登录窗体
-            LoginWindow loginWindow = new LoginWindow();
-            loginWindow.Show();
+            //LoginWindow loginWindow = new LoginWindow();
+            //loginWindow.Show();
 
 
             //Tray.ShowNotofy("程序退出", "正常退出");

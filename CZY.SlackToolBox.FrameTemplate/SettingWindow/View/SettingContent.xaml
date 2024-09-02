@@ -27,11 +27,17 @@
     <TabControl    TabStripPlacement="Top"   Margin="5">
         <TabItem Header="数据库">
             <Grid Background="Purple">
+
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBox x:Name="TextInput" Width="200" Height="20" Margin="0,10"/>
+                    <ComboBox x:Name="VoiceSelection" Width="200" Height="20" Margin="0,10"/>
+                    <Button Content="SpeakText" Click="SpeakText_Click" Margin="0,10"/>
+                </StackPanel>
             </Grid>
         </TabItem>
         <TabItem Header="系统配置">
             <Grid Background="Beige" >
-                <Button Click="Button_Click" Width="120">截图</Button>
+                <Button Click="Button_Click" Width="120">截图</Button> 
             </Grid>
         </TabItem>
         <TabItem Header="照相机">
