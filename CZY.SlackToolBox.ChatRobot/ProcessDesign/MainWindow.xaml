@@ -1,0 +1,360 @@
+﻿<Window x:Class="CZY.SlackToolBox.ChatRobot.ProcessDesign.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CZY.SlackToolBox.ChatRobot.ProcessDesign"
+        xmlns:localConvert="clr-namespace:CZY.SlackToolBox.ChatRobot.ControlConvert"
+        xmlns:core="clr-namespace:CZY.SlackToolBox.ChatRobot.Core"
+        Background="Transparent"
+        mc:Ignorable="d" AllowsTransparency="True" WindowStyle="None"
+        Title="MainWindow" Width="1440" Height="900" >
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/Style/Main.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <localConvert:CheckedToVisible x:Key="CTV"></localConvert:CheckedToVisible>
+            <localConvert:UnCheckedToVisible x:Key="UNCTV"></localConvert:UnCheckedToVisible>
+            <Style TargetType="RadioButton">
+                <Setter Property="Cursor" Value="Hand"></Setter>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="RadioButton">
+
+                            <BulletDecorator  Background="Transparent">
+                                <Grid>
+                                    <Border x:Name="border" CornerRadius="4" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="0" SnapsToDevicePixels="true">
+                                        <!--点下时显示-->
+                                        <Grid x:Name="CheckedLayer" Visibility="Collapsed">
+                                            <Rectangle Height="3" VerticalAlignment="Top" Fill="Transparent" RadiusX="4" RadiusY="4">
+                                                <Rectangle.Effect>
+                                                    <BlurEffect Radius="5"></BlurEffect>
+                                                </Rectangle.Effect>
+                                            </Rectangle>
+                                            <Border CornerRadius="10" Background="#ECEBF0" BorderBrush="Transparent" BorderThickness="0">
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+                                    <Border BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
+                                        <ContentPresenter
+                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            Margin="{TemplateBinding Padding}"
+                                            RecognizesAccessKey="True" 
+                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                    </Border>
+                                    <!--禁用时显示-->
+                                    <Rectangle x:Name="EnabledLayer" Fill="#CED1D7" RadiusX="4" RadiusY="4" Visibility="Collapsed"/>
+                                </Grid>
+                            </BulletDecorator>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="true">
+                                    <Setter TargetName="CheckedLayer" Property="Visibility" Value="Visible"/>
+                                    <Setter  Property="Foreground" Value="#007AFF"/>
+                                    <Setter TargetName="border" Property="BorderBrush" Value="#80cccccc"/>
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter TargetName="CheckedLayer" Property="Visibility" Value="Visible"/>
+                                    <Setter  Property="Foreground" Value="#007AFF"/>
+                                    <Setter TargetName="border" Property="BorderBrush" Value="#80cccccc"/>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="false">
+                                    <Setter TargetName="EnabledLayer" Property="Visibility" Value="Visible"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <core:CornerClip CornerRadius="8" >
+        <Grid   Background="#D6DDE2">
+            <Grid.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.8" Color="#AAAAAA"></DropShadowEffect>
+            </Grid.Effect>
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding WindowState,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}" Value="Normal">
+                            <Setter Property="Margin" Value="10"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding WindowState,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}" Value="Minimized">
+                            <Setter Property="Margin" Value="10"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding WindowState,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}" Value="Maximized">
+                            <Setter Property="Margin" Value="0"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <core:CornerClip CornerRadius="8" >
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="32px"></RowDefinition>
+                        <RowDefinition Height="32px"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Border BorderThickness="0,0,0,1" BorderBrush="#D6DDE2" CornerRadius="0,10,0,0" 
+                            Background="#FFF" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+                        <Grid HorizontalAlignment="Right">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Cursor="Hand" Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/Min.png" Width="12" Height="12" Margin="9"  
+                                   MouseLeftButtonDown="Label_MouseLeftButtonDown_2">
+
+                                </Image>
+                                <Image Cursor="Hand" Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/Max.png" Width="12" Height="12" Margin="9" 
+                                   MouseLeftButtonDown="Label_MouseLeftButtonDown_1">
+
+                                </Image>
+                                <Image Cursor="Hand" Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/Close.png" Width="12" Height="12" Margin="9" 
+                                   MouseLeftButtonDown="Label_MouseLeftButtonDown">
+
+                                </Image>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <Border   Grid.Row="1" CornerRadius="0,0,10,0" Background="Transparent"  Height="50" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,22,0,0">
+                        <ContentControl x:Name="TipControl"    ></ContentControl>
+                    </Border>
+
+
+                    <StackPanel  Grid.ColumnSpan="2"  HorizontalAlignment="Center" VerticalAlignment="Top"
+                   Margin="0,7,0,0"   MouseLeftButtonDown="Border_MouseLeftButtonDown">
+                        <Label Content="映彩机器人-未命名流程" VerticalContentAlignment="Top" FontSize="12"  HorizontalContentAlignment="Center" Padding="0"></Label>
+                    </StackPanel>
+
+                    <StackPanel VerticalAlignment="Center"  Margin="10,4,0,4" Orientation="Horizontal"
+                            HorizontalAlignment="Left" >
+                        <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/machine.png" Width="24" Height="24" />
+                        <Label Cursor="Hand" Width="59" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  >文件(F)</Label>
+                        <Label Cursor="Hand" Width="59" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  >操作(E)</Label>
+                        <Label Cursor="Hand" Width="59" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  >其他(V)</Label>
+                    </StackPanel>
+
+                    <Popup IsOpen="True" Placement="Bottom" x:Name="Popup" Focusable="False" AllowsTransparency="True" PopupAnimation="Slide">
+                        <core:CornerClip CornerRadius="4" Margin="0,4,0,0">
+                            <Grid MaxHeight="250"   Margin="0,4,0,0" x:Name="DropDown" SnapsToDevicePixels="True">
+                                <Border  CornerRadius="4" BorderBrush="#E5E6EB" BorderThickness="1" Background="White" />
+                                <StackPanel Background="White">
+
+                                    <Grid Height="20"  >
+                                        <Border x:Name="_borderbg" Background="Transparent"/>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Margin="2 6 70 6" VerticalAlignment="Center"  Foreground="#333" Text="新建"/>
+                                            <TextBlock Margin="2 6 70 6" VerticalAlignment="Center"  Foreground="#333" Text="保存"/>
+                                            <TextBlock Margin="2 6 70 6" VerticalAlignment="Center"  Foreground="#333" Text="另存为"/>
+                                            <TextBlock Margin="2 6 70 6" VerticalAlignment="Center"  Foreground="#333" Text="全部保存"/>
+
+                                            <TextBlock Margin="2 6 70 6" VerticalAlignment="Center"  Foreground="#333" Text="序列图"/>
+                                            <TextBlock Margin="2 6 70 6" VerticalAlignment="Center"  Foreground="#333" Text="流程图"/>
+                                            <TextBlock Margin="2 6 70 6" VerticalAlignment="Center"  Foreground="#333" Text="状态机"/>
+
+
+                                            <TextBlock Margin="2 6 70 6" VerticalAlignment="Center"  Foreground="#333" Text="剪切"/>
+                                            <TextBlock Margin="2 6 70 6" VerticalAlignment="Center"  Foreground="#333" Text="复制"/>
+                                            <TextBlock Margin="2 6 70 6" VerticalAlignment="Center"  Foreground="#333" Text="黏贴"/>
+
+
+
+                                            <TextBlock Margin="2 6 70 6" VerticalAlignment="Center"  Foreground="#333" Text="能力商店"/>
+                                            <TextBlock Margin="2 6 70 6" VerticalAlignment="Center"  Foreground="#333" Text="包管理器"/>
+                                        </StackPanel>
+                                    </Grid>
+
+                                </StackPanel>
+
+                            </Grid>
+                        </core:CornerClip>
+                    </Popup>
+                    
+
+                    <Border   Grid.Row="1"  Background="#fff">
+                        <WrapPanel VerticalAlignment="Center">
+                           
+                            <Button  Margin="18,0" Height="24" Width="24" 
+                                     ToolTipService.HorizontalOffset="-16"
+                                     ToolTipService.VerticalOffset="-4"
+                                     ToolTip="返回">
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/home.png" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                            </Button>
+                            
+                            <Border BorderThickness="1,0,0,0" Height="24" BorderBrush="#EEEEEE"></Border>
+                            <!--#region 文件处理 -->
+                            <ComboBox x:Name="IntervalTime" Margin="20,0,0,0" core:AttachAttribute.DropDownIcon="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/Images/Add.png"
+                                  Style="{StaticResource ComboBoxIcon}"   BorderBrush="Transparent"
+                                     Width="35" VerticalAlignment="Center" VerticalContentAlignment="Center"
+                                  SelectedIndex="0"   >
+                                <ComboBoxItem Content="序列图" Tag="1"></ComboBoxItem>
+                                <ComboBoxItem Content="流程图" Tag="2"></ComboBoxItem>
+                                <ComboBoxItem Content="状态机" Tag="3"></ComboBoxItem> 
+                            </ComboBox>
+
+                            <Button  Margin="14,0,0,0" Height="24" Width="24" 
+         ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
+                                     ToolTip="保存">
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/save.png" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                            </Button>
+
+                            <Button  Margin="14,0,0,0" Height="24" Width="24" 
+         ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
+                                     ToolTip="另存">
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/save.png" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                            </Button>
+                            <!--#endregion-->
+
+                            <Border BorderThickness="1,0,0,0" Margin="20,0,0,0" Height="24" BorderBrush="#EEEEEE"></Border>
+
+                            <!--#region 操作 -->
+                            <Button  Margin="14,0,0,0" Height="24" Width="24" 
+         ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
+                                     ToolTip="运行">
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/run.png" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                            </Button>
+
+                            <Button  Margin="14,0,0,0" Height="24" Width="24" 
+         ToolTipService.HorizontalOffset="-36" ToolTipService.VerticalOffset="-4"  
+                                     ToolTip="数据抓取">
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/finddata.png" Width="20" Margin="-1,0,0,0" Height="20" 
+                                         VerticalAlignment="Center"></Image>
+                            </Button>
+
+
+                            <Button  Margin="14,0,0,0" Height="24" Width="24" 
+         ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
+                                     ToolTip="录制">
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/record.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                            </Button>
+
+                            <Button  Margin="14,0,0,0" Height="24" Width="24" 
+         ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
+                                     ToolTip="发布">
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/publish.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                            </Button>
+                            <!--#endregion-->
+
+                            <Border BorderThickness="1,0,0,0" Margin="20,0,0,0" Height="24" BorderBrush="#EEEEEE"></Border>
+                            <!--#region 调试 -->
+                            <Button  Margin="14,0,0,0" Height="24" Width="24" 
+ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
+                            ToolTip="调试">
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/debugger.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                            </Button>
+
+
+                            <Button  Margin="14,0,0,0" Height="24" Width="24" 
+ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
+                            ToolTip="中断">
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/break.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                            </Button>
+
+
+                            <Button  Margin="14,0,0,0" Height="24" Width="24" 
+ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
+                            ToolTip="逐语句">
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/StepByStatement.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                            </Button>
+
+                            <Button  Margin="14,0,0,0" Height="24" Width="24" 
+ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
+                            ToolTip="逐过程">
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/StepByProcess.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                            </Button>
+
+                            <Button  Margin="14,0,0,0" Height="24" Width="24" 
+ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
+                            ToolTip="校验">
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/verify.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                            </Button>
+
+                            <Button  Margin="14,0,0,0" Height="24" Width="24" 
+ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
+                            ToolTip="校验">
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/verify.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                            </Button>
+
+
+                            <Button  Margin="14,0,0,0" Height="24" Width="24" 
+ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
+                            ToolTip="断点">
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/BreakingPoint.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                            </Button>
+
+                            <Button  Margin="14,0,0,0" Height="24" Width="24" 
+ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
+                            ToolTip="清除所有断点">
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/ClearBreakingPoint.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                            </Button>
+
+
+
+                            <ComboBox Margin="20,0,0,0" core:AttachAttribute.DropDownIcon="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/Images/SlowDebugging.png"
+          Style="{StaticResource ComboBoxIcon}"   BorderBrush="Transparent"
+             Width="35" Height="26" VerticalAlignment="Center" VerticalContentAlignment="Center"
+          SelectedIndex="0"   >
+                                <ComboBoxItem Content="1倍速" Tag="1"></ComboBoxItem>
+                                <ComboBoxItem Content="2倍速" Tag="2"></ComboBoxItem>
+                                <ComboBoxItem Content="3倍速" Tag="3"></ComboBoxItem>
+                                <ComboBoxItem Content="4倍速" Tag="4"></ComboBoxItem>
+                            </ComboBox>
+                           
+
+
+                            <Button  Margin="14,0,0,0" Height="24" Width="24" 
+ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
+                            ToolTip="高亮元素">
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/HighlightElements.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                            </Button>
+
+                            <Button  Margin="14,0,0,0" Height="24" Width="24" 
+ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
+                            ToolTip="记录活动">
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/RecordActive.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                            </Button>
+
+
+                            <Button  Margin="14,0,0,0" Height="24" Width="24" 
+ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
+                            ToolTip="异常中断">
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/ExceptionBreak.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                            </Button>
+                            <!--#endregion-->
+
+
+                            <Border BorderThickness="1,0,0,0" Margin="20,0,0,0" Height="24" BorderBrush="#EEEEEE"></Border>
+
+                            <!--#region 其他 -->
+                            <Button  Margin="14,0,0,0" Height="24" Width="24" 
+ToolTipService.HorizontalOffset="-16" ToolTipService.VerticalOffset="-4"  
+                            ToolTip="打开日志">
+                                <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/OpenLog.png" Margin="-1,0,0,0" Width="20" Height="20" VerticalAlignment="Center"></Image>
+                            </Button>
+                            <!--#endregion-->
+
+                        </WrapPanel>
+                    </Border>
+
+
+                    <Border   Grid.Row="2" CornerRadius="0,0,10,0">
+                        <ContentControl x:Name="MainControl" Background="#FFFFFF"  >
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                <Label Content=">"></Label>
+                                <Label Content="你好"></Label>
+                                <Label Content=">"></Label>
+                                <Label Content="你好"></Label>
+                                <Label Content=">"></Label>
+                                <Label Content="你好"></Label>
+                            </StackPanel>
+                        </ContentControl>
+
+                    </Border>
+                </Grid>
+            </core:CornerClip>
+        </Grid>
+
+    </core:CornerClip>
+</Window>

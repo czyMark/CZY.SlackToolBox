@@ -1,0 +1,48 @@
+﻿<Window x:Class="CZY.SlackToolBox.FastApply.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CZY.SlackToolBox.FastApply"
+        xmlns:localView="clr-namespace:CZY.SlackToolBox.FastApply.View"
+  Icon="pack://application:,,,/CZY.SlackToolBox.FastApply;component/product.ico"
+        mc:Ignorable="d" 
+        Title="CZYMark框架的快捷应用示例" >
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/NimbleMenu/SwitchMenu/SwitchMenu.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.AnimationBank;component/Background/Intermediate.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Viewbox Stretch="Fill" >
+        <TabControl  Style="{StaticResource SwitchMenu}"  Background="{StaticResource GreenAndPurple}"
+                     Width="1920" Height="1080" FontSize="22">
+            <TabItem Header="调试" Style="{StaticResource SwitchMenuItem}">
+
+            </TabItem>
+            <TabItem Header="应用模板" Style="{StaticResource SwitchMenuItem}">
+                <ContentControl Content="{x:Static localView:FrameTemplate.Instance}"></ContentControl>
+            </TabItem>
+            <TabItem Header="快捷方法使用说明" Style="{StaticResource SwitchMenuItem}">
+
+            </TabItem>
+            <TabItem Header="动画效果" Style="{StaticResource SwitchMenuItem}">
+
+            </TabItem>
+            <TabItem Header="基础程序代码生成" Style="{StaticResource SwitchMenuItem}">
+
+            </TabItem>
+            <TabItem Header="更新部署" Style="{StaticResource SwitchMenuItem}">
+
+            </TabItem>
+            <TabItem Header="全局学习" Style="{StaticResource SwitchMenuItem}">
+
+            </TabItem>
+            <TabItem Header="集成组件" Style="{StaticResource SwitchMenuItem}">
+
+            </TabItem>
+        </TabControl>
+    </Viewbox>
+</Window>

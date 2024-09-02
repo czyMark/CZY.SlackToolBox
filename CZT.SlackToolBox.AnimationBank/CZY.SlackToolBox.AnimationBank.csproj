@@ -106,7 +106,7 @@
     </Compile>
     <Compile Include="Other\InterlacedAnimation.cs" />
     <Compile Include="Other\RadialAnimation.cs" />
-    <Compile Include="Other\Shake.cs" />
+    <Compile Include="Other\ShakeAnimation.cs" />
     <Compile Include="Other\WaterFallAnimation.cs" />
     <Compile Include="Text\RainText.cs" />
     <Compile Include="Text\SpotlightText.xaml.cs">
@@ -180,9 +180,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Common\Focus.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Effect\Focus.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Loading\LoadingEllipsePendulum.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -265,9 +265,7 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Effect\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Background\WhiteClouds.png" />
   </ItemGroup>

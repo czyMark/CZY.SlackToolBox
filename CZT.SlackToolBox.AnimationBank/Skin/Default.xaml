@@ -4,16 +4,8 @@
                     xmlns:system="clr-namespace:System;assembly=mscorlib" 
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <SolidColorBrush x:Key="WavesColor">White</SolidColorBrush> 
     <SolidColorBrush x:Key="VariableTextFill">#dd1d43</SolidColorBrush>
     <SolidColorBrush x:Key="VariableTextStroke">#dd1d43</SolidColorBrush>
-
-    <SolidColorBrush x:Key="TabControlMenuBorderBrush">Transparent</SolidColorBrush>
-    <SolidColorBrush x:Key="TabControlMenuForeground">#0b0045</SolidColorBrush>
-    <SolidColorBrush x:Key="TabControlMenuPanel">Transparent</SolidColorBrush>
-    <SolidColorBrush x:Key="TabControlMenuSelectedIndex">#e3008c</SolidColorBrush>
-    <SolidColorBrush x:Key="TabControlMenuSelectedPanel">Transparent</SolidColorBrush>
-    <SolidColorBrush x:Key="TabControlMenuSelectedForeground">#0075a5</SolidColorBrush>
 
 
     <SolidColorBrush x:Key="ToggleTextBackground">#e3008c</SolidColorBrush>

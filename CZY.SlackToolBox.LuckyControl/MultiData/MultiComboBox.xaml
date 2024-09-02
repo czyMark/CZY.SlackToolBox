@@ -1,0 +1,105 @@
+﻿<UserControl x:Class="CZY.SlackToolBox.LuckyControl.MultiData.MultiComboBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CZY.SlackToolBox.LuckyControl.MultiData"
+             mc:Ignorable="d"  SnapsToDevicePixels="True" >
+    <Grid>
+        <Border x:Name="Bg" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"  Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderBrush="#eaeaea" BorderThickness="1"  >
+            <Grid x:Name="PART_Root">
+
+                <Grid x:Name="PART_InnerGrid" Margin="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="0.3*" MaxWidth="30" />
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="PART_ListBoxChk"  SelectionMode="Multiple" BorderThickness="0" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel Orientation="Horizontal" VirtualizingStackPanel.IsVirtualizing="True" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Setter Property="IsSelected" Value="True"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ListBoxItem">
+                                            <CheckBox BorderThickness="0"  VerticalAlignment="Center" HorizontalAlignment="Center"  Content="{Binding ViewName}" IsChecked="{Binding Path=IsSelected,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
+
+                    <!--下拉按钮-->
+                    <ToggleButton x:Name="PART_DropDownToggle" IsTabStop="False"  
+                              IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                              Grid.Column="1" Template="{StaticResource ComboBoxToggleButton}" />
+                </Grid>
+            </Grid>
+        </Border>
+        <!--弹出多选列表-->
+        <Popup x:Name="PART_Popup" AllowsTransparency="True"  Focusable="False" StaysOpen="False"
+                    IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                    PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
+            <Grid Width="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"  MaxHeight="{Binding MaxDropDownHeight, RelativeSource={RelativeSource TemplatedParent}}" >
+                <ListBox x:Name="PART_ListBox" SelectionMode="Multiple" BorderThickness="1 0 1 1" Background="White" ItemsSource="{Binding ItemsSource,RelativeSource={RelativeSource TemplatedParent}}"
+                                  MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="#eaeaea"  >
+                    <ListBox.ItemContainerStyle>
+                        <Style  TargetType="ListBoxItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ListBoxItem}" >
+                                        <Grid  Height="22">
+                                            <Border x:Name="bg" BorderBrush="#eaeaea" BorderThickness="0"/>
+                                            <ContentPresenter x:Name="content"  />
+                                            <Border Background="White"  Opacity="0"/>
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter  TargetName="bg"  Property="Background" Value="#ADD6FF" />
+                                            </Trigger>
+                                            <MultiTrigger>
+                                                <MultiTrigger.Conditions>
+                                                    <Condition Property="IsMouseOver" Value="true" />
+                                                    <Condition Property="IsSelected" Value="false"/>
+                                                </MultiTrigger.Conditions>
+                                                <Setter TargetName="bg" Property="Background" Value="#009BDB" />
+                                                <Setter TargetName="bg" Property="Opacity" Value="0.7"/>
+                                                <Setter   Property="Foreground" Value="White" />
+                                            </MultiTrigger>
+                                            <Trigger Property="IsEnabled" Value="False">
+                                                <Setter TargetName="bg" Property="Opacity" Value="0.3" />
+                                                <Setter   Property="Foreground" Value="Gray" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <CheckBox x:Name="chk" Visibility="Hidden"  IsChecked="{Binding IsCheck,Mode=TwoWay}" VerticalAlignment="Center"/>
+                                <CheckBox VerticalAlignment="Center"  Foreground="{Binding Foreground,RelativeSource={RelativeSource AncestorType=ListBoxItem}}" IsChecked="{Binding  RelativeSource={RelativeSource AncestorType=ListBoxItem},Path=IsSelected,Mode=TwoWay}"  Content="{Binding Path=ViewName}" />
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <DataTrigger   Binding="{Binding  RelativeSource={RelativeSource AncestorType=ListBoxItem},Path=IsSelected}" Value="true">
+                                    <Setter  TargetName="chk"  Property="IsChecked" Value="true"/>
+                                </DataTrigger>
+                                <DataTrigger   Binding="{Binding  RelativeSource={RelativeSource AncestorType=ListBoxItem},Path=IsSelected}" Value="false">
+                                    <Setter     TargetName="chk" Property="IsChecked" Value="true"/>
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </Popup>
+    </Grid>
+</UserControl>

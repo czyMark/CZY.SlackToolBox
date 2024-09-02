@@ -19,7 +19,14 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/AirportCS/Main.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/AirportCS/Button.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+ 
+
+            <Style TargetType="icon:IconFont">
+                <Setter Property="Width" Value="28"></Setter>
+                <Setter Property="Height" Value="28"></Setter>
+            </Style>
 
             <Style x:Key="ToggleButtonBaseStyle"   TargetType="{x:Type ToggleButton}">
                 <Setter Property="Width" Value="60"></Setter>

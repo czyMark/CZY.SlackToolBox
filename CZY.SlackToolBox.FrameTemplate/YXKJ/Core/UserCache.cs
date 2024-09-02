@@ -18,7 +18,11 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.Core
         //退出系统
         private static void ExecuteShutdownCommand(object obj)
         {
-            Application.Current.Shutdown();
+            var temp = (DependencyObject)obj;
+            if (temp != null)
+                Window.GetWindow(temp).Close();
+            else
+                Application.Current.Shutdown();
         }
 
 
@@ -69,7 +73,7 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.Core
                     ContentChangeEvent(NameSpaceName, value);
                 }
             }
-        }  
+        }
         #endregion
 
         public static void Init()

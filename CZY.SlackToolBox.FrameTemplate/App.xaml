@@ -5,6 +5,8 @@
               Startup="Application_Startup"   
         xmlns:icon="clr-namespace:CZY.SlackToolBox.LuckyControl.IconResource;assembly=CZY.SlackToolBox.LuckyControl" >
     <Application.Resources>
+
+        <!--#region 为了方便调试、先备份AirportCS用到的资源引用 -->
         <!--<ResourceDictionary>
              <ResourceDictionary.MergedDictionaries>  
                 <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/AirportCS/Button.xaml"/> 

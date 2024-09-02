@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="CZY.SlackToolBox.ChatRobot.Master.Style.FileListRowStyle"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CZY.SlackToolBox.ChatRobot.Master.Style" Cursor="Hand"
+             mc:Ignorable="d" Width="912"  >
+    <UserControl.Resources>
+        <Storyboard x:Key="Storyboard1">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="BackBorder">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard> 
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+            <BeginStoryboard x:Name="Storyboard1_BeginStoryboard" Storyboard="{StaticResource Storyboard1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+            <StopStoryboard BeginStoryboardName="Storyboard1_BeginStoryboard"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Grid  Background="Transparent" >
+        <Border x:Name="BackBorder" Background="#ECEBF0" CornerRadius="4"  Opacity="0"></Border>
+        <StackPanel Width="912"  Orientation="Horizontal">
+
+            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/file.png" x:Name="Icon" Width="40" Height="40" Margin="18,10,12,10"></Image>
+            <StackPanel Width="588" Height="40">
+                <TextBlock  Foreground="#161616" FontSize="14" x:Name="Title">AJ 8淘宝最近最低售价对比采集</TextBlock>
+                <TextBlock  Foreground="#666666" FontSize="12" x:Name="Detail" Padding="0,3,0,0">用户/桌面/AJ 8淘宝最近最低售价对比</TextBlock>
+            </StackPanel>
+            <TextBlock  Foreground="#666666" FontSize="12" VerticalAlignment="Center" x:Name="Time">2024年01月09日20:37:02</TextBlock>
+        </StackPanel>
+    </Grid>
+</UserControl>

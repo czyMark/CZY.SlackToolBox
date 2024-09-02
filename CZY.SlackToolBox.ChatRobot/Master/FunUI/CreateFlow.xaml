@@ -1,0 +1,367 @@
+﻿<UserControl x:Class="CZY.SlackToolBox.ChatRobot.Master.FunUI.CreateFlow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CZY.SlackToolBox.ChatRobot.Master.FunUI"
+             xmlns:localConvert="clr-namespace:CZY.SlackToolBox.ChatRobot.ControlConvert"
+             mc:Ignorable="d" 
+             d:DesignHeight="708" d:DesignWidth="952" Background="White">
+
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/Style/Main.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <localConvert:CheckedToVisible x:Key="CTV"></localConvert:CheckedToVisible>
+            <localConvert:UnCheckedToVisible x:Key="UNCTV"></localConvert:UnCheckedToVisible>
+
+            <Storyboard x:Key="Storyboard1">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="BackBorder">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <ScrollViewer Height="708">
+        <Grid>
+            <StackPanel>
+                <!--#region 标题 -->
+                <Grid Width="888" Height="45" Margin="0,35,0,0">
+                    <Label  Content="全部模板" FontSize="14" Foreground="#1A1A1A"></Label>
+                </Grid>
+                <!--#endregion-->
+                <!--#region 图像展示控件 
+            - 以静态为主，界面上直接使用WraoPanel AddChild
+            - 如果需要的话可以按照要求 单独封装成独立控件
+            -->
+                <WrapPanel Width="910" Cursor="Hand" Margin="-10,0,0,0" >
+
+
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}" 
+                                Background="#FBFBFB" BorderBrush="#EBEBEC" BorderThickness="1">
+
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+                           Padding="0,8,0,0" Margin="0,4,0,0" Content="空白流程"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+                           Padding="0" FontSize="10" Margin="0,5,0,0" Content="新建一个自动化空白流程"></Label>
+                    </StackPanel>
+
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="七脉"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="七脉数据采集"></Label>
+                    </StackPanel>
+
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="京东"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="京东热卖对比采集"></Label>
+                    </StackPanel>
+
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+                    <StackPanel Margin="22,0,0,32">
+                        <Border Width="204" Height="130" Style="{StaticResource MouseOverBorder}">
+                            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Master/images/default-n.png"></Image>
+                        </Border>
+                        <Label Foreground="#1A1A1A" FontSize="14"  
+     Padding="0,8,0,0" Margin="0,4,0,0" Content="淘宝"  ></Label>
+                        <Label Foreground="#666666" VerticalContentAlignment="Top" 
+     Padding="0" FontSize="10" Margin="0,5,0,0" Content="淘宝热卖对比采集"></Label>
+                    </StackPanel>
+
+
+
+                </WrapPanel>
+                <!--#endregion-->
+            </StackPanel>
+
+
+        </Grid>
+    </ScrollViewer>
+</UserControl>

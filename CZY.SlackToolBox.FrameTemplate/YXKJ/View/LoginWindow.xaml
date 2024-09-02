@@ -1,25 +1,40 @@
-﻿<Window 
-                      x:Class="CZY.SlackToolBox.FrameTemplate.YXKJ.View.LoginWindow"
+﻿<Window
+        x:Class="CZY.SlackToolBox.FrameTemplate.YXKJ.View.LoginWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CZY.SlackToolBox.FrameTemplate.YXKJ.Core"  
         xmlns:loading="clr-namespace:CZY.SlackToolBox.AnimationBank.Loading;assembly=CZY.SlackToolBox.AnimationBank"
         xmlns:icon="clr-namespace:CZY.SlackToolBox.LuckyControl.IconResource;assembly=CZY.SlackToolBox.LuckyControl"
-    xmlns:input="clr-namespace:CZY.SlackToolBox.LuckyControl.Input;assembly=CZY.SlackToolBox.LuckyControl"
+        xmlns:input="clr-namespace:CZY.SlackToolBox.LuckyControl.Input;assembly=CZY.SlackToolBox.LuckyControl"
         xmlns:cache="clr-namespace:CZY.SlackToolBox.FrameTemplate.YXKJ.Core"
-       mc:Ignorable="d"   x:Name="window" Icon="pack://application:,,,/CZY.SlackToolBox.FrameTemplate;component/product.ico"
+       mc:Ignorable="d"   x:Name="window" 
+    Icon="pack://application:,,,/CZY.SlackToolBox.FrameTemplate;component/product.ico"
           Width="1920" Height="1080" WindowStyle="None" AllowsTransparency="True"  
         Title="XX管理系统" WindowState="Maximized">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.AnimationBank;component/Skin/Default.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.AnimationBank;component/Text/FallText.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/YXKJ/Button.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/YXKJ/DataGrid.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/YXKJ/ComBox.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.AnimationBank;component/Background/Waves.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.AnimationBank;component/Background/Intermediate.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <Style   TargetType="local:FrameControl">
+                <Setter Property="Width" Value="1671"></Setter>
+                <Setter Property="Height" Value="978"></Setter>
+            </Style>
+            <Style   TargetType="icon:IconFont">
+                <Setter Property="Width" Value="24"></Setter>
+                <Setter Property="Height" Value="24"></Setter>
+            </Style>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid Background="{StaticResource GreenAndPurple}">
+    <Grid Background="{StaticResource GreenAndPurple}" Cursor="">
         <Grid>
             <FrameworkElement.Resources >
                 <Style TargetType="ContentControl">
@@ -64,7 +79,7 @@
             <Rectangle Fill="White"  RadiusX="10" RadiusY="10" Opacity="0.8"/>
             <StackPanel Orientation="Vertical">
                 <TextBlock x:Name="UserLoginTitle" Height="38"  HorizontalAlignment="Center" Margin="41" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" Text="用户登录" VerticalAlignment="Top" FontSize="29.333"/>
-                <Grid Height="50"  Margin="30,20" VerticalAlignment="Top" >
+                <Grid Height="50"  Margin="30,20" VerticalAlignment="Top" Cursor="Hand" >
                     <Rectangle Fill="White" RadiusY="2" RadiusX="2" Stroke="#FFD6D6D6"/>
                     <icon:IconFont Width="24" Height="24" IconName="User" HorizontalAlignment="Left" Margin="10"></icon:IconFont>
                     <TextBox x:Name="userID"   input:InputAttach.RegexString="[^A-Fa-z0-9]"
@@ -90,9 +105,8 @@
                             </Style>
                         </TextBox.Style>
                     </TextBox>
-
                 </Grid>
-                <Grid Height="50"  Margin="30,20" VerticalAlignment="Top">
+                <Grid Height="50"  Margin="30,20" VerticalAlignment="Top"  >
                     <Rectangle Fill="White" RadiusY="2" RadiusX="2" Stroke="#FFD6D6D6"/>
                     <StackPanel Orientation="Horizontal">
                         <icon:IconFont  IconName="Password" HorizontalAlignment="Left" Margin="10"></icon:IconFont>
@@ -132,12 +146,14 @@
                 </Grid>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button Width="176" Content="登录" Height="50" Margin="10,50"  Style="{StaticResource GreenBtn}"
-                            Command="{Binding LoginCommand}" 
+                            Command="{Binding LoginCommand}"   
                             CommandParameter="{Binding ElementName=window}"
                             >
 
                     </Button>
-                    <Button Width="176" Content="退出" Height="50" Margin="10,50"   Command="{x:Static cache:UserCache.Shutdown}" >
+                    <Button Width="176" Content="退出" Height="50" Margin="10,50"  
+                            Command="{x:Static cache:UserCache.Shutdown}" 
+                            CommandParameter="{Binding ElementName=window}">
 
                     </Button>
                 </StackPanel>

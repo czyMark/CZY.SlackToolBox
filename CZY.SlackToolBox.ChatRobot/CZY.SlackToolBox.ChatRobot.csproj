@@ -1,0 +1,416 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0223FA95-B84B-40DB-B3A8-A696D6BCD195}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CZY.SlackToolBox.ChatRobot</RootNamespace>
+    <AssemblyName>CZY.SlackToolBox.ChatRobot</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ControlConvert\CheckedToVisible.cs" />
+    <Compile Include="ControlConvert\UnCheckedToVisible.cs" />
+    <Compile Include="Core\AttachAttribute.cs" />
+    <Compile Include="Core\WindowManager.cs" />
+    <Compile Include="Imaging\DevControl\TipPanel.xaml.cs">
+      <DependentUpon>TipPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Imaging\FunUI\ChatPage\ChatList.xaml.cs">
+      <DependentUpon>ChatList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Imaging\FunUI\ChatPage\FriendsList.xaml.cs">
+      <DependentUpon>FriendsList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Imaging\FunUI\Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Imaging\FunUI\InfoEdit\intervalEdit.xaml.cs">
+      <DependentUpon>intervalEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Imaging\FunUI\MoreFun.xaml.cs">
+      <DependentUpon>MoreFun.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Imaging\FunUI\NotificationPage\ChatDetailInfo.xaml.cs">
+      <DependentUpon>ChatDetailInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Imaging\FunUI\NotificationPage\ConfirmUpdate.xaml.cs">
+      <DependentUpon>ConfirmUpdate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Imaging\FunUI\NotificationPage\DetectionOk.xaml.cs">
+      <DependentUpon>DetectionOk.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Imaging\FunUI\NotificationPage\LabelDetection.xaml.cs">
+      <DependentUpon>LabelDetection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Imaging\FunUI\NotificationPage\NicknameTip.xaml.cs">
+      <DependentUpon>NicknameTip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Imaging\FunUI\NotificationPage\TrayNotification.xaml.cs">
+      <DependentUpon>TrayNotification.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Imaging\FunUI\NotificationPage\UpdateOk.xaml.cs">
+      <DependentUpon>UpdateOk.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Imaging\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Imaging\Style\ChatInfo.xaml.cs">
+      <DependentUpon>ChatInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Core\CornerClip.cs" />
+    <Compile Include="Master\FunUI\CreateFlow.xaml.cs">
+      <DependentUpon>CreateFlow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Master\FunUI\HistoryFile.xaml.cs">
+      <DependentUpon>HistoryFile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Master\FunUI\Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Master\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Master\Style\FileListRowStyle.xaml.cs">
+      <DependentUpon>FileListRowStyle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProcessDesign\DevControl\TipPanel.xaml.cs">
+      <DependentUpon>TipPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProcessDesign\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Resource Include="Font\PingFang SC.ttf" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Imaging\DevControl\TipPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Imaging\FunUI\ChatPage\ChatList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Imaging\FunUI\ChatPage\FriendsList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Imaging\FunUI\Home.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Imaging\FunUI\InfoEdit\intervalEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Imaging\FunUI\MoreFun.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Imaging\FunUI\NotificationPage\ChatDetailInfo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Imaging\FunUI\NotificationPage\ConfirmUpdate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Imaging\FunUI\NotificationPage\DetectionOk.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Imaging\FunUI\NotificationPage\LabelDetection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Imaging\FunUI\NotificationPage\NicknameTip.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Imaging\FunUI\NotificationPage\TrayNotification.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Imaging\FunUI\NotificationPage\UpdateOk.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Imaging\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Imaging\Style\Button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Imaging\Style\ChatInfo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Imaging\Style\ComboBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Imaging\Style\Main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Imaging\Style\Scrollbar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Master\FunUI\CreateFlow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Master\FunUI\HistoryFile.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Master\FunUI\Home.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Master\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Master\Style\FileListRowStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Master\Style\Main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Master\Style\Scrollbar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ProcessDesign\DevControl\TipPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ProcessDesign\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ProcessDesign\Style\Button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ProcessDesign\Style\ComboBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ProcessDesign\Style\Main.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ProcessDesign\Style\Scrollbar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ProcessDesign\Style\ToolTip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imaging\Images\checkbox-input-n.png" />
+    <Resource Include="Imaging\Images\checkbox-input.png" />
+    <Resource Include="Imaging\Images\Close-b.png" />
+    <Resource Include="Imaging\Images\Close.png" />
+    <Resource Include="Imaging\Images\Heart.png" />
+    <Resource Include="Imaging\Images\Help.png" />
+    <Resource Include="Imaging\Images\Image.png" />
+    <Resource Include="Imaging\Images\Info-n.png" />
+    <Resource Include="Imaging\Images\Info.png" />
+    <Resource Include="Imaging\Images\Machine.png" />
+    <Resource Include="Imaging\Images\Mark-n.png" />
+    <Resource Include="Imaging\Images\Mark.png" />
+    <Resource Include="Imaging\Images\Max.png" />
+    <Resource Include="Imaging\Images\Min.png" />
+    <Resource Include="Imaging\Images\nickname1.png" />
+    <Resource Include="Imaging\Images\nickname2.png" />
+    <Resource Include="Imaging\Images\NoFriends.png" />
+    <Resource Include="Imaging\Images\temp.png" />
+    <Resource Include="Imaging\Images\Time.png" />
+    <Resource Include="Imaging\Images\Tip-Error.png" />
+    <Resource Include="Imaging\Images\Tip-Info.png" />
+    <Resource Include="Imaging\Images\Tip-Successful.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Master\Images\Add-n.png" />
+    <Resource Include="Master\Images\Add.png" />
+    <Resource Include="Master\Images\arrow-n.png" />
+    <Resource Include="Master\Images\arrow.png" />
+    <Resource Include="Master\Images\default-n.png" />
+    <Resource Include="Master\Images\default.png" />
+    <Resource Include="Master\Images\File.png" />
+    <Resource Include="Master\Images\Folder-n.png" />
+    <Resource Include="Master\Images\Folder.png" />
+    <Resource Include="Master\Images\Home-n.png" />
+    <Resource Include="Master\Images\Home.png" />
+    <Resource Include="Master\Images\logo.png" />
+    <Resource Include="Master\Images\Time-n.png" />
+    <Resource Include="Master\Images\Time.png" />
+    <Resource Include="Master\Images\列表.png" />
+    <Resource Include="Master\Images\启动台01.png" />
+    <Resource Include="Master\Images\启动台03.png" />
+    <Resource Include="Master\Images\启动台04.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ProcessDesign\FunUI\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ProcessDesign\Images\Close.png" />
+    <Resource Include="ProcessDesign\Images\Frame_427322496%403x.png" />
+    <Resource Include="ProcessDesign\Images\Icon-12%403x.png" />
+    <Resource Include="ProcessDesign\Images\Icon-14%403x.png" />
+    <Resource Include="ProcessDesign\Images\Max.png" />
+    <Resource Include="ProcessDesign\Images\Min.png" />
+    <Resource Include="ProcessDesign\Images\Tooltip-angle%403x.png" />
+    <Resource Include="ProcessDesign\Images\下载文件%403x.png" />
+    <Resource Include="ProcessDesign\Images\侧边栏_代码片段_其他%403x.png" />
+    <Resource Include="ProcessDesign\Images\侧边栏_项目_.screenshots%403x.png" />
+    <Resource Include="ProcessDesign\Images\侧边栏_项目_JS%403x.png" />
+    <Resource Include="ProcessDesign\Images\侧边栏_项目_xaml%403x.png" />
+    <Resource Include="ProcessDesign\Images\侧边栏_项目_依赖包%403x.png" />
+    <Resource Include="ProcessDesign\Images\侧边栏_项目_文件夹%403x.png" />
+    <Resource Include="ProcessDesign\Images\停止%403x.png" />
+    <Resource Include="ProcessDesign\Images\关闭标签页%403x.png" />
+    <Resource Include="ProcessDesign\Images\切换标签页%403x.png" />
+    <Resource Include="ProcessDesign\Images\刷新%403x.png" />
+    <Resource Include="ProcessDesign\Images\Selected.png" />
+    <Resource Include="ProcessDesign\Images\前进%403x.png" />
+    <Resource Include="ProcessDesign\Images\加载%403x.png" />
+    <Resource Include="ProcessDesign\Images\回退%403x.png" />
+    <Resource Include="ProcessDesign\Images\导航%403x.png" />
+    <Resource Include="ProcessDesign\Images\打开浏览器%403x.png" />
+    <Resource Include="ProcessDesign\Images\注入JS代码%403x.png" />
+    <Resource Include="ProcessDesign\Images\注入JS库%403x.png" />
+    <Resource Include="ProcessDesign\Images\注入JS库_1%403x.png" />
+    <Resource Include="ProcessDesign\Images\注入JS文件%403x.png" />
+    <Resource Include="ProcessDesign\Images\注入JS脚本%403x.png" />
+    <Resource Include="ProcessDesign\Images\浏览器%403x.png" />
+    <Resource Include="ProcessDesign\Images\浏览器显示%403x.png" />
+    <Resource Include="ProcessDesign\Images\浏览器隐藏%403x.png" />
+    <Resource Include="ProcessDesign\Images\滚动条位置%403x.png" />
+    <Resource Include="ProcessDesign\Images\箭头-左边-小%403x.png" />
+    <Resource Include="ProcessDesign\Images\获取cookoes%403x.png" />
+    <Resource Include="ProcessDesign\Images\获取网页URL%403x.png" />
+    <Resource Include="ProcessDesign\Images\获取网页标题%403x.png" />
+    <Resource Include="ProcessDesign\Images\设置cookoes%403x.png" />
+    <Resource Include="ProcessDesign\Images\设置滚动条位置%403x.png" />
+    <Resource Include="ProcessDesign\Images\附加浏览器%403x.png" />
+    <Resource Include="ProcessDesign\Images\break.png" />
+    <Resource Include="ProcessDesign\Images\Save.png" />
+    <Resource Include="ProcessDesign\Images\顶部菜单_停止2%403x.png" />
+    <Resource Include="ProcessDesign\Images\publish.png" />
+    <Resource Include="ProcessDesign\Images\Saveas.png" />
+    <Resource Include="ProcessDesign\Images\顶部菜单_商店%403x.png" />
+    <Resource Include="ProcessDesign\Images\ExceptionBreak.png" />
+    <Resource Include="ProcessDesign\Images\record.png" />
+    <Resource Include="ProcessDesign\Images\SlowDebugging.png" />
+    <Resource Include="ProcessDesign\Images\OpenLog.png" />
+    <Resource Include="ProcessDesign\Images\FindData.png" />
+    <Resource Include="ProcessDesign\Images\BreakingPoint.png" />
+    <Resource Include="ProcessDesign\Images\Add.png" />
+    <Resource Include="ProcessDesign\Images\verify.png" />
+    <Resource Include="ProcessDesign\Images\ClearBreakingPoint.png" />
+    <Resource Include="ProcessDesign\Images\RecordActive.png" />
+    <Resource Include="ProcessDesign\Images\debugger.png" />
+    <Resource Include="ProcessDesign\Images\Run.png" />
+    <Resource Include="ProcessDesign\Images\StepByStatement.png" />
+    <Resource Include="ProcessDesign\Images\StepByProcess.png" />
+    <Resource Include="ProcessDesign\Images\顶部菜单_顶部-更多%403x.png" />
+    <Resource Include="ProcessDesign\Images\HighlightElements.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ProcessDesign\Images\Machine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ProcessDesign\Images\Tip-Error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ProcessDesign\Images\home.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

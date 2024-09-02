@@ -154,8 +154,14 @@ namespace CZY.SlackToolBox.FrameTemplate.YXKJ.ViewModel
         /// <param name="editData">要编辑的数据</param>
         public DataEditContentViewModel(object editData)
         {
-            ////避免修改时直接修改界面导致操作上的bug，使用深拷贝复制对象。在操作
-            DataV = editData.DeepCopyByBinary();
+            //避免修改时直接修改界面导致操作上的bug，使用深拷贝复制对象。在操作
+            //如果editData==null 直接推到出类型 创建一个空对象。
+            if (editData == null)
+            {
+                editData = new object();
+            }
+            else
+                DataV = editData.DeepCopyByBinary();
 
             XXReferCommand = new RelayCommand(XXReferCommandFun);
             MultiReferCommand = new RelayCommand(MultiReferCommandFun);

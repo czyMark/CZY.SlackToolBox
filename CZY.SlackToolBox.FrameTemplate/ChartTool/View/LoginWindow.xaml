@@ -13,7 +13,14 @@
         Title="XX聊天器">
     <Window.Resources>
         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/YXKJ/Button.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
 
+            <Style   TargetType="icon:IconFont">
+                <Setter Property="Width" Value="24"></Setter>
+                <Setter Property="Height" Value="24"></Setter>
+            </Style>
         </ResourceDictionary>
     </Window.Resources>
 
@@ -106,7 +113,7 @@
             </StackPanel>
         </StackPanel>
         <loading:LoadingAdorner Opacity="0.6" Visibility="{Binding LoadingVisibility}"></loading:LoadingAdorner>
-        
+
     </Grid>
     <!--#endregion-->
 

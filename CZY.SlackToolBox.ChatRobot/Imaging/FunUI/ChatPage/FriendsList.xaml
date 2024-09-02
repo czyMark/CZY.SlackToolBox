@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="CZY.SlackToolBox.ChatRobot.Imaging.FunUI.FriendsList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CZY.SlackToolBox.ChatRobot.Imaging.FunUI"
+             mc:Ignorable="d" >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/Imaging/Style/Button.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid   Width="159" Background="White">
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+
+            <Button Style="{StaticResource CancelBtn}" Width="65" Height="28" Margin="12,12,6,8" VerticalAlignment="Top">标签管理</Button>
+            <Button Style="{StaticResource CancelBtn}" Width="65" Height="28" Margin="0,12,6,8"  VerticalAlignment="Top"
+                    x:Name="TagCheck"
+                    Click="Button_Click">标签检测</Button>
+            <Button Style="{StaticResource CancelBtn}" Width="65" Height="28" Margin="0,12,6,8"  x:Name="TagUpdate" 
+                    VerticalAlignment="Top" Visibility="Collapsed">标签更新</Button>
+        </StackPanel>
+
+        <StackPanel Margin="20,76,20,0"     VerticalAlignment="Top" x:Name="NoFriendsTip">
+            <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/imaging/images/NoFriends.png" HorizontalAlignment="Center" Width="109" Height="109" ></Image>
+            <Label Margin="0,8,0,0" FontSize="12" Foreground="#1D2129" Opacity="0.8">未检测到您的好友标签</Label>
+            <Button Margin="0,12,0,0" Width="60" Height="26" Click="Button_Click_1">去检测</Button>
+        </StackPanel>
+
+
+        <!--#region 标签列表 -->
+
+        <StackPanel Margin="12,62,20,0"   VerticalAlignment="Top"  x:Name="TagList" Visibility="Collapsed">
+            <CheckBox Checked="CheckBox_Checked" Unchecked="A_Unchecked" x:Name="A">全部（200）</CheckBox>
+            <CheckBox  Unchecked="A1_Checked" x:Name="A1" Margin="0,14,0,0">无标签（20）</CheckBox>
+            <CheckBox  Unchecked="A1_Checked" x:Name="A2" Margin="0,14,0,0">高中同学2（20）</CheckBox>
+            <CheckBox  Unchecked="A1_Checked" x:Name="A3" Margin="0,14,0,0">高中同学3（10）</CheckBox>
+            <CheckBox  Unchecked="A1_Checked" x:Name="A4" Margin="0,14,0,0">高中同学4（10）</CheckBox>
+            <CheckBox  Unchecked="A1_Checked" x:Name="A5" Margin="0,14,0,0">高中同学5（10）</CheckBox>
+            <CheckBox  Unchecked="A1_Checked" x:Name="A6" Margin="0,14,0,0">高中同学6（10）</CheckBox>
+            <CheckBox  Unchecked="A1_Checked" x:Name="A7" Margin="0,14,0,0">高中同学7（10）</CheckBox>
+            <CheckBox  Unchecked="A1_Checked" x:Name="A8" Margin="0,14,0,0">高中同学8（10）</CheckBox>
+        </StackPanel>
+
+        <!--#endregion-->
+
+    </Grid>
+</UserControl>

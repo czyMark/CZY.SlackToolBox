@@ -1,0 +1,120 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:core="clr-namespace:CZY.SlackToolBox.ChatRobot.Core"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--ComboBox-->
+    <SolidColorBrush x:Key="ComboBoxIconSelectdBackground" Color="#DDDDDD"/>
+    <SolidColorBrush x:Key="ComboBoxIconMouseOverBackground" Color="#F2F3F5"/>
+    <SolidColorBrush x:Key="ComboBoxIconSelectedForeground" Color="#333"/>
+    <SolidColorBrush x:Key="ComboBoxIconMouseOverForegrond" Color="#333"/>
+    
+
+    <ControlTemplate x:Key="ComboBoxIconToggleButton" TargetType="{x:Type ToggleButton}">
+        <Grid Height="25" HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="33"/>
+            </Grid.ColumnDefinitions>
+            <Border  Background="White" Grid.ColumnSpan="2" Opacity="0"/>
+            <Path x:Name="Arrow" Grid.Column="1" Margin="0,7,3,0"  Data="M10.2534 7.28516L9.54631 7.99226L6.01078 4.45673L2.47524 7.99226L1.76814 7.28516L5.65719 3.3961C5.65719 3.3961 5.65722 3.39607 6.01078 3.74962L5.65719 3.3961L6.01078 3.04252L10.2534 7.28516Z" 
+                  HorizontalAlignment="Center" Stretch="None" 
+                  Fill="#999999" >
+                <Path.RenderTransform>
+                    <RotateTransform   CenterX="6" CenterY="6" Angle="180"></RotateTransform>
+                </Path.RenderTransform>
+            </Path>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsChecked" Value="true">
+                <Setter TargetName="Arrow" Property="Margin" Value="0"/>
+                <Setter TargetName="Arrow" Property="Fill" Value="#FD3459"/>
+                <Setter TargetName="Arrow" Property="Margin" Value="0,7,3,0"/>
+                <Setter TargetName="Arrow" Property="RenderTransform">
+                    <Setter.Value>
+                        <RotateTransform   CenterX="6" CenterY="6" Angle="0"></RotateTransform>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate> 
+
+    <Style x:Key="ComboBoxIcon" TargetType="{x:Type ComboBox}">
+        <Setter Property="IsEditable" Value="False"></Setter>
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style TargetType="ComboBoxItem">
+                    <Setter Property="Height" Value="36"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate  TargetType="{x:Type ComboBoxItem}">
+                                <Grid Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
+                                    <Border x:Name="_borderbg" Background="Transparent"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="pack://application:,,,/CZY.SlackToolBox.ChatRobot;component/ProcessDesign/images/Selected.png" Width="18" Height="18" Visibility="Hidden" x:Name="_selected"></Image>
+                                        <TextBlock Margin="2 6 70 6" VerticalAlignment="Center" x:Name="_txt" Foreground="#333" Text="{Binding Content,RelativeSource={RelativeSource TemplatedParent}}"/>
+                                    </StackPanel>
+                                 </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="true">
+                                        <Setter TargetName="_borderbg" Property="Background" Value="{StaticResource ComboBoxIconSelectdBackground}" />
+                                        <Setter TargetName="_txt" Property="Foreground" Value="{StaticResource ComboBoxIconSelectedForeground}"/>
+                                        <Setter TargetName="_selected" Property="Visibility" Value="Visible"/>
+                                    </Trigger>
+                                    <MultiTrigger>
+                                        <MultiTrigger.Conditions>
+                                            <Condition Property="IsSelected" Value="false"/>
+                                            <Condition Property="IsMouseOver" Value="true"/>
+                                        </MultiTrigger.Conditions>
+                                        <Setter TargetName="_borderbg" Property="Background" Value="{StaticResource ComboBoxIconMouseOverBackground}" />
+                                        <Setter TargetName="_txt" Property="Foreground" Value="{StaticResource ComboBoxIconMouseOverForegrond}"/>
+                                    </MultiTrigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ComboBox}">
+                    <Grid> 
+                        <Border x:Name="Part_Border"    BorderThickness="1" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="6">
+                            <StackPanel Orientation="Horizontal" Margin="2">
+                                <Image Source="{Binding (core:AttachAttribute.DropDownIcon) , RelativeSource={RelativeSource TemplatedParent}}" 
+                                       Width="20" Height="20" Stretch="Fill" HorizontalAlignment="Left"/>
+                                <ToggleButton Grid.Column="0"  Grid.ColumnSpan="2" Margin="-10,0,0,0"
+                    Template="{StaticResource ComboBoxIconToggleButton}" x:Name="ToggleButton" 
+                                              Focusable="false"
+                                              IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                              ClickMode="Press"/>
+                            </StackPanel>
+                        </Border>
+                        
+                        <TextBox   Visibility="Hidden" BorderThickness="0"   Margin="12 0 0 0" x:Name="PART_EditableTextBox"  VerticalAlignment="Center" Focusable="True" Background="Transparent" IsReadOnly="{TemplateBinding IsReadOnly}"/>
+
+                        <Popup IsOpen="{TemplateBinding IsDropDownOpen}" Placement="Bottom" x:Name="Popup" Focusable="False" AllowsTransparency="True" PopupAnimation="Slide">
+                            <core:CornerClip CornerRadius="4" Margin="0,4,0,0">
+                                <Grid MaxHeight="250" MinWidth="{TemplateBinding ActualWidth}" Margin="0,4,0,0" x:Name="DropDown" SnapsToDevicePixels="True">
+                                  <Border x:Name="DropDownBorder" CornerRadius="4" BorderBrush="#E5E6EB" BorderThickness="1" Background="White" />
+                                    <ScrollViewer   SnapsToDevicePixels="True" HorizontalScrollBarVisibility="Auto" Margin="1" 
+                                                    VerticalScrollBarVisibility="Auto" CanContentScroll="True">
+                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" Background="White"/>
+                                    </ScrollViewer>
+                                </Grid>
+                            </core:CornerClip>
+                        </Popup>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDropDownOpen" Value="true">
+                            <Setter TargetName="Part_Border" Property="BorderBrush" Value="red" />
+                        </Trigger>
+                        <Trigger Property="IsEditable" Value="true">
+                            <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

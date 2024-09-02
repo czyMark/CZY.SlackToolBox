@@ -13,6 +13,14 @@
         AllowsTransparency="True"  MouseLeftButtonDown="Window_MouseLeftButtonDown"
           Width="1920" Height="1080" WindowStyle="None"
         Title="XX管理系统" WindowState="Maximized">
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style   TargetType="icon:IconFont">
+                <Setter Property="Width" Value="24"></Setter>
+                <Setter Property="Height" Value="24"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid  >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="266"></ColumnDefinition>

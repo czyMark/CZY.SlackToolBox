@@ -10,6 +10,11 @@
               >
     <UserControl.Resources>
         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/YXKJ/Button.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/YXKJ/DataGrid.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/YXKJ/ComBox.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
             <DataTemplate x:Key="CheckBoxDataTemplate">
                 <Grid x:Name="Grid"  HorizontalAlignment="Center" VerticalAlignment="Center">
                     <CheckBox VerticalAlignment="Center"  Uid="{Binding Id}"
@@ -24,7 +29,6 @@
                     </Trigger>
                 </DataTemplate.Triggers>
             </DataTemplate>
- 
         </ResourceDictionary>
     </UserControl.Resources>
     

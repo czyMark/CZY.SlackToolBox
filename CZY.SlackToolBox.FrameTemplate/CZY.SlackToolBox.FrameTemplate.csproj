@@ -91,6 +91,7 @@
     <Compile Include="SettingWindow\View\SettingContent.xaml.cs">
       <DependentUpon>SettingContent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="StartFrame.cs" />
     <Compile Include="YXKJ\Core\FramePage.cs" />
     <Compile Include="YXKJ\Core\MainWindowManager.cs" />
     <Compile Include="YXKJ\Core\UserCache.cs" />
@@ -273,7 +274,6 @@
   <ItemGroup>
     <Folder Include="Communication\" />
     <Folder Include="DataReport\" />
-    <Folder Include="SettingWindow\images\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="product.ico" />
@@ -289,6 +289,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="AirportCS\images\Photo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="SettingWindow\images\background.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

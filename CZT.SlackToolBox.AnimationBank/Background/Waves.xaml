@@ -8,6 +8,8 @@
     <local:DurationIncreaser x:Key="DurationWavesIncreaser"
                                       Start="0:0:7"
                                       Step="0:0:3" />
+
+    <SolidColorBrush x:Key="WavesColor">White</SolidColorBrush>
     <ControlTemplate x:Key="WaterWaves">
         <Grid>
             <FrameworkElement.Triggers>

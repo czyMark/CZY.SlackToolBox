@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="CZY.SlackToolBox.ChatRobot.Master.FunUI.HistoryFile"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CZY.SlackToolBox.ChatRobot.Master.FunUI"
+             xmlns:localConvert="clr-namespace:CZY.SlackToolBox.ChatRobot.ControlConvert"
+             mc:Ignorable="d" 
+             d:DesignHeight="708" d:DesignWidth="952" Background="White">
+ 
+    
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <localConvert:CheckedToVisible x:Key="CTV"></localConvert:CheckedToVisible>
+            <localConvert:UnCheckedToVisible x:Key="UNCTV"></localConvert:UnCheckedToVisible>
+            
+            <Storyboard x:Key="Storyboard1">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="BackBorder">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <ScrollViewer Height="708" >
+        <Grid> 
+            <StackPanel>
+                <!--#region 标题 -->
+                <Grid Width="888" Height="26" Margin="0,35,0,0">
+                    <Label  Content="最近打开" FontSize="14" Foreground="#1A1A1A"></Label>
+                </Grid>
+                <!--#endregion-->
+
+                <!--#region 文件列表 -->
+
+                <StackPanel Orientation="Horizontal" Width="888" Height="37" >
+                    <Label  Content="名称" FontSize="12" Foreground="#666666" Width="640" VerticalContentAlignment="Center"></Label>
+                    <Label  Content="上次打开时间" FontSize="12" Foreground="#666666" Width="240" VerticalContentAlignment="Center"></Label>
+                </StackPanel>
+
+
+                <StackPanel x:Name="Recommend" >
+                     
+                </StackPanel>
+
+                <!--#endregion-->
+            </StackPanel>
+
+
+        </Grid>
+    </ScrollViewer>
+</UserControl>
