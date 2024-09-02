@@ -4,9 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CZY.SlackToolBox.FastApply"
-        xmlns:localView="clr-namespace:CZY.SlackToolBox.FastApply.View"
+        xmlns:localView="clr-namespace:CZY.SlackToolBox.FastApply.View" 
   Icon="pack://application:,,,/CZY.SlackToolBox.FastApply;component/product.ico"
-        mc:Ignorable="d" 
+        mc:Ignorable="d"   
         Title="CZYMark框架的快捷应用示例" >
     <Window.Resources>
         <ResourceDictionary>
@@ -41,6 +41,52 @@
 
             </TabItem>
             <TabItem Header="集成组件" Style="{StaticResource SwitchMenuItem}">
+                <Grid  >
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="集中视觉效果" Style="{StaticResource SwitchMenuItem}" Background="Transparent" >
+                <Grid x:Name="back" >
+                    <Grid.Background>
+                        <ImageBrush   ImageSource="/9.jpg"></ImageBrush>
+                    </Grid.Background>
+
+                    <StackPanel Height="1924">
+                        <Button Background="Red" Width="500" Height="100" FontSize="16">通过bland绘制对应的图形，选择相交将，扣出高清区域</Button>
+                        <Button Background="Red" Width="500" Height="100" FontSize="16">你好</Button>
+                        <Button Background="Red" Width="500" Height="100" FontSize="16">你好</Button>
+                        <Button Background="Red" Width="500" Height="100" FontSize="16">你好</Button>
+                        <Button Background="Red" Width="500" Height="100" FontSize="16">你好</Button>
+                        <Button Background="Red" Width="500" Height="100" FontSize="16">你好</Button>
+                        <Button Background="Red" Width="500" Height="100" FontSize="16">你好</Button>
+                        <Button Background="Red" Width="500" Height="100" FontSize="16">你好</Button>
+                        <Button Background="Red" Width="500" Height="100" FontSize="16">你好</Button>
+                        <Button Background="Red" Width="500" Height="100" FontSize="16">你好</Button>
+                    </StackPanel>
+                    <Path HorizontalAlignment="Left" Fill="Black" Stroke="Transparent"  Opacity="0.6" Width="1920" Height="1080"  IsHitTestVisible="False"
+                          VerticalAlignment="Top" Data="M494.5,266.5 L494.5,948.5 1496.5,948.5 1496.5,266.5 z M0.5,0.5 L1919.5,0.5 1919.5,1079.5 0.5,1079.5 z" Stretch="Fill">
+                        <!--<Path.Fill>
+                            <ImageBrush   ImageSource="/9.jpg"/>
+                        </Path.Fill>-->
+                        <Path.Effect>
+                            <BlurEffect   KernelType="Gaussian"   Radius="10"/>
+                        </Path.Effect>
+                    </Path>
+                    <!--<Grid.Background>
+                        <ImageBrush   ImageSource="/9.jpg"></ImageBrush>
+                    </Grid.Background>
+
+                    <Button Background="Red" Width="100" Height="100" FontSize="100">你好</Button>
+
+                    <Grid IsHitTestVisible="False" Opacity="0.8"   Background="{Binding ElementName=back,Path=Background}">
+                        <Grid.Effect>
+                            <BlurEffect   KernelType="Gaussian"   Radius="15"/>
+                        </Grid.Effect>
+                    </Grid>-->
+
+
+
+                </Grid>
 
             </TabItem>
         </TabControl>

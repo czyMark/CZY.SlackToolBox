@@ -95,7 +95,9 @@
         
         <ContentControl x:Name="MainContentControl"  Grid.Row="1" />
 
-        <Grid x:Name="MaskGrid" Grid.RowSpan="3" Background="AliceBlue" Opacity="0.6" Visibility="Collapsed"></Grid>
+        <Grid x:Name="MaskGrid" Grid.RowSpan="3" Background="AliceBlue" Opacity="0.6" Visibility="Collapsed">
+            
+        </Grid>
         <!--左侧抽屉菜单，默认在显示窗体以外，点击菜单图标再经过简单的动画呈现出来-->
         <Grid x:Name="GridMenu" Grid.RowSpan="3" Width="280" Background="White" HorizontalAlignment="Left" Margin="-280 0 0 0"  RenderTransformOrigin="0.5,0.5">
             <Grid.RenderTransform>
