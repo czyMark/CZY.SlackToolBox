@@ -20,7 +20,6 @@
         <TabControl  Style="{StaticResource SwitchMenu}"  Background="{StaticResource GreenAndPurple}"
                      Width="1920" Height="1080" FontSize="22">
             <TabItem Header="调试" Style="{StaticResource SwitchMenuItem}">
-
             </TabItem>
             <TabItem Header="应用模板" Style="{StaticResource SwitchMenuItem}">
                 <ContentControl Content="{x:Static localView:FrameTemplate.Instance}"></ContentControl>

@@ -66,12 +66,14 @@ namespace CZY.SlackToolBox.FrameTemplate
 
             //string config = "{ \"Url\": \"https://ark.cn-beijing.volces.com/api/v3/chat/completions\", \"ApiKey\": \"3ef4ce8d-96fa-4a49-b2dc-d78f7f186d0e\", \"EndpointId\": \"ep-20240823164642-5kqqv\" }";
 
-            //AIClient aIClient = new AIClient(config);
-            //string str = aIClient.ChatAI("你好");
-            //while (true)
-            //{
-            //    string t = "";
-            //}
+
+            //AIConfig aIConfig = new AIConfig();
+            //aIConfig.ApiUrl = "https://ark.cn-beijing.volces.com/api/v3/chat/completions";
+            //aIConfig.ApiKey = "3ef4ce8d-96fa-4a49-b2dc-d78f7f186d0e";
+            //aIConfig.EndpointId = "ep-20240823164642-5kqqv";
+            //AIClient AI = new AIClient(aIConfig);
+            //string str = AI.Chat("你好");
+
             //CZY.SlackToolBox.FrameTemplate.ChartTool.View.LoginWindow win = new ChartTool.View.LoginWindow();
             //win.Show();
 

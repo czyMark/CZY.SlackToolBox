@@ -13,7 +13,7 @@ namespace CZY.SlackToolBox.FastExtend
 {
     public interface IAIClient
     {
-        string ChatAI(string input, string systemInput);
+        string Chat(string input, string systemInput);
     }
     public abstract class AIClientBase : IAIClient
     {
@@ -24,7 +24,7 @@ namespace CZY.SlackToolBox.FastExtend
             Config = config;
         }
 
-        public abstract string ChatAI(string input, string systemInput);
+        public abstract string Chat(string input, string systemInput);
     }
     public class AIConfig
     {
@@ -50,7 +50,7 @@ namespace CZY.SlackToolBox.FastExtend
             this.Config = config;
         }
 
-        public override string ChatAI(string input, string systemInput = "你是一个编程高手，精通各种编程语言")
+        public override string Chat(string input, string systemInput = "你是一个编程高手，精通各种编程语言")
         {
             var requestBody = new
             {

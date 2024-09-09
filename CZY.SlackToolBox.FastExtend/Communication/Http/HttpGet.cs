@@ -120,6 +120,42 @@ namespace CZY.SlackToolBox.FastExtend.Communication
         }
 
 
+
+
+
+        /// <summary>
+        /// 字符串以get方式请求网页
+        /// </summary>
+        /// <param name="url">访问的地址
+        /// ：如果需要带参数在地址后自己拼接【?id=2&name=3】这样的格式</param>
+        /// <returns>返回的结果</returns>
+        public static Stream WebRequestGetResponseStream(this string url)
+        {
+            //构造一个Web请求的对象
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "GET";
+            request.Accept = Accept;
+            request.ContentType = ContentType;
+            if (Certificate == true)
+            {
+                request.ClientCertificates.Add(X509Certificate.CreateFromCertFile(CertFileName));
+                request.KeepAlive = true;
+            }
+            //获取web请求的响应的内容
+            HttpWebResponse response;
+            try
+            {
+                response = (HttpWebResponse)request.GetResponse();
+            }
+            catch (WebException ex)
+            {
+                response = (HttpWebResponse)ex.Response;
+            }
+
+            return response.GetResponseStream();
+
+        }
+
         /// <summary>
         /// 字符串以Get方式请求网页
         /// </summary>
@@ -154,7 +190,7 @@ namespace CZY.SlackToolBox.FastExtend.Communication
             {
                 byte[] postData = Encoding.GetBytes(body);//编码，尤其是汉字，事先要看下抓取网页的编码方式
                 WebClient webClient = new WebClient();
-                
+
                 byte[] responseData = webClient.UploadData(url, "Get", postData);//得到返回字符流 
                 string srcString = Encoding.GetString(responseData);//解码
                 return srcString;
