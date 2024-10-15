@@ -20,6 +20,7 @@ namespace CZY.SlackToolBox.FastApply.View.StudyGlobal
     /// </summary>
     public partial class DesignPatterns : UserControl
     {
+        public static DesignPatterns Instance = new DesignPatterns();
         public DesignPatterns()
         {
             InitializeComponent();

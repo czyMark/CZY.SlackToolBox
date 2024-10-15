@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CZY.SlackToolBox.FastExtend
+namespace CZY.SlackToolBox.FastExtend.Window
 {
     public static class WindowManager
     {

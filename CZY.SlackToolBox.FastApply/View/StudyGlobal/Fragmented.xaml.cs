@@ -20,6 +20,7 @@ namespace CZY.SlackToolBox.FastApply.View.StudyGlobal
     /// </summary>
     public partial class Fragmented : UserControl
     {
+        public static Fragmented Instance = new Fragmented();
         public Fragmented()
         {
             InitializeComponent();

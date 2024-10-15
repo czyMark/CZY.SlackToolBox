@@ -5,8 +5,37 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CZY.SlackToolBox.FastApply.View.StudyGlobal"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="450" d:DesignWidth="1920">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/YXKJ/Button.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="Label">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Margin" Value="10"></Setter>
+            </Style>
+            <Style TargetType="Border">
+                <Setter Property="BorderThickness" Value="0,0,0,1"></Setter>
+                <Setter Property="BorderBrush" Value="AliceBlue"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <StackPanel>
+        <WrapPanel>
+            <Label Foreground="Red" FontSize="24">设计模式学的是思想，及在程序中的具体表现，不要走火入魔。要按照项目中的业务场景，自己组合出适合的业务模式。不要别人说啥模式就必须用啥模式，为了用模式而用模式。</Label>
+        </WrapPanel>
+        <WrapPanel>
+            <Label>创建型</Label>
+            <!--卡片说明-->
+        </WrapPanel>
+        <WrapPanel>
+            <Label>结构型</Label>
+            <!--卡片说明-->
+        </WrapPanel>
+        <WrapPanel>
+            <Label>行为型</Label>
+            <!--卡片说明-->
+        </WrapPanel>
+    </StackPanel>
 </UserControl>

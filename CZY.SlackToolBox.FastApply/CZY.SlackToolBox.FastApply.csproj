@@ -193,6 +193,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="View\AnimationBank\" />
+    <Folder Include="View\Communication\" />
+    <Folder Include="View\Equipment\" />
     <Folder Include="View\FastDevelop\" />
     <Folder Include="View\LuckyControl\" />
   </ItemGroup>

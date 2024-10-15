@@ -1,4 +1,6 @@
-﻿using CZY.SlackToolBox.FastExtend.Communication;
+﻿using CZY.SlackToolBox.FastExtend;
+using CZY.SlackToolBox.FastExtend.Communication;
+using CZY.SlackToolBox.FastExtend.Window;
 using NAudio.Wave;
 using System;
 using System.Collections.Generic;
@@ -23,21 +25,27 @@ namespace CZY.SlackToolBox.FastApply
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : WinHotKeyWindow
     {
         public MainWindow()
         {
             InitializeComponent();
 
-            string server = "http://localhost:8080/";
-            string para = "?text={{speakText}}&spk=派蒙&emotion=平静-好耶！《特尔克西的奇幻历险》出发咯！&speed={{speakSpeed}}&pitch=1.0&top_k=5&top_p=0.75&temperature=1.0&batch_size=20&text_split_method=cut5&text_lang=zh&seed=1480456663&split_bucket=True&batch_threshold=0.75&format=wav&parallel_infer=True&repetition_penalty=1.35&fragment_interval=0.3";
+            //string server = "http://localhost:8080/";
+            //string para = "?text={{speakText}}&spk=派蒙&emotion=平静-好耶！《特尔克西的奇幻历险》出发咯！&speed={{speakSpeed}}&pitch=1.0&top_k=5&top_p=0.75&temperature=1.0&batch_size=20&text_split_method=cut5&text_lang=zh&seed=1480456663&split_bucket=True&batch_threshold=0.75&format=wav&parallel_infer=True&repetition_penalty=1.35&fragment_interval=0.3";
 
-            para = para.Replace("{{speakText}}","你好朋友");
-            para = para.Replace("{{speakSpeed}}", "1");
-            var addr = server + para;
-            PlayMp3FromUrl(addr);
+            //para = para.Replace("{{speakText}}","你好朋友");
+            //para = para.Replace("{{speakSpeed}}", "1");
+            //var addr = server + para;
+            //PlayMp3FromUrl(addr);
             // addr.WebRequestGetResponseStream();
             this.Loaded += MainWindow_Loaded;
+            this.Closed += MainWindow_Closed;
+        }
+
+        private void MainWindow_Closed(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
         }
 
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)

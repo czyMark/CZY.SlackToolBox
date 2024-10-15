@@ -20,6 +20,7 @@ namespace CZY.SlackToolBox.FastApply.View
     /// </summary>
     public partial class UpdateSystemControl : UserControl
     {
+        public static FrameTemplate Instance = new FrameTemplate();
         public UpdateSystemControl()
         {
             InitializeComponent();

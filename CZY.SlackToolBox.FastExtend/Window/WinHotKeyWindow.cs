@@ -2,14 +2,14 @@
 using System.Windows;
 using System.Windows.Input;
 
-namespace CZY.SlackToolBox.FastExtend
+namespace CZY.SlackToolBox.FastExtend.Window
 {
-    public class EnabledShortcutKeyWindows : Window
+    public class WinHotKeyWindow : System.Windows.Window
     {
 		public bool isCommit = false;
 		public Key _systemKey;
 
-		public EnabledShortcutKeyWindows()
+		public WinHotKeyWindow()
 		{
 
 		}
