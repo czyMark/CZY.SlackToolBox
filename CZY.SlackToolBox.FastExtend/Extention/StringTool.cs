@@ -15,13 +15,24 @@ namespace  CZY.SlackToolBox.FastExtend
     public static class StringTool
 	{
 
-		/// <summary>
-		/// 通过指定的地址保存图片
+        /// <summary>
+		/// 相对路径转化为绝对路径
 		/// </summary>
-		/// <param name="picPath">图片地址</param>
-		/// <param name="img">图片数组</param>
+		/// <param name="relative"></param>
 		/// <returns></returns>
-		public static int SaveBitmapImage(this string picPath, byte[] img)
+        public static string UrlRelativeToAbsolute(this string relative)
+        {
+            string absolutePath = System.IO.Path.GetFullPath(relative);
+            return absolutePath;
+        }
+
+        /// <summary>
+        /// 通过指定的地址保存图片
+        /// </summary>
+        /// <param name="picPath">图片地址</param>
+        /// <param name="img">图片数组</param>
+        /// <returns></returns>
+        public static int SaveBitmapImage(this string picPath, byte[] img)
 		{
 			int result = 1;
 			try
@@ -204,15 +215,27 @@ namespace  CZY.SlackToolBox.FastExtend
 		public static byte[] ToBytes(this string str)
 		{
 			return Encoding.Default.GetBytes(str);
-		}
+        }
+        /// <summary>
+        /// string转byte[]
+        /// </summary>
+        /// <param name="str">字符串</param>
+        /// <param name="encodingName">自动转换</param>
+        /// <returns></returns>
+        public static byte[] ToBytes(this string str, string encodingName = "GB2312")
+        {
+            Encoding encoding = Encoding.GetEncoding(encodingName);  
+            byte[] bytes = encoding.GetBytes(str);
+			return bytes;
+        }
 
-		/// <summary>
-		/// string转byte[]
-		/// </summary>
-		/// <param name="str">字符串</param>
-		/// <param name="theEncoding">需要的编码</param>
-		/// <returns></returns>
-		public static byte[] ToBytes(this string str, Encoding theEncoding)
+        /// <summary>
+        /// string转byte[]
+        /// </summary>
+        /// <param name="str">字符串</param>
+        /// <param name="theEncoding">需要的编码</param>
+        /// <returns></returns>
+        public static byte[] ToBytes(this string str, Encoding theEncoding)
 		{
 			return theEncoding.GetBytes(str);
 		}

@@ -6,7 +6,13 @@
         xmlns:local="clr-namespace:CZY.SlackToolBox.FastApply"
         xmlns:win="clr-namespace:CZY.SlackToolBox.FastExtend.Window;assembly=CZY.SlackToolBox.FastExtend"
         xmlns:localView="clr-namespace:CZY.SlackToolBox.FastApply.View" 
-             xmlns:StudyGlobalView="clr-namespace:CZY.SlackToolBox.FastApply.View.StudyGlobal"
+        xmlns:AnimationBankView="clr-namespace:CZY.SlackToolBox.FastApply.View.AnimationBank"
+        xmlns:CommunicationView="clr-namespace:CZY.SlackToolBox.FastApply.View.Communication"
+        xmlns:ComponentView="clr-namespace:CZY.SlackToolBox.FastApply.View.Component"
+        xmlns:EquipmentView="clr-namespace:CZY.SlackToolBox.FastApply.View.Equipment"
+        xmlns:FastDevelopView="clr-namespace:CZY.SlackToolBox.FastApply.View.FastDevelop"
+        xmlns:LuckyControlView="clr-namespace:CZY.SlackToolBox.FastApply.View.LuckyControl"
+        xmlns:StudyGlobalView="clr-namespace:CZY.SlackToolBox.FastApply.View.StudyGlobal"
   Icon="pack://application:,,,/CZY.SlackToolBox.FastApply;component/product.ico"
         mc:Ignorable="d"   
         Title="CZYMark框架的快捷应用示例" >
@@ -20,79 +26,99 @@
     </Window.Resources>
     <Viewbox Stretch="Fill" >
         <TabControl  Style="{StaticResource SwitchMenu}"  Background="{StaticResource TabControlMenuForeground}"
-                     Width="1920" Height="1080" FontSize="22">
+                      FontSize="16"  Width="1920" Height="1060"  >
             <TabItem Header="调试" Style="{StaticResource SwitchMenuItem}">
+                <StackPanel>
+                    <Label FontSize="36" Foreground="White" FontWeight="Bold">视觉集中效果</Label>
+                    <Viewbox Height="600" HorizontalAlignment="Left">
+                        <Grid x:Name="back" Width="1920" Height="986" >
+                            <Grid.Background>
+                                <ImageBrush   ImageSource="/Images/9.jpg"></ImageBrush>
+                            </Grid.Background>
+                            <StackPanel Height="1924">
+                                <Button Background="Red" Width="500" Height="100" FontSize="16">你好</Button>
+                                <Button Background="Red" Width="500" Height="100" FontSize="16">你好</Button>
+                                <Button Background="Red" Width="500" Height="100" FontSize="16">你好</Button>
+                                <Button Background="Red" Width="500" Height="100" FontSize="16">你好</Button>
+                                <Button Background="Red" Width="500" Height="100" FontSize="16">你好</Button>
+                                <Button Background="Red" Width="500" Height="100" FontSize="16">你好</Button>
+                                <Button Background="Red" Width="500" Height="100" FontSize="16">你好</Button>
+                                <Button Background="Red" Width="500" Height="100" FontSize="16">你好</Button>
+                                <Button Background="Red" Width="500" Height="100" FontSize="16">你好</Button>
+                            </StackPanel>
+                            <Path HorizontalAlignment="Left" Fill="Black" Stroke="Transparent"  Opacity="0.6" Width="1920" Height="1080"  IsHitTestVisible="False"
+                       VerticalAlignment="Top" Data="M494.5,266.5 L494.5,948.5 1496.5,948.5 1496.5,266.5 z M0.5,0.5 L1919.5,0.5 1919.5,1079.5 0.5,1079.5 z" Stretch="Fill">
+                                <!--<Path.Fill>
+                         <ImageBrush   ImageSource="/9.jpg"/>
+                     </Path.Fill>-->
+                                <Path.Effect>
+                                    <BlurEffect   KernelType="Gaussian"   Radius="10"/>
+                                </Path.Effect>
+                            </Path>
+
+
+                            <Label HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center">
+                                通过bland绘制对应的图形，选择相交，扣出要显示的高清区域。将对应的PATH复制到界面的高斯模糊
+                            </Label>
+                            
+                            <!--<Grid.Background>
+                     <ImageBrush   ImageSource="/Images/9.jpg"></ImageBrush>
+                 </Grid.Background>
+
+                 <Button Background="Red" Width="100" Height="100" FontSize="100">你好</Button>
+
+                 <Grid IsHitTestVisible="False" Opacity="0.8"   Background="{Binding ElementName=back,Path=Background}">
+                     <Grid.Effect>
+                         <BlurEffect   KernelType="Gaussian"   Radius="15"/>
+                     </Grid.Effect>
+                 </Grid>-->
+
+
+
+                        </Grid>
+                    </Viewbox>
+                </StackPanel>
             </TabItem>
             <TabItem Header="应用模板" Style="{StaticResource SwitchMenuItem}">
                 <ContentControl Content="{x:Static localView:FrameTemplate.Instance}"></ContentControl>
             </TabItem>
             <TabItem Header="快捷方法使用说明" Style="{StaticResource SwitchMenuItem}">
-
+                <ContentControl Content="{x:Static FastDevelopView:CodeGenerate.Instance}"></ContentControl>
             </TabItem>
             <TabItem Header="动画效果" Style="{StaticResource SwitchMenuItem}">
-
+                <ContentControl Content="{x:Static AnimationBankView:LoadingAnimation.Instance}"></ContentControl>
             </TabItem>
             <TabItem Header="基础程序代码生成" Style="{StaticResource SwitchMenuItem}">
-
+                <ContentControl Content="{x:Static FastDevelopView:CodeGenerate.Instance}"></ContentControl>
             </TabItem>
             <TabItem Header="更新部署" Style="{StaticResource SwitchMenuItem}">
-
+                <StackPanel>
+                    <ContentControl Content="{x:Static localView:UpdateSystem.Instance}"></ContentControl>
+                </StackPanel>
             </TabItem>
-            <TabItem Header="全局学习" Style="{StaticResource SwitchMenuItem}">
+            <TabItem Header="思维扩展" Style="{StaticResource SwitchMenuItem}">
                 <StackPanel>
                     <ContentControl Content="{x:Static StudyGlobalView:Fragmented.Instance}"></ContentControl>
                     <ContentControl Content="{x:Static StudyGlobalView:DesignPatterns.Instance}"></ContentControl>
                 </StackPanel>
             </TabItem>
+            <TabItem Header="通信" Style="{StaticResource SwitchMenuItem}">
+                <ContentControl Content="{x:Static CommunicationView:MoubusTcpConnection.Instance}"></ContentControl>
+            </TabItem>
+            <TabItem Header="设备" Style="{StaticResource SwitchMenuItem}">
+                <ContentControl Content="{x:Static EquipmentView:EPSONPrint.Instance}"></ContentControl>
+            </TabItem>
             <TabItem Header="集成组件" Style="{StaticResource SwitchMenuItem}">
-                <Grid  >
-
-                </Grid>
+                <StackPanel>
+                    <Label HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="36">
+                        集成组件记录了已集成可直接使用的组件，在后续开发过程中，可快速复用修改。
+                    </Label>
+                    <ContentControl Content="{x:Static ComponentView:ApplyTool.Instance}"></ContentControl>
+                    
+                </StackPanel>
             </TabItem>
-            <TabItem Header="集中视觉效果" Style="{StaticResource SwitchMenuItem}" Background="Transparent" >
-                <Grid x:Name="back" >
-                    <Grid.Background>
-                        <ImageBrush   ImageSource="/9.jpg"></ImageBrush>
-                    </Grid.Background>
-
-                    <StackPanel Height="1924">
-                        <Button Background="Red" Width="500" Height="100" FontSize="16">通过bland绘制对应的图形，选择相交将，扣出高清区域</Button>
-                        <Button Background="Red" Width="500" Height="100" FontSize="16">你好</Button>
-                        <Button Background="Red" Width="500" Height="100" FontSize="16">你好</Button>
-                        <Button Background="Red" Width="500" Height="100" FontSize="16">你好</Button>
-                        <Button Background="Red" Width="500" Height="100" FontSize="16">你好</Button>
-                        <Button Background="Red" Width="500" Height="100" FontSize="16">你好</Button>
-                        <Button Background="Red" Width="500" Height="100" FontSize="16">你好</Button>
-                        <Button Background="Red" Width="500" Height="100" FontSize="16">你好</Button>
-                        <Button Background="Red" Width="500" Height="100" FontSize="16">你好</Button>
-                        <Button Background="Red" Width="500" Height="100" FontSize="16">你好</Button>
-                    </StackPanel>
-                    <Path HorizontalAlignment="Left" Fill="Black" Stroke="Transparent"  Opacity="0.6" Width="1920" Height="1080"  IsHitTestVisible="False"
-                          VerticalAlignment="Top" Data="M494.5,266.5 L494.5,948.5 1496.5,948.5 1496.5,266.5 z M0.5,0.5 L1919.5,0.5 1919.5,1079.5 0.5,1079.5 z" Stretch="Fill">
-                        <!--<Path.Fill>
-                            <ImageBrush   ImageSource="/9.jpg"/>
-                        </Path.Fill>-->
-                        <Path.Effect>
-                            <BlurEffect   KernelType="Gaussian"   Radius="10"/>
-                        </Path.Effect>
-                    </Path>
-                    <!--<Grid.Background>
-                        <ImageBrush   ImageSource="/9.jpg"></ImageBrush>
-                    </Grid.Background>
-
-                    <Button Background="Red" Width="100" Height="100" FontSize="100">你好</Button>
-
-                    <Grid IsHitTestVisible="False" Opacity="0.8"   Background="{Binding ElementName=back,Path=Background}">
-                        <Grid.Effect>
-                            <BlurEffect   KernelType="Gaussian"   Radius="15"/>
-                        </Grid.Effect>
-                    </Grid>-->
-
-
-
-                </Grid>
-
-            </TabItem>
+            
+             
         </TabControl>
     </Viewbox>
 </win:WinHotKeyWindow>

@@ -60,8 +60,13 @@
     <Reference Include="NAudio.WinMM, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
       <HintPath>..\packages\NAudio.WinMM.2.2.1\lib\netstandard2.0\NAudio.WinMM.dll</HintPath>
     </Reference>
+    <Reference Include="ReachFramework" />
+    <Reference Include="Spire.Pdf, Version=10.10.0.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.PDF.10.10.0\lib\net48\Spire.Pdf.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Security.AccessControl, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.AccessControl.4.7.0\lib\net461\System.Security.AccessControl.dll</HintPath>
     </Reference>
@@ -86,8 +91,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="View\AnimationBank\LoadingAnimation.xaml.cs">
+      <DependentUpon>LoadingAnimation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Communication\MoubusTcpConnection.xaml.cs">
+      <DependentUpon>MoubusTcpConnection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Component\ApplyTool.xaml.cs">
+      <DependentUpon>ApplyTool.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Equipment\EPSONPrint.xaml.cs">
+      <DependentUpon>EPSONPrint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\FastDevelop\CodeGenerate.xaml.cs">
+      <DependentUpon>CodeGenerate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\FrameTemplate.xaml.cs">
       <DependentUpon>FrameTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LuckyControl\FormPanel.xaml.cs">
+      <DependentUpon>FormPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\StudyGlobal\DesignPatterns.xaml.cs">
       <DependentUpon>DesignPatterns.xaml</DependentUpon>
@@ -95,8 +118,8 @@
     <Compile Include="View\StudyGlobal\Fragmented.xaml.cs">
       <DependentUpon>Fragmented.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UpdateSystemControl.xaml.cs">
-      <DependentUpon>UpdateSystemControl.xaml</DependentUpon>
+    <Compile Include="View\UpdateSystem.xaml.cs">
+      <DependentUpon>UpdateSystem.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -110,9 +133,33 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\AnimationBank\LoadingAnimation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Communication\MoubusTcpConnection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Component\ApplyTool.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Equipment\EPSONPrint.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\FastDevelop\CodeGenerate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\FrameTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LuckyControl\FormPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\StudyGlobal\DesignPatterns.xaml">
       <SubType>Designer</SubType>
@@ -122,7 +169,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UpdateSystemControl.xaml">
+    <Page Include="View\UpdateSystem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -145,6 +192,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="AttachFile\Demo.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AttachFile\dot_printer_programe_guide.pdf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -191,20 +242,14 @@
       <Name>CZY.SlackToolBox.LuckyControl</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="View\AnimationBank\" />
-    <Folder Include="View\Communication\" />
-    <Folder Include="View\Equipment\" />
-    <Folder Include="View\FastDevelop\" />
-    <Folder Include="View\LuckyControl\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="product.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="9.jpg" />
+    <Resource Include="Images\9.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

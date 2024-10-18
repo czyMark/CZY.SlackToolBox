@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="CZY.SlackToolBox.FastApply.View.Equipment.EPSONPrint"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CZY.SlackToolBox.FastApply.View.Equipment"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/YXKJ/Button.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/YXKJ/ComBox.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="Label">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Margin" Value="10"></Setter>
+            </Style>
+            <Style TargetType="TextBlock">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Margin" Value="10"></Setter>
+            </Style>
+            <Style TargetType="Border">
+                <Setter Property="BorderThickness" Value="0,0,0,1"></Setter>
+                <Setter Property="BorderBrush" Value="AliceBlue"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <GroupBox Header="打印机" Foreground="White">
+        <StackPanel >
+            <Label>当前调用主要使用的是EPSONP打印机，使用的是ESC/PC命令。打印机是针式打印机LQ-520K。</Label>
+            <Label>如果需求能够使用打印机的设置完成，直接使用PrintDocument控件或其他第三方控件编辑打印</Label>
+            <Label>在使用打印机时，需要装打印机驱动，（没有的可以去官网下载）在Windows操作系统设备列表中查看打印机的名称-后续有用</Label>
+            <Label>按照要求将打印机链接到PC上，使用驱动打印测试页，如果能够正常打印，则说明链接成功，对于系统的配置完成。</Label>
+            <StackPanel Orientation="Horizontal">
+                <Label>获取直接根据下面这样获取打印机列表选择</Label>
+                <ComboBox x:Name="ComboxStripPrinters" Grid.Row="3" Grid.Column="1" Height="30" Width="330"     Background="Transparent" HorizontalAlignment="Left"/>
+            </StackPanel>
+            <Button Click="Button_Click">PrintDocument打印 及 第三方打印</Button>
+            <Label>我的一个项目要求不切换页打印，也不是小票打印机，是针式打印机，通过打印机的硬件设置无法满足需求，所以使用Windows APi调用命令的方式操作打印机。</Label>
+            <Label>由于是绕过打印机驱动，与现在的开发思路不一致，需要了解一些非软件开发的操作</Label>
+            <Label>2、硬件设置：命令识别与否是需要硬件支撑设置的，例如LQ-520K需要打印中文，需要将中文打印开启，切纸模式关闭。在将软件模式变成ESC/PC命令才能识别中文。</Label>
+            <Label>3、结尾命令：打印时结尾命令必须回车换行，不设置打印机将不知道针往哪放，导致无法打印</Label>
+            <Button Click="Button_Click_Print">命令打印</Button>
+            <Label>当前软件中只保存了满足我需求场景的调试情况，及打印换行不换纸，来一条信息打印一条。支持中文打印</Label>
+            <Label>如要扩展其他的命令请到对应的打印机官网下载</Label>
+            <TextBlock>
+            <Run>项目参考的命令参数：</Run>
+            <Hyperlink Foreground="Red" NavigateUri="https://www.epson.com.cn/drive/4151379a8ac34e80bb30fd1a6b99915c.html">https://www.epson.com.cn/drive/4151379a8ac34e80bb30fd1a6b99915c.html</Hyperlink>
+            </TextBlock>
+            <TextBlock>
+            <Run>后续打印命令可参考的效果：</Run>
+            <Hyperlink  Foreground="Red" NavigateUri="https://blog.csdn.net/t15032286291/article/details/80311247">https://blog.csdn.net/t15032286291/article/details/80311247</Hyperlink>
+            </TextBlock>
+        </StackPanel>
+    </GroupBox>
+</UserControl>

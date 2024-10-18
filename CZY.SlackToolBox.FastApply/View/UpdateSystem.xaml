@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="CZY.SlackToolBox.FastApply.View.UpdateSystem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CZY.SlackToolBox.FastApply.View"
+             mc:Ignorable="d"  >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/YXKJ/Button.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="Label">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Margin" Value="10"></Setter>
+            </Style>
+            <Style TargetType="Border">
+                <Setter Property="BorderThickness" Value="0,0,0,1"></Setter>
+                <Setter Property="BorderBrush" Value="AliceBlue"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <StackPanel >
+        <Label>本地自动更新</Label>
+    </StackPanel>
+</UserControl>
