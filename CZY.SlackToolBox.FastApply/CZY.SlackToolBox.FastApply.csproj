@@ -103,6 +103,9 @@
     <Compile Include="View\Equipment\EPSONPrint.xaml.cs">
       <DependentUpon>EPSONPrint.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\FastDevelop\FunTool.xaml.cs">
+      <DependentUpon>FunTool.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\FastDevelop\CodeGenerate.xaml.cs">
       <DependentUpon>CodeGenerate.xaml</DependentUpon>
     </Compile>
@@ -146,6 +149,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Equipment\EPSONPrint.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\FastDevelop\FunTool.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

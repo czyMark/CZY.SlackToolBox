@@ -89,7 +89,11 @@
                 <ContentControl Content="{x:Static AnimationBankView:LoadingAnimation.Instance}"></ContentControl>
             </TabItem>
             <TabItem Header="基础程序代码生成" Style="{StaticResource SwitchMenuItem}">
-                <ContentControl Content="{x:Static FastDevelopView:CodeGenerate.Instance}"></ContentControl>
+                <StackPanel>
+
+                    <ContentControl Content="{x:Static FastDevelopView:FunTool.Instance}"></ContentControl>
+                    <ContentControl Content="{x:Static FastDevelopView:CodeGenerate.Instance}"></ContentControl>
+                </StackPanel>
             </TabItem>
             <TabItem Header="更新部署" Style="{StaticResource SwitchMenuItem}">
                 <StackPanel>

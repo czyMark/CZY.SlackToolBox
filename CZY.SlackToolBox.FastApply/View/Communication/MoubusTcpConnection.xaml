@@ -6,7 +6,40 @@
              xmlns:local="clr-namespace:CZY.SlackToolBox.FastApply.View.Communication"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/YXKJ/Button.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="Label">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Margin" Value="10"></Setter>
+            </Style>
+            <Style TargetType="Border">
+                <Setter Property="BorderThickness" Value="0,0,0,1"></Setter>
+                <Setter Property="BorderBrush" Value="AliceBlue"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <GroupBox Header="MoubusTCP通信" Foreground="White">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <WrapPanel>
+                <TextBlock ></TextBlock>
+                <TextBlock ></TextBlock>
+            </WrapPanel>
             
-    </Grid>
+        </Grid>
+    </GroupBox>
 </UserControl>
