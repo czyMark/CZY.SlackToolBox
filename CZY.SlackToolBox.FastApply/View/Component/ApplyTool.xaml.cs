@@ -34,8 +34,16 @@ namespace CZY.SlackToolBox.FastApply.View.Component
             switch (btn.Content)
             {
                 case "截图":
-                    CaptureApply.MainWindow win = new CaptureApply.MainWindow();
-                    win.Show();
+                    {
+                        CaptureApply.MainWindow win = new CaptureApply.MainWindow();
+                        win.Show();
+                    }
+                    break;
+                case "软件多开":
+                    {
+                        LaunchMoreApp.MainWindow win = new LaunchMoreApp.MainWindow();
+                        win.Show();
+                    }
                     break;
             }
         }

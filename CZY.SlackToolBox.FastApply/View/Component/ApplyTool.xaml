@@ -26,7 +26,8 @@
         <Border>
             <WrapPanel>
                 <Label FontSize="32">工具</Label>
-                <Button Margin="10" Click="Button_Click">截图</Button> 
+                <Button Margin="10" Click="Button_Click">截图</Button>
+                <Button Margin="10" Click="Button_Click">软件多开</Button>
             </WrapPanel>
         </Border> 
     </StackPanel>

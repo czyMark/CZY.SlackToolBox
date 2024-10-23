@@ -71,8 +71,7 @@ namespace  CZY.SlackToolBox.FastExtend
             catch (Exception e)
             {
                 RegistryKey Software =
-                    key.OpenSubKey(
-                        "SOFTWARE\\Microsoft\\Internet Explorer\\Main\\FeatureControl\\FEATURE_BROWSER_EMULATION");
+                    key.OpenSubKey("SOFTWARE\\Microsoft\\Internet Explorer\\Main\\FeatureControl\\FEATURE_BROWSER_EMULATION");
                 var RegStr = Software.GetValue(ProgramName);
                 if (RegStr == null)
                 {

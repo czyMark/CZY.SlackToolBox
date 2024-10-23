@@ -174,9 +174,7 @@ namespace LaunchMoreApp.Helpers
         public const int DUPLICATE_SAME_ACCESS = 0x2;
 
         public const uint STATUS_SUCCESS = 0x00;
-
-
-        #region API
+         
 
         
 
@@ -188,8 +186,7 @@ namespace LaunchMoreApp.Helpers
             ref IntPtr TargetHandle,
             int DesiredAccess,
             int HandleAttributes,
-            int Options);
-        #endregion
+            int Options); 
 
     }
 

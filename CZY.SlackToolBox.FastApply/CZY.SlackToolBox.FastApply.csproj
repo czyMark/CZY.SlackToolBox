@@ -248,6 +248,10 @@
       <Project>{552d9761-f586-440c-b9b3-9fa5f2d20310}</Project>
       <Name>CZY.SlackToolBox.LuckyControl</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LaunchMoreApp\LaunchMoreApp.csproj">
+      <Project>{35faa1fa-6943-4130-897c-6c779369b7f0}</Project>
+      <Name>LaunchMoreApp</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
