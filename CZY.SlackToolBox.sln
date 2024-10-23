@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CZY.SlackToolBox.DesignPatt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CZY.SlackToolBox.FragmentedClient", "CZY.SlackToolBox.FragmentedClient\CZY.SlackToolBox.FragmentedClient.csproj", "{F8237EC0-472E-4DA4-804B-2CB06C8D42B1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaunchMoreApp", "LaunchMoreApp\LaunchMoreApp.csproj", "{35FAA1FA-6943-4130-897C-6C779369B7F0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{F8237EC0-472E-4DA4-804B-2CB06C8D42B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8237EC0-472E-4DA4-804B-2CB06C8D42B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8237EC0-472E-4DA4-804B-2CB06C8D42B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35FAA1FA-6943-4130-897C-6C779369B7F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35FAA1FA-6943-4130-897C-6C779369B7F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35FAA1FA-6943-4130-897C-6C779369B7F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35FAA1FA-6943-4130-897C-6C779369B7F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,6 +90,7 @@ Global
 		{0223FA95-B84B-40DB-B3A8-A696D6BCD195} = {C7222002-6688-420E-B946-0D047F2CDA87}
 		{EFEA7AE5-A4A5-40E6-B2D1-BB9A0B7A74BB} = {57F35C21-FDB8-4A49-9A9A-1BB13AA179F3}
 		{F8237EC0-472E-4DA4-804B-2CB06C8D42B1} = {57F35C21-FDB8-4A49-9A9A-1BB13AA179F3}
+		{35FAA1FA-6943-4130-897C-6C779369B7F0} = {65CD1BC8-BF29-42CD-BAC5-9F8603AD7906}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {02C9BE72-C983-4825-A318-9CAAB42926F9}

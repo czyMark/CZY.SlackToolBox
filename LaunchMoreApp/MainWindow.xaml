@@ -1,0 +1,17 @@
+﻿<Window x:Class="LaunchMoreApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LaunchMoreApp" AllowDrop="True"
+        mc:Ignorable="d" FontSize="24" x:Name="win"  DragEnter="win_DragEnter" Drop="win_Drop"
+        Title="启动面板" Height="450" Width="800">
+    <Grid >
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <TextBlock Foreground="Red" HorizontalAlignment="Center" >    将要启动的软件拖放到此处   </TextBlock>
+            <WrapPanel Width="{Binding ElementName=win,Path=ActualWidth}">
+                <TextBlock TextWrapping="Wrap" Foreground="Blue"> 当前已配置的支持：微信、企业微信、腾讯会议、腾讯手游助手、bilibili投稿工具、有道云笔记、梦幻西游手游、爱思助手7.0、大话西游手游、拼多多商家平台、优酷、钉钉、拼多多商家平台、RDO远程工具、希沃白板、百度云盘、天翼云盘、魔兽争霸官方对战平台、UU加速器</TextBlock>
+            </WrapPanel>
+        </StackPanel>
+    </Grid>
+</Window>

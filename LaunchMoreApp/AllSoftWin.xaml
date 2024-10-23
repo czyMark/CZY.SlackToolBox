@@ -1,0 +1,33 @@
+﻿<Window x:Class="LaunchMoreApp.AllSoftWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LaunchMoreApp.ViewModel"
+        mc:Ignorable="d"
+        Title="所有支持的软件" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="AllSoft" 
+      RowHeaderWidth="0" 
+      AutoGenerateColumns="False"
+      CanUserAddRows="False" 
+      CanUserDeleteRows="True"
+      HeadersVisibility="All"
+      SelectionMode="Extended"  
+      BorderThickness="1" 
+      GridLinesVisibility="All"
+      IsReadOnly="True"   
+                  LoadingRow="AllSoft_LoadingRow"
+       >
+            <DataGrid.Columns>
+                <!--<DataGridTemplateColumn Width="auto" Header="{DynamicResource LanuageKey_TrendSearch_Status}" DataGridTemplateColumn.CellTemplate="{StaticResource alarmPanelDataTemplate}" />-->
+
+                <!--<DataGridTextColumn Header="{DynamicResource LanuageKey_AlarmPanelID}" Binding="{Binding PanelID}" Width="80"/>-->
+                <DataGridTextColumn Header="序号"  IsReadOnly="True"
+                                    Binding="{Binding Header,RelativeSource={RelativeSource AncestorType={x:Type DataGridRow},Mode=FindAncestor}}" Width="0.2*"/>
+                <DataGridTextColumn Header="软件名称" Binding="{Binding title}" Width="0.2*"/>
+                <DataGridTextColumn Header="详细描述" Binding="{Binding details}" Width="0.6*"/> 
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
