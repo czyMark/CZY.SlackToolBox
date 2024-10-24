@@ -69,6 +69,7 @@
     <Compile Include="Other\DelegateAsync.cs" />
     <Compile Include="StringFile\ExcelExtend.cs" />
     <Compile Include="StringFile\Xml.cs" />
+    <Compile Include="System\ScreenTool.cs" />
     <Compile Include="Window\PrinterHelper.cs" />
     <Compile Include="Window\WinHotKeyWindow.cs" />
     <Compile Include="Window\WinHotKey.cs" />

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace CZY.SlackToolBox.LuckyControl
-{
+{ 
     /// <summary>
     /// 重写wpf事件绑定
     /// </summary>

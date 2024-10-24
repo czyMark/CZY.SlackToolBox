@@ -27,37 +27,12 @@ namespace  CZY.SlackToolBox.FastExtend
         }
 
         /// <summary>
-        /// 通过指定的地址保存图片
+        /// 时间戳反转为时间
         /// </summary>
-        /// <param name="picPath">图片地址</param>
-        /// <param name="img">图片数组</param>
-        /// <returns></returns>
-        public static int SaveBitmapImage(this string picPath, byte[] img)
-		{
-			int result = 1;
-			try
-			{
-				MemoryStream ms = new MemoryStream(img);
-				System.Drawing.Image bm = System.Drawing.Image.FromStream(ms, true);
-				//Bitmap bmp = new Bitmap(ms);
-				bm.Save(picPath);
-				ms.Close();
-			}
-			catch
-			{
-				result = 0;
-			}
-
-			return result;
-		}
-
-		/// <summary>
-		/// 时间戳反转为时间
-		/// </summary>
-		/// <param name="TimeStamp">时间戳</param>
-		/// <param name="AccurateToMilliseconds">是否精确到毫秒</param>
-		/// <returns>返回一个日期时间</returns>
-		public static DateTime StampToTime(this string TimeStamp, bool AccurateToMilliseconds = false)
+        /// <param name="TimeStamp">时间戳</param>
+        /// <param name="AccurateToMilliseconds">是否精确到毫秒</param>
+        /// <returns>返回一个日期时间</returns>
+        public static DateTime StampToTime(this string TimeStamp, bool AccurateToMilliseconds = false)
 		{
 			long timeStamp = long.Parse(TimeStamp);
 			System.DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1)); // 当地时区
@@ -464,18 +439,5 @@ namespace  CZY.SlackToolBox.FastExtend
 
 
 
-
-        /// <summary>
-        /// 从base64字符串读入图片
-        /// </summary>
-        /// <param name="base64">base64字符串</param>
-        /// <returns></returns>
-        public static System.Drawing.Image FromBase64ToImage(this string base64)
-        {
-            byte[] bytes = Convert.FromBase64String(base64);
-            MemoryStream memStream = new MemoryStream(bytes);
-            System.Drawing.Image img = System.Drawing.Image.FromStream(memStream);
-            return img;
-        }
     }
 }

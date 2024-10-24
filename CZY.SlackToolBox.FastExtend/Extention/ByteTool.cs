@@ -6,32 +6,72 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Windows.Media.Imaging;
 
-namespace  CZY.SlackToolBox.FastExtend
+namespace CZY.SlackToolBox.FastExtend
 {
     public static class ByteTool
-	{
-		/// <summary>
-		/// byte数组转BitmapImage 工具
-		/// </summary>
-		/// <param name="byteArray"></param>
-		/// <returns></returns>
-		public static BitmapImage ToBitmapImage(this byte[] byteArray)
-		{
-			BitmapImage bmp;
-			try
-			{
-				bmp = new BitmapImage();
-				bmp.BeginInit();
-				bmp.StreamSource = new MemoryStream(byteArray);
-				bmp.EndInit();
-			}
-			catch
-			{
-				bmp = null;
-			}
+    {
+        #region 文件操作
+        /// <summary>
+        /// 将当前字节数组保存为文件
+        /// </summary>
+        /// <param name="bytes">字节数组</param>
+        /// <param name="path">文件完成路径</param>
+        public static void ToFile(this byte[] bytes, string path)
+        {
+            using (var fs = File.OpenWrite(path))
+            {
+                fs.Write(bytes, 0, bytes.Length);
+            }
+        }
 
-			return bmp;
-		}
+
+        /// <summary>
+        /// 将当前图片数组 到指定位置
+        /// </summary>
+        /// <param name="picPath">图片地址</param>
+        /// <param name="img">图片数组</param>
+        /// <returns></returns>
+        public static int SaveByteToLocal(this byte[] img, string picPath)
+        {
+            int result = 1;
+            try
+            {
+                MemoryStream ms = new MemoryStream(img);
+                System.Drawing.Image bm = System.Drawing.Image.FromStream(ms, true);
+                //Bitmap bmp = new Bitmap(ms);
+                bm.Save(picPath);
+                ms.Close();
+            }
+            catch
+            {
+                result = 0;
+            }
+
+            return result;
+        }
+        /// <summary>
+        /// byte数组转BitmapImage 工具
+        /// </summary>
+        /// <param name="byteArray"></param>
+        /// <returns></returns>
+        public static BitmapImage ToBitmapImage(this byte[] byteArray)
+        {
+            BitmapImage bmp;
+            try
+            {
+                bmp = new BitmapImage();
+                bmp.BeginInit();
+                bmp.StreamSource = new MemoryStream(byteArray);
+                bmp.EndInit();
+            }
+            catch
+            {
+                bmp = null;
+            }
+
+            return bmp;
+        } 
+        #endregion
 
         /// <summary>
         /// byte[]转string
@@ -202,17 +242,5 @@ namespace  CZY.SlackToolBox.FastExtend
             return (T)ToObject(bytes);
         }
 
-        /// <summary>
-        /// 将字节数组保存为文件
-        /// </summary>
-        /// <param name="bytes">字节数组</param>
-        /// <param name="path">文件完成路径</param>
-        public static void ToFile(this byte[] bytes, string path)
-        {
-            using (var fs = File.OpenWrite(path))
-            {
-                fs.Write(bytes, 0, bytes.Length);
-            }
-        }
     }
 }

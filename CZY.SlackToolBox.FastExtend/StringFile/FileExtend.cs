@@ -74,9 +74,9 @@ namespace  CZY.SlackToolBox.FastExtend
 
         #endregion
 
-        #region 读取图片
+        #region 读取/存储图片
         /// <summary>
-        /// 根据绝对路径获取图片 并解除程序对图片的占用
+        /// 根据当前路径获取图片 并解除程序对图片的占用  当前路径为绝对路径
         /// </summary>
         /// <param name="imgPath">绝对路径</param>
         /// <returns></returns>
@@ -97,6 +97,61 @@ namespace  CZY.SlackToolBox.FastExtend
             bitmap.Freeze();
             return bitmap;
         }
+        /// <summary>
+        /// 将图片保存到当前路径
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="image"></param>
+        public static void SaveBitmapToLocal(this string fileName,BitmapSource image)
+        {
+            using (var fs = System.IO.File.Create(fileName))
+            {
+                BitmapEncoder encoder = new PngBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(image));
+                encoder.Save(fs);
+            }
+        }
+
+
+        /// <summary>
+        /// 将图片保存到当前路径
+        /// </summary>
+        /// <param name="picPath">图片地址</param>
+        /// <param name="img">图片数组</param>
+        /// <returns></returns>
+        public static int SaveByteToLocal(this string picPath, byte[] img)
+        {
+            int result = 1;
+            try
+            {
+                MemoryStream ms = new MemoryStream(img);
+                System.Drawing.Image bm = System.Drawing.Image.FromStream(ms, true);
+                //Bitmap bmp = new Bitmap(ms);
+                bm.Save(picPath);
+                ms.Close();
+            }
+            catch
+            {
+                result = 0;
+            }
+
+            return result;
+        }
+
+
+        /// <summary>
+        /// 从当前的base64字符串读入图片
+        /// </summary>
+        /// <param name="base64">base64字符串</param>
+        /// <returns></returns>
+        public static System.Drawing.Image FromBase64ToImage(this string base64)
+        {
+            byte[] bytes = Convert.FromBase64String(base64);
+            MemoryStream memStream = new MemoryStream(bytes);
+            System.Drawing.Image img = System.Drawing.Image.FromStream(memStream);
+            return img;
+        }
+
         #endregion
 
 

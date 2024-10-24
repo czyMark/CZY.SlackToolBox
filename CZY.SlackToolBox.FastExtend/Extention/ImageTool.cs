@@ -3,11 +3,12 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace  CZY.SlackToolBox.FastExtend
+namespace CZY.SlackToolBox.FastExtend
 {
     public static class ImageTool
     {
@@ -19,7 +20,7 @@ namespace  CZY.SlackToolBox.FastExtend
         /// <summary>
         /// 将System.Drawing.Bitmap 图像转换成 BitmapSource 图片这么处理后 将被释放，主要用于解决wpf图像内存溢出问题
         /// </summary>
-        /// <param name="bmp"></param>
+        /// <param name="bmp">图片</param>
         /// <returns></returns>
         public static BitmapSource ToBitmapSource(this System.Drawing.Bitmap bmp)
         {
@@ -37,52 +38,16 @@ namespace  CZY.SlackToolBox.FastExtend
             }
         }
 
-
-
-
-        /// <summary>
-        /// 将BitmapImage 转换为 Bitmap
-        /// </summary>
-        /// <param name="bitmAPImage"></param>
-        /// <returns></returns>
-        public static Bitmap ToBitmap(this BitmapImage bitmAPImage)
-        {
-            // BitmAPImage bitmAPImage = new BitmAPImage(new Uri("../Images/test.png", UriKind.relative));
-            using (MemoryStream outStream = new MemoryStream())
-            {
-                BitmapEncoder enc = new BmpBitmapEncoder();
-                enc.Frames.Add(BitmapFrame.Create(bitmAPImage));
-                enc.Save(outStream);
-                System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap(outStream);
-                return new Bitmap(bitmap);
-            }
-        }
-        /// <summary>
-        /// 将imageSource 转换为 Bitmap
-        /// </summary>
-        /// <param name="imageSource"></param>
-        /// <returns></returns>
-        public static Bitmap ToBitmap(this ImageSource imageSource)
-        {
-            BitmapSource bitmapSource = (BitmapSource)imageSource;
-            Bitmap bmp = new Bitmap(bitmapSource.PixelWidth, bitmapSource.PixelHeight, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
-            BitmapData data = bmp.LockBits(
-                new System.Drawing.Rectangle(System.Drawing.Point.Empty, bmp.Size), ImageLockMode.WriteOnly, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
-            bitmapSource.CopyPixels(Int32Rect.Empty, data.Scan0, data.Height * data.Stride, data.Stride);
-            bmp.UnlockBits(data);
-            return bmp;
-        }
-
         /// <summary>
         /// 将Bitmap 转换为 BitmapImage
         /// </summary>
-        /// <param name="bitmap"></param>
+        /// <param name="bmp"></param>
         /// <returns></returns>
-        public static BitmapImage ToBitmapImage(this Bitmap bitmap)
+        public static BitmapImage ToBitmapImage(this Bitmap bmp)
         {
             using (MemoryStream stream = new MemoryStream())
             {
-                bitmap.Save(stream, ImageFormat.Png);
+                bmp.Save(stream, ImageFormat.Png);
                 stream.Position = 0;
                 BitmapImage result = new BitmapImage();
                 result.BeginInit();
@@ -98,11 +63,11 @@ namespace  CZY.SlackToolBox.FastExtend
         /// 图片转二进制
         /// </summary> 
         /// <returns>二进制</returns>
-        public static byte[] ToByte(this Bitmap bitmap)
+        public static byte[] ToByte(this Bitmap bmp)
         {
             //将Image转换成流数据，并保存为byte[]
             MemoryStream mstream = new MemoryStream();
-            bitmap.Save(mstream, System.Drawing.Imaging.ImageFormat.Jpeg);
+            bmp.Save(mstream, System.Drawing.Imaging.ImageFormat.Jpeg);
             byte[] byData = new Byte[mstream.Length];
             mstream.Position = 0;
             mstream.Read(byData, 0, byData.Length);
@@ -110,17 +75,38 @@ namespace  CZY.SlackToolBox.FastExtend
             return byData;
         }
 
+        #region 获取RGB 
+        /// <summary>
+        /// 获取图片指定位置 颜色
+        /// </summary>
+        /// <param name="x">坐标X</param>
+        /// <param name="y">坐标Y</param>
+        /// <returns></returns>
+        public static string GetImageRGB(this Bitmap bmp, int x, int y)
+        {
+            try
+            {
+                var color = bmp.GetPixel(x, y);
+                return System.Windows.Media.Color.FromArgb(color.R, color.G, color.B, color.A).ToString();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex); 
+            } 
+            return "";
+        }
+        #endregion
         /// <summary>
         /// 图像镜像
         /// </summary>
-        /// <param name="curBitmap"></param>
+        /// <param name="bmp"></param>
         /// <param name="width"></param>
         /// <param name="height"></param>
         /// <param name="direction">0水平镜像 1垂直镜像</param>
-        public static void BitmapMirror(this Bitmap curBitmap, int width, int height, int direction)
+        public static void BitmapMirror(this Bitmap bmp, int width, int height, int direction)
         {
             Rectangle rect = new Rectangle(0, 0, width, height);
-            BitmapData bmpData = curBitmap.LockBits(rect, ImageLockMode.ReadWrite, curBitmap.PixelFormat);
+            BitmapData bmpData = bmp.LockBits(rect, ImageLockMode.ReadWrite, bmp.PixelFormat);
             IntPtr ptr = bmpData.Scan0;
             int bytes = width * height * 4;
             byte[] rgbValues = new byte[bytes];
@@ -187,7 +173,7 @@ namespace  CZY.SlackToolBox.FastExtend
                 }
             }
             Marshal.Copy(rgbValues, 0, ptr, bytes);
-            curBitmap.UnlockBits(bmpData);
+            bmp.UnlockBits(bmpData);
         }
 
 
@@ -215,5 +201,57 @@ namespace  CZY.SlackToolBox.FastExtend
                 throw ex;
             }
         }
+
+
+
+
+        /// <summary>
+        /// 将图片保存到当前路径
+        /// </summary>
+        /// <param name="image">图片</param>
+        /// <param name="fileName">保存路径</param>
+        public static void SaveBitmapToLocal(this BitmapSource image, string fileName)
+        {
+            using (var fs = System.IO.File.Create(fileName))
+            {
+                BitmapEncoder encoder = new PngBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(image));
+                encoder.Save(fs);
+            }
+        }
+
+        /// <summary>
+        /// 将BitmapImage 转换为 Bitmap
+        /// </summary>
+        /// <param name="image"></param>
+        /// <returns></returns>
+        public static Bitmap ToBitmap(this BitmapImage image)
+        {
+            // BitmAPImage bitmAPImage = new BitmAPImage(new Uri("../Images/test.png", UriKind.relative));
+            using (MemoryStream outStream = new MemoryStream())
+            {
+                BitmapEncoder enc = new BmpBitmapEncoder();
+                enc.Frames.Add(BitmapFrame.Create(image));
+                enc.Save(outStream);
+                System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap(outStream);
+                return new Bitmap(bitmap);
+            }
+        }
+        /// <summary>
+        /// 将imageSource 转换为 Bitmap
+        /// </summary>
+        /// <param name="imageSource"></param>
+        /// <returns></returns>
+        public static Bitmap ToBitmap(this ImageSource imageSource)
+        {
+            BitmapSource bitmapSource = (BitmapSource)imageSource;
+            Bitmap bmp = new Bitmap(bitmapSource.PixelWidth, bitmapSource.PixelHeight, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
+            BitmapData data = bmp.LockBits(
+                new System.Drawing.Rectangle(System.Drawing.Point.Empty, bmp.Size), ImageLockMode.WriteOnly, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
+            bitmapSource.CopyPixels(Int32Rect.Empty, data.Scan0, data.Height * data.Stride, data.Stride);
+            bmp.UnlockBits(data);
+            return bmp;
+        }
+
     }
 }

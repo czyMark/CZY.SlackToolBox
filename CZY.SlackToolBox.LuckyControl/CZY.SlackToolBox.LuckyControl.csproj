@@ -248,6 +248,7 @@
       <DependentUpon>TMinSexView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Styles\Bootstrap\TimePicker.cs" />
+    <Compile Include="UISafeRun.cs" />
     <Compile Include="Verify\SliderVerify.xaml.cs">
       <DependentUpon>SliderVerify.xaml</DependentUpon>
     </Compile>

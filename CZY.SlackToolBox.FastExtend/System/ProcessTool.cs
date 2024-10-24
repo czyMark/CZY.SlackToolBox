@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace  CZY.SlackToolBox.FastExtend
 {
+    /// <summary>
+    /// WIndows进程相关操作
+    /// </summary>
     public static class ProcessTool
     {
         #region 进程相关WIndwos API
