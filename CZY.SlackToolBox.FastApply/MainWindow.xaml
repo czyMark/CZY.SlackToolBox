@@ -13,8 +13,8 @@
         xmlns:FastDevelopView="clr-namespace:CZY.SlackToolBox.FastApply.View.FastDevelop"
         xmlns:LuckyControlView="clr-namespace:CZY.SlackToolBox.FastApply.View.LuckyControl"
         xmlns:StudyGlobalView="clr-namespace:CZY.SlackToolBox.FastApply.View.StudyGlobal"
-  Icon="pack://application:,,,/CZY.SlackToolBox.FastApply;component/product.ico"
-        mc:Ignorable="d"   
+  Icon="pack://application:,,,/CZY.SlackToolBox.FastApply;component/product.ico" KeyDown="WinHotKeyWindow_KeyDown"
+        mc:Ignorable="d"    SizeChanged="WinHotKeyWindow_SizeChanged" WindowStyle="ThreeDBorderWindow"
         Title="CZYMark框架的快捷应用示例" >
     <Window.Resources>
         <ResourceDictionary>

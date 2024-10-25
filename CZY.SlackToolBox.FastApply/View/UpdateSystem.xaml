@@ -21,6 +21,6 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <StackPanel >
-        <Label>本地自动更新</Label>
+        <Label>自动更新</Label>
     </StackPanel>
 </UserControl>

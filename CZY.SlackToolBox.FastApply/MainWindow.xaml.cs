@@ -30,6 +30,9 @@ namespace CZY.SlackToolBox.FastApply
         public MainWindow()
         {
             InitializeComponent();
+            this.Height = 1080;
+            this.Top = 0;
+            this.Topmost = true;
 
             //string server = "http://localhost:8080/";
             //string para = "?text={{speakText}}&spk=派蒙&emotion=平静-好耶！《特尔克西的奇幻历险》出发咯！&speed={{speakSpeed}}&pitch=1.0&top_k=5&top_p=0.75&temperature=1.0&batch_size=20&text_split_method=cut5&text_lang=zh&seed=1480456663&split_bucket=True&batch_threshold=0.75&format=wav&parallel_infer=True&repetition_penalty=1.35&fragment_interval=0.3";
@@ -81,6 +84,55 @@ namespace CZY.SlackToolBox.FastApply
                         }
                     }
                 }
+            }
+        }
+
+        private void WinHotKeyWindow_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                MaxWin();
+            }
+        }
+
+        private void MaxWin()
+        {
+            this.ResizeMode = ResizeMode.NoResize;
+            this.Top = 0;
+            this.Left = 0;
+
+            System.Drawing.Rectangle screenResolution = System.Windows.Forms.Screen.PrimaryScreen.Bounds;
+
+            double screenWidth = screenResolution.Width;
+            double screenHeight = screenResolution.Height;
+
+            double screenWidthInInches = screenWidth;
+            double screenHeightInInches = screenHeight;
+            this.Width = screenWidthInInches;
+            this.Height = screenHeightInInches;
+            this.WindowState = WindowState.Normal;
+            this.WindowStyle = WindowStyle.None;
+            this.Topmost = true;
+        }
+        private void MinWin()
+        {
+            this.ResizeMode = ResizeMode.CanResize;
+            this.WindowState = WindowState.Normal;
+            this.WindowStyle = WindowStyle.ThreeDBorderWindow;
+            this.Topmost = false;
+        }
+        private void WinHotKeyWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                MinWin();
+            }
+            if (e.Key == Key.F11)
+            {
+                if (this.Topmost == false)
+                    MaxWin();
+                else
+                    MinWin();
             }
         }
     }

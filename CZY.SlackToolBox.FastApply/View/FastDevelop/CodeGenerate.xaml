@@ -6,7 +6,36 @@
              xmlns:local="clr-namespace:CZY.SlackToolBox.FastApply.View.FastDevelop"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CZY.SlackToolBox.LuckyControl;component/Styles/YXKJ/Button.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="Label">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Margin" Value="10"></Setter>
+            </Style>
+            <Style TargetType="Border">
+                <Setter Property="BorderThickness" Value="0,0,0,1"></Setter>
+                <Setter Property="BorderBrush" Value="AliceBlue"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <StackPanel >
+        <Border>
+            <WrapPanel>
+                <Label>管理后台</Label>
+                <Button Margin="10"  Click="Button_Click">Grid表格视图生成</Button>
+                <Button Margin="10"  Click="Button_Click">上下表格视图生成</Button>
+                <Button Margin="10"  Click="Button_Click">左右表格视图生成</Button>
+                <Button Margin="10"  Click="Button_Click">GridTree表格视图生成</Button>
+                <Button Margin="10"  Click="Button_Click">实体生成</Button>
+                <Button Margin="10"  Click="Button_Click">数据访问生成</Button>
+                <Button Margin="10"  Click="Button_Click">访问服务生成（restful风格）</Button>
+                <Button Margin="10"  Click="Button_Click">一次性生成所有</Button>
+            </WrapPanel>
             
-    </Grid>
+        </Border> 
+    </StackPanel>
 </UserControl>
