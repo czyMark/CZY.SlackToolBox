@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace CZY.SlackToolBox.FastExtend.Window
 {
+    /// <summary>
+    /// windwos 窗体缓存管理
+    /// </summary>
     public static class WindowManager
     {
         class WindowInfo
@@ -13,12 +16,12 @@ namespace CZY.SlackToolBox.FastExtend.Window
         static Dictionary<string, WindowInfo> _regWindowContainer = new Dictionary<string, WindowInfo>();
 
         /// <summary>
-        /// 注册类型
+        /// 注册窗口类型
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="name"></param>
         /// <param name="owner"></param>
-        public static void Register<T>(string name, System.Windows.Window owner = null)
+        public static void RegisterWindow<T>(this string name, System.Windows.Window owner = null)
         {
             if (!_regWindowContainer.ContainsKey(name))
             {
@@ -26,14 +29,33 @@ namespace CZY.SlackToolBox.FastExtend.Window
             }
         }
 
+
         /// <summary>
-        /// 获取对象
+        /// 获取窗口
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="name"></param>
+        /// <param name="owner"></param>
+        public static System.Windows.Window GetWindow<T>(this string name, System.Windows.Window owner = null)
+        {
+            if (_regWindowContainer.ContainsKey(name))
+            {
+                Type type = _regWindowContainer[name].WindowType;
+                var window = (System.Windows.Window)Activator.CreateInstance(type);
+                window.Owner = _regWindowContainer[name].Owner;
+                return window;
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// 获取显示窗口对象
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="name"></param>
         /// <param name="dataContext"></param>
         /// <returns></returns>
-        public static bool ShowDialog<T>(string name, T dataContext)
+        public static bool ShowDialog<T>(this string name, T dataContext)
         {
             if (_regWindowContainer.ContainsKey(name))
             {

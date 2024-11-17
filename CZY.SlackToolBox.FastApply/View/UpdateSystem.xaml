@@ -22,5 +22,11 @@
     </UserControl.Resources>
     <StackPanel >
         <Label>自动更新</Label>
+        <WrapPanel>
+            <Label Foreground="Red" FontSize="24">实现思路：结构分为 服务端 客户端。服务端程序使用 .net core webapi 实现访问</Label>
+            <Label Foreground="Red" FontSize="24">数据存储使用Json文件存储 不用特殊安装存储程序。在程序运行时将以保存的版本信息都加载到系统中方便后续快速分发</Label>
+            <Label Foreground="Red" FontSize="24">客户端在运行时将当前版本信息及程序验证，提交到服务器上，服务器端验证。验证通过后返回新版本登记文件信息</Label>
+            <Label Foreground="Red" FontSize="24">使用WebApi下载</Label>
+        </WrapPanel>
     </StackPanel>
 </UserControl>

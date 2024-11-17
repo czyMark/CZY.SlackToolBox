@@ -69,13 +69,15 @@
     <Compile Include="Other\DelegateAsync.cs" />
     <Compile Include="StringFile\ExcelExtend.cs" />
     <Compile Include="StringFile\Xml.cs" />
+    <Compile Include="System\LanguageTool.cs" />
     <Compile Include="System\ScreenTool.cs" />
     <Compile Include="Window\PrinterHelper.cs" />
+    <Compile Include="Window\WindowTool.cs" />
     <Compile Include="Window\WinHotKeyWindow.cs" />
     <Compile Include="Window\WinHotKey.cs" />
     <Compile Include="Window\WindowManager.cs" />
     <Compile Include="Random\RandomData.cs" />
-    <Compile Include="Random\Tool.cs" />
+    <Compile Include="Random\RandomTool.cs" />
     <Compile Include="Security\DissymmetryEncryption.cs" />
     <Compile Include="StringFile\Json.cs" />
     <Compile Include="Extention\XmlTool.cs" />

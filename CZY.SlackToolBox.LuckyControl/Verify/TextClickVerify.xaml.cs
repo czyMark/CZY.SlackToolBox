@@ -169,7 +169,7 @@ namespace CZY.SlackToolBox.LuckyControl.Verify
                     break;
                 case TextVerifyEnum.Idioms:
                     {
-                        tooltip = Random.Tool.GetVcodeNum(1, Random.RandomData.Instance.Idioms);
+                        tooltip = Random.RandomTool.GetVcodeNum(1, Random.RandomData.Instance.Idioms);
                         clicklength = tooltip.Length;
 
                         strs = new List<string>();
@@ -186,7 +186,7 @@ namespace CZY.SlackToolBox.LuckyControl.Verify
                         for (int i = 0; i < 4; i++)
                         {
                             //调用函数产生4个随机中文汉字编码 
-                            strs.Add(Random.Tool.GetChinese().ToString());
+                            strs.Add(Random.RandomTool.GetChinese().ToString());
                         }
                         clicklength = 3;
                     }
@@ -197,7 +197,7 @@ namespace CZY.SlackToolBox.LuckyControl.Verify
                         for (int i = 0; i < 4; i++)
                         {
                             //调用函数产生4个随机中文汉字编码 
-                            strs.Add(Random.Tool.GetChinese().ToString());
+                            strs.Add(Random.RandomTool.GetChinese().ToString());
                         }
                         clicklength = 3;
                     }
@@ -208,7 +208,7 @@ namespace CZY.SlackToolBox.LuckyControl.Verify
             int height = (int)(PART_Canvas.ActualHeight - 40);
             var brush = this.Background;
 
-            var clickstrs = strs.OrderBy(p => Random.Tool.NextDouble()).ToArray();
+            var clickstrs = strs.OrderBy(p => Random.RandomTool.NextDouble()).ToArray();
             PART_Canvas.Children.Clear();
             for (int i = 0; i < strs.Count; i++)
             {
@@ -241,14 +241,14 @@ namespace CZY.SlackToolBox.LuckyControl.Verify
                 FontSize = 30,
                 Text = str,
                 FontWeight = FontWeights.Bold,
-                Foreground = new SolidColorBrush(Color.FromRgb(Convert.ToByte(Random.Tool.GetSimpNum(0, 255)), Convert.ToByte(Random.Tool.Next(0, 255)), Convert.ToByte(Random.Tool.Next(0, 255)))),//brush,
+                Foreground = new SolidColorBrush(Color.FromRgb(Convert.ToByte(Random.RandomTool.GetSimpNum(0, 255)), Convert.ToByte(Random.RandomTool.Next(0, 255)), Convert.ToByte(Random.RandomTool.Next(0, 255)))),//brush,
                 IsHitTestVisible = false,
             };
             grid.Children.Add(outlinetext);
 
-            SetLeft(grid, Random.Tool.GetSimpNum((int)(width * index / totalindex), (int)(width * (index + 1) / totalindex)));
-            SetTop(grid, Random.Tool.GetSimpNum(0, (int)height));
-            RotateTransform rtf = new RotateTransform(Random.Tool.GetSimpNum(0, 360), 15, 20);
+            SetLeft(grid, Random.RandomTool.GetSimpNum((int)(width * index / totalindex), (int)(width * (index + 1) / totalindex)));
+            SetTop(grid, Random.RandomTool.GetSimpNum(0, (int)height));
+            RotateTransform rtf = new RotateTransform(Random.RandomTool.GetSimpNum(0, 360), 15, 20);
             grid.RenderTransform = rtf;
 
             grid.Background = new SolidColorBrush(Colors.Transparent);
@@ -289,7 +289,7 @@ namespace CZY.SlackToolBox.LuckyControl.Verify
 
         private BitmapImage GetBitmapImage()
         {
-            int value = Random.Tool.GetSimpNum(1, 3);
+            int value = Random.RandomTool.GetSimpNum(1, 3);
 
             if (!string.IsNullOrEmpty(ImageUri))
             {

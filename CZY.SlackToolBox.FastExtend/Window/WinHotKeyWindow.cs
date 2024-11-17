@@ -4,6 +4,9 @@ using System.Windows.Input;
 
 namespace CZY.SlackToolBox.FastExtend.Window
 {
+    /// <summary>
+    /// 简单的禁用快捷键窗口  如要特殊的全屏蔽 快捷键 及 任务管理器菜单 可使用 WinHotKey
+    /// </summary>
     public class WinHotKeyWindow : System.Windows.Window
     {
 		public bool isCommit = false;

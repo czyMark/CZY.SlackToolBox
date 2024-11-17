@@ -98,18 +98,21 @@ namespace CZY.SlackToolBox.FastApply
         private void MaxWin()
         {
             this.ResizeMode = ResizeMode.NoResize;
-            this.Top = 0;
-            this.Left = 0;
 
             System.Drawing.Rectangle screenResolution = System.Windows.Forms.Screen.PrimaryScreen.Bounds;
 
-            double screenWidth = screenResolution.Width;
+            //宽度*缩放   
+            double screenWidth = screenResolution.Width ;
             double screenHeight = screenResolution.Height;
 
             double screenWidthInInches = screenWidth;
             double screenHeightInInches = screenHeight;
             this.Width = screenWidthInInches;
             this.Height = screenHeightInInches;
+
+
+            this.Top = 0;
+            this.Left = 0;
             this.WindowState = WindowState.Normal;
             this.WindowStyle = WindowStyle.None;
             this.Topmost = true;

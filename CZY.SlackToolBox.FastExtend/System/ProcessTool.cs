@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace  CZY.SlackToolBox.FastExtend
@@ -418,7 +419,7 @@ namespace  CZY.SlackToolBox.FastExtend
 
 
         /// <summary>
-        /// 启动进程执行cmd命令
+        /// 启动进程 执行cmd命令
         /// </summary>
         /// <param name="Command">cmd命令</param>
         public static string ExecCommand(this string command)
@@ -452,6 +453,97 @@ namespace  CZY.SlackToolBox.FastExtend
             p.Close();
 
             return temp;
+        }
+
+
+        /// <summary>
+        /// 以进程的方式启动 指定路径的程序
+        /// </summary>
+        /// <param name="ExeName">程序</param>
+        /// <param name="ExeArguments">参数</param>
+        /// <param name="ProcessesName">启动后的进程名字  任务管理器中的显示的名字</param>
+        /// <param name="WaitTime">等待程序启动时间</param>
+        /// <returns></returns>
+        public static bool StartProcess(this string ExeName, string ExeArguments, string ProcessesName="",int WaitTime=500)
+        {
+            Process p = new Process();
+
+            //设置要启动的应用程序
+            p.StartInfo.FileName = ExeName;
+            //p.StartInfo.Arguments = "-k";
+            p.StartInfo.Arguments = ExeArguments;
+            //是否使用操作系统shell启动
+            p.StartInfo.UseShellExecute = false;
+            //// 接受来自调用程序的输入信息
+            p.StartInfo.RedirectStandardInput = false;
+            ////输出信息
+            p.StartInfo.RedirectStandardOutput = true;
+            //// 输出错误
+            //p.StartInfo.RedirectStandardError = true;
+            //不显示程序窗口
+            p.StartInfo.CreateNoWindow = true;
+            //启动程序
+            p.Start();
+            if (string.IsNullOrEmpty(ProcessesName))
+            {
+                //等待让进程启动
+                Thread.Sleep(WaitTime);
+                //验证进程名称是否以存在
+                System.Diagnostics.Process[] calexes = System.Diagnostics.Process.GetProcessesByName(ProcessesName);
+                if (calexes.Length > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// 启动另外进程
+        /// </summary>
+        /// <param name="ExeName">进程名称</param>
+        /// <param name="args">参数</param>
+        /// <returns>启动是否成功</returns>
+        public static bool StartProcess(this string ExeName, string[] args)
+        {
+            try
+            {
+                string s = "";
+                foreach (string arg in args) { s = s + arg + " "; }
+                s = s.Trim();
+                Process process = new Process();//创建进程对象  
+                ProcessStartInfo startInfo = new ProcessStartInfo(ExeName, s); // 括号里是(程序名,参数) 
+                process.StartInfo = startInfo;
+                process.Start();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("系统提示", "启动应用程序时出错！原因：" + ex.Message);
+            }
+            return false;
+        }
+
+
+
+        /// <summary>
+        /// 结束进程
+        /// </summary>
+        /// <param name="ProcessesName">进程名   任务管理器中的显示的名字</param>
+        public static void KillProcess(this string ProcessesName)
+        {
+            System.Diagnostics.Process[] influxds = System.Diagnostics.Process.GetProcessesByName(ProcessesName);
+            if (influxds.Length > 0)
+            {
+                foreach (Process influxd in influxds)
+                {
+                    influxd.Kill();
+                }
+            }
         }
         /// <summary>
         /// 验证系统中是否运行了当前程序
@@ -517,33 +609,6 @@ namespace  CZY.SlackToolBox.FastExtend
                 }
             }
             return null;
-        }
-
-
-        /// <summary>
-        /// 启动另外进程
-        /// </summary>
-        /// <param name="exename">进程名称</param>
-        /// <param name="args">参数</param>
-        /// <returns>启动是否成功</returns>
-        public static bool StartProcess(string exename, string[] args)
-        {
-            try
-            {
-                string s = "";
-                foreach (string arg in args) { s = s + arg + " "; }
-                s = s.Trim();
-                Process process = new Process();//创建进程对象  
-                ProcessStartInfo startInfo = new ProcessStartInfo(exename, s); // 括号里是(程序名,参数) 
-                process.StartInfo = startInfo;
-                process.Start();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("系统提示", "启动应用程序时出错！原因：" + ex.Message);
-            }
-            return false;
         }
 
 

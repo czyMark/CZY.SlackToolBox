@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace CZY.SlackToolBox.FastExtend.Window
 {
+    /// <summary>
+    /// Win32 API 调用命令打印
+    /// </summary>
     public static class PrinterHelper
     {
 

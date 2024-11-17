@@ -5,6 +5,9 @@ using System.Windows.Media;
 
 namespace CZY.SlackToolBox.FastExtend
 {
+    /// <summary>
+    /// WPF界面视觉树
+    /// </summary>
     public static class ViewTreeTool
     {
         /// <summary>

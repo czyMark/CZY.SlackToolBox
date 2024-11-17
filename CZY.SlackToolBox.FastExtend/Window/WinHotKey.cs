@@ -165,7 +165,7 @@ namespace CZY.SlackToolBox.FastExtend.Window
         /// <summary>
         /// 启用ctrl+alt+del的所有选项
         /// </summary>
-        private static void SetSystemFunctionEnable()
+        public static void SetSystemFunctionEnable()
         {
             var expKey = Registry.CurrentUser.CreateSubKey(RegKey_Explorer);
             expKey.DeleteValue(RegKey_Logoff, false);
@@ -183,7 +183,7 @@ namespace CZY.SlackToolBox.FastExtend.Window
         /// <summary>
         /// 禁用ctrl+alt+del的所有选项
         /// </summary>
-        private static void SetSystemFunctionDisable()
+        public static void SetSystemFunctionDisable()
         {
             var expKey = Registry.CurrentUser.CreateSubKey(RegKey_Explorer);
             expKey.SetValue(RegKey_Logoff, 1, RegistryValueKind.DWord);

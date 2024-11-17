@@ -154,7 +154,6 @@ namespace  CZY.SlackToolBox.FastExtend
 
         #endregion
 
-
         #region 图片压缩
 
 
@@ -544,6 +543,37 @@ namespace  CZY.SlackToolBox.FastExtend
         }
 
         /// <summary>
+        /// 将文件名字变成符合系统存储规范的名字
+        /// </summary>
+        /// <param name="fileName">文件名字</param>
+        /// <returns></returns>
+        public static string TrimSpecialInFileName(this string fileName)
+        {
+            var chars = Path.GetInvalidFileNameChars();
+            StringBuilder sb = new StringBuilder(fileName);
+            foreach (var c in chars)
+            {
+                sb.Replace(c.ToString(), string.Empty);
+            }
+            return sb.ToString().Trim();
+        }
+
+        /// <summary>
+        /// 将目录变成符合系统存储规范的名字
+        /// </summary>
+        /// <param name="path">目录名字</param>
+        /// <returns></returns>
+        public static string TrimSpecialInPath(string path)
+        {
+            var chars = Path.GetInvalidPathChars();
+            StringBuilder sb = new StringBuilder(path);
+            foreach (var c in chars)
+            {
+                sb.Replace(c.ToString(), string.Empty);
+            }
+            return sb.ToString().Trim();
+        }
+        /// <summary>
         /// 获取当前程序根目录
         /// </summary>
         /// <returns></returns>
@@ -648,14 +678,30 @@ namespace  CZY.SlackToolBox.FastExtend
 
         #endregion
 
-
         #region 拷贝
+
+        /// <summary>
+        /// 拷贝文件到指定目录下
+        /// </summary>
+        /// <param name="srcdir">原文件所在目录</param>
+        /// <param name="dstdir">目标目录</param>
+        /// <param name="overwrite">是否覆盖文件</param>
+        public static void CopyFileToDestDirectory(this string srcdir, string dstdir, bool overwrite)
+        {
+            string todir = Path.GetDirectoryName(dstdir);
+
+            if (!Directory.Exists(todir))
+                Directory.CreateDirectory(todir);
+
+            File.Copy(srcdir, Path.Combine(todir, Path.GetFileName(srcdir)), overwrite);
+        }
+
 
         /// <summary>
         /// 拷贝目录
         /// </summary>
-        /// <param name="srcPath"></param>
-        /// <param name="destPath"></param>
+        /// <param name="srcPath">原路径</param>
+        /// <param name="destPath">目标路径</param>
         public static void CopyDirectory(this string srcPath, string destPath)
         {
             try
@@ -664,7 +710,7 @@ namespace  CZY.SlackToolBox.FastExtend
                 FileSystemInfo[] fileinfo = dir.GetFileSystemInfos();  //获取目录下（不包含子目录）的文件和子目录
                 foreach (FileSystemInfo i in fileinfo)
                 {
-                    string destName = destPath +"\\" + i.Name;
+                    string destName = destPath + "\\" + i.Name;
                     if (i is DirectoryInfo)     //判断是否文件夹
                     {
                         if (!Directory.Exists(destName))
@@ -681,25 +727,93 @@ namespace  CZY.SlackToolBox.FastExtend
             }
             catch (Exception e)
             {
-                throw ;
+                throw;
             }
         }
+
         /// <summary>
-        /// 拷贝文件到指定目录下
+        /// 复制文件夹及文件,根目录除外
         /// </summary>
-        /// <param name="srcdir"></param>
-        /// <param name="dstdir"></param>
-        /// <param name="overwrite"></param>
-        public static void CopyFileToDestDirectory(this string srcdir, string dstdir, bool overwrite)
+        /// <param name="srcdir">原文件路径</param>
+        /// <param name="dstdir">目标文件路径</param>
+        /// <returns></returns>
+        public static int CopyFolderSub(this string srcdir, string dstdir)
         {
-            string todir = Path.GetDirectoryName(dstdir);
+            try
+            {
+                //如果目标路径不存在,则创建目标路径
+                if (!System.IO.Directory.Exists(dstdir))
+                {
+                    System.IO.Directory.CreateDirectory(dstdir);
+                }
+                //得到原文件根目录下的所有文件
+                string[] files = System.IO.Directory.GetFiles(srcdir);
+                foreach (string file in files)
+                {
+                    string name = System.IO.Path.GetFileName(file);
+                    string dest = System.IO.Path.Combine(dstdir, name);
+                    System.IO.File.Copy(file, dest, true);//复制文件
+                }
+                //得到原文件根目录下的所有文件夹
+                string[] folders = System.IO.Directory.GetDirectories(srcdir);
+                foreach (string folder in folders)
+                {
+                    string name = System.IO.Path.GetFileName(folder);
+                    string dest = System.IO.Path.Combine(dstdir, name);
+                    CopyFolderSub(folder, dest);//构建目标路径,递归复制文件
+                }
+                return 1;
+            }
+            catch (Exception e)
+            {
+                return -1;
+            }
 
-            if (!Directory.Exists(todir))
-                Directory.CreateDirectory(todir);
-
-            File.Copy(srcdir, Path.Combine(todir, Path.GetFileName(srcdir)), overwrite);
         }
 
+        /// <summary>
+        /// 复制文件夹及文件，含根目录
+        /// </summary>
+        /// <param name="srcdir">原文件路径</param>
+        /// <param name="dstdir">目标文件路径</param>
+        /// <returns></returns>
+        public static int CopyFolder(this string srcdir, string dstdir)
+        {
+            try
+            {
+                string folderName = System.IO.Path.GetFileName(srcdir);
+                string destfolderdir = System.IO.Path.Combine(dstdir, folderName);
+                string[] filenames = System.IO.Directory.GetFileSystemEntries(srcdir);
+                foreach (string file in filenames)// 遍历所有的文件和目录
+                {
+                    if (System.IO.Directory.Exists(file))
+                    {
+                        string currentdir = System.IO.Path.Combine(destfolderdir, System.IO.Path.GetFileName(file));
+                        if (!System.IO.Directory.Exists(currentdir))
+                        {
+                            System.IO.Directory.CreateDirectory(currentdir);
+                        }
+                        CopyFolder(file, destfolderdir);
+                    }
+                    else
+                    {
+                        string srcfileName = System.IO.Path.Combine(destfolderdir, System.IO.Path.GetFileName(file));
+                        if (!System.IO.Directory.Exists(destfolderdir))
+                        {
+                            System.IO.Directory.CreateDirectory(destfolderdir);
+                        }
+                        System.IO.File.Copy(file, srcfileName, true);
+                    }
+                }
+
+                return 1;
+            }
+            catch (Exception e)
+            {
+                return -1;
+            }
+
+        }
         #endregion
     }
 }

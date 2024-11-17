@@ -6,7 +6,7 @@ namespace CZY.SlackToolBox.FastExtend
 {
 
 
-    public static class Tool
+    public static class RandomTool
     {
         public enum RandomNumFormat
         {
